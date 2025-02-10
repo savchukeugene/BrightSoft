@@ -54,8 +54,19 @@
 }
 
 .userLevel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 150px;
   height: 150px;
   border-radius: 10px;
   border: 1px solid white;
+
+  .redRound {
+    width: 100px;
+    height: 100px;
+    background: red;
+    border-radius: 50%;
+    cursor: pointer;
+  }
 }

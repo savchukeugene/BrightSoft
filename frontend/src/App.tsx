@@ -5,13 +5,15 @@ import MainPage from "./components/mainPageView";
 import Timetable from "./components/mainPageView/MainView/User/Timetable";
 import Grade from "./components/mainPageView/MainView/User/Grade";
 import QuickCount from "./components/mainPageView/MainView/tasks/QuickCount";
+import {IUserStore, useUserStore} from "./store/userStore.tsx";
 
 function App() {
-    const token = localStorage.getItem('token');
+    const user: IUserStore = useUserStore()
+
     return (
         <BrowserRouter>
             <Routes>
-                {token !== null ? (
+                {user.user !== null ? (
                     <>
                         <Route
                             path={'/mainPage'}

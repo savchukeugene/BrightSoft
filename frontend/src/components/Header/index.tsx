@@ -1,8 +1,10 @@
 import {FC} from 'react';
 
 import s from './styles.module.scss'
+import {IUserStore, useUserStore} from "../../store/userStore.tsx";
 
 const Header: FC = () => {
+    const user: IUserStore = useUserStore()
     return (
         <header className={s.header}>
             <section className={s.headerInfo}>
@@ -26,7 +28,15 @@ const Header: FC = () => {
                     </p>
                 </div>
                 <div className={s.userLevel}>
+                    <div
+                        className={s.redRound}
+                        onClick={() => {
+                            localStorage.removeItem('token')
+                            user.logoutUser()
+                        }}
+                    >
 
+                    </div>
                 </div>
             </section>
         </header>
