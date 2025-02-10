@@ -1,6 +1,5 @@
 import {FC} from "react";
 import {Table, TableColumnsType} from "antd";
-import { createStyles } from 'antd-style';
 
 interface DataType {
     key: React.Key;
@@ -10,80 +9,59 @@ interface DataType {
 }
 
 const dataSource: DataType[] = [
-    { key: '1', name: 'Olivia', age: 32, address: 'New York Park' },
-    { key: '2', name: 'Ethan', age: 40, address: 'London Park' },
+    { key: '1', name: 'Olivia', age: 32, address: '9' },
+    { key: '2', name: 'Ethan', age: 40, address: '8' },
 ];
 
 
 const columns: TableColumnsType<DataType> = [
     {
-        title: 'Full Name',
+        title: 'ФИО',
         width: 100,
         dataIndex: 'name',
         key: 'name',
         fixed: 'left',
     },
     {
-        title: 'Age',
+        title: 'Возраст',
         width: 100,
         dataIndex: 'age',
         key: 'age',
         fixed: 'left',
         sorter: true,
     },
-    { title: 'Column 1', dataIndex: 'address', key: '1' },
-    { title: 'Column 2', dataIndex: 'address', key: '2' },
-    { title: 'Column 3', dataIndex: 'address', key: '3' },
-    { title: 'Column 4', dataIndex: 'address', key: '4' },
-    { title: 'Column 5', dataIndex: 'address', key: '5' },
-    { title: 'Column 6', dataIndex: 'address', key: '6' },
-    { title: 'Column 7', dataIndex: 'address', key: '7' },
-    { title: 'Column 8', dataIndex: 'address', key: '8' },
-    { title: 'Column 9', dataIndex: 'address', key: '9' },
-    { title: 'Column 10', dataIndex: 'address', key: '10' },
-    { title: 'Column 11', dataIndex: 'address', key: '11' },
-    { title: 'Column 12', dataIndex: 'address', key: '12' },
-    { title: 'Column 13', dataIndex: 'address', key: '13' },
-    { title: 'Column 14', dataIndex: 'address', key: '14' },
-    { title: 'Column 15', dataIndex: 'address', key: '15' },
-    { title: 'Column 16', dataIndex: 'address', key: '16' },
-    { title: 'Column 17', dataIndex: 'address', key: '17' },
-    { title: 'Column 18', dataIndex: 'address', key: '18' },
-    { title: 'Column 19', dataIndex: 'address', key: '19' },
-    { title: 'Column 20', dataIndex: 'address', key: '20' },
+    { title: '12.02.2025', dataIndex: 'address', key: '1' },
+    { title: '12.02.2025', dataIndex: 'address', key: '2' },
+    { title: '12.02.2025', dataIndex: 'address', key: '3' },
+    { title: '12.02.2025', dataIndex: 'address', key: '4' },
+    { title: '12.02.2025', dataIndex: 'address', key: '5' },
+    { title: '12.02.2025', dataIndex: 'address', key: '6' },
+    { title: '12.02.2025', dataIndex: 'address', key: '7' },
+    { title: '12.02.2025', dataIndex: 'address', key: '8' },
+    { title: '12.02.2025', dataIndex: 'address', key: '9' },
+    { title: '12.02.2025', dataIndex: 'address', key: '10' },
+    { title: '12.02.2025', dataIndex: 'address', key: '11' },
+    { title: '12.02.2025', dataIndex: 'address', key: '12' },
+    { title: '12.02.2025', dataIndex: 'address', key: '13' },
+    { title: '12.02.2025', dataIndex: 'address', key: '14' },
+    { title: '12.02.2025', dataIndex: 'address', key: '15' },
+    { title: '12.02.2025', dataIndex: 'address', key: '16' },
+    { title: '12.02.2025', dataIndex: 'address', key: '17' },
+    { title: '12.02.2025', dataIndex: 'address', key: '18' },
+    { title: '12.02.2025', dataIndex: 'address', key: '19' },
+    { title: '12.02.2025', dataIndex: 'address', key: '20' },
     {
-        title: 'Action',
+        title: 'Действия',
         key: 'operation',
         fixed: 'right',
         width: 100,
-        render: () => <a>action</a>,
+        render: () => <a>Редактировать</a>,
     },
 ];
 
-const useStyle = createStyles(({ css, token }) => {
-    const { antCls } = token;
-    return {
-        customTable: css`
-      ${antCls}-table {
-        ${antCls}-table-container {
-          ${antCls}-table-body,
-          ${antCls}-table-content {
-            scrollbar-width: thin;
-            scrollbar-color: #eaeaea transparent;
-            scrollbar-gutter: stable;
-          }
-        }
-      }
-    `,
-    };
-});
-
-
 const Timetable: FC = (): JSX.Element => {
-    const { styles } = useStyle();
     return (
         <Table<DataType>
-            className={styles.customTable}
             pagination={false}
             columns={columns}
             dataSource={dataSource}
