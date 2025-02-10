@@ -66,7 +66,7 @@ const MainPage = () => {
             </Sider>
             <Layout
                 style={{
-                    background: '#002140'
+                    background: '#002140',
                 }}
             >
                 {pathname.includes('user') && <Header/>}

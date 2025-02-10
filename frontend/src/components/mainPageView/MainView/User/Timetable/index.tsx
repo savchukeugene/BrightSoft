@@ -1,6 +1,6 @@
 import {FC} from "react";
 import {Table, TableColumnsType} from "antd";
-
+import s from './styles.module.scss'
 interface DataType {
     key: React.Key;
     name: string;
@@ -12,7 +12,6 @@ const dataSource: DataType[] = [
     { key: '1', name: 'Olivia', age: 32, address: '9' },
     { key: '2', name: 'Ethan', age: 40, address: '8' },
 ];
-
 
 const columns: TableColumnsType<DataType> = [
     {
@@ -65,6 +64,7 @@ const Timetable: FC = (): JSX.Element => {
             pagination={false}
             columns={columns}
             dataSource={dataSource}
+            className={s.table}
             scroll={{ x: 'max-content' }}
         />
     );
