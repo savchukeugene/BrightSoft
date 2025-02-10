@@ -2,6 +2,7 @@ import {FC} from 'react';
 
 import s from './styles.module.scss'
 import {IUserStore, useUserStore} from "../../store/userStore.tsx";
+import {notification} from "antd";
 
 const Header: FC = () => {
     const user: IUserStore = useUserStore()
@@ -31,8 +32,12 @@ const Header: FC = () => {
                     <div
                         className={s.redRound}
                         onClick={() => {
-                            localStorage.removeItem('token')
                             user.logoutUser()
+                            notification.success({
+                                message: 'Успешно!',
+                                description: 'Вы успешно вышли из аккаунта!',
+                            })
+
                         }}
                     >
 
