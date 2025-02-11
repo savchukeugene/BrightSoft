@@ -6,6 +6,7 @@ import Timetable from "./components/mainPageView/MainView/User/Timetable";
 import Grade from "./components/mainPageView/MainView/User/Grade";
 import QuickCount from "./components/mainPageView/MainView/tasks/QuickCount";
 import {IUserStore, useUserStore} from "./store/userStore.tsx";
+import PageNotFound from "./components/Layout/PageNotFound";
 
 function App() {
     const user: IUserStore = useUserStore()
@@ -43,10 +44,7 @@ function App() {
                         <Route
                             path={'*'}
                             element={
-                                <Navigate
-                                    to={'/mainPage/user/timetable'}
-                                    replace={true}
-                                />
+                                <PageNotFound />
                             }
                         />
                     </>

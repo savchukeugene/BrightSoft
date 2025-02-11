@@ -4,8 +4,8 @@ import {BugOutlined, BuildOutlined, InfoCircleOutlined, UserOutlined,} from '@an
 
 import {Layout, Menu, MenuProps} from "antd";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
-import Header from "../Header";
-import PageWrapper from "../PageWrapper";
+import Header from "../Layout/Header";
+import PageWrapper from "../Layout/PageWrapper";
 
 const {Sider} = Layout
 type MenuItem = Required<MenuProps>['items'][number];

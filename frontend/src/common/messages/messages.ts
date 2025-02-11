@@ -2,6 +2,10 @@ export const messages = {
     view: {
         main: {
 
+        },
+        pageNotFound: {
+            title: 'Упс...',
+            description: 'Что-то пошло не так. Похоже, что данной страницы не существует, либо она находиться в разработке. Убедитесь, что Вы перешли по действительной ссылке.',
         }
     },
     modal: {
@@ -9,7 +13,8 @@ export const messages = {
     },
     button: {
         yes: 'Да',
-        no: 'Нет'
+        no: 'Нет',
+        goMainPage: 'На главную'
     },
     notification: {
         success: {
