@@ -32,6 +32,7 @@ const Header: FC = () => {
                     <div
                         className={s.redRound}
                         onClick={() => {
+                            localStorage.removeItem('brightSoftAuthToken')
                             user.logoutUser()
                             notification.success({
                                 message: 'Успешно!',
