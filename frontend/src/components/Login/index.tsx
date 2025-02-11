@@ -4,6 +4,7 @@ import {Button, Image, notification} from 'antd';
 import logo from '../../images/book-bookmark-minimalistic-svgrepo-com.svg';
 import {useNavigate} from 'react-router-dom';
 import {IUserStore, useUserStore} from "../../store/userStore.tsx";
+import {messages} from "../../common/messages/messages.ts";
 
 const Login: FC = () => {
     const navigate = useNavigate();
@@ -13,8 +14,8 @@ const Login: FC = () => {
         localStorage.setItem('brightSoftAuthToken', 'someValue')
         user.setUser('123');
         notification.success({
-            message: 'Успешно!',
-            description: 'Вы успешно вошли в аккаунт!',
+            message: messages.notification.success.messages.success,
+            description: messages.notification.success.description.successLogin,
         })
         navigate('/mainPage');
     };

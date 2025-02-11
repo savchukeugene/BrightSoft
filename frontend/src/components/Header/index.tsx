@@ -3,6 +3,7 @@ import {FC} from 'react';
 import s from './styles.module.scss'
 import {IUserStore, useUserStore} from "../../store/userStore.tsx";
 import {notification} from "antd";
+import {messages} from "../../common/messages/messages.ts";
 
 const Header: FC = () => {
     const user: IUserStore = useUserStore()
@@ -23,9 +24,7 @@ const Header: FC = () => {
                     </p>
 
                     <p className={s.userDescription}>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book.
+                        {messages.defaultText}
                     </p>
                 </div>
                 <div className={s.userLevel}>
@@ -35,8 +34,8 @@ const Header: FC = () => {
                             localStorage.removeItem('brightSoftAuthToken')
                             user.logoutUser()
                             notification.success({
-                                message: 'Успешно!',
-                                description: 'Вы успешно вышли из аккаунта!',
+                                message: messages.notification.success.messages.success,
+                                description: messages.notification.success.description.successLogin,
                             })
 
                         }}
