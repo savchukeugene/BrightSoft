@@ -10,6 +10,7 @@ const Login: FC = () => {
     const user: IUserStore = useUserStore()
 
     const handleLogin = () => {
+        localStorage.setItem('brightSoftAuthToken', 'someValue')
         user.setUser('123');
         notification.success({
             message: 'Успешно!',
