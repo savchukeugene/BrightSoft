@@ -69,6 +69,7 @@ const MainPage = () => {
             <Layout
                 style={{
                     background: '#002140',
+                    color: 'white'
                 }}
             >
             <PageWrapper>
