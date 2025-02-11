@@ -9,7 +9,7 @@ Frontend Technologies:
 
 If you want to run frontend application, you must:
 1) Install pnpm (packet manager)
-2) Make sure you are in current dirrectory width package.json
+2) Make sure you are in current directory with package.json
 3) Run:
 ```bash
 $ pnpm install
