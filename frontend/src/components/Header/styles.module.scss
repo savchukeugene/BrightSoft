@@ -4,7 +4,6 @@
   align-items: center;
   width: 100%;
   height: 25vh;
-  padding: 20px;
 }
 
 .headerInfo {
@@ -15,11 +14,10 @@
   border-radius: 10px;
   align-items: center;
   padding: 20px;
-  min-width: 1200px;
 }
 
 .userPhoto {
-  width: 150px;
+  min-width: 150px;
   height: 150px;
   border-radius: 50%;
   border: 1px solid white;

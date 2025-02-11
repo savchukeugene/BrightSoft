@@ -1,0 +1,22 @@
+.pageWrapperSettings {
+  margin: 0 auto;
+  max-width: 1250px;
+}
+
+@media (max-width: 1500px) {
+  .pageWrapperSettings {
+    max-width: 1100px;
+  }
+}
+
+@media (max-width: 1370px) {
+  .pageWrapperSettings {
+    max-width: 950px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .pageWrapperSettings {
+    max-width: 800px;
+  }
+}
