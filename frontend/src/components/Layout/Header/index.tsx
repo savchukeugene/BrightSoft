@@ -3,7 +3,7 @@ import {FC} from 'react';
 import s from './styles.module.scss'
 import {IUserStore, useUserStore} from "../../../store/userStore.tsx";
 import {notification} from "antd";
-import {messages} from "../../../common/messages/messages.ts";
+import {messages} from "../../../common/constants/messages.ts";
 
 const Header: FC = () => {
     const user: IUserStore = useUserStore()

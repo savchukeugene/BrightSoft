@@ -1,6 +1,6 @@
 import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
-import Login from './components/Login';
-import CreateAccount from './components/CreateAccount';
+import Login from './components/Authorization/Login';
+import CreateAccount from './components/Authorization/CreateAccount';
 import MainPage from "./components/mainPageView";
 import Timetable from "./components/mainPageView/MainView/User/Timetable";
 import Grade from "./components/mainPageView/MainView/User/Grade";

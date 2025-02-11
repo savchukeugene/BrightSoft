@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Button, Image } from 'antd';
-import logo from '../../images/book-bookmark-minimalistic-svgrepo-com.svg';
+import logo from '../../../images/book-bookmark-minimalistic-svgrepo-com.svg';
 import { useNavigate } from 'react-router-dom';
 
 const CreateAccount: FC = () => {

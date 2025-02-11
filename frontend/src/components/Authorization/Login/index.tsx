@@ -1,10 +1,10 @@
 import {FC} from 'react';
-import '../../styles/login.scss';
+import '../../../styles/login.scss';
 import {Button, Image, notification} from 'antd';
-import logo from '../../images/book-bookmark-minimalistic-svgrepo-com.svg';
+import logo from '../../../images/book-bookmark-minimalistic-svgrepo-com.svg';
 import {useNavigate} from 'react-router-dom';
-import {IUserStore, useUserStore} from "../../store/userStore.tsx";
-import {messages} from "../../common/messages/messages.ts";
+import {IUserStore, useUserStore} from "../../../store/userStore.tsx";
+import {messages} from "../../../common/constants/messages.ts";
 
 const Login: FC = () => {
     const navigate = useNavigate();

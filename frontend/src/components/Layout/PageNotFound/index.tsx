@@ -1,10 +1,10 @@
 import React, {FC} from "react";
 import {Button} from "antd";
 import {NavigateFunction, useNavigate} from "react-router-dom";
-import {ROOTS} from "../../../common/messages/roots.ts";
+import {ROOTS} from "../../../common/constants/roots.ts";
 import s from './styles.module.scss'
 import PageWrapper from "../PageWrapper";
-import {messages} from "../../../common/messages/messages.ts";
+import {messages} from "../../../common/constants/messages.ts";
 
 const PageNotFound: FC = (): React.JSX.Element => {
     const navigate: NavigateFunction = useNavigate()
