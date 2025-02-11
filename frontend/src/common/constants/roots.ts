@@ -1,5 +1,12 @@
 export const ROOTS = {
     mainPage: '/mainPage',
     user: '/user',
-    timetable: '/timetable'
+    tasks: '/tasks',
+    grade: '/grade',
+    quickCount: '/quickCount',
+    timetable: '/timetable',
+    support: '/support',
+    about: '/about',
+    login: '/login',
+    createAccount: '/createAccount'
 }

@@ -2,22 +2,23 @@ import {FC} from 'react';
 import '../../../styles/login.scss';
 import {Button, Image, notification} from 'antd';
 import logo from '../../../images/book-bookmark-minimalistic-svgrepo-com.svg';
-import {useNavigate} from 'react-router-dom';
+import {NavigateFunction, useNavigate} from 'react-router-dom';
 import {IUserStore, useUserStore} from "../../../store/userStore.tsx";
 import {messages} from "../../../common/constants/messages.ts";
+import {ROOTS} from "../../../common/constants/roots.ts";
 
 const Login: FC = () => {
-    const navigate = useNavigate();
+    const navigate: NavigateFunction = useNavigate();
     const user: IUserStore = useUserStore()
 
-    const handleLogin = () => {
+    const handleLogin = async () => {
         localStorage.setItem('brightSoftAuthToken', 'someValue')
         user.setUser('123');
         notification.success({
             message: messages.notification.success.messages.success,
             description: messages.notification.success.description.successLogin,
         })
-        navigate('/mainPage');
+        navigate(ROOTS.mainPage + ROOTS.user + ROOTS.timetable);
     };
 
     return (

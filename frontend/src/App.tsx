@@ -7,6 +7,9 @@ import Grade from "./components/mainPageView/MainView/User/Grade";
 import QuickCount from "./components/mainPageView/MainView/tasks/QuickCount";
 import {IUserStore, useUserStore} from "./store/userStore.tsx";
 import PageNotFound from "./components/Layout/PageNotFound";
+import {ROOTS} from "./common/constants/roots.ts";
+import SupportPage from "./components/SupportPage";
+import {routeGenerator} from "./common/utils/generatotrs.tsx";
 
 function App() {
     const user: IUserStore = useUserStore()
@@ -17,29 +20,37 @@ function App() {
                 {user.user !== null ? (
                     <>
                         <Route
-                            path={'/mainPage'}
+                            path={ROOTS.mainPage}
                             element={<MainPage/>}
                         >
                             <Route
-                                path={'/mainPage/user'}
+                                path={routeGenerator(ROOTS.mainPage, ROOTS.user)}
                             >
                                 <Route
-                                    path={'/mainPage/user/timetable'}
+                                    path={routeGenerator(ROOTS.mainPage, ROOTS.user, ROOTS.timetable)}
                                     element={<Timetable/>}
                                 />
                                 <Route
-                                    path={'/mainPage/user/grade'}
+                                    path={routeGenerator(ROOTS.mainPage, ROOTS.user, ROOTS.grade)}
                                     element={<Grade/>}
                                 />
                             </Route>
                             <Route
-                                path={'/mainPage/tasks'}
+                                path={routeGenerator(ROOTS.mainPage, ROOTS.tasks)}
                             >
                                 <Route
-                                    path={'/mainPage/tasks/quickCount'}
+                                    path={routeGenerator(ROOTS.mainPage, ROOTS.tasks, ROOTS.quickCount)}
                                     element={<QuickCount/>}
                                 />
                             </Route>
+                            <Route
+                                path={routeGenerator(ROOTS.mainPage, ROOTS.support)}
+                                element={<SupportPage />}
+                            />
+                            <Route
+                                path={routeGenerator(ROOTS.mainPage, ROOTS.about)}
+                                element={<SupportPage />}
+                            />
                         </Route>
                         <Route
                             path={'*'}
@@ -51,18 +62,18 @@ function App() {
                 ) : (
                     <>
                         <Route
-                            path={'/login'}
+                            path={ROOTS.login}
                             element={<Login/>}
                         />
                         <Route
-                            path={'/createAccount'}
+                            path={ROOTS.createAccount}
                             element={<CreateAccount/>}
                         />
                         <Route
                             path={'*'}
                             element={
                                 <Navigate
-                                    to={'/login'}
+                                    to={ROOTS.login}
                                     replace={true}
                                 />
                             }
