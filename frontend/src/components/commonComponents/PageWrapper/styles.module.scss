@@ -1,9 +1,15 @@
 .pageWrapperSettings {
   margin: 0 auto;
-  max-width: 1400px;
+  width: 1400px;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1620px) {
+  .pageWrapperSettings {
+    max-width: 1300px;
+  }
+}
+
+@media (max-width: 1520px) {
   .pageWrapperSettings {
     max-width: 1100px;
   }

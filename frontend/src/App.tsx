@@ -6,7 +6,7 @@ import Timetable from "./components/mainPageView/MainView/User/Timetable";
 import Grade from "./components/mainPageView/MainView/User/Grade";
 import QuickCount from "./components/mainPageView/MainView/tasks/QuickCount";
 import {IUserStore, useUserStore} from "./store/userStore.tsx";
-import PageNotFound from "./components/Layout/PageNotFound";
+import PageNotFound from "./components/commonComponents/PageNotFound";
 import {ROOTS} from "./common/constants/roots.ts";
 import SupportPage from "./components/SupportPage";
 import {routeGenerator} from "./common/utils/generatotrs.tsx";

@@ -6,19 +6,20 @@ import {NavigateFunction, useNavigate} from 'react-router-dom';
 import {IUserStore, useUserStore} from "../../../store/userStore.tsx";
 import {messages} from "../../../common/constants/messages.ts";
 import {ROOTS} from "../../../common/constants/roots.ts";
+import {routeGenerator} from "../../../common/utils/generatotrs.tsx";
 
 const Login: FC = () => {
     const navigate: NavigateFunction = useNavigate();
     const user: IUserStore = useUserStore()
 
-    const handleLogin = async () => {
+    const handleLogin = () => {
         localStorage.setItem('brightSoftAuthToken', 'someValue')
         user.setUser('123');
         notification.success({
             message: messages.notification.success.messages.success,
             description: messages.notification.success.description.successLogin,
         })
-        navigate(ROOTS.mainPage + ROOTS.user + ROOTS.timetable);
+        navigate(routeGenerator(ROOTS.mainPage, ROOTS.user, ROOTS.timetable));
     };
 
     return (

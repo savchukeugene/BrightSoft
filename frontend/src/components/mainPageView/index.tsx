@@ -5,7 +5,7 @@ import {BugOutlined, BuildOutlined, InfoCircleOutlined, UserOutlined,} from '@an
 import {Layout, Menu, MenuProps} from "antd";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import Header from "../Layout/Header";
-import PageWrapper from "../Layout/PageWrapper";
+import PageWrapper from "../commonComponents/PageWrapper";
 
 const {Sider} = Layout
 type MenuItem = Required<MenuProps>['items'][number];
@@ -73,11 +73,8 @@ const MainPage = () => {
                 }}
             >
             <PageWrapper>
-                {pathname.includes('user') && <Header/>}
+                {pathname.includes('user/') && <Header/>}
                 <Outlet/>
-                <div style={{height: '200vh'}} className="main">
-
-                </div>
             </PageWrapper>
             </Layout>
         </Layout>
