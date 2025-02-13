@@ -35,9 +35,8 @@ const Header: FC = () => {
                             user.logoutUser()
                             notification.success({
                                 message: messages.notification.success.messages.success,
-                                description: messages.notification.success.description.successLogin,
+                                description: messages.notification.success.description.successLogout,
                             })
-
                         }}
                     >
 

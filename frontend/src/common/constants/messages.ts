@@ -31,6 +31,7 @@ export const messages = {
             },
             description: {
                 successLogin: 'Вы успешно вошли в аккаунт!',
+                successLogout: 'Вы успешно вышли из аккаунта!'
             },
         },
         warn: {},

@@ -6,6 +6,7 @@ import {Layout, Menu, MenuProps} from "antd";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import Header from "../Layout/Header";
 import PageWrapper from "../commonComponents/PageWrapper";
+import Footer from "../Layout/Footer";
 
 const {Sider} = Layout
 type MenuItem = Required<MenuProps>['items'][number];
@@ -75,6 +76,7 @@ const MainPage = () => {
             <PageWrapper>
                 {pathname.includes('user/') && <Header/>}
                 <Outlet/>
+                <Footer />
             </PageWrapper>
             </Layout>
         </Layout>

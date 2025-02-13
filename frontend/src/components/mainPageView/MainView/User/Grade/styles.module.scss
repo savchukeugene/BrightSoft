@@ -16,7 +16,12 @@
 
   & td {
     border: 0 !important;
+    color: white !important;
     text-align: center;
     background: rgb(0, 66, 128) !important;
+  }
+
+  & td:hover {
+    background: rgb(0, 57, 108) !important;
   }
 }
