@@ -12,9 +12,10 @@
   background: #262626
 }
 
-.demoLogo {
-  width: 45px;
-  height: 45px;
-  background: #00417d;
-  border-radius: 50%;
+.outletSettings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 85vh;
 }

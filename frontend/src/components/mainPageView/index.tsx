@@ -5,8 +5,10 @@ import {BugOutlined, BuildOutlined, InfoCircleOutlined, UserOutlined,} from '@an
 import {Layout, Menu, MenuProps} from "antd";
 import {Outlet, useNavigate} from "react-router-dom";
 import PageWrapper from "../commonComponents/PageWrapper";
+import {Header} from "antd/lib/layout/layout";
 import Footer from "../Layout/Footer";
-import {Content, Header} from "antd/lib/layout/layout";
+
+import s from './styles.module.scss'
 
 const {Sider} = Layout
 type MenuItem = Required<MenuProps>['items'][number];
@@ -43,19 +45,11 @@ const MainPage = () => {
         getItem('Служба поддержки', 'support', <BugOutlined/>)
     ];
     const headerItem: MenuItem[] = [
-        getItem('Элемент 1', 'el1', <></>, []),
-        getItem('Элемент 2', 'el2', <></>, []),
-        getItem('Элемент 3', 'el3', <></>, []),
-        getItem('Элемент 4', 'el4', <></>, []),
+        getItem('Оценки', 'grade', <></>, []),
+        getItem('Расписание', 'timetable', <></>, []),
+        getItem('Мой уровень', 'el3', <></>, []),
+        getItem('Редактирование информации', 'el4', <></>, []),
     ]
-    const headerLogo: MenuItem[] = [
-        getItem('', 'el1', <UserOutlined />, [
-            getItem('Лабиринты', 'taskLabirint'),
-            getItem('Быстрый счёт', 'quickCount'),
-            getItem('Абакусы', 'tasksAbakus'),
-        ]),
-    ]
-
     const siderStyle: React.CSSProperties = {
         overflow: 'auto',
         height: '100vh',
@@ -88,23 +82,21 @@ const MainPage = () => {
                     <Menu
                         theme="dark"
                         mode="horizontal"
-                        defaultSelectedKeys={['2']}
                         items={headerItem}
                         style={{ flex: 1, minWidth: 0 }}
-                    />
-                    <Menu
-                        theme="dark"
-                        mode="horizontal"
-                        items={headerLogo}
-                        style={{ minWidth: 40,  }}
-                    />
+                        defaultSelectedKeys={['1']}
+                        onClick={(value) =>
+                            console.log(value)
+                        }/>
                 </Header>
-                <Content style={{ padding: '0 48px' }}>
-                    <PageWrapper>
+                <PageWrapper>
+                    <div
+                        className={s.outletSettings}
+                    >
                         <Outlet/>
-                        <Footer />
-                    </PageWrapper>
-                </Content>
+                    </div>
+                    <Footer />
+                </PageWrapper>
             </Layout>
         </Layout>
     )

@@ -51,13 +51,13 @@ function App() {
                                 path={routeGenerator(ROOTS.mainPage, ROOTS.about)}
                                 element={<SupportPage />}
                             />
-                        </Route>
                         <Route
                             path={'*'}
                             element={
                                 <PageNotFound />
                             }
                         />
+                        </Route>
                     </>
                 ) : (
                     <>
