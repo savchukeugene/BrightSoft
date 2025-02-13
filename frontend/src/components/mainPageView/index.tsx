@@ -32,10 +32,7 @@ const MainPage = () => {
     const navigate = useNavigate()
 
     const items: MenuItem[] = [
-        getItem('Пользователь', 'user', <UserOutlined/>, [
-            getItem('Расписание', 'timetable'),
-            getItem('Оценки', 'grade'),
-        ]),
+        getItem('Пользователь', 'user', <UserOutlined/>),
         getItem('Задания', 'tasks', <BuildOutlined/>, [
             getItem('Лабиринты', 'taskLabirint'),
             getItem('Быстрый счёт', 'quickCount'),
@@ -45,10 +42,10 @@ const MainPage = () => {
         getItem('Служба поддержки', 'support', <BugOutlined/>)
     ];
     const headerItem: MenuItem[] = [
-        getItem('Оценки', 'grade', <></>, []),
-        getItem('Расписание', 'timetable', <></>, []),
-        getItem('Мой уровень', 'el3', <></>, []),
-        getItem('Редактирование информации', 'el4', <></>, []),
+        getItem('Оценки', 'grade', <></>),
+        getItem('Расписание', 'timetable', <></>),
+        getItem('Мой уровень', 'el3', <></>),
+        getItem('Редактирование информации', 'el4', <></>),
     ]
     const siderStyle: React.CSSProperties = {
         overflow: 'auto',
@@ -68,7 +65,7 @@ const MainPage = () => {
                 <Menu theme={"dark"} defaultSelectedKeys={['1']} mode="inline" items={items}
                       onClick={(value) =>
                           navigate({
-                              pathname: `${value.keyPath.reverse().join('/')}`
+                              pathname: `${value.key}`
                           })
                       }/>
             </Sider>
@@ -84,9 +81,11 @@ const MainPage = () => {
                         mode="horizontal"
                         items={headerItem}
                         style={{ flex: 1, minWidth: 0 }}
-                        defaultSelectedKeys={['1']}
+                        defaultSelectedKeys={['timetable']}
                         onClick={(value) =>
-                            console.log(value)
+                            navigate({
+                                pathname: `${value.key}`
+                            })
                         }/>
                 </Header>
                 <PageWrapper>
