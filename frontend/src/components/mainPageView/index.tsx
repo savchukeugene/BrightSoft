@@ -3,10 +3,10 @@ import React, {useState} from "react";
 import {BugOutlined, BuildOutlined, InfoCircleOutlined, UserOutlined,} from '@ant-design/icons';
 
 import {Layout, Menu, MenuProps} from "antd";
-import {Outlet, useLocation, useNavigate} from "react-router-dom";
-import Header from "../Layout/Header";
+import {Outlet, useNavigate} from "react-router-dom";
 import PageWrapper from "../commonComponents/PageWrapper";
 import Footer from "../Layout/Footer";
+import {Content, Header} from "antd/lib/layout/layout";
 
 const {Sider} = Layout
 type MenuItem = Required<MenuProps>['items'][number];
@@ -28,7 +28,6 @@ function getItem(
 const MainPage = () => {
     const [collapsed, setCollapsed] = useState(false);
     const navigate = useNavigate()
-    const {pathname} = useLocation()
 
     const items: MenuItem[] = [
         getItem('Пользователь', 'user', <UserOutlined/>, [
@@ -43,6 +42,19 @@ const MainPage = () => {
         getItem('О компании', 'about', <InfoCircleOutlined/>,),
         getItem('Служба поддержки', 'support', <BugOutlined/>)
     ];
+    const headerItem: MenuItem[] = [
+        getItem('Элемент 1', 'el1', <></>, []),
+        getItem('Элемент 2', 'el2', <></>, []),
+        getItem('Элемент 3', 'el3', <></>, []),
+        getItem('Элемент 4', 'el4', <></>, []),
+    ]
+    const headerLogo: MenuItem[] = [
+        getItem('', 'el1', <UserOutlined />, [
+            getItem('Лабиринты', 'taskLabirint'),
+            getItem('Быстрый счёт', 'quickCount'),
+            getItem('Абакусы', 'tasksAbakus'),
+        ]),
+    ]
 
     const siderStyle: React.CSSProperties = {
         overflow: 'auto',
@@ -66,18 +78,33 @@ const MainPage = () => {
                           })
                       }/>
             </Sider>
-
             <Layout
                 style={{
                     background: '#002140',
                     color: 'white'
                 }}
             >
-            <PageWrapper>
-                {pathname.includes('user/') && <Header/>}
-                <Outlet/>
-                <Footer />
-            </PageWrapper>
+                <Header style={{ display: 'flex', alignItems: 'center' }} >
+                    <Menu
+                        theme="dark"
+                        mode="horizontal"
+                        defaultSelectedKeys={['2']}
+                        items={headerItem}
+                        style={{ flex: 1, minWidth: 0 }}
+                    />
+                    <Menu
+                        theme="dark"
+                        mode="horizontal"
+                        items={headerLogo}
+                        style={{ minWidth: 40,  }}
+                    />
+                </Header>
+                <Content style={{ padding: '0 48px' }}>
+                    <PageWrapper>
+                        <Outlet/>
+                        <Footer />
+                    </PageWrapper>
+                </Content>
             </Layout>
         </Layout>
     )
