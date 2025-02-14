@@ -8,8 +8,6 @@ import PageWrapper from "../commonComponents/PageWrapper";
 import {Header} from "antd/lib/layout/layout";
 import Footer from "../Layout/Footer";
 
-import s from './styles.module.scss'
-
 const {Sider} = Layout
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -75,25 +73,22 @@ const MainPage = () => {
                     color: 'white'
                 }}
             >
-                <Header style={{ display: 'flex', alignItems: 'center' }} >
-                    <Menu
-                        theme="dark"
-                        mode="horizontal"
-                        items={headerItem}
-                        style={{ flex: 1, minWidth: 0 }}
-                        defaultSelectedKeys={['timetable']}
-                        onClick={(value) =>
-                            navigate({
-                                pathname: `${value.key}`
-                            })
-                        }/>
-                </Header>
+                    <Header style={{ display: 'flex', alignItems: 'center' }} >
+                        <Menu
+                            theme="dark"
+                            mode="horizontal"
+                            items={headerItem}
+                            style={{ flex: 1, minWidth: 0 }}
+                            defaultSelectedKeys={['timetable']}
+                            onClick={(value) =>
+                                navigate({
+                                    pathname: `${value.key}`
+                                })
+                            }/>
+                    </Header>
                 <PageWrapper>
-                    <div
-                        className={s.outletSettings}
-                    >
-                        <Outlet/>
-                    </div>
+                    <div></div>
+                    <Outlet/>
                     <Footer />
                 </PageWrapper>
             </Layout>

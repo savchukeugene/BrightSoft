@@ -58,6 +58,12 @@ function App() {
                             }
                         />
                         </Route>
+                        <Route
+                            path={'*'}
+                            element={
+                                <Navigate to={ROOTS.mainPage + ROOTS.user + ROOTS.grade} />
+                            }
+                        />
                     </>
                 ) : (
                     <>

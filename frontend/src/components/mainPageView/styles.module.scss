@@ -1,11 +1,10 @@
-.leftAside {
+.layoutContent {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 20vw;
-  height: 100vh;
-  position: fixed;
-  background: #001529;
+  justify-content: space-between;
+  background: #002140;
+  color: white;
+  min-height: 100vh;
 }
 
 .menu {
