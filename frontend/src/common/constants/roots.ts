@@ -7,6 +7,7 @@ export const ROOTS = {
     timetable: '/timetable',
     support: '/support',
     about: '/about',
+    pages: '/pages',
     login: '/login',
     createAccount: '/createAccount'
 }

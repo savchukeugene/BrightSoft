@@ -37,7 +37,8 @@ const MainPage = () => {
             getItem('Абакусы', 'tasksAbakus'),
         ]),
         getItem('О компании', 'about', <InfoCircleOutlined/>,),
-        getItem('Служба поддержки', 'support', <BugOutlined/>)
+        getItem('Служба поддержки', 'support', <BugOutlined/>),
+        getItem('Страницы', 'pages', <BugOutlined/>)
     ];
     const headerItem: MenuItem[] = [
         getItem('Оценки', 'grade', <></>),

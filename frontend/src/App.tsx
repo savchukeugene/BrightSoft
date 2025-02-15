@@ -9,6 +9,7 @@ import {IUserStore, useUserStore} from "./store/userStore.tsx";
 import PageNotFound from "./components/commonComponents/PageNotFound";
 import {ROOTS} from "./common/constants/roots.ts";
 import SupportPage from "./components/SupportPage";
+import LandingPages from "./components/LandingPages";
 import {routeGenerator} from "./common/utils/generatotrs.tsx";
 
 function App() {
@@ -50,6 +51,10 @@ function App() {
                             <Route
                                 path={routeGenerator(ROOTS.mainPage, ROOTS.about)}
                                 element={<SupportPage />}
+                            />
+                            <Route
+                                path={routeGenerator(ROOTS.mainPage, ROOTS.pages)}
+                                element={<LandingPages />}
                             />
                         <Route
                             path={'*'}
