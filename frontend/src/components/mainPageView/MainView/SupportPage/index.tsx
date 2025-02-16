@@ -5,6 +5,7 @@ import {Button, Form} from "antd";
 
 import s from './styles.module.scss'
 import FormItem from "antd/es/form/FormItem";
+import AxiosService from "../../../../axios/AxiosService.tsx";
 
 const SupportPage: FC = (): React.JSX.Element => {
     return (
@@ -42,6 +43,25 @@ const SupportPage: FC = (): React.JSX.Element => {
                     </Button>
                 </FormItem>
             </Form>
+            <div>
+                DEV ONLY
+                <br/>
+                <Button
+                    onClick={() => AxiosService.GET('url1')}
+                >
+                    GET
+                </Button>
+                <Button
+                    onClick={() => AxiosService.POST('url2')}
+                >
+                    POST
+                </Button>
+                <Button
+                    onClick={() => AxiosService.PUT('url3')}
+                >
+                    PUT
+                </Button>
+            </div>
         </div>
     )
 }
