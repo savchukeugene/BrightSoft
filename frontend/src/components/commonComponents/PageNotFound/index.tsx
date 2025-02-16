@@ -9,7 +9,11 @@ const PageNotFound: FC = (): React.JSX.Element => {
     const navigate: NavigateFunction = useNavigate()
 
     return (
-        <div className={s.pageNotFound}>
+        <>
+            <div>
+
+            </div>
+            <div className={s.pageNotFound}>
                 <section
                     className={s.pageNotFoundInside}
                 >
@@ -29,6 +33,7 @@ const PageNotFound: FC = (): React.JSX.Element => {
                     </div>
                 </section>
         </div>
+        </>
     )
 }
 
