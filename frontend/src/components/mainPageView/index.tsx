@@ -49,7 +49,6 @@ const MainPage: FC<IMainPage> = (): React.JSX.Element => {
                             }/>
                     </Header>
                 <PageWrapper>
-                    <div></div>
                     <Outlet/>
                     <Footer />
                 </PageWrapper>

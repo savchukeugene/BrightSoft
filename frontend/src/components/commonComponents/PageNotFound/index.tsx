@@ -3,7 +3,6 @@ import {Button} from "antd";
 import {NavigateFunction, useNavigate} from "react-router-dom";
 import {ROOTS} from "../../../common/constants/roots.ts";
 import s from './styles.module.scss'
-import PageWrapper from "../PageWrapper";
 import {messages} from "../../../common/constants/messages.ts";
 
 const PageNotFound: FC = (): React.JSX.Element => {
@@ -11,7 +10,6 @@ const PageNotFound: FC = (): React.JSX.Element => {
 
     return (
         <div className={s.pageNotFound}>
-            <PageWrapper width={1000}>
                 <section
                     className={s.pageNotFoundInside}
                 >
@@ -30,7 +28,6 @@ const PageNotFound: FC = (): React.JSX.Element => {
                         </Button>
                     </div>
                 </section>
-            </PageWrapper>
         </div>
     )
 }
