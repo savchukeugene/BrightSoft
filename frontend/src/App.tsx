@@ -10,6 +10,7 @@ import PageNotFound from "./components/commonComponents/PageNotFound";
 import {ROOTS} from "./common/constants/roots.ts";
 import SupportPage from "./components/mainPageView/MainView/SupportPage";
 import {routeGenerator} from "./common/utils/generatotrs.tsx";
+import LandingPages from "./components/LandingPages";
 
 function App() {
     const user: IUserStore = useUserStore();
@@ -51,12 +52,16 @@ function App() {
                                 path={routeGenerator(ROOTS.mainPage, ROOTS.about)}
                                 element={<SupportPage />}
                             />
-                        <Route
-                            path={'*'}
-                            element={
-                                <PageNotFound />
-                            }
-                        />
+                            <Route
+                                path={routeGenerator(ROOTS.mainPage, ROOTS.editingPages)}
+                                element={<LandingPages />}
+                            />
+                            <Route
+                                path={'*'}
+                                element={
+                                    <PageNotFound />
+                                }
+                            />
                         </Route>
                         <Route
                             path={'*'}
