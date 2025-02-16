@@ -4,7 +4,16 @@ const userPages: string[] = ['Расписание', 'Оценки']
 export const messages = {
     view: {
         main: {
-
+            supportPage: {
+                title: 'Нам жаль, что Вы столкнулись с неприятностью...',
+                subTitle: 'Пожалуйста, опишите проблему, с которой Вы столкнулись:',
+                textAreaPlaceholder: 'Опишите проблему...'
+            },
+            user: {
+                grade: {
+                    title: 'Оценки'
+                }
+            }
         },
         pageNotFound: {
             title: 'Упс...',
@@ -22,7 +31,8 @@ export const messages = {
     button: {
         yes: 'Да',
         no: 'Нет',
-        goMainPage: 'На главную'
+        goMainPage: 'На главную',
+        send: 'Отправить'
     },
     notification: {
         success: {

@@ -1,20 +1,9 @@
-.layoutContent {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: #002140;
-  color: white;
-  min-height: 100vh;
-}
-
-.menu {
-  background: #262626
-}
-
-.outletSettings {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 85vh;
+.sideBar {
+  overflow:auto;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
 }

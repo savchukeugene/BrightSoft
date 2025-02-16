@@ -7,9 +7,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 30vh;
+  height: 25vh;
   color: white;
   text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .description {
