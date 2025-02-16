@@ -3,4 +3,17 @@
   flex-direction: column;
   justify-content: space-between;
   min-height: 20vh;
+
+  .supportTitle {
+    margin: 3vh 0;
+  }
+
+  .supportTextarea {
+    margin-top: 10px;
+  }
+
+  .supportButton {
+    margin-top: 10px;
+    background: #7fff9f;
+  }
 }

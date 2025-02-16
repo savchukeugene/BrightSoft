@@ -10,7 +10,9 @@ const SupportPage: FC = (): React.JSX.Element => {
         <div
             className={s.supportPage}
         >
-            <h1>
+            <h1
+                className={s.supportTitle}
+            >
                 {messages.view.main.supportPage.title}
             </h1>
             <h4>
@@ -19,10 +21,13 @@ const SupportPage: FC = (): React.JSX.Element => {
             <div>
                 <TextArea
                     placeholder={messages.view.main.supportPage.textAreaPlaceholder}
+                    className={s.supportTextarea}
                 >
 
                 </TextArea>
-                <Button>
+                <Button
+                    className={s.supportButton}
+                >
                     Отправить
                 </Button>
             </div>
