@@ -4,7 +4,11 @@ const userPages: string[] = ['Расписание', 'Оценки']
 export const messages = {
     view: {
         main: {
-
+            supportPage: {
+                title: 'Нам жаль, что Вы столкнулись с неприятностью...',
+                subTitle: 'Пожалуйста, опишите проблему, с которой Вы столкнулись:',
+                textAreaPlaceholder: 'Опишите проблему...'
+            }
         },
         pageNotFound: {
             title: 'Упс...',
