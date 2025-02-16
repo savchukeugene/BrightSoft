@@ -1,17 +1,16 @@
 import {Table} from "antd";
 import {columns, dataSource, DataType} from "./config.tsx";
 import s from "./styles.module.scss";
+import {messages} from "../../../../../common/constants/messages.ts";
 
 const Grade = () => {
     return (
        <>
-           <div>
+           <section>
                <h1
-                   style={{
-                       marginBottom: '20px'
-                   }}
+                   className={s.title}
                >
-                   {'Оценки'}
+                   {messages.view.main.user.grade.title}
                </h1>
                 <Table<DataType>
                     pagination={false}
@@ -20,7 +19,7 @@ const Grade = () => {
                     className={s.table}
                     scroll={{ x: 'max-content' }}
                 />
-           </div>
+           </section>
        </>
     );
 }

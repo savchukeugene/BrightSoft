@@ -38,7 +38,7 @@ const SupportPage: FC = (): React.JSX.Element => {
                         htmlType={'submit'}
                         className={s.supportButton}
                     >
-                        Отправить
+                        {messages.button.send}
                     </Button>
                 </FormItem>
             </Form>

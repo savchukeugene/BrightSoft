@@ -8,6 +8,11 @@ export const messages = {
                 title: 'Нам жаль, что Вы столкнулись с неприятностью...',
                 subTitle: 'Пожалуйста, опишите проблему, с которой Вы столкнулись:',
                 textAreaPlaceholder: 'Опишите проблему...'
+            },
+            user: {
+                grade: {
+                    title: 'Оценки'
+                }
             }
         },
         pageNotFound: {

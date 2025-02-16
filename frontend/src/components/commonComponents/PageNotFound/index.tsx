@@ -23,7 +23,7 @@ const PageNotFound: FC = (): React.JSX.Element => {
                     >
                         <h1 style={{fontSize: '20px'}}>{messages.view.pageNotFound.description}</h1>
                         <Button
-                            onClick={() => navigate(ROOTS.mainPage + ROOTS.user + ROOTS.timetable)}
+                            onClick={() => navigate(ROOTS.mainPage + ROOTS.user + ROOTS.grade)}
                             style={{
                                 width: '15%',
                             }}

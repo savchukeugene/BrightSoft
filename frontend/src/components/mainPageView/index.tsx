@@ -27,7 +27,7 @@ const MainPage: FC<IMainPage> = (): React.JSX.Element => {
                           navigate({
                               pathname: `${value.key}`
                           })
-                      }/>
+                }/>
             </Sider>
             <Layout
                 style={{
@@ -35,19 +35,19 @@ const MainPage: FC<IMainPage> = (): React.JSX.Element => {
                     color: 'white'
                 }}
             >
-                    <Header style={{ display: 'flex', alignItems: 'center' }} >
-                        <Menu
-                            theme="dark"
-                            mode="horizontal"
-                            items={USER_HEADER_ITEMS}
-                            style={{ flex: 1, minWidth: 0 }}
-                            defaultSelectedKeys={['timetable']}
-                            onClick={(value) =>
-                                navigate({
-                                    pathname: `${value.key}`
-                                })
-                            }/>
-                    </Header>
+                <Header style={{ display: 'flex', alignItems: 'center' }} >
+                    <Menu
+                        theme="dark"
+                        mode="horizontal"
+                        items={USER_HEADER_ITEMS}
+                        style={{ flex: 1, minWidth: 0 }}
+                        defaultSelectedKeys={['timetable']}
+                        onClick={(value) =>
+                            navigate({
+                                pathname: `${value.key}`
+                            })
+                    }/>
+                </Header>
                 <PageWrapper>
                     <Outlet/>
                     <Footer />
