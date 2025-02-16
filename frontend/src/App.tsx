@@ -12,7 +12,7 @@ import SupportPage from "./components/SupportPage";
 import {routeGenerator} from "./common/utils/generatotrs.tsx";
 
 function App() {
-    const user: IUserStore = useUserStore()
+    const user: IUserStore = useUserStore();
 
     return (
         <BrowserRouter>

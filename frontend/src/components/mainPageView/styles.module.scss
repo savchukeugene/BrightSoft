@@ -7,6 +7,16 @@
   min-height: 100vh;
 }
 
+.sideBar {
+  overflow:auto;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+
 .menu {
   background: #262626
 }
