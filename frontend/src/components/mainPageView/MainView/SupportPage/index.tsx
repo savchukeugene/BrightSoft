@@ -1,9 +1,10 @@
 import React, {FC} from "react";
 import {messages} from "../../../../common/constants/messages.ts";
 import TextArea from "antd/es/input/TextArea";
-import {Button} from "antd";
+import {Button, Form} from "antd";
 
 import s from './styles.module.scss'
+import FormItem from "antd/es/form/FormItem";
 
 const SupportPage: FC = (): React.JSX.Element => {
     return (
@@ -18,19 +19,29 @@ const SupportPage: FC = (): React.JSX.Element => {
             <h4>
                 {messages.view.main.supportPage.subTitle}
             </h4>
-            <div>
-                <TextArea
-                    placeholder={messages.view.main.supportPage.textAreaPlaceholder}
-                    className={s.supportTextarea}
+            <Form
+                onFinish={(value):void => {
+                    console.log(value)
+                }}
+            >
+                <FormItem
+                    name={'userMessage'}
+                    rules={[{required: true}]}
                 >
-
-                </TextArea>
-                <Button
-                    className={s.supportButton}
-                >
-                    Отправить
-                </Button>
-            </div>
+                    <TextArea
+                        placeholder={messages.view.main.supportPage.textAreaPlaceholder}
+                        className={s.supportTextarea}
+                    />
+                </FormItem>
+                <FormItem>
+                    <Button
+                        htmlType={'submit'}
+                        className={s.supportButton}
+                    >
+                        Отправить
+                    </Button>
+                </FormItem>
+            </Form>
         </div>
     )
 }

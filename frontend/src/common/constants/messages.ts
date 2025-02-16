@@ -26,7 +26,8 @@ export const messages = {
     button: {
         yes: 'Да',
         no: 'Нет',
-        goMainPage: 'На главную'
+        goMainPage: 'На главную',
+        send: 'Отправить'
     },
     notification: {
         success: {
