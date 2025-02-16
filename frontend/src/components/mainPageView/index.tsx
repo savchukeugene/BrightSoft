@@ -5,7 +5,7 @@ import {Outlet, useNavigate} from "react-router-dom";
 import PageWrapper from "../commonComponents/PageWrapper";
 import {Header} from "antd/lib/layout/layout";
 import Footer from "../Layout/Footer";
-import {LEFT_SIDE_MENU, USER_HEADER_ITEMS} from "./MainView/headerConfug/config.tsx";
+import {LEFT_SIDE_MENU, USER_HEADER_ITEMS} from "./headerConfug/config.tsx";
 import {MenuItem} from "../../common/utils/helpers.tsx";
 import s from './styles.module.scss'
 

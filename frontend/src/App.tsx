@@ -8,7 +8,7 @@ import QuickCount from "./components/mainPageView/MainView/tasks/QuickCount";
 import {IUserStore, useUserStore} from "./store/userStore.tsx";
 import PageNotFound from "./components/commonComponents/PageNotFound";
 import {ROOTS} from "./common/constants/roots.ts";
-import SupportPage from "./components/SupportPage";
+import SupportPage from "./components/mainPageView/MainView/SupportPage";
 import {routeGenerator} from "./common/utils/generatotrs.tsx";
 
 function App() {

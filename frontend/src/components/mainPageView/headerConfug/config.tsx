@@ -1,5 +1,5 @@
 import {BugOutlined, BuildOutlined, InfoCircleOutlined, UserOutlined} from "@ant-design/icons";
-import {getItem, MenuItem} from "../../../../common/utils/helpers.tsx";
+import {getItem, MenuItem} from "../../../common/utils/helpers.tsx";
 
 export const USER_HEADER_ITEMS: MenuItem[] = [
     getItem('Оценки', 'grade', <></>),
