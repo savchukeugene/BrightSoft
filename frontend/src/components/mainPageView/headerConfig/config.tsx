@@ -1,4 +1,4 @@
-import {BugOutlined, BuildOutlined, InfoCircleOutlined, UserOutlined} from "@ant-design/icons";
+import {BugOutlined, BuildOutlined, EditOutlined, InfoCircleOutlined, UserOutlined} from "@ant-design/icons";
 import {getItem, MenuItem} from "../../../common/utils/helpers.tsx";
 
 export const USER_HEADER_ITEMS: MenuItem[] = [
@@ -16,5 +16,6 @@ export const LEFT_SIDE_MENU: MenuItem[] = [
         getItem('Абакусы', 'tasksAbakus'),
     ]),
     getItem('О компании', 'about', <InfoCircleOutlined/>,),
-    getItem('Служба поддержки', 'support', <BugOutlined/>)
+    getItem('Служба поддержки', 'support', <BugOutlined/>),
+    getItem('Страницы', 'editingPages', <EditOutlined />)
 ];
