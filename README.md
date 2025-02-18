@@ -20,12 +20,12 @@ $ npm run dev
 ```
 
 If you want to run backend application, you must:
-2) Make sure you are in server directory
-3) Run:
+1) Make sure you are in server directory
+2) Run:
 ```bash
 $ pnpm install
 ```
-4) Run
+3) Run
 ```bash
 $ npm run start
 ```
