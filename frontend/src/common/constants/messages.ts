@@ -25,6 +25,9 @@ export const messages = {
             nextUser: userPages,
             nextTasks: tasksPages,
         },
+        editingPage: {
+            title: 'Доступные страницы: ',
+        },
     },
     modal: {
 
