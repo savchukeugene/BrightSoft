@@ -19,7 +19,7 @@ $ pnpm install
 $ npm run dev
 ```
 
-If you want to run frontend application, you must:
+If you want to run backend application, you must:
 2) Make sure you are in server directory
 3) Run:
 ```bash
