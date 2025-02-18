@@ -46,7 +46,7 @@ const SupportPage: FC = (): React.JSX.Element => {
                 DEV ONLY
                 <br/>
                 <Button
-                    onClick={() => AxiosService.GET('url1')}
+                    onClick={() => AxiosService.GET('http://localhost:44001')}
                 >
                     GET
                 </Button>

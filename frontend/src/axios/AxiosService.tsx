@@ -31,9 +31,10 @@ export default class AxiosService {
 
     public static fetchData<T>(url: AxiosRequestConfig['url'], method: string, config: RequestConfig<T>) {
         return axios.request({url, method, ...config})
-            .then(() => {
+            .then((data) => {
                 notification.success({
-                    message: 'Запрос успешен'
+                    message: 'Запрос успешен',
+                    description: data?.data
                 })
             })
             .catch((e: AxiosError) => {
