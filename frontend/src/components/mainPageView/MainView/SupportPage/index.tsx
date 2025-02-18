@@ -2,7 +2,6 @@ import React, {FC} from "react";
 import {messages} from "../../../../common/constants/messages.ts";
 import TextArea from "antd/es/input/TextArea";
 import {Button, Form} from "antd";
-
 import s from './styles.module.scss'
 import FormItem from "antd/es/form/FormItem";
 import AxiosService from "../../../../axios/AxiosService.tsx";
@@ -27,7 +26,7 @@ const SupportPage: FC = (): React.JSX.Element => {
             >
                 <FormItem
                     name={'userMessage'}
-                    rules={[{required: true}]}
+                    rules={[{required: true, message: messages.view.main.supportPage.validateMessage}]}
                 >
                     <TextArea
                         placeholder={messages.view.main.supportPage.textAreaPlaceholder}

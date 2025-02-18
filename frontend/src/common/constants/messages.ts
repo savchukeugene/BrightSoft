@@ -7,7 +7,8 @@ export const messages = {
             supportPage: {
                 title: 'Нам жаль, что Вы столкнулись с неприятностью...',
                 subTitle: 'Пожалуйста, опишите проблему, с которой Вы столкнулись:',
-                textAreaPlaceholder: 'Опишите проблему...'
+                textAreaPlaceholder: 'Опишите проблему...',
+                validateMessage: 'Пожалуйста, заполните это поле!'
             },
             user: {
                 grade: {
