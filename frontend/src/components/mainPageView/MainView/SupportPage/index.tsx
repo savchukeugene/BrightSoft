@@ -51,7 +51,7 @@ const SupportPage: FC = (): React.JSX.Element => {
                     GET
                 </Button>
                 <Button
-                    onClick={() => AxiosService.POST('url2')}
+                    onClick={() => AxiosService.POST('http://localhost:44001')}
                 >
                     POST
                 </Button>

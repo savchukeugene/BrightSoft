@@ -22,7 +22,7 @@ export default class AxiosService {
     }
 
     public static POST<T>(url: AxiosRequestConfig['url']) {
-        return this.fetchData<T>(url, 'POST', {})
+        return this.fetchData<T>(url, 'POST', {data: 'Hello, World!'})
     }
 
     public static PUT<T>(url: AxiosRequestConfig['url']) {
