@@ -17,19 +17,19 @@ interface RequestConfig<T> extends Omit<AxiosRequestConfig, 'method' | 'url'> {
 }
 
 export default class AxiosService {
-    public static GET<T>(url: AxiosRequestConfig['url'], config: object = {}) {
-        return this.fetchData<T>(url, 'GET', config)
+    public static GET<T>(url: AxiosRequestConfig['url']) {
+        return this.fetchData<T>(url, 'GET')
     }
 
-    public static POST<T>(url: AxiosRequestConfig['url'], config: object = {}) {
-        return this.fetchData<T>(url, 'POST', {data: config})
+    public static POST<T>(url: AxiosRequestConfig['url'], config: AxiosRequestConfig['data'] = {}) {
+        return this.fetchData<T>(url, 'POST', config)
     }
 
-    public static PUT<T>(url: AxiosRequestConfig['url'], config: object = {}) {
+    public static PUT<T>(url: AxiosRequestConfig['url'], config: AxiosRequestConfig['data'] = {}) {
         return this.fetchData<T>(url, 'PUT', config)
     }
 
-    public static fetchData<T>(url: AxiosRequestConfig['url'], method: string, config: RequestConfig<T>) {
+    public static fetchData<T>(url: AxiosRequestConfig['url'], method: string, config: RequestConfig<T> = {}) {
         console.log(config)
         return axios.request({url, method, ...config})
             .then((data) => {
