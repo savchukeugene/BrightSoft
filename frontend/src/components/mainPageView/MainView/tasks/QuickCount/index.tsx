@@ -8,10 +8,10 @@ import s from './styles.module.scss';
 const QuickCount: FC = (): JSX.Element => {
   return (
     <div>
-      <h1>{messages.view.main.tasks.quickCount.title}</h1>
+      <h1 className={'pageTitle'}>{messages.view.main.tasks.quickCount.title}</h1>
       <section>
-        <h1> {messages.view.main.tasks.quickCount.formTitle}</h1>
         <Form className={s.quickCountForm}>
+          <h1> {messages.view.main.tasks.quickCount.formTitle}</h1>
           <FormItem
             name={'duration'}
             label={messages.view.main.tasks.quickCount.duration}
@@ -23,7 +23,7 @@ const QuickCount: FC = (): JSX.Element => {
               },
             ]}
           >
-            <Input />
+            <Input className={s.input} />
           </FormItem>
           <FormItem
             name={'period'}
