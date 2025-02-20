@@ -18,8 +18,7 @@ const QuickCount: FC = (): JSX.Element => {
             rules={[
               {
                 required: true,
-                message:
-                  messages.view.main.tasks.quickCount.validateMessage.validateDuration,
+                message: messages.view.main.tasks.quickCount.validateMessage(`\${label}`),
               },
             ]}
           >
@@ -31,8 +30,7 @@ const QuickCount: FC = (): JSX.Element => {
             rules={[
               {
                 required: true,
-                message:
-                  messages.view.main.tasks.quickCount.validateMessage.validatePeriod,
+                message: messages.view.main.tasks.quickCount.validateMessage(`\${label}`),
               },
             ]}
           >
@@ -44,8 +42,7 @@ const QuickCount: FC = (): JSX.Element => {
             rules={[
               {
                 required: true,
-                message:
-                  messages.view.main.tasks.quickCount.validateMessage.validateRange,
+                message: messages.view.main.tasks.quickCount.validateMessage(`\${label}`),
               },
             ]}
           >

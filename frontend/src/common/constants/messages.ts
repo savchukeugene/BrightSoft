@@ -22,11 +22,8 @@ export const messages = {
           duration: 'Общее время',
           period: 'Время изменения',
           range: 'Диапазон',
-          validateMessage: {
-            validateDuration: 'Пожалуйста, введите общее время!',
-            validatePeriod: 'Пожалуйста, укажите частоту изменения чисел!',
-            validateRange: 'Пожалуйста, укажите период чисел!',
-          },
+          validateMessage: (label: string): string =>
+            `Пожалуйста, укажите поле ${label}!`,
         },
       },
     },
