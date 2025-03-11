@@ -47,9 +47,15 @@ const QuickCount: FC = (): JSX.Element => {
             ]}
           >
             <Input />
+            <Button />
           </FormItem>
           <FormItem>
-            <Button htmlType={'submit'}>{messages.button.continue}</Button>
+            <Button
+              className={s.continueButton}
+              htmlType={'submit'}
+            >
+              {messages.button.continue}
+            </Button>
           </FormItem>
         </Form>
       </section>

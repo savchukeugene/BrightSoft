@@ -24,9 +24,10 @@
   & input {
     height: 40px;
     border-radius: 20px;
+    border: 2px solid dimgray;
   }
 }
 
-.input {
-  max-width: 200px;
+.continueButton {
+  margin: 0 auto;
 }
