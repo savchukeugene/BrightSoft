@@ -1,10 +1,10 @@
-import {Body, Controller, Get, Param, Post} from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 
 interface IDto {
-  id: string,
-  name: string,
-  age: number,
+  id: string;
+  name: string;
+  age: number;
 }
 
 @Controller()
@@ -19,6 +19,7 @@ export class AppController {
   @Post()
   postData(@Body() dto: IDto): string {
     console.log(dto);
-    return 'Success'
+
+    return 'Success';
   }
 }
