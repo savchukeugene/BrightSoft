@@ -1,5 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import { Input } from 'antd';
+import { IField } from '../../components/commonComponents/Filter';
 
 export const routeGenerator = (...routes: string[]) => {
   return routes.join('');
@@ -26,3 +28,12 @@ export const routesTagRender = (routeConfig: IRouteConfig): React.JSX.Element =>
     ></Route>
   );
 };
+
+export const fieldsGenerator = (fields: IField[]) =>
+  fields.map((element: IField) => (
+    <Input
+      style={{ maxWidth: '300px' }}
+      placeholder={element.placeholder}
+      name={element.name}
+    />
+  ));
