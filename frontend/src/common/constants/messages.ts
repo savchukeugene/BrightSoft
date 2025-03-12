@@ -2,6 +2,9 @@ const tasksPages: string[] = ['Лабиринты', 'Быстрый счёт', '
 const userPages: string[] = ['Расписание', 'Оценки'];
 
 export const messages = {
+  requests: {
+    success: 'Запрос успешен!',
+  },
   view: {
     main: {
       supportPage: {
