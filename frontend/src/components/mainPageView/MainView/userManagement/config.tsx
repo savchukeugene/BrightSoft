@@ -1,4 +1,5 @@
 import { TableColumnsType } from 'antd';
+import { USER_ROLES_OPTIONS } from '../../../../common/constants/options.ts';
 
 export interface DataType {
   key: React.Key;
@@ -73,4 +74,10 @@ export const filters = [
   { name: 'first_name', placeholder: 'Имя', type: 'input' },
   { name: 'second_name', placeholder: 'Фамилия', type: 'input' },
   { name: 'middle_name', placeholder: 'Отчество', type: 'input' },
+  {
+    name: 'middle_name',
+    placeholder: 'Роль пользователя',
+    type: 'select',
+    options: USER_ROLES_OPTIONS,
+  },
 ];

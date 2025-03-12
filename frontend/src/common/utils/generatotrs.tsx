@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { Input } from 'antd';
+import { Input, Select } from 'antd';
 import { IField } from '../../components/commonComponents/Filter';
 
 export const routeGenerator = (...routes: string[]) => {
@@ -30,10 +30,31 @@ export const routesTagRender = (routeConfig: IRouteConfig): React.JSX.Element =>
 };
 
 export const fieldsGenerator = (fields: IField[]) =>
-  fields.map((element: IField) => (
-    <Input
-      style={{ maxWidth: '300px' }}
-      placeholder={element.placeholder}
-      name={element.name}
-    />
-  ));
+  fields.map((element: IField) => {
+    switch (element.type) {
+      case 'input':
+        return (
+          <Input
+            style={{ maxWidth: '300px' }}
+            placeholder={element.placeholder}
+            name={element.name}
+          />
+        );
+      case 'select':
+        return (
+          <Select
+            style={{ width: '300px' }}
+            options={element.options}
+            placeholder={element.placeholder}
+            allowClear={true}
+          />
+        );
+    }
+    return (
+      <Input
+        style={{ maxWidth: '300px' }}
+        placeholder={element.placeholder}
+        name={element.name}
+      />
+    );
+  });
