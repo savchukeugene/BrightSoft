@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Layout, Menu } from 'antd';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import PageWrapper from '../commonComponents/PageWrapper';
 import { Header } from 'antd/lib/layout/layout';
 import Footer from '../Layout/Footer';
@@ -11,6 +11,7 @@ const { Sider } = Layout;
 
 const MainPage = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const { pathname } = useLocation();
   const navigate = useNavigate();
 
   return (
@@ -43,7 +44,7 @@ const MainPage = () => {
           <Menu
             theme="dark"
             mode="horizontal"
-            items={HEADER_OPTIONS['user']}
+            items={HEADER_OPTIONS[pathname.split('/')[2]]}
             style={{ flex: 1, minWidth: 0 }}
             defaultSelectedKeys={['timetable']}
             onClick={(value) =>
