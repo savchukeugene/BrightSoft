@@ -15,16 +15,16 @@ export interface IUserStore extends IUser {
 }
 
 export const useUserStore = create<IUserStore>((set) => {
-  const savedUser = localStorage.getItem('brightSoftAuthToken');
+  const savedUser = localStorage.getItem('brightSoftAuthToken') as IUserRoles;
 
   return {
     user: savedUser ?? null,
     role: defineUserRole(savedUser),
-    setUser: (id) => {
+    setUser: (id: string): void => {
       localStorage.setItem('brightSoftAuthToken', id);
       set(() => ({ user: id }));
     },
-    logoutUser: () => {
+    logoutUser: (): void => {
       localStorage.removeItem('brightSoftAuthToken');
       set(() => ({ user: null }));
     },

@@ -11,6 +11,7 @@ import { ROOTS } from './common/constants/roots.ts';
 import SupportPage from './components/mainPageView/MainView/SupportPage';
 import { routeGenerator } from './common/utils/generatotrs.tsx';
 import LandingPages from './components/LandingPages';
+import UserManagement from './components/mainPageView/MainView/userManagement';
 
 function App() {
   const user: IUserStore = useUserStore();
@@ -55,6 +56,10 @@ function App() {
               <Route
                 path={'*'}
                 element={<PageNotFound />}
+              />
+              <Route
+                path={routeGenerator(ROOTS.mainPage, ROOTS.userManagement)}
+                element={<UserManagement></UserManagement>}
               />
             </Route>
             <Route

@@ -17,6 +17,5 @@ export function getItem(
   };
 }
 
-export const defineUserRole = (savedUser: string | null): IUserRoles => {
-  return 'administrator';
-};
+// @ts-ignore
+export const defineUserRole = (savedUser: IUserRoles): IUserRoles => savedUser;
