@@ -4,8 +4,9 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import PageWrapper from '../commonComponents/PageWrapper';
 import { Header } from 'antd/lib/layout/layout';
 import Footer from '../Layout/Footer';
-import { HEADER_OPTIONS, LEFT_SIDE_MENU } from './headerConfig/config.tsx';
+import { HEADER_OPTIONS, LEFT_SIDE_OPTIONS_LIST } from './headerConfig/config.tsx';
 import s from './styles.module.scss';
+import { useUserStore } from '../../store/userStore.tsx';
 
 const { Sider } = Layout;
 
@@ -13,6 +14,7 @@ const MainPage = () => {
   const [collapsed, setCollapsed] = useState(false);
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const { role } = useUserStore();
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -24,9 +26,9 @@ const MainPage = () => {
       >
         <Menu
           theme={'dark'}
-          defaultSelectedKeys={['1']}
+          defaultSelectedKeys={['1']} //TODO fix
           mode="inline"
-          items={LEFT_SIDE_MENU}
+          items={LEFT_SIDE_OPTIONS_LIST[role]}
           onClick={(value) =>
             navigate({
               pathname: `${value.key}`,

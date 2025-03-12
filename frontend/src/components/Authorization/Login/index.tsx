@@ -12,13 +12,13 @@ const Login: FC = () => {
   const user: IUserStore = useUserStore();
 
   const handleLogin = async () => {
-    await user.setUser('administrator', 'administrator');
+    await user.setUser('user', 'user');
     notification.success({
       message: messages.notification.success.messages.success,
       description: messages.notification.success.description.successLogin,
     });
     navigate({
-      pathname: defineDefaultNavigation('administrator') as string,
+      pathname: defineDefaultNavigation('user') as string,
     });
   };
 
