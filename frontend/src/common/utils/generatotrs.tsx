@@ -1,7 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { Input, Select } from 'antd';
-import { IField } from '../../components/commonComponents/Filter';
+
+import { IField } from '../../types/filterTypes.ts';
 
 export const routeGenerator = (...routes: string[]) => {
   return routes.join('');
