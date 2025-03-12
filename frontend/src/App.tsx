@@ -12,9 +12,11 @@ import SupportPage from './components/mainPageView/MainView/SupportPage';
 import { routeGenerator } from './common/utils/generatotrs.tsx';
 import LandingPages from './components/LandingPages';
 import UserManagement from './components/mainPageView/MainView/userManagement';
+import { defineDefaultNavigation } from './common/utils/helpers.tsx';
 
 function App() {
   const user: IUserStore = useUserStore();
+  const { role } = useUserStore();
 
   return (
     <BrowserRouter>
@@ -59,12 +61,12 @@ function App() {
               />
               <Route
                 path={routeGenerator(ROOTS.mainPage, ROOTS.userManagement)}
-                element={<UserManagement></UserManagement>}
+                element={<UserManagement role={role} />}
               />
             </Route>
             <Route
               path={'*'}
-              element={<Navigate to={ROOTS.mainPage + ROOTS.user + ROOTS.grade} />}
+              element={<Navigate to={defineDefaultNavigation(role)} />}
             />
           </>
         ) : (

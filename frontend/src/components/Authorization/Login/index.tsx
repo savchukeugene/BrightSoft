@@ -5,21 +5,21 @@ import logo from '../../../images/book-bookmark-minimalistic-svgrepo-com.svg';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { IUserStore, useUserStore } from '../../../store/userStore.tsx';
 import { messages } from '../../../common/constants/messages.ts';
-import { ROOTS } from '../../../common/constants/roots.ts';
-import { routeGenerator } from '../../../common/utils/generatotrs.tsx';
+import { defineDefaultNavigation } from '../../../common/utils/helpers.tsx';
 
 const Login: FC = () => {
   const navigate: NavigateFunction = useNavigate();
   const user: IUserStore = useUserStore();
 
-  const handleLogin = () => {
-    localStorage.setItem('brightSoftAuthToken', 'administrator');
-    user.setUser('administrator');
+  const handleLogin = async () => {
+    await user.setUser('administrator', 'administrator');
     notification.success({
       message: messages.notification.success.messages.success,
       description: messages.notification.success.description.successLogin,
     });
-    navigate(routeGenerator(ROOTS.mainPage, ROOTS.user, ROOTS.timetable));
+    navigate({
+      pathname: defineDefaultNavigation('administrator') as string,
+    });
   };
 
   return (
