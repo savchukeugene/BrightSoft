@@ -5,6 +5,17 @@
   padding: 20px 0;
   transition: .3s;
   margin: 10px 0;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    div {
+      display: flex;
+      gap: 10px;
+    }
+  }
 }
 
 .filterFields {

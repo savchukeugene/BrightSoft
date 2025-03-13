@@ -3,22 +3,22 @@ import '../../../styles/login.scss';
 import { Button, Image, notification } from 'antd';
 import logo from '../../../images/book-bookmark-minimalistic-svgrepo-com.svg';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { IUserStore, useUserStore } from '../../../store/userStore.tsx';
+import { useUserStore } from '../../../store/userStore.tsx';
 import { messages } from '../../../common/constants/messages.ts';
 import { defineDefaultNavigation } from '../../../common/utils/helpers.tsx';
 
 const Login: FC = () => {
   const navigate: NavigateFunction = useNavigate();
-  const user: IUserStore = useUserStore();
+  const { setUser } = useUserStore();
 
   const handleLogin = async () => {
-    await user.setUser('user', 'user');
+    await setUser('administrator', 'administrator');
     notification.success({
       message: messages.notification.success.messages.success,
       description: messages.notification.success.description.successLogin,
     });
     navigate({
-      pathname: defineDefaultNavigation('user') as string,
+      pathname: defineDefaultNavigation('administrator') as string,
     });
   };
 

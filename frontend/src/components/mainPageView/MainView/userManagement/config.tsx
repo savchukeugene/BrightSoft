@@ -36,15 +36,6 @@ export const columns: TableColumnsType<DataType> = [
     dataIndex: 'name',
     key: 'name',
     fixed: 'left',
-    filters: [
-      {
-        text: 'Category 2',
-        value: 'Category 2',
-      },
-    ],
-    filterMode: 'tree',
-    filterSearch: true,
-    onFilter: (value, record) => record.name.startsWith(value as string),
   },
   {
     title: 'Фамилия',
@@ -75,7 +66,7 @@ export const filters = [
   { name: 'second_name', placeholder: 'Фамилия', type: 'input' },
   { name: 'middle_name', placeholder: 'Отчество', type: 'input' },
   {
-    name: 'middle_name',
+    name: 'role',
     placeholder: 'Роль пользователя',
     type: 'select',
     options: USER_ROLES_OPTIONS,

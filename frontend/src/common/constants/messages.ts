@@ -48,6 +48,8 @@ export const messages = {
     goMainPage: 'На главную',
     send: 'Отправить',
     continue: 'Продолжить',
+    apply: 'Применить',
+    reset: 'Сбросить',
   },
   notification: {
     success: {

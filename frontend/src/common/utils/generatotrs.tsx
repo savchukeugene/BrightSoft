@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { Input, Select } from 'antd';
+import { Form, Input, Select } from 'antd';
 
 import { IField } from '../../types/filterTypes.ts';
 
@@ -35,20 +35,23 @@ export const fieldsGenerator = (fields: IField[]) =>
     switch (element.type) {
       case 'input':
         return (
-          <Input
-            style={{ maxWidth: '300px' }}
-            placeholder={element.placeholder}
-            name={element.name}
-          />
+          <Form.Item name={element.name}>
+            <Input
+              style={{ maxWidth: '200px' }}
+              placeholder={element.placeholder}
+            />
+          </Form.Item>
         );
       case 'select':
         return (
-          <Select
-            style={{ width: '300px' }}
-            options={element.options}
-            placeholder={element.placeholder}
-            allowClear={true}
-          />
+          <Form.Item name={element.name}>
+            <Select
+              style={{ width: '200px' }}
+              options={element.options}
+              placeholder={element.placeholder}
+              allowClear={true}
+            />
+          </Form.Item>
         );
     }
     return (
