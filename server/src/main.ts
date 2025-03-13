@@ -1,13 +1,10 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as dotenv from 'dotenv';
-
 import IORedis from 'ioredis';
-
 import * as cookieParser from 'cookie-parser';
 import { ConfigService } from '@nestjs/config';
 import { ValidationPipe } from '@nestjs/common';
-
 import * as session from 'express-session';
 import { ms, StringValue } from './libs/common/utils/ms.util';
 import { parseBoolean } from './libs/common/utils/parse-boolean.util';
@@ -19,7 +16,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const config = app.get(ConfigService);
 
-  const redis = new IORedis(config.getOrThrow('REDIS_URL'));
+  const redis: IORedis = new IORedis(config.getOrThrow('REDIS_URL'));
   app.use(
     session({
       secret: config.getOrThrow<string>('SESSION_SECRET'),
