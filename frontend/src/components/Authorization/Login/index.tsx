@@ -6,6 +6,8 @@ import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { useUserStore } from '../../../store/userStore.tsx';
 import { messages } from '../../../common/constants/messages.ts';
 import { defineDefaultNavigation } from '../../../common/utils/helpers.tsx';
+import { authorizationFieldsGenerator } from '../../../common/utils/generatotrs.tsx';
+import { loginFieldsConfig } from './config.ts';
 
 const Login: FC = () => {
   const navigate: NavigateFunction = useNavigate();
@@ -31,17 +33,7 @@ const Login: FC = () => {
           preview={false}
         />
         <div className={'loginFormInputs'}>
-          <div className={'formItem'}>
-            Введите логин
-            <input className={'loginInput'} />
-          </div>
-          <div className={'formItem'}>
-            Введите пароль
-            <input
-              type={'password'}
-              className={'loginInput'}
-            />
-          </div>
+          {authorizationFieldsGenerator(loginFieldsConfig)}
           <Button
             htmlType={'submit'}
             onClick={handleLogin}

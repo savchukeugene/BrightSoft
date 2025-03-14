@@ -9,3 +9,8 @@ export interface IRegisterDTO {
   password: FormDataEntryValue | null;
   passwordRepeat: FormDataEntryValue | null;
 }
+
+export interface IAuthorizationFields {
+  label: string;
+  name: string;
+}

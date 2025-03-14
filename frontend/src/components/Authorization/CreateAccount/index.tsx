@@ -3,6 +3,8 @@ import { Button } from 'antd';
 import { messages } from '../../../common/constants/messages.ts';
 import { register } from './actions.ts';
 import { IRegisterDTO } from '../../../types/commonTypes.ts';
+import { authorizationFieldsGenerator } from '../../../common/utils/generatotrs.tsx';
+import { createAccountFieldsConfig } from './config.ts';
 
 const CreateAccount: FC = () => {
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -26,37 +28,7 @@ const CreateAccount: FC = () => {
         className={'loginForm'}
       >
         <div className={'loginFormInputs'}>
-          <div className={'formItem'}>
-            Придумайте имя пользователя
-            <input
-              name={'name'}
-              className={'loginInput'}
-            />
-          </div>
-          <div className={'formItem'}>
-            Введите e-mail
-            <input
-              name={'email'}
-              className={'loginInput'}
-            />
-          </div>
-          <div className={'formItem'}>
-            Придумайте пароль
-            <input
-              type={'password'}
-              name={'password'}
-              className={'loginInput'}
-            />
-          </div>
-          <div className={'formItem'}>
-            Подтвердите пароль
-            <input
-              type={'password'}
-              name={'passwordRepeat'}
-              className={'loginInput'}
-            />
-          </div>
-
+          {authorizationFieldsGenerator(createAccountFieldsConfig)}
           <Button htmlType={'submit'}>{messages.button.create}</Button>
         </div>
       </form>
