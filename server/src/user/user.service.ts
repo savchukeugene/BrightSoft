@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { AuthMethods } from '../../prisma/__generated__';
+import { $Enums, AuthMethods } from '../../prisma/__generated__';
+import UserRole = $Enums.UserRole;
 
 @Injectable()
 export class UserService {
@@ -44,9 +45,10 @@ export class UserService {
     picture: string,
     method: AuthMethods,
     isVerified: boolean,
+    role: UserRole,
   ) {
     const user = this.prismaService.user.create({
-      data: { email, password, userName, picture, method, isVerified },
+      data: { email, password, userName, picture, method, isVerified, role },
       include: {
         accounts: true,
       },

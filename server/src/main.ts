@@ -9,6 +9,7 @@ import * as session from 'express-session';
 import { ms, StringValue } from './libs/common/utils/ms.util';
 import { parseBoolean } from './libs/common/utils/parse-boolean.util';
 import { RedisStore } from 'connect-redis';
+import * as process from 'node:process';
 
 dotenv.config();
 
@@ -16,7 +17,11 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const config = app.get(ConfigService);
 
-  const redis: IORedis = new IORedis(config.getOrThrow('REDIS_URL'));
+  const redis: IORedis = new IORedis({
+    port: config.getOrThrow('REDIS_PORT'),
+    host: config.getOrThrow('REDIS_HOST'),
+    password: config.getOrThrow('REDIS_PASSWORD'),
+  });
   app.use(
     session({
       secret: config.getOrThrow<string>('SESSION_SECRET'),
@@ -37,7 +42,7 @@ async function bootstrap() {
     }),
   );
   // Cookie adjusting
-  app.use(cookieParser(config.getOrThrow<string>('COOKIES_SECRET')));
+  app.use(cookieParser(config.getOrThrow<string>('COOKIE_SECRET')));
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.enableCors({
     origin: config.getOrThrow<string>('ALLOWED_ORIGINS'),
