@@ -1,32 +1,50 @@
 import { FC } from 'react';
-import { Button, Image } from 'antd';
-import logo from '../../../images/book-bookmark-minimalistic-svgrepo-com.svg';
-import { useNavigate } from 'react-router-dom';
+import { Button } from 'antd';
+import { messages } from '../../../common/constants/messages.ts';
+import { register } from './actions.ts';
+import { IRegisterDTO } from '../../../types/commonTypes.ts';
 
 const CreateAccount: FC = () => {
-  const navigate = useNavigate();
+  const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData: FormData = new FormData(event.target as HTMLFormElement);
 
-  const handleLogin = () => {
-    navigate('/main');
+    const data: IRegisterDTO = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      password: formData.get('password'),
+      passwordRepeat: formData.get('passwordRepeat'),
+    };
+    console.log(data);
+    await register(data);
   };
 
   return (
     <div className={'login'}>
-      <form className={'loginForm'}>
-        <Image
-          src={logo}
-          width={200}
-          preview={false}
-        />
+      <form
+        onSubmit={(values) => handleLogin(values)}
+        className={'loginForm'}
+      >
         <div className={'loginFormInputs'}>
           <div className={'formItem'}>
+            Придумайте имя пользователя
+            <input
+              name={'name'}
+              className={'loginInput'}
+            />
+          </div>
+          <div className={'formItem'}>
             Введите e-mail
-            <input className={'loginInput'} />
+            <input
+              name={'email'}
+              className={'loginInput'}
+            />
           </div>
           <div className={'formItem'}>
             Придумайте пароль
             <input
               type={'password'}
+              name={'password'}
               className={'loginInput'}
             />
           </div>
@@ -34,16 +52,12 @@ const CreateAccount: FC = () => {
             Подтвердите пароль
             <input
               type={'password'}
+              name={'passwordRepeat'}
               className={'loginInput'}
             />
           </div>
 
-          <Button
-            htmlType={'submit'}
-            onClick={handleLogin}
-          >
-            Войти
-          </Button>
+          <Button htmlType={'submit'}>{messages.button.create}</Button>
         </div>
       </form>
       <div className="footer">

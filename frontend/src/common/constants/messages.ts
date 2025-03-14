@@ -50,6 +50,7 @@ export const messages = {
     continue: 'Продолжить',
     apply: 'Применить',
     reset: 'Сбросить',
+    create: 'Создать',
   },
   notification: {
     success: {
