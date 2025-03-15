@@ -51,6 +51,7 @@ export const messages = {
     apply: 'Применить',
     reset: 'Сбросить',
     create: 'Создать',
+    login: 'Войти'
   },
   notification: {
     success: {
