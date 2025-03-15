@@ -12,7 +12,7 @@ import { AuthService } from './authService.service';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
 
-import { Request } from 'express-session';
+import { Request } from 'express';
 
 @Controller('auth')
 export class AppController {

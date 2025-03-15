@@ -10,7 +10,7 @@ import { UserService } from '../user/user.service';
 import { AuthMethods, User } from '../../prisma/__generated__';
 import { LoginDto } from './dto/login.dto';
 
-import { Request } from 'express-session';
+import { Request } from 'express';
 
 @Injectable()
 export class AuthService {
@@ -50,22 +50,25 @@ export class AuthService {
 
     return user;
   }
-  public async logout() {}
+  public async logout() {
+    return new Promise(() => {});
+  }
 
   private async saveSession(req: Request, user: User) {
     console.log(`Session was successfully saved for user ${user.userName}`);
     return new Promise((resolve, reject) => {
       req.session.userId = user.id;
-      req.session.save((e) => {
-        if (e) {
-          return reject(
-            new InternalServerErrorException(
-              'Произошла ошибка при сохранении сессии. Пожалуйта, повторите Ваш запрос позже.',
-            ),
-          );
-        }
-        resolve({ user });
-      });
+      // req.session.save((e) => {
+      //   if (e) {
+      //     return reject(
+      //       new InternalServerErrorException(
+      //         'Произошла ошибка при сохранении сессии. Пожалуйта, повторите Ваш запрос позже.',
+      //       ),
+      //     );
+      //   }
+      //   resolve({ user });
+      // });
+      resolve({ user });
     });
   }
 }
