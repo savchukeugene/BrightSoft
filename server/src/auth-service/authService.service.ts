@@ -11,7 +11,6 @@ import { AuthMethods, User } from '../../prisma/__generated__';
 import { LoginDto } from './dto/login.dto';
 
 import { Request, Response } from 'express';
-import { verify } from 'argon2';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
