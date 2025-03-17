@@ -8,7 +8,7 @@ export const ROOTS = {
   support: '/support',
   about: '/about',
   editingPages: '/editingPages',
-  login: '/loginBazevich',
+  login: '/login',
   createAccount: '/createAccount',
   userManagement: '/userManagement',
 };
