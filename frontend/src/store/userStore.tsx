@@ -19,7 +19,7 @@ export interface IUserStore extends IUser {
 }
 
 export const useUserStore = create<IUserStore>((set) => {
-  const savedToken = localStorage.getItem('brightSoftAuthToken');
+  const savedToken = localStorage.getItem('access_token');
 
   const getUserInfo = async (access_token: string) => {
     const parsedJwt: IAccessToken = parseJwt(access_token);
@@ -35,7 +35,7 @@ export const useUserStore = create<IUserStore>((set) => {
   };
 
   return {
-    user: savedToken ? null : null,
+    user: savedToken ? parseJwt(savedToken) : null,
     role: savedToken ? defineUserRole(parseJwt(savedToken).role) : 'user',
     setUser: getUserInfo,
     logoutUser: (): void => {

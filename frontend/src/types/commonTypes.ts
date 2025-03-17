@@ -59,4 +59,5 @@ export interface IAccessToken {
   iat: number;
   role: IUserRoles;
   sub: string;
+  user: IUserData;
 }
