@@ -19,7 +19,11 @@ const Login: FC = () => {
     const formData: FormData = new FormData(event.target as HTMLFormElement);
     const userData: ILoginDTO = collectFieldsData(formData, ['email', 'password']);
     const { data } = await login(userData);
-    setUser(data?.data?.access_token ?? messages.defaultUserId);
+
+    // Применяем setUser для обновления состояния пользователя
+    if (data?.data?.access_token) {
+      await setUser(data.data.access_token); // Обновляем состояние с токеном
+    }
   };
 
   return (
