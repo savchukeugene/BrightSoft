@@ -27,7 +27,7 @@ export interface IActionsFormat<T> {
   ok: boolean;
 }
 
-interface IUserData {
+export interface IUserData {
   accounts: string[];
   createdAt: string;
   email: string;
@@ -40,6 +40,14 @@ interface IUserData {
   role: IUserRoles;
   updatedAt: string;
   userName: string;
+}
+
+export interface IAllUsersMapped {
+  userName: string;
+  role: IUserRoles;
+  //course_name: string;
+  created_at: string;
+  isVerified: string;
 }
 
 export interface IUserInfo {

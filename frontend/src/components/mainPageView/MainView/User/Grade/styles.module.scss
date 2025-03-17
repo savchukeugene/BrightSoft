@@ -1,4 +1,11 @@
 .table {
+  & thead {
+    background: #24326c;
+  }
+
+  & tbody {
+    background: rgb(0, 66, 128);
+  }
   & th {
     background: #24326c !important;
     color: white !important;

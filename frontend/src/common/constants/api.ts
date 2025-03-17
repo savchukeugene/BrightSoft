@@ -25,3 +25,4 @@ export const API_PASSWORD_RECOVERY: string = `${auth_ref}/${apiReferences.server
 // USER
 const user_ref: string = `${ref}/users`;
 export const API_WHO_AM_I: string = `${user_ref}/whoAmI`;
+export const API_GET_ALL_USERS = `${user_ref}/allUsers`;

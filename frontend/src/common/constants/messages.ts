@@ -30,6 +30,12 @@ export const messages = {
             `Пожалуйста, укажите поле ${label}!`,
         },
       },
+      userManagement: {
+        isVerified: {
+          yes: 'Подтверждён',
+          no: 'Не подтверждён',
+        },
+      },
     },
     pageNotFound: {
       title: 'Упс...',

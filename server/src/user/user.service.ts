@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { $Enums, AuthMethods } from '../../prisma/__generated__';
 import UserRole = $Enums.UserRole;
@@ -36,6 +40,17 @@ export class UserService {
       );
 
     return user;
+  }
+
+  public async getAllUsers(role: UserRole) {
+    if (role !== 'administrator') {
+      throw new ForbiddenException(
+        'У вас нету прав для получения данной информации',
+      );
+    }
+    const data = this.prismaService.user.findMany({});
+    if (!data) throw new NotFoundException(`Пользователи не найдены!`);
+    return data;
   }
 
   public async create(

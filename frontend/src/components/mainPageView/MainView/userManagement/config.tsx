@@ -1,64 +1,43 @@
 import { TableColumnsType } from 'antd';
 import { USER_ROLES_OPTIONS } from '../../../../common/constants/options.ts';
+import { IAllUsersMapped } from '../../../../types/commonTypes.ts';
 
-export interface DataType {
-  key: React.Key;
-  name: string;
-  address: string;
-  second_name: string;
-  middle_name: string;
-  role: string;
-}
-
-export const dataSource: DataType[] = [
+export const columns: TableColumnsType<IAllUsersMapped> = [
   {
-    key: '1',
-    name: 'Иван',
-    address: '9',
-    second_name: 'Иванов',
-    middle_name: 'Иванович',
-    role: 'Администратор',
-  },
-  {
-    key: '2',
-    name: 'Иван',
-    address: '9',
-    second_name: 'Иванов',
-    middle_name: 'Иванович',
-    role: 'Администратор',
-  },
-];
-
-export const columns: TableColumnsType<DataType> = [
-  {
-    title: 'Имя',
+    title: 'Имя пользователя',
     width: 100,
-    dataIndex: 'name',
-    key: 'name',
+    dataIndex: 'userName',
+    key: 'userName',
     fixed: 'left',
   },
   {
-    title: 'Фамилия',
+    title: 'Роль',
     width: 100,
-    dataIndex: 'second_name',
-    key: 'second_name',
+    dataIndex: 'role',
+    key: 'role',
     fixed: 'left',
   },
   {
-    title: 'Отчество',
+    title: 'Создал аккаунт',
     width: 100,
-    dataIndex: 'middle_name',
-    key: 'middle_name',
+    dataIndex: 'created_at',
+    key: 'created_at',
     fixed: 'left',
   },
-  { title: 'Роль', dataIndex: 'role', key: 'role' },
   {
-    title: 'Действия',
-    key: 'operation',
-    fixed: 'right',
+    title: 'Подтверждён',
+    dataIndex: 'isVerified',
+    key: 'isVerified',
     width: 100,
-    render: () => <a>Редактировать</a>,
+    fixed: 'left',
   },
+  // {
+  //   title: 'Действия',
+  //   key: 'operation',
+  //   fixed: 'right',
+  //   width: 100,
+  //   render: () => <a>Редактировать</a>,
+  // },
 ];
 
 export const filters = [
