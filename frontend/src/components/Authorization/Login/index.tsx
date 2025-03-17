@@ -7,7 +7,7 @@ import {
   collectFieldsData,
 } from '../../../common/utils/generatotrs.tsx';
 import { loginFieldsConfig } from './config.ts';
-import { loginBazevich } from './actions';
+import { login } from './actions';
 import { ILoginDTO } from '../../../types/commonTypes';
 import { messages } from '../../../common/constants/messages';
 import { useUserStore } from '../../../store/userStore.tsx';
@@ -18,7 +18,7 @@ const Login: FC = () => {
     event.preventDefault();
     const formData: FormData = new FormData(event.target as HTMLFormElement);
     const userData: ILoginDTO = collectFieldsData(formData, ['email', 'password']);
-    const { data } = await loginBazevich(userData);
+    const { data } = await login(userData);
     setUser(data?.data?.access_token ?? messages.defaultUserId, 'user');
   };
 

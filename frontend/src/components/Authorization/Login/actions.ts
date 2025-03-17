@@ -7,7 +7,7 @@ import {
 import { AxiosResponse } from 'axios';
 import { API_LOGIN } from '../../../common/constants/api.ts';
 
-export const loginBazevich = async (
+export const login = async (
   dto: ILoginDTO,
 ): Promise<IActionsFormat<AxiosResponse<ISuccessLoginDTO, any> | null>> => {
   try {
