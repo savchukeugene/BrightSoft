@@ -28,7 +28,7 @@ export const useUserStore = create<IUserStore>((set) => {
     });
 
     console.log(data);
-    set(() => ({ user: parsedJet.sub, role: defineUserRole('administrator') }));
+    set(() => ({ user: parsedJet.sub, role: defineUserRole(parsedJet.role) }));
   };
 
   return {
