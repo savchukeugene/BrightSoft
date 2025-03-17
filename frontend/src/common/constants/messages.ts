@@ -2,6 +2,7 @@ const tasksPages: string[] = ['Лабиринты', 'Быстрый счёт', '
 const userPages: string[] = ['Расписание', 'Оценки'];
 
 export const messages = {
+  defaultUserId: '00000000-0000-0000-0000',
   requests: {
     success: 'Запрос успешен!',
   },
@@ -51,7 +52,7 @@ export const messages = {
     apply: 'Применить',
     reset: 'Сбросить',
     create: 'Создать',
-    login: 'Войти'
+    login: 'Войти',
   },
   notification: {
     success: {

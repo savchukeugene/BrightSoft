@@ -45,13 +45,17 @@ export default class AxiosService {
     return axios
       .request({ url, method, ...config })
       .then((data): IActionsFormat<AxiosResponse<T, any>> => {
-        notification.success({
-          message: messages.requests.success,
-          description: data?.data,
-        });
-        return { data, ok: true };
+        if (data?.data?.status === undefined || data?.data?.status === 200) {
+          notification.success({
+            message: messages.requests.success,
+          });
+          return { data, ok: true };
+        } else {
+          throw new Error('');
+        }
       })
       .catch((e: AxiosError): IActionsFormat<null> => {
+        console.log(e);
         if (e.response && e.response.data) {
           const responseData: INestErrorMessage = e.response.data as INestErrorMessage;
           console.log(responseData.message);

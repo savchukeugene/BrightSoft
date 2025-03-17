@@ -1,4 +1,4 @@
-import { UUIDTypes } from 'uuid';
+import { IUserRoles } from '../store/userStore.tsx';
 
 export interface IOptions {
   label: string;
@@ -27,19 +27,27 @@ export interface IActionsFormat<T> {
   ok: boolean;
 }
 
-export interface IUser {
+interface IUserData {
   accounts: string[];
   createdAt: string;
   email: string;
-  id: UUIDTypes;
+  id: string;
   isTwoFactorEnabled: boolean;
   isVerified: boolean;
   method: string;
   password: string;
   picture: string;
-  role: string;
+  role: IUserRoles;
   updatedAt: string;
   userName: string;
+}
+
+export interface IUser {
+  user: IUserData;
+}
+
+export interface ISuccessLoginDTO {
+  access_token: string;
 }
 
 export interface INestErrorMessage {

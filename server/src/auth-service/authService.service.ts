@@ -9,14 +9,15 @@ import { RegisterDto } from './dto/register.dto';
 import { UserService } from '../user/user.service';
 import { AuthMethods, User } from '../../prisma/__generated__';
 import { LoginDto } from './dto/login.dto';
-
+import { JwtService } from '@nestjs/jwt';
 import { Request, Response } from 'express';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AuthService {
-  public constructor(
+  constructor(
     private readonly userService: UserService,
+    private readonly jwtService: JwtService,
     private readonly configService: ConfigService,
   ) {}
 
@@ -46,15 +47,12 @@ export class AuthService {
     const user = await this.userService.findMyEmail(dto.email);
 
     if (!user || !user.password) {
-      return new NotFoundException('Пользователь не был найден');
+      throw new NotFoundException('Пользователь не был найден');
     }
 
-    if (dto.password !== user.password)
-      return new UnauthorizedException('Введён неверный пароль!');
-
-    // const isValidPassword = await verify(user.password, dto.password);
-    // if (isValidPassword)
-    //   return new UnauthorizedException('Введён неверный пароль!');
+    if (dto.password !== user.password) {
+      throw new UnauthorizedException('Введён неверный пароль!');
+    }
 
     return this.saveSession(req, user);
   }
@@ -88,8 +86,15 @@ export class AuthService {
           );
         }
         console.log(`Session was successfully saved for user ${user.userName}`);
-        resolve({ user });
+        resolve(this.generateToken(user));
       });
     });
+  }
+
+  private generateToken(user: User) {
+    const payload = { sub: user.id, email: user.email, role: user.role };
+    return {
+      access_token: this.jwtService.sign(payload),
+    };
   }
 }

@@ -21,7 +21,7 @@ export const useUserStore = create<IUserStore>((set) => {
     user: savedUser ?? null,
     role: defineUserRole(savedUser),
     setUser: (id: string, role: IUserRoles): void => {
-      localStorage.setItem('brightSoftAuthToken', id);
+      localStorage.setItem('access_token', id);
       set(() => ({ user: id, role }));
     },
     logoutUser: (): void => {

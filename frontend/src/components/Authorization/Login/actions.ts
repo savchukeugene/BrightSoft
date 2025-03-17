@@ -1,13 +1,17 @@
 import AxiosService from '../../../axios/AxiosService.tsx';
-import { IActionsFormat, ILoginDTO, IUser } from '../../../types/commonTypes.ts';
+import {
+  IActionsFormat,
+  ILoginDTO,
+  ISuccessLoginDTO,
+} from '../../../types/commonTypes.ts';
 import { AxiosResponse } from 'axios';
 import { API_LOGIN } from '../../../common/constants/api.ts';
 
 export const loginBazevich = async (
   dto: ILoginDTO,
-): Promise<IActionsFormat<AxiosResponse<IUser, any> | null>> => {
+): Promise<IActionsFormat<AxiosResponse<ISuccessLoginDTO, any> | null>> => {
   try {
-    const { data } = await AxiosService.POST<IUser>(API_LOGIN, {
+    const { data } = await AxiosService.POST<ISuccessLoginDTO>(API_LOGIN, {
       data: dto,
     });
 

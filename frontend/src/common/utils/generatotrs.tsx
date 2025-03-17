@@ -8,11 +8,15 @@ export const routeGenerator = (...routes: string[]) => {
 };
 
 export const authorizationFieldsGenerator = (config: IAuthorizationFields[]) =>
-  config.map((element: IAuthorizationFields) => (
-    <div className={'formItem'}>
+  config.map((element: IAuthorizationFields, index: number) => (
+    <div
+      key={`${index}_formItem`}
+      className={'formItem'}
+    >
       {element.label}
       <input
         name={element.name}
+        key={`${index}_input`}
         className={'loginInput'}
       />
     </div>

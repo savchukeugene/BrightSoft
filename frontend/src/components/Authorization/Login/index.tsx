@@ -10,16 +10,16 @@ import { loginFieldsConfig } from './config.ts';
 import { loginBazevich } from './actions';
 import { ILoginDTO } from '../../../types/commonTypes';
 import { messages } from '../../../common/constants/messages';
+import { useUserStore } from '../../../store/userStore.tsx';
 
 const Login: FC = () => {
+  const { setUser } = useUserStore();
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData: FormData = new FormData(event.target as HTMLFormElement);
-    const data: ILoginDTO = collectFieldsData(formData, ['email', 'password']);
-    const userData = await loginBazevich(data);
-    console.log(userData);
-
-    // TODO after login logic
+    const userData: ILoginDTO = collectFieldsData(formData, ['email', 'password']);
+    const { data } = await loginBazevich(userData);
+    setUser(data?.data?.access_token ?? messages.defaultUserId, 'user');
   };
 
   return (
