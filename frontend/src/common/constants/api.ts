@@ -16,6 +16,6 @@ const apiReferences = {
 // Auth api
 const ref = `${apiReferences.protocol + apiReferences.host}:${apiReferences.port}/auth`;
 export const API_REGISTER: string = `${ref}/${apiReferences.server.auth.register}`;
-export const API_LOGIN: string = `${ref}/${apiReferences.server.auth.register}`;
-export const API_LOGOUT: string = `${ref}/${apiReferences.server.auth.register}`;
-export const API_PASSWORD_RECOVERY: string = `${ref}/${apiReferences.server.auth.register}`;
+export const API_LOGIN: string = `${ref}/${apiReferences.server.auth.login}`;
+export const API_LOGOUT: string = `${ref}/${apiReferences.server.auth.logout}`;
+export const API_PASSWORD_RECOVERY: string = `${ref}/${apiReferences.server.auth.passwordRecovery}`;

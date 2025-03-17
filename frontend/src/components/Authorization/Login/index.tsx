@@ -1,32 +1,33 @@
 import { FC } from 'react';
 import '../../../styles/login.scss';
-import { Button, Image, notification } from 'antd';
+import { Button, Image } from 'antd';
 import logo from '../../../images/book-bookmark-minimalistic-svgrepo-com.svg';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { useUserStore } from '../../../store/userStore.tsx';
-import { messages } from '../../../common/constants/messages.ts';
-import { defineDefaultNavigation } from '../../../common/utils/helpers.tsx';
-import { authorizationFieldsGenerator } from '../../../common/utils/generatotrs.tsx';
+import {
+  authorizationFieldsGenerator,
+  collectFieldsData,
+} from '../../../common/utils/generatotrs.tsx';
 import { loginFieldsConfig } from './config.ts';
+import { loginBazevich } from './actions';
+import { ILoginDTO } from '../../../types/commonTypes';
+import { messages } from '../../../common/constants/messages';
 
 const Login: FC = () => {
-  const navigate: NavigateFunction = useNavigate();
-  const { setUser } = useUserStore();
+  const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData: FormData = new FormData(event.target as HTMLFormElement);
+    const data: ILoginDTO = collectFieldsData(formData, ['email', 'password']);
+    const userData = await loginBazevich(data);
+    console.log(userData);
 
-  const handleLogin = async () => {
-    await setUser('administrator', 'administrator');
-    notification.success({
-      message: messages.notification.success.messages.success,
-      description: messages.notification.success.description.successLogin,
-    });
-    navigate({
-      pathname: defineDefaultNavigation('administrator') as string,
-    });
+    // TODO after login logic
   };
 
   return (
     <div className={'login'}>
-      <form className={'loginForm'}>
+      <form
+        onSubmit={(values) => handleLogin(values)}
+        className={'loginForm'}
+      >
         <Image
           src={logo}
           width={200}
@@ -34,16 +35,11 @@ const Login: FC = () => {
         />
         <div className={'loginFormInputs'}>
           {authorizationFieldsGenerator(loginFieldsConfig)}
-          <Button
-            htmlType={'submit'}
-            onClick={handleLogin}
-          >
-            Войти
-          </Button>
+          <Button htmlType={'submit'}>{messages.button.login}</Button>
         </div>
       </form>
       <div className="footer">
-        <a href="/createAccount">Нет аккаунта? Пройти регистрацию</a>
+        <a href="/register">Нет аккаунта? Создать</a>
         <a href="#">Забыли пароль?</a>
       </div>
     </div>
