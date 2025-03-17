@@ -21,14 +21,14 @@ type ILeftSideOptions = {
 export const LEFT_SIDE_OPTIONS_LIST: ILeftSideOptions = {
   administrator: [
     getItem('Пользователи', 'userManagement', <TeamOutlined />),
-    getItem('Задания', 'tasks', <BuildOutlined />),
+    getItem('Задания', 'tasks/taskLabirint', <BuildOutlined />),
     getItem('Служба поддержки', 'support', <BugOutlined />),
     getItem('Страницы', 'editingPages', <EditOutlined />),
     getItem('О компании', 'about', <InfoCircleOutlined />),
   ],
   user: [
-    getItem('Пользователь', 'user', <UserOutlined />),
-    getItem('Задания', 'tasks', <BuildOutlined />),
+    getItem('Пользователь', 'user/grade', <UserOutlined />),
+    getItem('Задания', 'tasks/taskLabirint', <BuildOutlined />),
     getItem('Служба поддержки', 'support', <BugOutlined />),
     getItem('О компании', 'about', <InfoCircleOutlined />),
   ],

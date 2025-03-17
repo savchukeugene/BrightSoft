@@ -15,17 +15,22 @@ interface IUserManagement {
 const UserManagement: FC<IUserManagement> = () => {
   const { role } = useUserStore();
   const [userData, setUserData] = useState<IAllUsersMapped[]>();
-  !userData && getAllUsers(role).then((data) => setUserData(data?.data ?? []));
+  const [loading, setLoading] = useState<boolean>(true);
+  !userData &&
+    getAllUsers(role)
+      .then((data) => setUserData(data?.data ?? []))
+      .then(() => setLoading(false));
 
   if (role !== 'administrator') {
     return <PageNotFound />;
   }
-  console.log(userData);
+
   return (
     <div>
       <h1 className={'pageTitle'}>Управление пользователями</h1>
       <Filter fields={filters} />
       <Table<IAllUsersMapped>
+        loading={loading}
         className={s.table}
         dataSource={userData}
         columns={columns}

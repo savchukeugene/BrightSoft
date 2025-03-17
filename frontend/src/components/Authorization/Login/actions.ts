@@ -5,7 +5,7 @@ import {
   ISuccessLoginDTO,
 } from '../../../types/commonTypes.ts';
 import { AxiosResponse } from 'axios';
-import { API_LOGIN } from '../../../common/constants/api.ts';
+import { API_LOGIN, API_LOGOUT } from '../../../common/constants/api.ts';
 
 export const login = async (
   dto: ILoginDTO,
@@ -18,5 +18,15 @@ export const login = async (
     return { data, ok: true };
   } catch (e) {
     return { data: null, ok: false };
+  }
+};
+
+export const logout = async (after: any): Promise<void> => {
+  try {
+    await AxiosService.POST(API_LOGOUT);
+    after?.();
+  } catch (e) {
+  } finally {
+    after?.();
   }
 };

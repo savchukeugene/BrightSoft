@@ -7,6 +7,7 @@ import Footer from '../Layout/Footer';
 import { HEADER_OPTIONS, LEFT_SIDE_OPTIONS_LIST } from './headerConfig/config.tsx';
 import s from './styles.module.scss';
 import { useUserStore } from '../../store/userStore.tsx';
+import { logout } from '../Authorization/Login/actions.ts';
 
 const { Sider } = Layout;
 
@@ -15,6 +16,8 @@ const MainPage = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { role } = useUserStore();
+  const splitPathname: string[] = pathname.split('/');
+  const { logoutUser } = useUserStore();
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -48,12 +51,19 @@ const MainPage = () => {
             mode="horizontal"
             items={HEADER_OPTIONS[pathname.split('/')[2]]}
             style={{ flex: 1, minWidth: 0 }}
-            defaultSelectedKeys={['timetable']}
+            defaultSelectedKeys={['grade']}
             onClick={(value) =>
               navigate({
-                pathname: `${value.key}`,
+                pathname: pathname.replace(
+                  splitPathname[splitPathname.length - 1],
+                  value.key,
+                ),
               })
             }
+          />
+          <div
+            onClick={() => logout(logoutUser)}
+            className={s.logout}
           />
         </Header>
         <PageWrapper>

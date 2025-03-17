@@ -46,9 +46,6 @@ export default class AxiosService {
       .request({ url, method, ...config })
       .then((data): IActionsFormat<AxiosResponse<T, any>> => {
         if (data?.data?.status === undefined || data?.data?.status === 200) {
-          notification.success({
-            message: messages.requests.success,
-          });
           return { data, ok: true };
         } else {
           throw new Error('');
