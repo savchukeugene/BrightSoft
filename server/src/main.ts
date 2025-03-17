@@ -9,8 +9,10 @@ import * as session from 'express-session';
 import { ms, StringValue } from './libs/common/utils/ms.util';
 import { parseBoolean } from './libs/common/utils/parse-boolean.util';
 import { RedisStore } from 'connect-redis';
+let express = require('express');
 
 dotenv.config();
+let router = express.Router();
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -21,6 +23,7 @@ async function bootstrap() {
     host: config.getOrThrow('REDIS_HOST'),
     password: config.getOrThrow('REDIS_PASSWORD'),
   });
+  app.use(router);
   app.use(
     session({
       secret: config.getOrThrow<string>('SESSION_SECRET'),

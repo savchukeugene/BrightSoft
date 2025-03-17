@@ -10,11 +10,15 @@ import { UserService } from '../user/user.service';
 import { AuthMethods, User } from '../../prisma/__generated__';
 import { LoginDto } from './dto/login.dto';
 
-import { Request } from 'express-session';
+import { Request, Response } from 'express';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AuthService {
-  public constructor(private readonly userService: UserService) {}
+  public constructor(
+    private readonly userService: UserService,
+    private readonly configService: ConfigService,
+  ) {}
 
   public async register(req: Request, dto: RegisterDto) {
     const isExist = await this.userService.findMyEmail(dto.email);
@@ -38,7 +42,7 @@ export class AuthService {
     return this.saveSession(req, newUser);
   }
 
-  public async login(dto: LoginDto) {
+  public async login(req: Request, dto: LoginDto) {
     const user = await this.userService.findMyEmail(dto.email);
 
     if (!user || !user.password) {
@@ -48,12 +52,31 @@ export class AuthService {
     if (dto.password !== user.password)
       return new UnauthorizedException('Введён неверный пароль!');
 
-    return user;
+    // const isValidPassword = await verify(user.password, dto.password);
+    // if (isValidPassword)
+    //   return new UnauthorizedException('Введён неверный пароль!');
+
+    return this.saveSession(req, user);
   }
-  public async logout() {}
+
+  public async logout(req: Request, res: Response): Promise<void> {
+    return new Promise((resolve, reject) => {
+      req.session.destroy((err) => {
+        if (err) {
+          return reject(
+            new InternalServerErrorException(
+              'Произошла ошибка при удалении сессии. Пожалуйста, повторите ваш запрос позже.',
+            ),
+          );
+        }
+        res.clearCookie(this.configService.getOrThrow<string>('SESSION_NAME'));
+        console.log('Session was successfully destroyed');
+        resolve();
+      });
+    });
+  }
 
   private async saveSession(req: Request, user: User) {
-    console.log(`Session was successfully saved for user ${user.userName}`);
     return new Promise((resolve, reject) => {
       req.session.userId = user.id;
       req.session.save((e) => {
@@ -64,6 +87,7 @@ export class AuthService {
             ),
           );
         }
+        console.log(`Session was successfully saved for user ${user.userName}`);
         resolve({ user });
       });
     });

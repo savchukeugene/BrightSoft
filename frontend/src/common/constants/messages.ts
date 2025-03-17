@@ -64,7 +64,10 @@ export const messages = {
       },
     },
     warn: {},
-    error: {},
+    error: {
+      invalidData: 'Произошла ошибка при обработке данных!',
+      unknownError: 'Произошла неизвестная ошибка!',
+    },
   },
   userRoles: {
     administrator: 'Администратор',

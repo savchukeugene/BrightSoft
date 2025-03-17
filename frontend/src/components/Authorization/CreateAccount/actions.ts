@@ -1,14 +1,19 @@
 import AxiosService from '../../../axios/AxiosService.tsx';
-import { IRegisterDTO } from '../../../types/commonTypes.ts';
+import { IActionsFormat, IRegisterDTO, IUser } from '../../../types/commonTypes.ts';
+import { API_REGISTER } from '../../../common/constants/api.ts';
+import { AxiosResponse } from 'axios';
 
-export const register = async (dto: IRegisterDTO) => {
+export const register = async (
+  dto: IRegisterDTO,
+): Promise<IActionsFormat<AxiosResponse<IUser, any> | null>> => {
   try {
-  } catch (e) {
-    return e;
-  }
-  const user = await AxiosService.POST('http://localhost:44001/auth/register', {
-    data: dto,
-  });
+    const { data } = await AxiosService.POST<IUser>(API_REGISTER, {
+      data: dto,
+    });
+    console.log(data?.data);
 
-  return user;
+    return { data, ok: true };
+  } catch (e) {
+    return { data: null, ok: false };
+  }
 };

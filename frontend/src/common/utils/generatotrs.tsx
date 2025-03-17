@@ -50,3 +50,13 @@ export const fieldsGenerator = (fields: IField[]) =>
       />
     );
   });
+
+export function collectFieldsData<T>(formData: FormData, fields: string[]): T {
+  const data: Record<string, any> = {};
+
+  fields.forEach((field: string): void => {
+    data[field] = formData.get(field);
+  });
+
+  return data as T;
+}
