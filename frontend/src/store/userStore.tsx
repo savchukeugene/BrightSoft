@@ -3,13 +3,13 @@ import { defineUserRole } from '../common/utils/helpers.tsx';
 import AxiosService from '../axios/AxiosService.tsx';
 import { API_WHO_AM_I } from '../common/constants/api.ts';
 import { parseJwt } from '../common/utils/jwt.ts';
-import { IAccessToken } from '../types/commonTypes.ts';
+import { IAccessToken, IUserInfo } from '../types/commonTypes.ts';
 
 const userRoles = ['administrator', 'user', 'support'] as const;
 export type IUserRoles = (typeof userRoles)[number];
 
 interface IUser {
-  user: string | null;
+  user: IUserInfo | null;
   role: IUserRoles;
 }
 
@@ -19,25 +19,28 @@ export interface IUserStore extends IUser {
 }
 
 export const useUserStore = create<IUserStore>((set) => {
-  const savedUser = localStorage.getItem('brightSoftAuthToken') as IUserRoles;
+  const savedToken = localStorage.getItem('brightSoftAuthToken');
 
   const getUserInfo = async (access_token: string) => {
-    const parsedJet: IAccessToken = parseJwt(access_token);
+    const parsedJwt: IAccessToken = parseJwt(access_token);
     const { data } = await AxiosService.POST<IUser>(API_WHO_AM_I, {
-      data: { userId: parsedJet.sub ?? access_token },
+      data: { userId: parsedJwt.sub ?? access_token },
     });
 
-    console.log(data);
-    set(() => ({ user: parsedJet.sub, role: defineUserRole(parsedJet.role) }));
+    localStorage.setItem('access_token', access_token);
+    set(() => ({
+      user: data?.data?.user,
+      role: defineUserRole(parsedJwt.role),
+    }));
   };
 
   return {
-    user: savedUser ?? null,
-    role: defineUserRole(savedUser),
+    user: savedToken ? null : null,
+    role: savedToken ? defineUserRole(parseJwt(savedToken).role) : 'user',
     setUser: getUserInfo,
     logoutUser: (): void => {
       localStorage.removeItem('brightSoftAuthToken');
-      set(() => ({ user: null }));
+      set(() => ({ user: null, role: 'user' }));
     },
   };
 });

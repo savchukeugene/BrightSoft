@@ -42,7 +42,7 @@ interface IUserData {
   userName: string;
 }
 
-export interface IUser {
+export interface IUserInfo {
   user: IUserData;
 }
 

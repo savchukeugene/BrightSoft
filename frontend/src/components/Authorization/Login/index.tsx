@@ -19,7 +19,10 @@ const Login: FC = () => {
     const formData: FormData = new FormData(event.target as HTMLFormElement);
     const userData: ILoginDTO = collectFieldsData(formData, ['email', 'password']);
     const { data } = await login(userData);
-    setUser(data?.data?.access_token ?? messages.defaultUserId);
+
+    if (data?.data?.access_token) {
+      await setUser(data.data.access_token);
+    }
   };
 
   return (
