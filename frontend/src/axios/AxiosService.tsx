@@ -55,7 +55,7 @@ export default class AxiosService {
         }
       })
       .catch((e: AxiosError): IActionsFormat<null> => {
-        console.log(e);
+        console.log(e.response && e.response.data);
         if (e.response && e.response.data) {
           const responseData: INestErrorMessage = e.response.data as INestErrorMessage;
           console.log(responseData.message);

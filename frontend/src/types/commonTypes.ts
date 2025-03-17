@@ -53,3 +53,10 @@ export interface ISuccessLoginDTO {
 export interface INestErrorMessage {
   message?: string[];
 }
+
+export interface IAccessToken {
+  email: string;
+  iat: number;
+  role: IUserRoles;
+  sub: string;
+}

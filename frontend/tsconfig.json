@@ -11,5 +11,9 @@
   "include": [
     "src/components",
     "./src/custom.d.ts"
-  ]
+  ],
+  "compilerOptions": {
+    "target": "ES2015",
+    "lib": ["ES2015", "DOM"]
+  }
 }
