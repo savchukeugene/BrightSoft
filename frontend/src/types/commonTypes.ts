@@ -64,6 +64,7 @@ export interface ISuccessLoginDTO {
 
 export interface INestErrorMessage {
   message?: string[];
+  statusCode: number;
 }
 
 export interface IAccessToken {

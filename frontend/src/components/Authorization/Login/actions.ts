@@ -13,6 +13,18 @@ export const login = async (
   try {
     const { data } = await AxiosService.POST<ISuccessLoginDTO>(API_LOGIN, {
       data: dto,
+      exceptionHandler: {
+        404: {
+          message: 'Пользователь не найден!',
+          description:
+            'Пожалуйста, проверьте Ваш логин или восстановите пароль, если забыли его!',
+        },
+        403: {
+          message: 'Неверный пароль!',
+          description:
+            'Пожалуйста, проверьте Ваш пароль или восстановите его, если забыли!',
+        },
+      },
     });
 
     return { data, ok: true };

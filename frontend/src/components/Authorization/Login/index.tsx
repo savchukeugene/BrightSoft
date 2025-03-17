@@ -21,7 +21,7 @@ const Login: FC = () => {
     const { data } = await login(userData);
 
     if (data?.data?.access_token) {
-      await setUser(data.data.access_token);
+      setUser(data.data.access_token);
     }
   };
 

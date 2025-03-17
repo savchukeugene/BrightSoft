@@ -23,24 +23,18 @@ export default class AxiosService {
     return this.fetchData<T>(url, 'GET');
   }
 
-  public static POST<T>(
-    url: AxiosRequestConfig['url'],
-    config: AxiosRequestConfig['data'] = {},
-  ) {
+  public static POST<T>(url: AxiosRequestConfig['url'], config: RequestConfig<T> = {}) {
     return this.fetchData<T>(url, 'POST', config);
   }
 
-  public static PUT<T>(
-    url: AxiosRequestConfig['url'],
-    config: AxiosRequestConfig['data'] = {},
-  ) {
+  public static PUT<T>(url: AxiosRequestConfig['url'], config: RequestConfig<T> = {}) {
     return this.fetchData<T>(url, 'PUT', config);
   }
 
   public static fetchData<T>(
     url: AxiosRequestConfig['url'],
     method: string,
-    config: RequestConfig<T> = {},
+    config?: RequestConfig<T>,
   ): Promise<IActionsFormat<AxiosResponse<T, any> | null>> {
     return axios
       .request({ url, method, ...config })
@@ -52,15 +46,16 @@ export default class AxiosService {
         }
       })
       .catch((e: AxiosError): IActionsFormat<null> => {
-        console.log(e.response && e.response.data);
+        console.log(e);
         if (e.response && e.response.data) {
+          String.prototype.join = function (): string {
+            return this.toString();
+          };
           const responseData: INestErrorMessage = e.response.data as INestErrorMessage;
-          console.log(responseData.message);
-
           notification.error({
             message: messages.notification.error.invalidData,
             description:
-              responseData.message?.join('\n') ||
+              responseData?.message?.join('\n') ??
               messages.notification.error.unknownError,
           });
         } else {

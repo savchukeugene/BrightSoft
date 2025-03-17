@@ -18,6 +18,9 @@ export const messages = {
         grade: {
           title: 'Оценки',
         },
+        timetable: {
+          title: 'Расписание',
+        },
       },
       tasks: {
         quickCount: {
