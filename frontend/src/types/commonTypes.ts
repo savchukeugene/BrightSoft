@@ -17,6 +17,11 @@ export interface IAuthorizationFields {
   name: string;
 }
 
+export interface ILoginDTO {
+  email: string;
+  password: string;
+}
+
 export interface IActionsFormat<T> {
   data: T | null;
   ok: boolean;
