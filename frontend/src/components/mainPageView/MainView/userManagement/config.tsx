@@ -2,7 +2,9 @@ import { TableColumnsType } from 'antd';
 import { USER_ROLES_OPTIONS } from '../../../../common/constants/options.ts';
 import { IAllUsersMapped } from '../../../../types/commonTypes.ts';
 
-export const columns: TableColumnsType<IAllUsersMapped> = [
+export const columns = (
+  openModal: (email: string) => Promise<void>,
+): TableColumnsType<IAllUsersMapped> => [
   {
     title: 'Имя пользователя',
     width: 100,
@@ -31,13 +33,15 @@ export const columns: TableColumnsType<IAllUsersMapped> = [
     width: 100,
     fixed: 'left',
   },
-  // {
-  //   title: 'Действия',
-  //   key: 'operation',
-  //   fixed: 'right',
-  //   width: 100,
-  //   render: () => <a>Редактировать</a>,
-  // },
+  {
+    title: 'Действия',
+    key: 'operation',
+    fixed: 'right',
+    width: 100,
+    render: (value: IAllUsersMapped) => (
+      <a onClick={() => openModal(value.email as string)}>Просмотр</a>
+    ),
+  },
 ];
 
 export const filters = [

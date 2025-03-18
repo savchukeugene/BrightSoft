@@ -50,6 +50,7 @@ export interface IAllUsersMapped {
   role: IUserRoles;
   //course_name: string;
   //status: UserStatuses;
+  email?: string;
   created_at: string;
   isVerified: string;
 }

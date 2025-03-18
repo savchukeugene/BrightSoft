@@ -9,6 +9,7 @@ import {
 import { UserService } from './user.service';
 import { WhoAmIDto } from './dto/whoAmI.dto';
 import { UserRole } from '../../prisma/__generated__';
+import { UserInfoDto } from './dto/userInfo.dto';
 
 @Controller('users')
 export class UserController {
@@ -24,5 +25,11 @@ export class UserController {
   @HttpCode(HttpStatus.OK)
   public async getAllUsers(@Body() dto: { role: UserRole }) {
     return await this.userService.getAllUsers(dto.role);
+  }
+
+  @Post('userInfo')
+  @HttpCode(HttpStatus.OK)
+  public async getUserInfo(@Body() dto: UserInfoDto) {
+    return await this.userService.getUserInfo(dto.role, dto.email);
   }
 }

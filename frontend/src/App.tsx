@@ -37,12 +37,14 @@ function App() {
                   element={<Grade />}
                 />
               </Route>
+
               <Route path={routeGenerator(ROOTS.mainPage, ROOTS.tasks)}>
                 <Route
                   path={routeGenerator(ROOTS.mainPage, ROOTS.tasks, ROOTS.quickCount)}
                   element={<QuickCount />}
                 />
               </Route>
+
               <Route
                 path={routeGenerator(ROOTS.mainPage, ROOTS.support)}
                 element={<SupportPage />}

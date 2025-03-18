@@ -13,7 +13,6 @@ interface ErrorObject {
   [key: number]: ErrorDetails;
 }
 interface RequestConfig<T> extends Omit<AxiosRequestConfig, 'method' | 'url'> {
-  onOk?: (data: AxiosResponse<T, any>) => void;
   mapper?: (data: T) => any;
   exceptionHandler?: ErrorObject;
 }
@@ -29,6 +28,10 @@ export default class AxiosService {
 
   public static PUT<T>(url: AxiosRequestConfig['url'], config: RequestConfig<T> = {}) {
     return this.fetchData<T>(url, 'PUT', config);
+  }
+
+  public static PATCH<T>(url: AxiosRequestConfig['url'], config: RequestConfig<T> = {}) {
+    return this.fetchData<T>(url, 'PATCH', config);
   }
 
   public static fetchData<T>(

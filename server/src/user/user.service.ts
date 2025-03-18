@@ -53,6 +53,17 @@ export class UserService {
     return data;
   }
 
+  public async getUserInfo(role: UserRole, email: string) {
+    if (role !== 'administrator') {
+      throw new ForbiddenException(
+        'У вас нету прав для получения данной информации',
+      );
+    }
+    const data = this.findMyEmail(email);
+    if (!data) throw new NotFoundException(`Пользователь не найден!`);
+    return data;
+  }
+
   public async create(
     email: string,
     password: string,
