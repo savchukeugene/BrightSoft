@@ -43,7 +43,7 @@ export class AuthService {
     return this.saveSession(req, newUser);
   }
 
-  public async login(req: Request, dto: LoginDto) {
+  public async login(req: Request, response: Response, dto: LoginDto) {
     const user = await this.userService.findMyEmail(dto.email);
 
     if (!user || !user.password) {
@@ -53,6 +53,13 @@ export class AuthService {
     if (dto.password !== user.password) {
       throw new UnauthorizedException('Введён неверный пароль!');
     }
+
+    const expires = new Date('2026-03-21T05:30:11Z');
+    response.cookie('role', `${user.role}`, {
+      path: '/',
+      expires: expires,
+      httpOnly: true,
+    });
 
     return this.saveSession(req, user);
   }

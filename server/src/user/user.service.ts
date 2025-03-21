@@ -6,6 +6,7 @@ import {
 import { PrismaService } from '../prisma/prisma.service';
 import { $Enums, AuthMethods } from '../../prisma/__generated__';
 import UserRole = $Enums.UserRole;
+import { Request } from 'express';
 
 @Injectable()
 export class UserService {
@@ -42,23 +43,14 @@ export class UserService {
     return user;
   }
 
-  public async getAllUsers(role: UserRole) {
-    if (role !== 'administrator') {
-      throw new ForbiddenException(
-        'У вас нету прав для получения данной информации',
-      );
-    }
+  public async getAllUsers() {
     const data = this.prismaService.user.findMany({});
     if (!data) throw new NotFoundException(`Пользователи не найдены!`);
     return data;
   }
 
-  public async getUserInfo(role: UserRole, email: string) {
-    if (role !== 'administrator') {
-      throw new ForbiddenException(
-        'У вас нету прав для получения данной информации',
-      );
-    }
+  public async getUserInfo(role: UserRole, email: string, request: Request) {
+    const cookiesValue = request.cookies;
     const data = this.findMyEmail(email);
     if (!data) throw new NotFoundException(`Пользователь не найден!`);
     return data;

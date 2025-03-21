@@ -27,8 +27,13 @@ export class AppController {
 
   @Post('login')
   @HttpCode(HttpStatus.OK)
-  public async login(@Req() req: Request, @Body() dto: LoginDto) {
-    return this.authService.login(req, dto);
+  public async login(
+    @Req() req: Request,
+    @Res() response: Response,
+    @Body() dto: LoginDto,
+  ) {
+    const result = await this.authService.login(req, response, dto);
+    return response.send(result);
   }
 
   @Post('logout')

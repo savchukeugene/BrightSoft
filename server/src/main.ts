@@ -43,7 +43,7 @@ async function bootstrap() {
       }),
     }),
   );
-  // Cookie adjusting
+
   app.use(cookieParser(config.getOrThrow<string>('COOKIE_SECRET')));
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.enableCors({
@@ -52,7 +52,7 @@ async function bootstrap() {
     exposedHeaders: ['set-cookie'],
   });
 
-  const port: number = config.getOrThrow<number>('PORT') || 3000;
+  const port: number = config.getOrThrow<number>('PORT') || 3001;
   await app.listen(port);
 }
 bootstrap();

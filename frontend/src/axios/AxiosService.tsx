@@ -40,7 +40,7 @@ export default class AxiosService {
     config?: RequestConfig<T>,
   ): Promise<IActionsFormat<AxiosResponse<T, any> | null>> {
     return axios
-      .request({ url, method, ...config })
+      .request({ url, method, ...config, withCredentials: true })
       .then((data): IActionsFormat<AxiosResponse<T, any>> => {
         if (data?.data?.status === undefined || data?.data?.status === 200) {
           return { data, ok: true };

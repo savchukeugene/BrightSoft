@@ -1,15 +1,18 @@
 import {
   Body,
   Controller,
-  Get,
   HttpCode,
   HttpStatus,
   Post,
+  Req,
+  UseGuards,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { WhoAmIDto } from './dto/whoAmI.dto';
 import { UserRole } from '../../prisma/__generated__';
 import { UserInfoDto } from './dto/userInfo.dto';
+import { Request } from 'express';
+import { RolesGuard } from '../libs/common/decorators/role-validator';
 
 @Controller('users')
 export class UserController {
@@ -23,13 +26,15 @@ export class UserController {
 
   @Post('allUsers')
   @HttpCode(HttpStatus.OK)
-  public async getAllUsers(@Body() dto: { role: UserRole }) {
-    return await this.userService.getAllUsers(dto.role);
+  @UseGuards(new RolesGuard(['administrator', 'support']))
+  public async getAllUsers() {
+    return await this.userService.getAllUsers();
   }
 
   @Post('userInfo')
   @HttpCode(HttpStatus.OK)
-  public async getUserInfo(@Body() dto: UserInfoDto) {
-    return await this.userService.getUserInfo(dto.role, dto.email);
+  @UseGuards(new RolesGuard(['administrator', 'support']))
+  public async getUserInfo(@Body() dto: UserInfoDto, @Req() request: Request) {
+    return await this.userService.getUserInfo(dto.role, dto.email, request);
   }
 }

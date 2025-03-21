@@ -26,7 +26,6 @@ export const useUserStore = create<IUserStore>((set) => {
     const { data } = await AxiosService.POST<IUser>(API_WHO_AM_I, {
       data: { userId: parsedJwt.sub ?? access_token },
     });
-
     localStorage.setItem('access_token', access_token);
     set(() => ({
       user: data?.data?.user,
