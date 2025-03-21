@@ -151,6 +151,14 @@ exports.Prisma.TokenScalarFieldEnum = {
   expiresIn: 'expiresIn'
 };
 
+exports.Prisma.CoursesScalarFieldEnum = {
+  id: 'id',
+  courseName: 'courseName',
+  permissions: 'permissions',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -183,10 +191,18 @@ exports.TokenType = exports.$Enums.TokenType = {
   password_reset: 'password_reset'
 };
 
+exports.CourseNames = exports.$Enums.CourseNames = {
+  newbie: 'newbie',
+  beginner: 'beginner',
+  amateur: 'amateur',
+  pro: 'pro'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Account: 'Account',
-  Token: 'Token'
+  Token: 'Token',
+  Courses: 'Courses'
 };
 
 /**

@@ -43,7 +43,7 @@ export class UserService {
     return user;
   }
 
-  public async getAllUsers() {
+  public async getAllUsers(): Promise<any> {
     const data = this.prismaService.user.findMany({});
     if (!data) throw new NotFoundException(`Пользователи не найдены!`);
     return data;

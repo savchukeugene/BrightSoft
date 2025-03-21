@@ -58,6 +58,16 @@ model Token {
   @@map("tokens")
 }
 
+model Courses {
+  id String @id @default(uuid())
+
+  courseName CourseNames @map("course_name")
+  permissions String[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+}
+
 enum AuthMethods {
   credantials
   google
@@ -74,4 +84,11 @@ enum TokenType {
   verification
   two_factor
   password_reset
+}
+
+enum CourseNames {
+  newbie
+  beginner
+  amateur
+  pro
 }

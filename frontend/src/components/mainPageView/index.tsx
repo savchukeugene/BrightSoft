@@ -61,10 +61,13 @@ const MainPage = () => {
               })
             }
           />
-          <div
-            onClick={() => logout(logoutUser)}
-            className={s.logout}
-          />
+          <nav className={s.nav}>
+            <div className={s.stars}></div>
+            <div
+              onClick={() => logout(logoutUser)}
+              className={s.logout}
+            />
+          </nav>
         </Header>
         <PageWrapper>
           <Outlet />

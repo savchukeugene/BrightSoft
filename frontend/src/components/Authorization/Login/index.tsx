@@ -42,7 +42,7 @@ const Login: FC = () => {
         </div>
       </form>
       <div className="footer">
-        <a href="/register">Нет аккаунта? Создать</a>
+        <a href="/createAccount">Нет аккаунта? Создать</a>
         <a href="#">Забыли пароль?</a>
       </div>
     </div>
