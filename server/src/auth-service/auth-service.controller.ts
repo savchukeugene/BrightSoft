@@ -44,15 +44,4 @@ export class AppController {
   ) {
     return this.authService.logout(req, res);
   }
-
-  @Get('getUser/:id')
-  getHello(@Param('id') id: string): string {
-    console.log(id);
-    return 'Hello';
-  }
-
-  @Post()
-  postData(): string {
-    return 'Success';
-  }
 }

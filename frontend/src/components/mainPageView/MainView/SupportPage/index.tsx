@@ -10,11 +10,7 @@ const SupportPage: FC = (): React.JSX.Element => {
     <div className={s.supportPage}>
       <h1 className={s.supportTitle}>{messages.view.main.supportPage.title}</h1>
       <h4>{messages.view.main.supportPage.subTitle}</h4>
-      <Form
-        onFinish={(value): void => {
-          console.log(value);
-        }}
-      >
+      <Form onFinish={(): void => {}}>
         <FormItem
           name={'userMessage'}
           rules={[

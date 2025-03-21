@@ -32,7 +32,11 @@ const UserManagement: FC<IUserManagement> = () => {
     setIsModalOpen(email);
   };
   useEffect(() => {
-    !!isModalOpen && afterOpen();
+    !!isModalOpen &&
+      afterOpen().then((data) => {
+        setUserData(data?.data as IUserMapped);
+        setIsUserLoading(false);
+      });
   }, [isModalOpen]);
 
   const handleDeleteUser = async (id: string): Promise<void> => {
@@ -40,15 +44,12 @@ const UserManagement: FC<IUserManagement> = () => {
     window.location.reload();
   };
 
-  const afterOpen = async () => {
-    const { data } = await getUser(role, isModalOpen);
-    setUserData(data as IUserMapped);
-    setIsUserLoading(false);
-  };
+  const afterOpen = async () => await getUser(role, isModalOpen);
 
   if (role !== 'administrator') {
     return <PageNotFound />;
   }
+
   return (
     <div>
       <h1 className={'pageTitle'}>Управление пользователями</h1>

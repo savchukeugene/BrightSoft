@@ -21,5 +21,5 @@ export const userDataMapper = (data: IUserData): IUserMapped => ({
   userName: data.userName,
   email: data.email,
   role: data.role,
-  // status: data.status;
+  status: data.status,
 });

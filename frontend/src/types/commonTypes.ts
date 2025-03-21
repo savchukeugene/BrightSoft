@@ -1,6 +1,6 @@
 import { IUserRoles } from '../store/userStore.tsx';
 
-const userStatuses = ['active', 'blocked', 'deleted'] as const;
+const userStatuses = ['active', 'blocked', 'deleted', 'non_confirmed'] as const;
 export type UserStatuses = (typeof userStatuses)[number];
 
 export interface IOptions {
@@ -43,6 +43,7 @@ export interface IUserData {
   role: IUserRoles;
   updatedAt: string;
   userName: string;
+  status: UserStatuses;
 }
 
 export interface IAllUsersMapped {

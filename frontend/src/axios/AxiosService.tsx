@@ -46,14 +46,19 @@ export default class AxiosService {
     return axios
       .request({ url, method, ...config, withCredentials: true })
       .then((data): IActionsFormat<AxiosResponse<T, any>> => {
-        if (data?.data?.status === undefined || data?.data?.status === 200) {
+        if (
+          data?.data?.status === undefined ||
+          data?.data?.status === 200 ||
+          data?.status === 200
+        ) {
           return { data, ok: true };
         } else {
-          throw new Error('');
+          throw new Error(
+            'Произошла ошибка при обработке данных. Пожалуйста, повторите ваш запрос позже.',
+          );
         }
       })
       .catch((e: AxiosError): IActionsFormat<null> => {
-        console.log(e);
         if (e.response && e.response.data) {
           String.prototype.join = function (): string {
             return this.toString();

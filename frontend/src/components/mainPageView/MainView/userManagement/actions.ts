@@ -47,7 +47,6 @@ export const getUser = async (
     const mappedData: IUserMapped = userDataMapper(data?.data as IUserData);
     return { data: mappedData, ok: true };
   } catch (e) {
-    console.log(e);
     return { data: null, ok: false };
   }
 };
