@@ -69,6 +69,8 @@ export const messages = {
         success: 'Успешно!',
       },
       description: {
+        successRegistration:
+          'Вы успешно создали аккаунт! Пожалуйста, авторизируйтесь в систему с ранее созданными данными.',
         successLogin: 'Вы успешно вошли в аккаунт!',
         successLogout: 'Вы успешно вышли из аккаунта!',
       },

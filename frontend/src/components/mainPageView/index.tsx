@@ -8,6 +8,7 @@ import { HEADER_OPTIONS, LEFT_SIDE_OPTIONS_LIST } from './headerConfig/config.ts
 import s from './styles.module.scss';
 import { useUserStore } from '../../store/userStore.tsx';
 import { logout } from '../Authorization/Login/actions.ts';
+import { StarOutlined } from '@ant-design/icons';
 
 const { Sider } = Layout;
 
@@ -62,7 +63,12 @@ const MainPage = () => {
             }
           />
           <nav className={s.nav}>
-            <div className={s.stars}></div>
+            {role === 'user' && (
+              <div className={s.stars}>
+                <StarOutlined className={s.starIcon} />
+                <h3>12312312312312</h3>
+              </div>
+            )}
             <div
               onClick={() => logout(logoutUser)}
               className={s.logout}

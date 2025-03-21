@@ -5,7 +5,7 @@ import { Modal, Table } from 'antd';
 import s from '../User/Grade/styles.module.scss';
 import { columns, filters } from './config.tsx';
 import Filter from '../../../commonComponents/Filter';
-import { getAllUsers, getUser } from './actions.ts';
+import { deleteUser, getAllUsers, getUser } from './actions.ts';
 import { IAllUsersMapped } from '../../../../types/commonTypes.ts';
 import UserInfo from './userInfo/undex.tsx';
 import { IUserMapped } from '../../../../types/userTypes.ts';
@@ -25,13 +25,18 @@ const UserManagement: FC<IUserManagement> = () => {
     getAllUsers(role)
       .then((data) => setUsersData(data?.data ?? []))
       .then(() => setLoading(false));
-  const openModal = async (email: string) => {
+  const openModal = async (email: string): Promise<void> => {
     setIsUserLoading(true);
     setIsModalOpen(email);
   };
   useEffect(() => {
     !!isModalOpen && afterOpen();
   }, [isModalOpen]);
+
+  const handleDeleteUser = async (id: string): Promise<void> => {
+    await deleteUser(id);
+    window.location.reload();
+  };
 
   const afterOpen = async () => {
     const { data } = await getUser(role, isModalOpen);
@@ -50,7 +55,7 @@ const UserManagement: FC<IUserManagement> = () => {
         loading={loading}
         className={s.table}
         dataSource={usersData}
-        columns={(() => columns(openModal))()}
+        columns={(() => columns(openModal, handleDeleteUser))()}
         pagination={false}
       />
       <Modal

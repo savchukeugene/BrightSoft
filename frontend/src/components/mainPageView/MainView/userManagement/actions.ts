@@ -1,6 +1,7 @@
 import { IUserRoles } from '../../../../store/userStore.tsx';
 import AxiosService from '../../../../axios/AxiosService.tsx';
 import {
+  API_DELETE_USER,
   API_GET_ALL_USERS,
   API_GET_USER_INFO,
 } from '../../../../common/constants/api.ts';
@@ -11,6 +12,8 @@ import {
 } from '../../../../types/commonTypes.ts';
 import { allUsersDataMapper, userDataMapper } from './mapper.ts';
 import { IUserMapped } from '../../../../types/userTypes.ts';
+import { notification } from 'antd';
+import { messages } from '../../../../common/constants/messages.ts';
 
 export const getAllUsers = async (
   role: IUserRoles,
@@ -46,5 +49,18 @@ export const getUser = async (
   } catch (e) {
     console.log(e);
     return { data: null, ok: false };
+  }
+};
+
+export const deleteUser = async (id: string): Promise<void> => {
+  try {
+    await AxiosService.DELETE<{ id: string }>(API_DELETE_USER, {
+      data: { id },
+    });
+  } catch (e) {
+    notification.error({
+      message: messages.notification.error.unknownError,
+      description: '',
+    });
   }
 };

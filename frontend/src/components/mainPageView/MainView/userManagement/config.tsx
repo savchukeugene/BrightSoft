@@ -4,6 +4,7 @@ import { IAllUsersMapped } from '../../../../types/commonTypes.ts';
 
 export const columns = (
   openModal: (email: string) => Promise<void>,
+  deleteUser: (id: string) => Promise<void>,
 ): TableColumnsType<IAllUsersMapped> => [
   {
     title: 'Имя пользователя',
@@ -39,7 +40,10 @@ export const columns = (
     fixed: 'right',
     width: 100,
     render: (value: IAllUsersMapped) => (
-      <a onClick={() => openModal(value.email as string)}>Просмотр</a>
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+        <a onClick={() => openModal(value.email as string)}>Просмотр</a>
+        <a onClick={() => deleteUser(value.id)}>Удалить</a>
+      </div>
     ),
   },
 ];

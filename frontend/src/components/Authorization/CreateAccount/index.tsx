@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Button } from 'antd';
+import { Button, notification } from 'antd';
 import { messages } from '../../../common/constants/messages.ts';
 import { register } from './actions.ts';
 import { IRegisterDTO } from '../../../types/commonTypes.ts';
@@ -8,8 +8,11 @@ import {
   collectFieldsData,
 } from '../../../common/utils/generatotrs.tsx';
 import { createAccountFieldsConfig } from './config.ts';
+import { useNavigate } from 'react-router-dom';
+import { ROOTS } from '../../../common/constants/roots.ts';
 
 const CreateAccount: FC = () => {
+  const navigate = useNavigate();
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
     const formData: FormData = new FormData(event.target as HTMLFormElement);
@@ -19,7 +22,16 @@ const CreateAccount: FC = () => {
       'password',
       'passwordRepeat',
     ]);
-    await register(dataTest);
+    const { data } = await register(dataTest);
+    if (data) {
+      notification.success({
+        message: messages.notification.success.messages.success,
+        description: messages.notification.success.description.successRegistration,
+      });
+      navigate({
+        pathname: ROOTS.login,
+      });
+    }
   };
 
   return (

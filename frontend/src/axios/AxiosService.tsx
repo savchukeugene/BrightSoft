@@ -22,6 +22,10 @@ export default class AxiosService {
     return this.fetchData<T>(url, 'GET');
   }
 
+  public static DELETE<T>(url: AxiosRequestConfig['url'], config: RequestConfig<T> = {}) {
+    return this.fetchData<T>(url, 'DELETE', config);
+  }
+
   public static POST<T>(url: AxiosRequestConfig['url'], config: RequestConfig<T> = {}) {
     return this.fetchData<T>(url, 'POST', config);
   }
@@ -36,7 +40,7 @@ export default class AxiosService {
 
   public static fetchData<T>(
     url: AxiosRequestConfig['url'],
-    method: string,
+    method: AxiosRequestConfig['method'],
     config?: RequestConfig<T>,
   ): Promise<IActionsFormat<AxiosResponse<T, any> | null>> {
     return axios

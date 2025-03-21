@@ -27,3 +27,4 @@ const user_ref: string = `${ref}/users`;
 export const API_WHO_AM_I: string = `${user_ref}/whoAmI`;
 export const API_GET_ALL_USERS = `${user_ref}/allUsers`;
 export const API_GET_USER_INFO = `${user_ref}/userInfo`;
+export const API_DELETE_USER = `${user_ref}/deleteUser`;

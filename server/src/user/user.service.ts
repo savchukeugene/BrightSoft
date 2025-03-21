@@ -50,8 +50,15 @@ export class UserService {
   }
 
   public async getUserInfo(role: UserRole, email: string, request: Request) {
-    const cookiesValue = request.cookies;
     const data = this.findMyEmail(email);
+    if (!data) throw new NotFoundException(`Пользователь не найден!`);
+    return data;
+  }
+
+  public async deleteUser(id: string) {
+    const data = this.prismaService.user.delete({
+      where: { id },
+    });
     if (!data) throw new NotFoundException(`Пользователь не найден!`);
     return data;
   }

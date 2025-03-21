@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   HttpCode,
   HttpStatus,
   Post,
@@ -10,7 +11,7 @@ import {
 import { UserService } from './user.service';
 import { WhoAmIDto } from './dto/whoAmI.dto';
 import { UserRole } from '../../prisma/__generated__';
-import { UserInfoDto } from './dto/userInfo.dto';
+import { UserDeleteDto, UserInfoDto } from './dto/userInfo.dto';
 import { Request } from 'express';
 import { RolesGuard } from '../libs/common/decorators/role-validator';
 
@@ -36,5 +37,12 @@ export class UserController {
   @UseGuards(new RolesGuard(['administrator', 'support']))
   public async getUserInfo(@Body() dto: UserInfoDto, @Req() request: Request) {
     return await this.userService.getUserInfo(dto.role, dto.email, request);
+  }
+
+  @Delete('deleteUser')
+  @HttpCode(HttpStatus.OK)
+  @UseGuards(new RolesGuard(['administrator', 'support']))
+  public async deleteUser(@Body() dto: UserDeleteDto) {
+    return await this.userService.deleteUser(dto.id);
   }
 }

@@ -9,3 +9,9 @@ export class UserInfoDto {
   @IsNotEmpty({ message: 'Email обязателен для заполнения.' })
   email: string;
 }
+
+export class UserDeleteDto {
+  @IsString({ message: 'Id должен быть строкой.' })
+  @IsNotEmpty({ message: 'Id обязателен для заполнения.' })
+  id: string;
+}

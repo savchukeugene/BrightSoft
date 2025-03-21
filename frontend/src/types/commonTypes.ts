@@ -46,6 +46,7 @@ export interface IUserData {
 }
 
 export interface IAllUsersMapped {
+  id: string;
   userName: string;
   role: IUserRoles;
   //course_name: string;
