@@ -21,6 +21,15 @@ $ npm run dev
 
 If you want to run backend application, you must:
 1) Make sure you are in server directory
+```bash
+$ cd prisma
+```
+```bash
+$ npx prisma db push
+```
+```bash
+$ cd ../
+```
 2) Run:
 ```bash
 $ pnpm install

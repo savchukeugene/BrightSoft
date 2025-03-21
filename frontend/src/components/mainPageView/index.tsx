@@ -28,7 +28,7 @@ const MainPage = () => {
       >
         <Menu
           theme={'dark'}
-          defaultSelectedKeys={['user/grade']} //TODO fix
+          defaultSelectedKeys={['user/grade']}
           mode="inline"
           items={LEFT_SIDE_OPTIONS_LIST[role]}
           onClick={(value) =>
