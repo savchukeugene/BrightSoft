@@ -15,7 +15,8 @@ model User {
   role UserRole @default(user)
   userName String
   picture String?
-
+  status UserStatus @default(non_confirmed)
+  courseName CourseNames @default(free) @map("course_name")
   method AuthMethods
 
   accounts Account[]
@@ -80,6 +81,13 @@ enum UserRole {
   support
 }
 
+enum UserStatus {
+  active
+  non_confirmed
+  blocked
+  deleted
+}
+
 enum TokenType {
   verification
   two_factor
@@ -87,6 +95,7 @@ enum TokenType {
 }
 
 enum CourseNames {
+  free
   newbie
   beginner
   amateur

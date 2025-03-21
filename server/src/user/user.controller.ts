@@ -10,7 +10,6 @@ import {
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { WhoAmIDto } from './dto/whoAmI.dto';
-import { UserRole } from '../../prisma/__generated__';
 import { UserDeleteDto, UserInfoDto } from './dto/userInfo.dto';
 import { Request } from 'express';
 import { RolesGuard } from '../libs/common/decorators/role-validator';
@@ -41,7 +40,7 @@ export class UserController {
 
   @Delete('deleteUser')
   @HttpCode(HttpStatus.OK)
-  @UseGuards(new RolesGuard(['administrator', 'support']))
+  @UseGuards(new RolesGuard(['administrator']))
   public async deleteUser(@Body() dto: UserDeleteDto) {
     return await this.userService.deleteUser(dto.id);
   }
