@@ -51,7 +51,9 @@ export const messages = {
       nextTasks: tasksPages,
     },
   },
-  modal: {},
+  modal: {
+    confirmUserDelete: 'Вы действительно хотите удалить данного пользователя?',
+  },
   button: {
     yes: 'Да',
     no: 'Нет',

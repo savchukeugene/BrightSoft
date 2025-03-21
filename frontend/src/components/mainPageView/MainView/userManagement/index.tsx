@@ -9,6 +9,7 @@ import { deleteUser, getAllUsers, getUser } from './actions.ts';
 import { IAllUsersMapped } from '../../../../types/commonTypes.ts';
 import UserInfo from './userInfo/undex.tsx';
 import { IUserMapped } from '../../../../types/userTypes.ts';
+import { messages } from '../../../../common/constants/messages.ts';
 
 interface IUserManagement {
   role: IUserRoles;
@@ -20,6 +21,7 @@ const UserManagement: FC<IUserManagement> = () => {
   const [userData, setUserData] = useState<IUserMapped>();
   const [isModalOpen, setIsModalOpen] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
+  const [isUserDeleteConfirmOpen, setIsUserDeleteConfirmOpen] = useState<string>('');
   const [isUserInfoLoading, setIsUserLoading] = useState<boolean>(false);
   !usersData &&
     getAllUsers(role)
@@ -55,7 +57,7 @@ const UserManagement: FC<IUserManagement> = () => {
         loading={loading}
         className={s.table}
         dataSource={usersData}
-        columns={(() => columns(openModal, handleDeleteUser))()}
+        columns={(() => columns(openModal, setIsUserDeleteConfirmOpen))()}
         pagination={false}
       />
       <Modal
@@ -65,6 +67,12 @@ const UserManagement: FC<IUserManagement> = () => {
       >
         <UserInfo data={userData as IUserMapped} />
       </Modal>
+      <Modal
+        open={!!isUserDeleteConfirmOpen}
+        onCancel={() => setIsUserDeleteConfirmOpen('')}
+        onOk={() => handleDeleteUser(isUserDeleteConfirmOpen)}
+        title={messages.modal.confirmUserDelete}
+      />
     </div>
   );
 };

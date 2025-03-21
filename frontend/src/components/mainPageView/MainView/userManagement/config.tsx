@@ -1,10 +1,11 @@
 import { TableColumnsType } from 'antd';
 import { USER_ROLES_OPTIONS } from '../../../../common/constants/options.ts';
 import { IAllUsersMapped } from '../../../../types/commonTypes.ts';
+import { Dispatch, SetStateAction } from 'react';
 
 export const columns = (
   openModal: (email: string) => Promise<void>,
-  deleteUser: (id: string) => Promise<void>,
+  deleteUser: Dispatch<SetStateAction<string>>,
 ): TableColumnsType<IAllUsersMapped> => [
   {
     title: 'Имя пользователя',

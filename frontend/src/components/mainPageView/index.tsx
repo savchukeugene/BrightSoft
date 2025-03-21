@@ -7,8 +7,7 @@ import Footer from '../Layout/Footer';
 import { HEADER_OPTIONS, LEFT_SIDE_OPTIONS_LIST } from './headerConfig/config.tsx';
 import s from './styles.module.scss';
 import { useUserStore } from '../../store/userStore.tsx';
-import { logout } from '../Authorization/Login/actions.ts';
-import { StarFilled } from '@ant-design/icons';
+import Navigation from '../commonComponents/Navigation';
 
 const { Sider } = Layout;
 
@@ -18,7 +17,6 @@ const MainPage = () => {
   const navigate = useNavigate();
   const { role } = useUserStore();
   const splitPathname: string[] = pathname.split('/');
-  const { logoutUser } = useUserStore();
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -30,7 +28,7 @@ const MainPage = () => {
       >
         <Menu
           theme={'dark'}
-          defaultSelectedKeys={['1']} //TODO fix
+          defaultSelectedKeys={['user/grade']} //TODO fix
           mode="inline"
           items={LEFT_SIDE_OPTIONS_LIST[role]}
           onClick={(value) =>
@@ -62,18 +60,7 @@ const MainPage = () => {
               })
             }
           />
-          <nav className={s.nav}>
-            {role === 'user' && (
-              <div className={s.stars}>
-                <StarFilled className={s.starIcon} />
-                <h3>23</h3>
-              </div>
-            )}
-            <div
-              onClick={() => logout(logoutUser)}
-              className={s.logout}
-            />
-          </nav>
+          <Navigation />
         </Header>
         <PageWrapper>
           <Outlet />
