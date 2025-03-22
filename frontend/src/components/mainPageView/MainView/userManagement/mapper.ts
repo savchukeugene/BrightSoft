@@ -1,4 +1,8 @@
-import { IAllUsersMapped, IUserData } from '../../../../types/commonTypes.ts';
+import {
+  IAllUsersMapped,
+  IUserData,
+  UserStatuses,
+} from '../../../../types/commonTypes.ts';
 import { messages } from '../../../../common/constants/messages.ts';
 import { IUserRoles } from '../../../../store/userStore.tsx';
 import { formatDate } from '../../../../common/utils/helpers.tsx';
@@ -11,9 +15,7 @@ export const allUsersDataMapper = (data: IUserData[]): IAllUsersMapped[] => {
     role: messages.userRoles[user.role] as IUserRoles,
     created_at: formatDate(user.createdAt),
     email: user.email,
-    isVerified: user.isVerified
-      ? messages.view.main.userManagement.isVerified.yes
-      : messages.view.main.userManagement.isVerified.no,
+    status: messages.userStatuses[user.status] as UserStatuses,
   }));
 };
 

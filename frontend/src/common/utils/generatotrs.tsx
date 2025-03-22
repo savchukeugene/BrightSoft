@@ -40,6 +40,7 @@ export const fieldsGenerator = (fields: IField[]) =>
             <Select
               style={{ width: '200px' }}
               options={element.options}
+              defaultValue={element?.defaultValue}
               placeholder={element.placeholder}
               allowClear={true}
             />

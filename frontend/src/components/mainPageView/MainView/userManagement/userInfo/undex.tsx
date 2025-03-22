@@ -3,11 +3,12 @@ import s from './styles.module.scss';
 import { IField } from '../../../../../types/filterTypes.ts';
 import { IUserMapped } from '../../../../../types/userTypes.ts';
 import { createConfig } from './config.ts';
+import { fieldsGenerator } from '../../../../../common/utils/generatotrs.tsx';
 
 export interface IUserInfoGenerator {
   label: string;
   value: string;
-  activeElement?: IField;
+  activeElement?: Partial<IField>;
 }
 
 interface IUserInfoComponent {
@@ -20,13 +21,14 @@ const userInfoGenerator = (config: IUserInfoGenerator[]): JSX.Element[] =>
       key={`${index}_userInfo`}
       className={s.userInfoBlock}
     >
-      {`${field.label}: `}
-      {field.value}
+      <div className={s.label}>{`${field.label}: `}</div>
+      {field.activeElement
+        ? fieldsGenerator([field.activeElement] as IField[])
+        : field.value}
     </div>
   ));
 
 const UserInfo: FC<IUserInfoComponent> = ({ data }): JSX.Element => {
-  console.log(data);
   return <section>{userInfoGenerator(createConfig(data))}</section>;
 };
 

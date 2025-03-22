@@ -4,6 +4,7 @@ export interface IField {
   name: string;
   type: string;
   placeholder: string;
+  defaultValue?: string;
   options?: IOptions[];
 }
 

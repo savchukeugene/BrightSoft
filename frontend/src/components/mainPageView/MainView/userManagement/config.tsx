@@ -2,6 +2,7 @@ import { TableColumnsType } from 'antd';
 import { USER_ROLES_OPTIONS } from '../../../../common/constants/options.ts';
 import { IAllUsersMapped } from '../../../../types/commonTypes.ts';
 import { Dispatch, SetStateAction } from 'react';
+import { IField } from '../../../../types/filterTypes.ts';
 
 export const columns = (
   openModal: (email: string) => Promise<void>,
@@ -29,9 +30,9 @@ export const columns = (
     fixed: 'left',
   },
   {
-    title: 'Подтверждён',
-    dataIndex: 'isVerified',
-    key: 'isVerified',
+    title: 'Статус',
+    dataIndex: 'status',
+    key: 'status',
     width: 100,
     fixed: 'left',
   },
@@ -49,7 +50,7 @@ export const columns = (
   },
 ];
 
-export const filters = [
+export const filters: IField[] = [
   { name: 'first_name', placeholder: 'Имя', type: 'input' },
   { name: 'second_name', placeholder: 'Фамилия', type: 'input' },
   { name: 'middle_name', placeholder: 'Отчество', type: 'input' },

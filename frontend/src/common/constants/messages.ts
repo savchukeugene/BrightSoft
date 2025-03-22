@@ -88,6 +88,12 @@ export const messages = {
     user: 'Пользователь',
     support: 'Специалист техподдержки',
   },
+  userStatuses: {
+    active: 'Активный',
+    non_confirmed: 'Не подтверждён',
+    blocked: 'Заблокирован',
+    deleted: 'Удалён',
+  },
   defaultText:
     'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been\n' +
     "                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley\n" +

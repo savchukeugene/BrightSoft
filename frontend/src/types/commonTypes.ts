@@ -51,10 +51,10 @@ export interface IAllUsersMapped {
   userName: string;
   role: IUserRoles;
   //course_name: string;
-  //status: UserStatuses;
+  status: UserStatuses;
   email?: string;
   created_at: string;
-  isVerified: string;
+  // isVerified: string;
 }
 
 export interface IUserInfo {
