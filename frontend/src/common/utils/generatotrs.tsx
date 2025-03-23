@@ -22,12 +22,15 @@ export const authorizationFieldsGenerator = (config: IAuthorizationFields[]) =>
     </div>
   ));
 
-export const quickCountLevelsGenerator = (config: IQuickCountLevelFields[]) =>
+export const quickCountLevelsGenerator = (
+  config: IQuickCountLevelFields[],
+  handler: (param: string) => void,
+) =>
   config.map((level: IQuickCountLevelFields) => (
     <section
       className={s.select}
+      onClick={() => handler(level.name)}
       style={{
-        boxShadow: `0px 0px 40px ${level.boxShadow} inset`,
         width: `${100 / config.length - 2}%`,
       }}
     >

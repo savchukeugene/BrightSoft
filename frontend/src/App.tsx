@@ -42,7 +42,17 @@ function App() {
                 <Route
                   path={routeGenerator(ROOTS.mainPage, ROOTS.tasks, ROOTS.quickCount)}
                   element={<QuickCount />}
-                />
+                >
+                  <Route
+                    path={routeGenerator(
+                      ROOTS.mainPage,
+                      ROOTS.tasks,
+                      ROOTS.quickCount,
+                      ROOTS.play,
+                    )}
+                    element={<h1>play with me</h1>}
+                  />
+                </Route>
               </Route>
 
               <Route

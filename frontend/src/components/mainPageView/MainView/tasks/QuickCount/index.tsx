@@ -4,14 +4,26 @@ import { quickCountLevelsGenerator } from '../../../../../common/utils/generatot
 import { levelsConfig } from './config.tsx';
 
 import s from './styles.module.scss';
+import { Outlet, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { ROOTS } from '../../../../../common/constants/roots.ts';
 
 const QuickCount: FC = (): JSX.Element => {
-  console.log(`${100 / levelsConfig.length - 2}%`);
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const { pathname } = useLocation();
+  const handleLevelChoose = (param: string) => {
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.set('level', param);
+    navigate({
+      pathname: pathname.concat(ROOTS.play),
+      search: newSearchParams.toString(),
+    });
+  };
   return (
     <div>
       <h1 className={'pageTitle'}>{messages.view.main.tasks.quickCount.title}</h1>
       <section className={s.quickCountLevels}>
-        {quickCountLevelsGenerator(levelsConfig)}
+        {quickCountLevelsGenerator(levelsConfig, handleLevelChoose)}
         {/*<Form className={s.quickCountForm}>*/}
         {/*  <h1> {messages.view.main.tasks.quickCount.formTitle}</h1>*/}
         {/*  <FormItem*/}
@@ -61,6 +73,7 @@ const QuickCount: FC = (): JSX.Element => {
         {/*  </FormItem>*/}
         {/*</Form>*/}
       </section>
+      <Outlet />
     </div>
   );
 };

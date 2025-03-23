@@ -11,4 +11,5 @@ export const ROOTS = {
   login: '/login',
   createAccount: '/createAccount',
   userManagement: '/userManagement',
+  play: '/play',
 };

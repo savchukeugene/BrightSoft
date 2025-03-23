@@ -23,6 +23,7 @@ export interface IAuthorizationFields {
 
 export interface IQuickCountLevelFields {
   label: string;
+  name: string;
   icon: ReactNode;
   boxShadow: string;
 }

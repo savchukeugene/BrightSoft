@@ -36,16 +36,25 @@
   height: 50vh;
 
   section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border: 2px solid #8b7bff;
     border-radius: 10px;
     height: 100%;
     transition: .2s;
     cursor: pointer;
     box-shadow: 0 0 0;
+    font-family: "Shadows Into Light", cursive;
+    font-weight: 600;
+
+    img {
+      width: 150px;
+      height: 150px;
+    }
   }
 
   section:hover {
-    box-shadow: 0 0 30px;
     height: 105%;
   }
 }
