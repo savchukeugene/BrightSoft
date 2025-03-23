@@ -4,10 +4,11 @@ import { IField } from '../../../../../types/filterTypes.ts';
 import { IUserMapped } from '../../../../../types/userTypes.ts';
 import { createConfig } from './config.ts';
 import { fieldsGenerator } from '../../../../../common/utils/generatotrs.tsx';
+import { Form } from 'antd';
 
 export interface IUserInfoGenerator {
   label: string;
-  value: string;
+  value?: string;
   activeElement?: Partial<IField>;
 }
 
@@ -29,7 +30,15 @@ const userInfoGenerator = (config: IUserInfoGenerator[]): JSX.Element[] =>
   ));
 
 const UserInfo: FC<IUserInfoComponent> = ({ data }): JSX.Element => {
-  return <section>{userInfoGenerator(createConfig(data))}</section>;
+  const [form] = Form.useForm();
+  return (
+    <Form
+      form={form}
+      onFinish={(values) => console.log(values)}
+    >
+      {userInfoGenerator(createConfig(data))}
+    </Form>
+  );
 };
 
 export default UserInfo;

@@ -29,6 +29,18 @@ export const messages = {
           duration: 'Общее время',
           period: 'Время изменения',
           range: 'Диапазон',
+          labels: {
+            superEasy: 'Проще простого',
+            easy: 'Легкий',
+            normal: 'Средний',
+            hard: 'Тяжёлый',
+          },
+          boxShadow: {
+            superEasy: '#64ff9d',
+            easy: '#008c32',
+            normal: '#eeb800',
+            hard: '#e70202',
+          },
           validateMessage: (label: string): string =>
             `Пожалуйста, укажите поле ${label}!`,
         },

@@ -1,7 +1,9 @@
 import { IUserInfoGenerator } from './undex.tsx';
 import { IUserMapped } from '../../../../../types/userTypes.ts';
-import { USER_ROLES_OPTIONS } from '../../../../../common/constants/options.ts';
-import { messages } from '../../../../../common/constants/messages.ts';
+import {
+  USER_ROLES_OPTIONS,
+  USER_STATUSES_OPTIONS,
+} from '../../../../../common/constants/options.ts';
 
 export const createConfig = (data: IUserMapped): IUserInfoGenerator[] => [
   {
@@ -14,7 +16,12 @@ export const createConfig = (data: IUserMapped): IUserInfoGenerator[] => [
   },
   {
     label: 'Статус',
-    value: messages.userStatuses[data?.status],
+    activeElement: {
+      name: 'status',
+      type: 'select',
+      options: USER_STATUSES_OPTIONS.filter((object) => object.value !== 'deleted'),
+      defaultValue: data?.status,
+    },
   },
   {
     label: 'Роль',
@@ -24,6 +31,5 @@ export const createConfig = (data: IUserMapped): IUserInfoGenerator[] => [
       options: USER_ROLES_OPTIONS,
       defaultValue: data?.role,
     },
-    value: data?.role,
   },
 ];

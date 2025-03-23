@@ -1,4 +1,5 @@
 import { IUserRoles } from '../store/userStore.tsx';
+import { ReactNode } from 'react';
 
 const userStatuses = ['active', 'blocked', 'deleted', 'non_confirmed'] as const;
 export type UserStatuses = (typeof userStatuses)[number];
@@ -18,6 +19,12 @@ export interface IRegisterDTO {
 export interface IAuthorizationFields {
   label: string;
   name: string;
+}
+
+export interface IQuickCountLevelFields {
+  label: string;
+  icon: ReactNode;
+  boxShadow: string;
 }
 
 export interface ILoginDTO {
@@ -50,11 +57,10 @@ export interface IAllUsersMapped {
   id: string;
   userName: string;
   role: IUserRoles;
-  //course_name: string;
   status: UserStatuses;
   email?: string;
   created_at: string;
-  // isVerified: string;
+  key?: string;
 }
 
 export interface IUserInfo {

@@ -1,0 +1,25 @@
+.input {
+  background: #5c8dff;
+  border: 0;
+}
+
+.select {
+  div {
+    background: #5c8dff !important;
+    border: 0 !important;
+  }
+}
+
+.input::placeholder {
+  color: white;
+}
+.input:hover::placeholder {
+  color: gray;
+}
+
+.quickCountLevels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
