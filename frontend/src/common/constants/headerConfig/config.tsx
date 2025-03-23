@@ -6,7 +6,7 @@ import {
   TeamOutlined,
   UserOutlined,
 } from '@ant-design/icons';
-import { getItem, MenuItem } from '../../../common/utils/helpers.tsx';
+import { getItem, MenuItem } from '../../utils/helpers.tsx';
 import { ItemType } from 'antd/es/menu/interface';
 import { IUserRoles } from '../../../store/userStore.tsx';
 

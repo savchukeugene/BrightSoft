@@ -1,17 +1,16 @@
-import s from './styles.module.scss'
+import s from './styles.module.scss';
+import { messages } from '../../../common/constants/messages.ts';
 
 const Footer = () => {
-    return (
-        <footer
-            className={s.footer}
-        >
-            2018-{new Date().getFullYear()}, Общество с ограниченной ответственностью «Брайт Софт Системс»
-            <br />
-            224006, г. Брест, ул. Ясеневая, д. 5/1
-            <br />
-            Телефон: +375 162 937306
-        </footer>
-    )
-}
+  return (
+    <footer className={s.footer}>
+      {messages.view.footer.footer1}
+      <br />
+      {messages.view.footer.footer2}
+      <br />
+      {messages.view.footer.footer3}
+    </footer>
+  );
+};
 
-export default Footer
+export default Footer;

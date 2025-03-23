@@ -62,6 +62,11 @@ export const messages = {
       nextUser: userPages,
       nextTasks: tasksPages,
     },
+    footer: {
+      footer1: `2018-${new Date().getFullYear()}, Общество с ограниченной ответственностью «Брайт Софт Системс»`,
+      footer2: '224006, г. Брест, ул. Ясеневая, д. 5/1',
+      footer3: 'Телефон: +375 162 937306',
+    },
   },
   modal: {
     confirmUserDelete: 'Вы действительно хотите удалить данного пользователя?',
