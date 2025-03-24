@@ -3,41 +3,42 @@ import { USER_ROLES_OPTIONS } from '../../../../common/constants/options.ts';
 import { IAllUsersMapped } from '../../../../types/commonTypes.ts';
 import { Dispatch, SetStateAction } from 'react';
 import { IField } from '../../../../types/filterTypes.ts';
+import { messages } from '../../../../common/constants/messages.ts';
 
 export const columns = (
   openModal: (email: string) => Promise<void>,
   deleteUser: Dispatch<SetStateAction<string>>,
 ): TableColumnsType<IAllUsersMapped> => [
   {
-    title: 'Имя пользователя',
+    title: messages.view.main.userManagement.table.userName,
     width: 100,
     dataIndex: 'userName',
     key: 'userName',
     fixed: 'left',
   },
   {
-    title: 'Роль',
+    title: messages.view.main.userManagement.table.role,
     width: 100,
     dataIndex: 'role',
     key: 'role',
     fixed: 'left',
   },
   {
-    title: 'Создал аккаунт',
+    title: messages.view.main.userManagement.table.created_at,
     width: 100,
     dataIndex: 'created_at',
     key: 'created_at',
     fixed: 'left',
   },
   {
-    title: 'Статус',
+    title: messages.view.main.userManagement.table.status,
     dataIndex: 'status',
     key: 'status',
     width: 100,
     fixed: 'left',
   },
   {
-    title: 'Действия',
+    title: messages.view.main.userManagement.table.operation,
     key: 'operation',
     fixed: 'right',
     width: 100,

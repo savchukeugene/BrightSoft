@@ -7,7 +7,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const LayoutHeader = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  // const { role } = useUserStore();
   const splitPathname: string[] = pathname.split('/');
 
   return (

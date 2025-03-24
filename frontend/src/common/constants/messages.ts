@@ -46,10 +46,37 @@ export const messages = {
         },
       },
       userManagement: {
+        table: {
+          userName: 'Имя пользователя',
+          role: 'Роль',
+          created_at: 'Создал аккаунт',
+          status: 'Статус',
+          operation: 'Действия',
+        },
+        userInfo: {
+          userName: 'Имя пользователя',
+          email: 'Электронная почта',
+          status: 'Статус',
+          role: 'Роль',
+        },
         isVerified: {
           yes: 'Подтверждён',
           no: 'Не подтверждён',
         },
+      },
+    },
+    login: {
+      fields: {
+        inputEmail: 'Введите e-mail',
+        inputPassword: 'Введите пароль',
+      },
+    },
+    createAccount: {
+      fields: {
+        userName: 'Придумайте имя пользователя',
+        email: 'Введите e-mail',
+        password: 'Придумайте пароль',
+        passwordRepeat: 'Подтвердите пароль',
       },
     },
     pageNotFound: {

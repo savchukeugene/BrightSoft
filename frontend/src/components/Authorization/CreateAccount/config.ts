@@ -1,20 +1,21 @@
 import { IAuthorizationFields } from '../../../types/commonTypes.ts';
+import { messages } from '../../../common/constants/messages.ts';
 
 export const createAccountFieldsConfig: IAuthorizationFields[] = [
   {
-    label: 'Придумайте имя пользователя',
+    label: messages.view.createAccount.fields.userName,
     name: 'name',
   },
   {
-    label: 'Введите e-mail',
+    label: messages.view.createAccount.fields.email,
     name: 'email',
   },
   {
-    label: 'Придумайте пароль',
+    label: messages.view.createAccount.fields.password,
     name: 'password',
   },
   {
-    label: 'Подтвердите пароль',
+    label: messages.view.createAccount.fields.passwordRepeat,
     name: 'passwordRepeat',
   },
 ];

@@ -1,12 +1,13 @@
 import { IAuthorizationFields } from '../../../types/commonTypes.ts';
+import { messages } from '../../../common/constants/messages.ts';
 
 export const loginFieldsConfig: IAuthorizationFields[] = [
   {
-    label: 'Введите e-mail',
+    label: messages.view.login.fields.inputEmail,
     name: 'email',
   },
   {
-    label: 'Введите пароль',
+    label: messages.view.login.fields.inputPassword,
     name: 'password',
   },
 ];

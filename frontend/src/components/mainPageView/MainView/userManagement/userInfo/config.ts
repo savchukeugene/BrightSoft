@@ -4,18 +4,19 @@ import {
   USER_ROLES_OPTIONS,
   USER_STATUSES_OPTIONS,
 } from '../../../../../common/constants/options.ts';
+import { messages } from '../../../../../common/constants/messages.ts';
 
 export const createConfig = (data: IUserMapped): IUserInfoGenerator[] => [
   {
-    label: 'Имя пользователя',
+    label: messages.view.main.userManagement.userInfo.userName,
     value: data?.userName,
   },
   {
-    label: 'Электронная почта',
+    label: messages.view.main.userManagement.userInfo.email,
     value: data?.email,
   },
   {
-    label: 'Статус',
+    label: messages.view.main.userManagement.userInfo.status,
     activeElement: {
       name: 'status',
       type: 'select',
@@ -24,7 +25,7 @@ export const createConfig = (data: IUserMapped): IUserInfoGenerator[] => [
     },
   },
   {
-    label: 'Роль',
+    label: messages.view.main.userManagement.userInfo.role,
     activeElement: {
       name: 'role',
       type: 'select',
