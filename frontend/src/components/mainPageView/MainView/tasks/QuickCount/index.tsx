@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { messages } from '../../../../../common/constants/messages.ts';
 import { quickCountLevelsGenerator } from '../../../../../common/utils/generatotrs.tsx';
 import { levelsConfig } from './config.tsx';
@@ -12,11 +12,9 @@ const QuickCount: FC = (): JSX.Element => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { pathname } = useLocation();
-  const [pageMode, setPageMode] = useState<'chooseLevel' | 'play'>('chooseLevel');
   const handleLevelChoose = (param: GamesLevelType) => {
     const newSearchParams = new URLSearchParams(searchParams);
     newSearchParams.set('level', param);
-    setPageMode('play');
     navigate({
       pathname: pathname.concat(ROOTS.play),
       search: newSearchParams.toString(),
@@ -25,7 +23,9 @@ const QuickCount: FC = (): JSX.Element => {
   return (
     <main>
       <h1 className={'pageTitle'}>{messages.view.main.tasks.quickCount.title}</h1>
-      {pageMode === 'chooseLevel' ? (
+      {pathname.includes(ROOTS.play) ? (
+        <Outlet />
+      ) : (
         <section className={s.quickCountLevels}>
           {quickCountLevelsGenerator(levelsConfig, handleLevelChoose)}
           {/*<Form className={s.quickCountForm}>*/}
@@ -77,8 +77,6 @@ const QuickCount: FC = (): JSX.Element => {
           {/*  </FormItem>*/}
           {/*</Form>*/}
         </section>
-      ) : (
-        <Outlet />
       )}
     </main>
   );
