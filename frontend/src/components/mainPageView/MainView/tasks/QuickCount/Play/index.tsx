@@ -5,6 +5,7 @@ import { GamesLevelType } from '../../../../../../types/commonTypes.ts';
 
 const Play = () => {
   const [searchParams] = useSearchParams();
+  const levelInfo = gameConfig[searchParams.get('level') as GamesLevelType];
   return (
     <section>
       <h1>
@@ -12,18 +13,11 @@ const Play = () => {
         <Tooltip
           title={
             <>
+              <h4>Общее время: {levelInfo.duration}c.</h4>
               <h4>
-                Общее время:{' '}
-                {gameConfig[searchParams.get('level') as GamesLevelType].duration}c.
+                От {levelInfo.range[0]} до {levelInfo.range[1]}
               </h4>
-              <h4>
-                От {gameConfig[searchParams.get('level') as GamesLevelType].range[0]}c. до{' '}
-                {gameConfig[searchParams.get('level') as GamesLevelType].range[1]}c.
-              </h4>
-              <h4>
-                Периодичность{' '}
-                {gameConfig[searchParams.get('level') as GamesLevelType].changePeriod}c.
-              </h4>
+              <h4>Периодичность {levelInfo.changePeriod}c.</h4>
             </>
           }
         >

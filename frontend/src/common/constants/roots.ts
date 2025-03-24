@@ -5,6 +5,7 @@ export const ROOTS = {
   grade: '/grade',
   quickCount: '/quickCount',
   timetable: '/timetable',
+  maze: '/maze',
   support: '/support',
   about: '/about',
   editingPages: '/editingPages',

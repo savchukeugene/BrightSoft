@@ -8,6 +8,18 @@ export const messages = {
   },
   view: {
     main: {
+      layoutOptions: {
+        users: 'Пользователи',
+        user: 'Пользователь',
+        tasks: 'Задания',
+        support: 'Служба поддержки',
+        pages: 'Страницы',
+        about: 'О компании',
+        grade: 'Оценки',
+        timetable: 'Расписание',
+        maze: 'Лабиринты',
+        quickCount: 'Быстрый счёт',
+      },
       supportPage: {
         title: 'Нам жаль, что Вы столкнулись с неприятностью...',
         subTitle: 'Пожалуйста, опишите проблему, с которой Вы столкнулись:',
