@@ -13,6 +13,7 @@ import { routeGenerator } from './common/utils/generatotrs.tsx';
 import LandingPages from './components/LandingPages';
 import UserManagement from './components/mainPageView/MainView/userManagement';
 import { defineDefaultNavigation } from './common/utils/helpers.tsx';
+import Play from './components/mainPageView/MainView/tasks/QuickCount/Play';
 
 function App() {
   const user: IUserStore = useUserStore();
@@ -50,7 +51,7 @@ function App() {
                       ROOTS.quickCount,
                       ROOTS.play,
                     )}
-                    element={<h1>play with me</h1>}
+                    element={<Play />}
                   />
                 </Route>
               </Route>

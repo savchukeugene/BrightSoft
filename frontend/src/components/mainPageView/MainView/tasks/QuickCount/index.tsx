@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { messages } from '../../../../../common/constants/messages.ts';
 import { quickCountLevelsGenerator } from '../../../../../common/utils/generatotrs.tsx';
 import { levelsConfig } from './config.tsx';
@@ -6,75 +6,81 @@ import { levelsConfig } from './config.tsx';
 import s from './styles.module.scss';
 import { Outlet, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { ROOTS } from '../../../../../common/constants/roots.ts';
+import { GamesLevelType } from '../../../../../types/commonTypes.ts';
 
 const QuickCount: FC = (): JSX.Element => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { pathname } = useLocation();
-  const handleLevelChoose = (param: string) => {
+  const [pageMode, setPageMode] = useState<'chooseLevel' | 'play'>('chooseLevel');
+  const handleLevelChoose = (param: GamesLevelType) => {
     const newSearchParams = new URLSearchParams(searchParams);
     newSearchParams.set('level', param);
+    setPageMode('play');
     navigate({
       pathname: pathname.concat(ROOTS.play),
       search: newSearchParams.toString(),
     });
   };
   return (
-    <div>
+    <main>
       <h1 className={'pageTitle'}>{messages.view.main.tasks.quickCount.title}</h1>
-      <section className={s.quickCountLevels}>
-        {quickCountLevelsGenerator(levelsConfig, handleLevelChoose)}
-        {/*<Form className={s.quickCountForm}>*/}
-        {/*  <h1> {messages.view.main.tasks.quickCount.formTitle}</h1>*/}
-        {/*  <FormItem*/}
-        {/*    name={'duration'}*/}
-        {/*    label={messages.view.main.tasks.quickCount.duration}*/}
-        {/*    rules={[*/}
-        {/*      {*/}
-        {/*        required: true,*/}
-        {/*        message: messages.view.main.tasks.quickCount.validateMessage(`\${label}`),*/}
-        {/*      },*/}
-        {/*    ]}*/}
-        {/*  >*/}
-        {/*    <Input className={s.input} />*/}
-        {/*  </FormItem>*/}
-        {/*  <FormItem*/}
-        {/*    name={'period'}*/}
-        {/*    label={messages.view.main.tasks.quickCount.period}*/}
-        {/*    rules={[*/}
-        {/*      {*/}
-        {/*        required: true,*/}
-        {/*        message: messages.view.main.tasks.quickCount.validateMessage(`\${label}`),*/}
-        {/*      },*/}
-        {/*    ]}*/}
-        {/*  >*/}
-        {/*    <Input />*/}
-        {/*  </FormItem>*/}
-        {/*  <FormItem*/}
-        {/*    name={'range'}*/}
-        {/*    label={messages.view.main.tasks.quickCount.range}*/}
-        {/*    rules={[*/}
-        {/*      {*/}
-        {/*        required: true,*/}
-        {/*        message: messages.view.main.tasks.quickCount.validateMessage(`\${label}`),*/}
-        {/*      },*/}
-        {/*    ]}*/}
-        {/*  >*/}
-        {/*    <Input />*/}
-        {/*    <Button />*/}
-        {/*  </FormItem>*/}
-        {/*  <FormItem>*/}
-        {/*    <Button*/}
-        {/*      className={s.continueButton}*/}
-        {/*      htmlType={'submit'}*/}
-        {/*    >*/}
-        {/*      {messages.button.continue}*/}
-        {/*    </Button>*/}
-        {/*  </FormItem>*/}
-        {/*</Form>*/}
-      </section>
-      <Outlet />
-    </div>
+      {pageMode === 'chooseLevel' ? (
+        <section className={s.quickCountLevels}>
+          {quickCountLevelsGenerator(levelsConfig, handleLevelChoose)}
+          {/*<Form className={s.quickCountForm}>*/}
+          {/*  <h1> {messages.view.main.tasks.quickCount.formTitle}</h1>*/}
+          {/*  <FormItem*/}
+          {/*    name={'duration'}*/}
+          {/*    label={messages.view.main.tasks.quickCount.duration}*/}
+          {/*    rules={[*/}
+          {/*      {*/}
+          {/*        required: true,*/}
+          {/*        message: messages.view.main.tasks.quickCount.validateMessage(`\${label}`),*/}
+          {/*      },*/}
+          {/*    ]}*/}
+          {/*  >*/}
+          {/*    <Input className={s.input} />*/}
+          {/*  </FormItem>*/}
+          {/*  <FormItem*/}
+          {/*    name={'period'}*/}
+          {/*    label={messages.view.main.tasks.quickCount.period}*/}
+          {/*    rules={[*/}
+          {/*      {*/}
+          {/*        required: true,*/}
+          {/*        message: messages.view.main.tasks.quickCount.validateMessage(`\${label}`),*/}
+          {/*      },*/}
+          {/*    ]}*/}
+          {/*  >*/}
+          {/*    <Input />*/}
+          {/*  </FormItem>*/}
+          {/*  <FormItem*/}
+          {/*    name={'range'}*/}
+          {/*    label={messages.view.main.tasks.quickCount.range}*/}
+          {/*    rules={[*/}
+          {/*      {*/}
+          {/*        required: true,*/}
+          {/*        message: messages.view.main.tasks.quickCount.validateMessage(`\${label}`),*/}
+          {/*      },*/}
+          {/*    ]}*/}
+          {/*  >*/}
+          {/*    <Input />*/}
+          {/*    <Button />*/}
+          {/*  </FormItem>*/}
+          {/*  <FormItem>*/}
+          {/*    <Button*/}
+          {/*      className={s.continueButton}*/}
+          {/*      htmlType={'submit'}*/}
+          {/*    >*/}
+          {/*      {messages.button.continue}*/}
+          {/*    </Button>*/}
+          {/*  </FormItem>*/}
+          {/*</Form>*/}
+        </section>
+      ) : (
+        <Outlet />
+      )}
+    </main>
   );
 };
 

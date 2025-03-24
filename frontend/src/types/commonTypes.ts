@@ -4,6 +4,16 @@ import { ReactNode } from 'react';
 const userStatuses = ['active', 'blocked', 'deleted', 'non_confirmed'] as const;
 export type UserStatuses = (typeof userStatuses)[number];
 
+const gamesLevel = ['superEasy', 'easy', 'normal', 'hard'];
+export type GamesLevelType = (typeof gamesLevel)[number];
+export type GamesConfigType = {
+  [key: GamesLevelType]: {
+    duration: number;
+    range: [number, number];
+    changePeriod: number;
+  };
+};
+
 export interface IOptions {
   label: string;
   value: string;
