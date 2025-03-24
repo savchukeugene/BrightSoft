@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import { defineUserRole } from '../common/utils/helpers.tsx';
 import AxiosService from '../axios/AxiosService.tsx';
 import { API_WHO_AM_I } from '../common/constants/api.ts';
 import { parseJwt } from '../common/utils/jwt.ts';
@@ -29,13 +28,13 @@ export const useUserStore = create<IUserStore>((set) => {
     localStorage.setItem('access_token', access_token);
     set(() => ({
       user: data?.data?.user,
-      role: defineUserRole(parsedJwt.role),
+      role: parsedJwt.role,
     }));
   };
 
   return {
     user: savedToken ? parseJwt(savedToken) : null,
-    role: savedToken ? defineUserRole(parseJwt(savedToken).role) : 'user',
+    role: savedToken ? parseJwt(savedToken).role : 'user',
     setUser: getUserInfo,
     logoutUser: (): void => {
       localStorage.removeItem('access_token');

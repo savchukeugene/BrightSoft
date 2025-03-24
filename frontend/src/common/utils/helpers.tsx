@@ -19,9 +19,6 @@ export function getItem(
   };
 }
 
-// @ts-ignore
-export const defineUserRole = (savedUser: IUserRoles): IUserRoles => savedUser;
-
 export const defineDefaultNavigation = (role: IUserRoles): To => {
   if (!role) return '';
 
@@ -38,7 +35,7 @@ export const defineDefaultNavigation = (role: IUserRoles): To => {
 export const formatDate = (isoDate: string): string => {
   const date: Date = new Date(isoDate);
   const day: string = String(date.getDate()).padStart(2, '0');
-  const month: string = String(date.getMonth() + 1).padStart(2, '0'); // Месяцы начинаются с 0
+  const month: string = String(date.getMonth() + 1).padStart(2, '0');
   const year: number = date.getFullYear();
   return `${day}.${month}.${year}`;
 };

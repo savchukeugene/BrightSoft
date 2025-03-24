@@ -9,6 +9,9 @@ export const messages = {
   view: {
     main: {
       layoutOptions: {
+        level: (param: string | null) =>
+          // @ts-ignore
+          `Уровень: ${messages.view.main.tasks.quickCount.labels[param ?? 'easy'] ?? 'Неизвестно'}`,
         users: 'Пользователи',
         user: 'Пользователь',
         tasks: 'Задания',
@@ -41,6 +44,12 @@ export const messages = {
           duration: 'Общее время',
           period: 'Время изменения',
           range: 'Диапазон',
+          play: {
+            start: 'Старт',
+            duration: 'Общее время:',
+            period: 'Периодичность',
+            info: 'Информация',
+          },
           labels: {
             superEasy: 'Проще простого',
             easy: 'Легкий',

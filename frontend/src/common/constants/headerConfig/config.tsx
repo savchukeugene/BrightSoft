@@ -19,38 +19,36 @@ type ILeftSideOptions = {
   [key in IUserRoles]: MenuItem[];
 };
 
+const source = messages.view.main.layoutOptions;
+
 export const LEFT_SIDE_OPTIONS_LIST: ILeftSideOptions = {
   administrator: [
-    getItem(messages.view.main.layoutOptions.users, 'userManagement', <TeamOutlined />),
-    getItem(
-      messages.view.main.layoutOptions.tasks,
-      'tasks/quickCount',
-      <BuildOutlined />,
-    ),
-    getItem(messages.view.main.layoutOptions.support, 'support', <BugOutlined />),
-    getItem(messages.view.main.layoutOptions.pages, 'editingPages', <EditOutlined />),
-    getItem(messages.view.main.layoutOptions.about, 'about', <InfoCircleOutlined />),
+    getItem(source.users, 'userManagement', <TeamOutlined />),
+    getItem(source.tasks, 'tasks/quickCount', <BuildOutlined />),
+    getItem(source.support, 'support', <BugOutlined />),
+    getItem(source.pages, 'editingPages', <EditOutlined />),
+    getItem(source.about, 'about', <InfoCircleOutlined />),
   ],
   user: [
-    getItem(messages.view.main.layoutOptions.user, 'user/grade', <UserOutlined />),
-    getItem(messages.view.main.layoutOptions.tasks, 'tasks/maze', <BuildOutlined />),
-    getItem(messages.view.main.layoutOptions.support, 'support', <BugOutlined />),
-    getItem(messages.view.main.layoutOptions.about, 'about', <InfoCircleOutlined />),
+    getItem(source.user, 'user/grade', <UserOutlined />),
+    getItem(source.tasks, 'tasks/maze', <BuildOutlined />),
+    getItem(source.support, 'support', <BugOutlined />),
+    getItem(source.about, 'about', <InfoCircleOutlined />),
   ],
   support: [
-    getItem(messages.view.main.layoutOptions.support, 'support', <BugOutlined />),
-    getItem(messages.view.main.layoutOptions.about, 'about', <InfoCircleOutlined />),
+    getItem(source.support, 'support', <BugOutlined />),
+    getItem(source.about, 'about', <InfoCircleOutlined />),
   ],
 };
 
 export const HEADER_OPTIONS: IHeaderOptions = {
   user: [
-    getItem(messages.view.main.layoutOptions.grade, 'grade', <></>),
-    getItem(messages.view.main.layoutOptions.timetable, 'timetable', <></>),
+    getItem(source.grade, 'grade', <></>),
+    getItem(source.timetable, 'timetable', <></>),
   ],
   tasks: [
-    getItem(messages.view.main.layoutOptions.maze, 'maze'),
-    getItem(messages.view.main.layoutOptions.quickCount, 'quickCount'),
+    getItem(source.maze, 'maze'),
+    getItem(source.quickCount, 'quickCount'),
     getItem('Абакусы', 'tasksAbakus'),
   ],
 };
