@@ -1,9 +1,9 @@
 import { IQuickCountLevelFields } from '../../../../../types/commonTypes.ts';
 import { messages } from '../../../../../common/constants/messages.ts';
-import superEasy from './svg/superEasy.svg';
-import hard from './svg/hard.svg';
-import normal from './svg/normal.svg';
-import easy from './svg/easy.svg';
+import hard from './svg/gdharder.png';
+import normal from './svg/gdhard.png';
+import easy from './svg/gdnormal.png';
+import superEasy from './svg/gdeasy.png';
 
 export const levelsConfig: IQuickCountLevelFields[] = [
   {

@@ -65,7 +65,10 @@
 @keyframes progressBar {
   0% {
     width: 100%;
-    background: #7fff9f;
+    background: #30ff65;
+  }
+  50% {
+    background: #ffb200;
   }
   100% {
     width: 0;

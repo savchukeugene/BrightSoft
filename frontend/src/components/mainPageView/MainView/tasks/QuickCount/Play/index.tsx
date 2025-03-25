@@ -1,22 +1,23 @@
 import s from './styles.module.scss';
 import { useState } from 'react';
-import PreparingForAGame from './GameStates/PreparingForAGame.tsx';
-import GameInProgress from './GameStates/GameInProgress.tsx';
 import { messages } from '../../../../../../common/constants/messages.ts';
 import { Tooltip } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { useSearchParams } from 'react-router-dom';
 import { gameConfig, tooltipConfig } from './config.tsx';
 import { GamesLevelType } from '../../../../../../types/commonTypes.ts';
+import GameContent from './GameContent.tsx';
+
 const concatTooltipInfo = (message: string, param: number, unit: boolean) =>
   `${message + ' ' + param + (unit && 'c.')}`;
 const ref = messages.view.main.tasks.quickCount.play;
+const gameStates = ['prepare', 'progress', 'final'] as const;
+export type GameStates = (typeof gameStates)[number];
 
 const Play = () => {
-  const [isGameStarted, setIsGameStarted] = useState<boolean>(false);
+  const [currentGameState, setCurrentGameState] = useState<GameStates>('prepare');
   const [value, setValue] = useState<string | null>(null);
   const [searchParams] = useSearchParams();
-  const [final, setFinal] = useState<number | null>(null);
   const levelValue = searchParams.get('level');
   const levelInfo = gameConfig[levelValue as GamesLevelType];
 
@@ -36,9 +37,9 @@ const Play = () => {
     console.log(result, set);
     return Array.from(set);
   };
-
+  //@ts-ignore
   const handleEndGame = (value: number) => {
-    setFinal(value);
+    setCurrentGameState('final');
   };
 
   const interval = (valueToSet: number[], it: number = 0) => {
@@ -53,7 +54,7 @@ const Play = () => {
   };
 
   const handleStart = () => {
-    setIsGameStarted(true);
+    setCurrentGameState('progress');
     process();
   };
 
@@ -69,18 +70,12 @@ const Play = () => {
           <InfoCircleOutlined />
         </Tooltip>
       </h1>
-      {isGameStarted ? (
-        final ? (
-          <h1>end</h1>
-        ) : (
-          <GameInProgress
-            value={value}
-            duration={levelInfo.duration}
-          />
-        )
-      ) : (
-        <PreparingForAGame handleStart={handleStart} />
-      )}
+      <GameContent
+        state={currentGameState}
+        handleStart={handleStart}
+        value={value}
+        duration={levelInfo.duration}
+      />
     </section>
   );
 };
