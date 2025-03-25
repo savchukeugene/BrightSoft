@@ -1,5 +1,6 @@
 const tasksPages: string[] = ['Лабиринты', 'Быстрый счёт', 'Абакусы'];
 const userPages: string[] = ['Расписание', 'Оценки'];
+import React from 'react';
 
 export const messages = {
   defaultUserId: '00000000-0000-0000-0000',
@@ -9,9 +10,13 @@ export const messages = {
   view: {
     main: {
       layoutOptions: {
-        level: (param: string | null) =>
-          // @ts-ignore
-          `Уровень: ${messages.view.main.tasks.quickCount.labels[param ?? 'easy'] ?? 'Неизвестно'}`,
+        level: (param: string | null, color: string) =>
+          React.createElement(
+            'span',
+            { style: { color } },
+            // @ts-ignore
+            messages.view.main.tasks.quickCount.labels[param ?? 'easy'] ?? 'Неизвестно',
+          ),
         users: 'Пользователи',
         user: 'Пользователь',
         tasks: 'Задания',

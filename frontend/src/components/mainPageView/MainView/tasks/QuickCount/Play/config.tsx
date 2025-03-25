@@ -1,4 +1,4 @@
-import { GamesConfigType } from '../../../../../../types/commonTypes.ts';
+import { GamesConfigType, IGameParams } from '../../../../../../types/commonTypes.ts';
 
 export const gameConfig: GamesConfigType = {
   superEasy: {
@@ -22,3 +22,18 @@ export const gameConfig: GamesConfigType = {
     range: [-50, 50],
   },
 };
+
+export const tooltipConfig = (
+  concatTooltipInfo: (message: string, param: number, unit: boolean) => string,
+  //@ts-ignore
+  ref,
+  levelInfo: IGameParams,
+) => (
+  <>
+    <h4>{concatTooltipInfo(ref.duration, levelInfo.duration, true)}</h4>
+    <h4>
+      От {levelInfo.range[0]} до {levelInfo.range[1]}
+    </h4>
+    <h4>{concatTooltipInfo(ref.period, levelInfo.changePeriod, true)}</h4>
+  </>
+);

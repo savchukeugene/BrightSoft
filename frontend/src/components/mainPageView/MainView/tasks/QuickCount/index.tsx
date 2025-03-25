@@ -12,8 +12,8 @@ const QuickCount: FC = (): JSX.Element => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { pathname } = useLocation();
-  const handleLevelChoose = (param: GamesLevelType) => {
-    const newSearchParams = new URLSearchParams(searchParams);
+  const handleLevelChoose = (param: GamesLevelType): void => {
+    const newSearchParams: URLSearchParams = new URLSearchParams(searchParams);
     newSearchParams.set('level', param);
     navigate({
       pathname: pathname.concat(ROOTS.play),
