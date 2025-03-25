@@ -9,9 +9,16 @@ interface IGameContent {
   handleStart: () => void;
   value: string | null;
   duration: number;
+  result: number;
 }
 
-const GameContent: FC<IGameContent> = ({ state, handleStart, value, duration }) => {
+const GameContent: FC<IGameContent> = ({
+  state,
+  handleStart,
+  value,
+  duration,
+  result,
+}) => {
   switch (state) {
     case 'prepare':
       return <PreparingForAGame handleStart={handleStart} />;
@@ -23,7 +30,7 @@ const GameContent: FC<IGameContent> = ({ state, handleStart, value, duration }) 
         />
       );
     case 'final':
-      return <Final />;
+      return <Final result={result} />;
   }
 };
 

@@ -134,6 +134,7 @@ export const messages = {
     reset: 'Сбросить',
     create: 'Создать',
     login: 'Войти',
+    check: 'Проверить',
   },
   notification: {
     success: {

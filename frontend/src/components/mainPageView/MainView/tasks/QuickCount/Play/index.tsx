@@ -18,12 +18,14 @@ const Play = () => {
   const [currentGameState, setCurrentGameState] = useState<GameStates>('prepare');
   const [value, setValue] = useState<string | null>(null);
   const [searchParams] = useSearchParams();
+  const [result, setResult] = useState<number>(0);
+
   const levelValue = searchParams.get('level');
   const levelInfo = gameConfig[levelValue as GamesLevelType];
 
   const createArrayOfRandomNumbers = (): number[] => {
     let set = new Set<number>();
-    for (let i = 0; i < levelInfo.duration / levelInfo.changePeriod; i++) {
+    for (let i = 0; i < Math.floor(levelInfo.duration / levelInfo.changePeriod); i++) {
       let valueToPush: number = Math.round(
         Math.random() * (levelInfo.range[1] - levelInfo.range[0]) + levelInfo.range[0],
       );
@@ -33,18 +35,17 @@ const Play = () => {
       }
       set.add(valueToPush);
     }
-    const result = Array.from(set).reduce((a, b) => a + b);
-    console.log(result, set);
     return Array.from(set);
   };
   //@ts-ignore
-  const handleEndGame = (value: number) => {
+  const handleEndGame = (finalValue: number) => {
     setCurrentGameState('final');
+    setResult(finalValue);
   };
 
   const interval = (valueToSet: number[], it: number = 0) => {
     setValue(valueToSet[it] > 0 ? `+${valueToSet[it]}` : `${valueToSet[it]}`);
-    return valueToSet[it + 1]
+    return valueToSet[it] !== undefined
       ? setTimeout(() => interval(valueToSet, it + 1), levelInfo.changePeriod * 1000)
       : handleEndGame(valueToSet.reduce((a, b) => a + b));
   };
@@ -75,6 +76,7 @@ const Play = () => {
         handleStart={handleStart}
         value={value}
         duration={levelInfo.duration}
+        result={result}
       />
     </section>
   );
