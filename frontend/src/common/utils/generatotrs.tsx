@@ -1,26 +1,28 @@
 import { Form, Input, Select } from 'antd';
-
 import { IField } from '../../types/filterTypes.ts';
 import { IAuthorizationFields, IQuickCountLevelFields } from '../../types/commonTypes.ts';
+import { v4 as uuid } from 'uuid';
+
 import s from './styles.module.scss';
-export const routeGenerator = (...routes: string[]) => {
-  return routes.join('');
-};
 
 export const authorizationFieldsGenerator = (config: IAuthorizationFields[]) =>
-  config.map((element: IAuthorizationFields, index: number) => (
+  config.map((element: IAuthorizationFields) => (
     <div
-      key={`${index}_formItem`}
+      key={uuid()}
       className={'formItem'}
     >
       {element.label}
       <input
         name={element.name}
-        key={`${index}_input`}
+        key={uuid()}
         className={'loginInput'}
       />
     </div>
   ));
+
+export const routeGenerator = (...routes: string[]) => {
+  return routes.join('');
+};
 
 export const quickCountLevelsGenerator = (
   config: IQuickCountLevelFields[],
@@ -33,6 +35,7 @@ export const quickCountLevelsGenerator = (
       style={{
         width: `${100 / config.length - 2}%`,
       }}
+      key={uuid()}
     >
       {level.icon}
       {level.label}
@@ -40,17 +43,17 @@ export const quickCountLevelsGenerator = (
   ));
 
 export const fieldsGenerator = (fields: IField[]) =>
-  fields.map((element: IField, index: number) => {
+  fields.map((element: IField) => {
     switch (element.type) {
       case 'input':
         return (
           <Form.Item
             name={element.name}
-            key={`${index}_field`}
+            key={uuid()}
           >
             <Input
               className={s.input}
-              key={`${index}_field_input`}
+              key={uuid()}
               style={{ maxWidth: '200px' }}
               placeholder={element.placeholder}
             />
@@ -60,10 +63,10 @@ export const fieldsGenerator = (fields: IField[]) =>
         return (
           <Form.Item
             name={element.name}
-            key={`${index}_field`}
+            key={uuid()}
           >
             <Select
-              key={`${index}_field_select`}
+              key={uuid()}
               style={{ width: '200px' }}
               className={s.select}
               options={element.options}
@@ -76,7 +79,7 @@ export const fieldsGenerator = (fields: IField[]) =>
     }
     return (
       <Input
-        key={`${index}_field_default`}
+        key={uuid()}
         style={{ maxWidth: '300px' }}
         placeholder={element.placeholder}
         name={element.name}

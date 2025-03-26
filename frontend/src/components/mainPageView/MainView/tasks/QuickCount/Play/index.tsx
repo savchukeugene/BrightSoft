@@ -40,6 +40,7 @@ const Play = () => {
   //@ts-ignore
   const handleEndGame = (finalValue: number) => {
     setCurrentGameState('final');
+    console.log(finalValue);
     setResult(finalValue);
   };
 

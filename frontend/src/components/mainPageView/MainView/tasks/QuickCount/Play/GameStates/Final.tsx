@@ -1,22 +1,28 @@
 import s from '../styles.module.scss';
 import { Button, Form, Input } from 'antd';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { messages } from '../../../../../../../common/constants/messages.ts';
 
 interface IUserAnswer {
   userAnswer: string;
 }
 
+const RightAnswer = () => <h1>Right</h1>;
+const WrongAnswer = () => <h1>Wrong</h1>;
+
 const Final: FC<{ result: number }> = ({ result }) => {
+  const [isAnswerRight, setIsAnswerRight] = useState<boolean | null>(null);
   const onAnswer = (values: IUserAnswer) => {
-    if (parseInt(values.userAnswer) === result) {
-      alert('Верно');
-    } else {
-      alert('Не верно');
-    }
+    setIsAnswerRight(result === parseInt(values.userAnswer));
   };
 
-  return (
+  return isAnswerRight !== null ? (
+    isAnswerRight ? (
+      <RightAnswer />
+    ) : (
+      <WrongAnswer />
+    )
+  ) : (
     <>
       <div
         className={s.gameText}
