@@ -54,6 +54,11 @@ export const messages = {
             duration: 'Общее время:',
             period: 'Периодичность',
             info: 'Информация',
+            timeOut: 'Время истекло. Пожалуйста, введите ваш ответ в поле ниже:',
+            answerPlaceholder: 'Ваш ответ',
+            rightAnswerDescription: 'Всё верно! Вы успешно прошли этот уровень!',
+            wrongAnswerDescription:
+              'Неверно! Вы дали неправильный ответ! Попробуйте снова, либо потренеруйтесь ещё.',
           },
           labels: {
             superEasy: 'Проще простого',
