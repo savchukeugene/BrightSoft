@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { IUserRoles, useUserStore } from '../../../../store/userStore.tsx';
+import { useUserStore } from '../../../../store/userStore.tsx';
 import PageNotFound from '../../../commonComponents/PageNotFound';
 import { Modal, Table } from 'antd';
 import s from '../User/Grade/styles.module.scss';
@@ -11,11 +11,7 @@ import UserInfo from './userInfo/undex.tsx';
 import { IUserMapped } from '../../../../types/userTypes.ts';
 import { messages } from '../../../../common/constants/messages.ts';
 
-interface IUserManagement {
-  role: IUserRoles;
-}
-
-const UserManagement: FC<IUserManagement> = () => {
+const UserManagement: FC = () => {
   const { role } = useUserStore();
   const [usersData, setUsersData] = useState<IAllUsersMapped[]>();
   const [userData, setUserData] = useState<IUserMapped>();

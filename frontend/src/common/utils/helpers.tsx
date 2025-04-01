@@ -1,8 +1,10 @@
 import React from 'react';
 import { MenuProps } from 'antd';
 import { IUserRoles } from '../../store/userStore.tsx';
-import { ROOTS } from '../constants/roots.ts';
+import { ROOTS } from '../constants/roots.tsx';
 import { To } from 'react-router-dom';
+import { routeGenerator } from './generatotrs.tsx';
+
 export type MenuItem = Required<MenuProps>['items'][number];
 
 export function getItem(
@@ -24,11 +26,11 @@ export const defineDefaultNavigation = (role: IUserRoles): To => {
 
   switch (role) {
     case 'user':
-      return ROOTS.mainPage + ROOTS.user + ROOTS.grade;
+      return routeGenerator(ROOTS.mainPage, ROOTS.user, ROOTS.grade);
     case 'support':
-      return ROOTS.mainPage + ROOTS.support;
+      return routeGenerator(ROOTS.mainPage, ROOTS.support);
     case 'administrator':
-      return ROOTS.mainPage + ROOTS.userManagement;
+      return routeGenerator(ROOTS.mainPage, ROOTS.userManagement);
   }
 };
 

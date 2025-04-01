@@ -5,7 +5,7 @@ import { levelsConfig } from './config.tsx';
 
 import s from './styles.module.scss';
 import { Outlet, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
-import { ROOTS } from '../../../../../common/constants/roots.ts';
+import { ROOTS } from '../../../../../common/constants/roots.tsx';
 import { GamesLevelType } from '../../../../../types/commonTypes.ts';
 
 const QuickCount: FC = (): JSX.Element => {

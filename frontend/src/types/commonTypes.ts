@@ -95,3 +95,9 @@ export interface IAccessToken {
   sub: string;
   user: IUserData;
 }
+
+export interface IRoutesGenerator {
+  path: string;
+  element?: JSX.Element;
+  child?: IRoutesGenerator[];
+}

@@ -9,7 +9,7 @@ import {
 } from '../../../common/utils/generatotrs.tsx';
 import { createAccountFieldsConfig } from './config.ts';
 import { useNavigate } from 'react-router-dom';
-import { ROOTS } from '../../../common/constants/roots.ts';
+import { ROOTS } from '../../../common/constants/roots.tsx';
 
 const CreateAccount: FC = () => {
   const navigate = useNavigate();

@@ -1,9 +1,31 @@
 import { Form, Input, Select } from 'antd';
 import { IField } from '../../types/filterTypes.ts';
-import { IAuthorizationFields, IQuickCountLevelFields } from '../../types/commonTypes.ts';
+import {
+  IAuthorizationFields,
+  IQuickCountLevelFields,
+  IRoutesGenerator,
+} from '../../types/commonTypes.ts';
 import { v4 as uuid } from 'uuid';
 
 import s from './styles.module.scss';
+import { Route } from 'react-router-dom';
+
+export const routesGenerator = (
+  routesConfig: IRoutesGenerator[],
+  parentPath: string = '',
+) =>
+  routesConfig.map((element: IRoutesGenerator) => {
+    const currentPath = `${parentPath + element.path}`;
+    return (
+      <Route
+        path={currentPath}
+        element={element.element}
+        key={uuid()}
+      >
+        {element.child ? routesGenerator(element.child, currentPath) : <></>}
+      </Route>
+    );
+  });
 
 export const authorizationFieldsGenerator = (config: IAuthorizationFields[]) =>
   config.map((element: IAuthorizationFields) => (
