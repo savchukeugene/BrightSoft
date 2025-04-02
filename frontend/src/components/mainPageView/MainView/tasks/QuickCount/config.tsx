@@ -4,6 +4,7 @@ import hard from './svg/gdharder.png';
 import normal from './svg/gdhard.png';
 import easy from './svg/gdnormal.png';
 import superEasy from './svg/gdeasy.png';
+import { SettingOutlined } from '@ant-design/icons';
 
 export const levelsConfig: IQuickCountLevelFields[] = [
   {
@@ -48,6 +49,12 @@ export const levelsConfig: IQuickCountLevelFields[] = [
         alt={messages.view.main.tasks.quickCount.labels.hard}
       />
     ),
+    boxShadow: messages.view.main.tasks.quickCount.boxShadow.hard,
+  },
+  {
+    label: messages.view.main.tasks.quickCount.labels.custom,
+    name: 'custom',
+    icon: <SettingOutlined style={{ fontSize: '70px !important' }} />,
     boxShadow: messages.view.main.tasks.quickCount.boxShadow.hard,
   },
 ];

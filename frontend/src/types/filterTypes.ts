@@ -6,6 +6,7 @@ export interface IField {
   placeholder: string;
   defaultValue?: string;
   options?: IOptions[];
+  allowClear?: boolean;
 }
 
 export interface IFilter {

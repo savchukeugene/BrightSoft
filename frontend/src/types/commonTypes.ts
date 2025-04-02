@@ -1,10 +1,11 @@
 import { IUserRoles } from '../store/userStore.tsx';
 import { ReactNode } from 'react';
+import { IField } from './filterTypes.ts';
 
 const userStatuses = ['active', 'blocked', 'deleted', 'non_confirmed'] as const;
 export type UserStatuses = (typeof userStatuses)[number];
 
-const gamesLevel: string[] = ['superEasy', 'easy', 'normal', 'hard'];
+const gamesLevel: string[] = ['superEasy', 'easy', 'normal', 'hard', 'custom'];
 export type GamesLevelType = (typeof gamesLevel)[number];
 export interface IGameParams {
   duration: number;
@@ -100,4 +101,10 @@ export interface IRoutesGenerator {
   path: string;
   element?: JSX.Element;
   child?: IRoutesGenerator[];
+}
+
+export interface IUserInfoGenerator {
+  label: string;
+  value?: string;
+  activeElement?: Partial<IField>;
 }

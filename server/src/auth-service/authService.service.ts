@@ -54,10 +54,18 @@ export class AuthService {
       throw new UnauthorizedException('Введён неверный пароль!');
     }
 
-    const expires = new Date('2026-03-21T05:30:11Z');
+    const expires = new Date();
+    expires.setMonth(expires.getMonth() + 1);
+    const isoString = expires.toISOString();
     response.cookie('role', `${user.role}`, {
       path: '/',
-      expires: expires,
+      expires: new Date(isoString),
+      httpOnly: true,
+      secure: true,
+    });
+    response.cookie('userId', `${user.id}`, {
+      path: '/',
+      expires: new Date(isoString),
       httpOnly: true,
     });
 
@@ -75,6 +83,8 @@ export class AuthService {
           );
         }
         res.clearCookie(this.configService.getOrThrow<string>('SESSION_NAME'));
+        res.clearCookie('role');
+        res.clearCookie('userId');
         console.log('Session was successfully destroyed');
         resolve();
       });

@@ -45,9 +45,9 @@ const CreateAccount: FC = () => {
           <Button htmlType={'submit'}>{messages.button.create}</Button>
         </div>
       </form>
-      <div className="footer">
+      <footer className="footer">
         <a href="/login">Уже есть аккаунт? Войти</a>
-      </div>
+      </footer>
     </div>
   );
 };

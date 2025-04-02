@@ -2,18 +2,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  text-align: center;
-  width: 80%;
-  height: 40vh;
+  width: 100%;
   background: white;
-
-  margin: 100px auto 0 auto;
   padding: 20px;
-
-  box-shadow: #000000 0 0 30px;
 
   h1 {
     font-size: 30px;
+    margin: 0 auto 20px auto;
   }
 
   & label {
@@ -24,27 +19,29 @@
   & input {
     height: 40px;
     border-radius: 20px;
-    border: 2px solid dimgray;
+    border: 2px solid #c5c5c5;
+    width: 100px;
   }
 }
 
 .quickCountLevels {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+  gap: 20px;
   width: 100%;
-  height: 50vh;
 
   section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid #8b7bff;
-    border-radius: 10px;
-    height: 100%;
+    justify-content: center;
+    gap: 20px;
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
     transition: .2s;
     cursor: pointer;
-    box-shadow: 0 0 0;
+    box-shadow: 0 0 5px #9dbbff;
     font-family: "Shadows Into Light", cursive;
     font-weight: 600;
 
@@ -52,13 +49,22 @@
       width: 70px;
       height: 70px;
     }
+
+    span {
+      font-size: 70px;
+    }
   }
 
   section:hover {
-    height: 105%;
+    box-shadow: 0 0 20px #9dbbff;
+    font-size: 18px;
   }
 }
 
 .continueButton {
   margin: 0 auto;
+}
+
+.modal {
+  width: 40% !important;
 }

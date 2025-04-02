@@ -4,28 +4,25 @@ import {
   IAuthorizationFields,
   IQuickCountLevelFields,
   IRoutesGenerator,
+  IUserInfoGenerator,
 } from '../../types/commonTypes.ts';
 import { v4 as uuid } from 'uuid';
-
-import s from './styles.module.scss';
 import { Route } from 'react-router-dom';
+import s from '../../components/mainPageView/MainView/userManagement/userInfo/styles.module.scss';
 
 export const routesGenerator = (
   routesConfig: IRoutesGenerator[],
   parentPath: string = '',
 ) =>
-  routesConfig.map((element: IRoutesGenerator) => {
-    const currentPath = `${parentPath + element.path}`;
-    return (
-      <Route
-        path={currentPath}
-        element={element.element}
-        key={uuid()}
-      >
-        {element.child ? routesGenerator(element.child, currentPath) : <></>}
-      </Route>
-    );
-  });
+  routesConfig.map((element: IRoutesGenerator) => (
+    <Route
+      path={parentPath + element.path}
+      element={element.element}
+      key={uuid()}
+    >
+      {element.child ? routesGenerator(element.child, parentPath + element.path) : <></>}
+    </Route>
+  ));
 
 export const authorizationFieldsGenerator = (config: IAuthorizationFields[]) =>
   config.map((element: IAuthorizationFields) => (
@@ -54,9 +51,6 @@ export const quickCountLevelsGenerator = (
     <section
       className={s.select}
       onClick={() => handler(level.name)}
-      style={{
-        width: `${100 / config.length - 2}%`,
-      }}
       key={uuid()}
     >
       {level.icon}
@@ -94,7 +88,7 @@ export const fieldsGenerator = (fields: IField[]) =>
               options={element.options}
               defaultValue={element?.defaultValue}
               placeholder={element.placeholder}
-              allowClear={true}
+              allowClear={element.allowClear ?? true}
             />
           </Form.Item>
         );
@@ -118,3 +112,16 @@ export function collectFieldsData<T>(formData: FormData, fields: string[]): T {
 
   return data as T;
 }
+
+export const userInfoGenerator = (config: IUserInfoGenerator[]): JSX.Element[] =>
+  config.map((field: IUserInfoGenerator) => (
+    <div
+      key={uuid()}
+      className={s.userInfoBlock}
+    >
+      <div className={s.label}>{`${field.label}: `}</div>
+      {field.activeElement
+        ? fieldsGenerator([field.activeElement] as IField[])
+        : field.value}
+    </div>
+  ));

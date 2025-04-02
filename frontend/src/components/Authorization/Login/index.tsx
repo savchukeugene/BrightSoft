@@ -41,10 +41,10 @@ const Login: FC = () => {
           <Button htmlType={'submit'}>{messages.button.login}</Button>
         </div>
       </form>
-      <div className="footer">
+      <foooter className="footer">
         <a href="/createAccount">Нет аккаунта? Создать</a>
         <a href="#">Забыли пароль?</a>
-      </div>
+      </foooter>
     </div>
   );
 };

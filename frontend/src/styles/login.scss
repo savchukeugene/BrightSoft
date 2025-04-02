@@ -5,7 +5,7 @@
   align-items: center;
 
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 
   background: #24326c;
 }
@@ -16,7 +16,7 @@
 
 .loginForm {
   width: 80% !important;
-  height: 70vh;
+  height: 600px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -24,7 +24,7 @@
 }
 
 .loginFormInputs {
-  height: 35%;
+  min-height: 35%;
   width: 40%;
   display: flex;
   gap: 40px;
@@ -67,6 +67,7 @@
   align-items: center;
   justify-content: space-between;
   height: 50px;
+  margin-bottom: 10px;
 
   a {
     color: whitesmoke;

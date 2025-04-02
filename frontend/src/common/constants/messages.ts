@@ -65,12 +65,14 @@ export const messages = {
             easy: 'Легкий',
             normal: 'Средний',
             hard: 'Тяжёлый',
+            custom: 'Пользовательский',
           },
           boxShadow: {
             superEasy: '#64ff9d',
             easy: '#008c32',
             normal: '#eeb800',
             hard: '#e70202',
+            custom: '#959595',
           },
           validateMessage: (label: string): string =>
             `Пожалуйста, укажите поле ${label}!`,

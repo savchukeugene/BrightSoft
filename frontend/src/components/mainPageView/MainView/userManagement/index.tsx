@@ -7,7 +7,7 @@ import { columns, filters } from './config.tsx';
 import Filter from '../../../commonComponents/Filter';
 import { deleteUser, getAllUsers, getUser } from './actions.ts';
 import { IAllUsersMapped } from '../../../../types/commonTypes.ts';
-import UserInfo from './userInfo/undex.tsx';
+import UserInfo from './userInfo/index.tsx';
 import { IUserMapped } from '../../../../types/userTypes.ts';
 import { messages } from '../../../../common/constants/messages.ts';
 
