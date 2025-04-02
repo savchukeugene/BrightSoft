@@ -1,6 +1,6 @@
 import { GamesConfigType, IGameParams } from '../../../../../../types/commonTypes.ts';
 
-export const gameConfig: GamesConfigType = {
+export const gameConfig: Partial<GamesConfigType> = {
   superEasy: {
     duration: 10,
     changePeriod: 2,

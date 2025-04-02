@@ -5,7 +5,7 @@ import { IField } from './filterTypes.ts';
 const userStatuses = ['active', 'blocked', 'deleted', 'non_confirmed'] as const;
 export type UserStatuses = (typeof userStatuses)[number];
 
-const gamesLevel: string[] = ['superEasy', 'easy', 'normal', 'hard', 'custom'];
+const gamesLevel = ['superEasy', 'easy', 'normal', 'hard', 'custom'] as const;
 export type GamesLevelType = (typeof gamesLevel)[number];
 export interface IGameParams {
   duration: number;
@@ -13,7 +13,7 @@ export interface IGameParams {
   changePeriod: number;
 }
 export type GamesConfigType = {
-  [key: GamesLevelType]: IGameParams;
+  [key in GamesLevelType]: IGameParams;
 };
 
 export interface IOptions {
@@ -35,7 +35,7 @@ export interface IAuthorizationFields {
 
 export interface IQuickCountLevelFields {
   label: string;
-  name: string;
+  name: GamesLevelType;
   icon: ReactNode;
   boxShadow: string;
 }

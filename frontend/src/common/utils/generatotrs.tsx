@@ -1,6 +1,7 @@
 import { Form, Input, Select } from 'antd';
 import { IField } from '../../types/filterTypes.ts';
 import {
+  GamesLevelType,
   IAuthorizationFields,
   IQuickCountLevelFields,
   IRoutesGenerator,
@@ -45,7 +46,7 @@ export const routeGenerator = (...routes: string[]) => {
 
 export const quickCountLevelsGenerator = (
   config: IQuickCountLevelFields[],
-  handler: (param: string) => void,
+  handler: (param: GamesLevelType) => void,
 ) =>
   config.map((level: IQuickCountLevelFields) => (
     <section
