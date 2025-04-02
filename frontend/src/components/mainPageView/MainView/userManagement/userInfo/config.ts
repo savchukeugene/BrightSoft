@@ -1,10 +1,10 @@
-import { IUserMapped } from '../../../../../types/userTypes.ts';
+import { IUserMapped } from '../../../../../types/userTypes';
 import {
   USER_ROLES_OPTIONS,
   USER_STATUSES_OPTIONS,
-} from '../../../../../common/constants/options.ts';
-import { messages } from '../../../../../common/constants/messages.ts';
-import { IUserInfoGenerator } from '../../../../../types/commonTypes.ts';
+} from '../../../../../common/constants/options';
+import { messages } from '../../../../../common/constants/messages';
+import { IUserInfoGenerator } from '../../../../../types/commonTypes';
 
 export const createConfig = (data: IUserMapped): IUserInfoGenerator[] => [
   {

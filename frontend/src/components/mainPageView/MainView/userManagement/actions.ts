@@ -1,19 +1,19 @@
-import { IUserRoles } from '../../../../store/userStore.tsx';
-import AxiosService from '../../../../axios/AxiosService.tsx';
+import { IUserRoles } from '../../../../store/userStore';
+import AxiosService from '../../../../axios/AxiosService';
 import {
   API_DELETE_USER,
   API_GET_ALL_USERS,
   API_GET_USER_INFO,
-} from '../../../../common/constants/api.ts';
+} from '../../../../common/constants/api';
 import {
   IActionsFormat,
   IAllUsersMapped,
   IUserData,
-} from '../../../../types/commonTypes.ts';
-import { allUsersDataMapper, userDataMapper } from './mapper.ts';
-import { IUserMapped } from '../../../../types/userTypes.ts';
+} from '../../../../types/commonTypes';
+import { allUsersDataMapper, userDataMapper } from './mapper';
+import { IUserMapped } from '../../../../types/userTypes';
 import { notification } from 'antd';
-import { messages } from '../../../../common/constants/messages.ts';
+import { messages } from '../../../../common/constants/messages';
 
 export const getAllUsers = async (
   role: IUserRoles,

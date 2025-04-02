@@ -1,3 +1,4 @@
+import { Routes } from '../constants/routes';
 import {
   BugOutlined,
   BuildOutlined,
@@ -6,10 +7,11 @@ import {
   TeamOutlined,
   UserOutlined,
 } from '@ant-design/icons';
-import { getItem, MenuItem } from '../../utils/helpers.tsx';
+import { getItem, MenuItem } from '../utils/helpers';
 import { ItemType } from 'antd/es/menu/interface';
-import { IUserRoles } from '../../../store/userStore.tsx';
-import { messages } from '../messages.ts';
+import { IUserRoles } from '../../store/userStore';
+import { messages } from '../constants/messages';
+import { routeGenerator } from '../utils/generatotrs';
 
 interface IHeaderOptions {
   [key: string]: ItemType[];
@@ -24,14 +26,24 @@ const source = messages.view.main.layoutOptions;
 export const LEFT_SIDE_OPTIONS_LIST: ILeftSideOptions = {
   administrator: [
     getItem(source.users, 'userManagement', <TeamOutlined />),
-    getItem(source.tasks, 'tasks/quickCount', <BuildOutlined />),
+    getItem(
+      source.tasks,
+      'tasks',
+      <BuildOutlined />,
+      `${Routes.tasks}/${Routes.quickCount}`,
+    ),
     getItem(source.support, 'support', <BugOutlined />),
     getItem(source.pages, 'editingPages', <EditOutlined />),
     getItem(source.about, 'about', <InfoCircleOutlined />),
   ],
   user: [
-    getItem(source.user, 'user/grade', <UserOutlined />),
-    getItem(source.tasks, 'tasks/maze', <BuildOutlined />),
+    getItem(
+      source.user,
+      'user',
+      <UserOutlined />,
+      routeGenerator(Routes.user, Routes.timetable),
+    ),
+    getItem(source.tasks, 'tasks', <BuildOutlined />),
     getItem(source.support, 'support', <BugOutlined />),
     getItem(source.about, 'about', <InfoCircleOutlined />),
   ],

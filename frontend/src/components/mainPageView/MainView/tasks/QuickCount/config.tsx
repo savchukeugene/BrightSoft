@@ -1,5 +1,5 @@
-import { IQuickCountLevelFields } from '../../../../../types/commonTypes.ts';
-import { messages } from '../../../../../common/constants/messages.ts';
+import { IQuickCountLevelFields } from '../../../../../types/commonTypes';
+import { messages } from '../../../../../common/constants/messages';
 import hard from './svg/gdharder.png';
 import normal from './svg/gdhard.png';
 import easy from './svg/gdnormal.png';

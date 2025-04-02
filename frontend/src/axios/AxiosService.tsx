@@ -1,8 +1,8 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { ArgsProps } from 'antd/es/notification';
 import { notification } from 'antd';
-import { messages } from '../common/constants/messages.ts';
-import { IActionsFormat, INestErrorMessage } from '../types/commonTypes.ts';
+import { messages } from '../common/constants/messages';
+import { IActionsFormat, INestErrorMessage } from '../types/commonTypes';
 
 interface ErrorDetails {
   message: ArgsProps['message'];

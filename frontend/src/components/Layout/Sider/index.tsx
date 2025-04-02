@@ -1,15 +1,16 @@
 import s from '../../mainPageView/styles.module.scss';
 import { Menu } from 'antd';
-import { LEFT_SIDE_OPTIONS_LIST } from '../../../common/constants/headerConfig/config.tsx';
+import { LEFT_SIDE_OPTIONS_LIST } from '../../../common/headerConfig/config';
 import Sider from 'antd/es/layout/Sider';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useUserStore } from '../../../store/userStore.tsx';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useUserStore } from '../../../store/userStore';
 
 const LayoutSider = () => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
   const { role } = useUserStore();
+  const { pathname } = useLocation();
 
   return (
     <Sider
@@ -20,7 +21,7 @@ const LayoutSider = () => {
     >
       <Menu
         theme={'dark'}
-        defaultSelectedKeys={['user/grade']}
+        defaultSelectedKeys={[pathname.split('/')[1]]}
         mode="inline"
         items={LEFT_SIDE_OPTIONS_LIST[role]}
         onClick={(value) =>

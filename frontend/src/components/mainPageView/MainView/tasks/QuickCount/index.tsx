@@ -1,12 +1,12 @@
 import { FC, useState } from 'react';
-import { messages } from '../../../../../common/constants/messages.ts';
-import { quickCountLevelsGenerator } from '../../../../../common/utils/generatotrs.tsx';
-import { levelsConfig } from './config.tsx';
+import { messages } from '../../../../../common/constants/messages';
+import { quickCountLevelsGenerator } from '../../../../../common/utils/generatotrs';
+import { levelsConfig } from './config';
 
 import s from './styles.module.scss';
 import { Outlet, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
-import { ROOTS } from '../../../../../common/constants/roots.tsx';
-import { GamesLevelType } from '../../../../../types/commonTypes.ts';
+import { Routes } from '../../../../../common/constants/routes';
+import { GamesLevelType } from '../../../../../types/commonTypes';
 import { Button, Form, Input, Modal } from 'antd';
 import FormItem from 'antd/es/form/FormItem';
 
@@ -24,14 +24,14 @@ const QuickCount: FC = (): JSX.Element => {
     const newSearchParams: URLSearchParams = new URLSearchParams(searchParams);
     newSearchParams.set('level', param);
     navigate({
-      pathname: pathname.concat(ROOTS.play),
+      pathname: pathname.concat(Routes.play),
       search: newSearchParams.toString(),
     });
   };
   return (
     <main>
       <h1 className={'pageTitle'}>{messages.view.main.tasks.quickCount.title}</h1>
-      {pathname.includes(ROOTS.play) ? (
+      {pathname.includes(Routes.play) ? (
         <Outlet />
       ) : (
         <section className={s.quickCountLevels}>

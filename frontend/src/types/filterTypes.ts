@@ -1,4 +1,4 @@
-import { IOptions } from './commonTypes.ts';
+import { IOptions } from './commonTypes';
 
 export interface IField {
   name: string;

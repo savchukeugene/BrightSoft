@@ -1,4 +1,4 @@
-import { IRoutesGenerator } from '../../types/commonTypes.ts';
+import { IRoutesGenerator } from '../../types/commonTypes';
 import Login from '../../components/Authorization/Login';
 import CreateAccount from '../../components/Authorization/CreateAccount';
 import PageNotFound from '../../components/commonComponents/PageNotFound';
@@ -10,11 +10,11 @@ import QuickCount from '../../components/mainPageView/MainView/tasks/QuickCount'
 import Play from '../../components/mainPageView/MainView/tasks/QuickCount/Play';
 import SupportPage from '../../components/mainPageView/MainView/SupportPage';
 import LandingPages from '../../components/LandingPages';
-import { defineDefaultNavigation } from '../utils/helpers.tsx';
+import { defineDefaultNavigation } from '../utils/helpers';
 import UserManagement from '../../components/mainPageView/MainView/userManagement';
-import { IUserRoles } from '../../store/userStore.tsx';
+import { IUserRoles } from '../../store/userStore';
 
-export const ROOTS = {
+export const Routes = {
   mainPage: '/mainPage',
   user: '/user',
   tasks: '/tasks',
@@ -33,18 +33,18 @@ export const ROOTS = {
 
 export const logoutUserRoutesConfig: IRoutesGenerator[] = [
   {
-    path: ROOTS.login,
+    path: Routes.login,
     element: <Login />,
   },
   {
-    path: ROOTS.createAccount,
+    path: Routes.createAccount,
     element: <CreateAccount />,
   },
   {
     path: '*',
     element: (
       <Navigate
-        to={ROOTS.login}
+        to={Routes.login}
         replace={true}
       />
     ),
@@ -53,31 +53,31 @@ export const logoutUserRoutesConfig: IRoutesGenerator[] = [
 
 export const authorizedUserRoutesConfig = (role: IUserRoles): IRoutesGenerator[] => [
   {
-    path: ROOTS.mainPage,
+    path: Routes.mainPage,
     element: <MainPage />,
     child: [
       {
-        path: ROOTS.user,
+        path: Routes.user,
         child: [
           {
-            path: ROOTS.timetable,
+            path: Routes.timetable,
             element: <Timetable />,
           },
           {
-            path: ROOTS.grade,
+            path: Routes.grade,
             element: <Grade />,
           },
         ],
       },
       {
-        path: ROOTS.tasks,
+        path: Routes.tasks,
         child: [
           {
-            path: ROOTS.quickCount,
+            path: Routes.quickCount,
             element: <QuickCount />,
             child: [
               {
-                path: ROOTS.play,
+                path: Routes.play,
                 element: <Play />,
               },
             ],
@@ -85,19 +85,19 @@ export const authorizedUserRoutesConfig = (role: IUserRoles): IRoutesGenerator[]
         ],
       },
       {
-        path: ROOTS.support,
+        path: Routes.support,
         element: <SupportPage />,
       },
       {
-        path: ROOTS.about,
+        path: Routes.about,
         element: <SupportPage />,
       },
       {
-        path: ROOTS.editingPages,
+        path: Routes.editingPages,
         element: <LandingPages />,
       },
       {
-        path: ROOTS.userManagement,
+        path: Routes.userManagement,
         element: <UserManagement />,
       },
       {

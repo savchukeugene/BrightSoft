@@ -1,5 +1,5 @@
-import { IAuthorizationFields } from '../../../types/commonTypes.ts';
-import { messages } from '../../../common/constants/messages.ts';
+import { IAuthorizationFields } from '../../../types/commonTypes';
+import { messages } from '../../../common/constants/messages';
 
 export const loginFieldsConfig: IAuthorizationFields[] = [
   {

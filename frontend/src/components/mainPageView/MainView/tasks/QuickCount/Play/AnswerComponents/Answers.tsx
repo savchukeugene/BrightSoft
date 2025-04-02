@@ -1,5 +1,5 @@
 import s from './styles.module.scss';
-import { messages } from '../../../../../../../common/constants/messages.ts';
+import { messages } from '../../../../../../../common/constants/messages';
 
 export const RightAnswer = () => {
   return (
@@ -12,11 +12,13 @@ export const RightAnswer = () => {
   );
 };
 
-export const WrongAnswer = () => (
-  <div className={s.answer_field}>
-    <div className={s.answer_emoji}>😡</div>
-    <div className={s.answer_description}>
-      {messages.view.main.tasks.quickCount.play.wrongAnswerDescription}
+export const WrongAnswer = () => {
+  return (
+    <div className={s.answer_field}>
+      <div className={s.answer_emoji}>😡</div>
+      <div className={s.answer_description}>
+        {messages.view.main.tasks.quickCount.play.wrongAnswerDescription}
+      </div>
     </div>
-  </div>
-);
+  );
+};

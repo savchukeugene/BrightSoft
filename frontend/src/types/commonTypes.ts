@@ -1,6 +1,6 @@
-import { IUserRoles } from '../store/userStore.tsx';
+import { IUserRoles } from '../store/userStore';
 import { ReactNode } from 'react';
-import { IField } from './filterTypes.ts';
+import { IField } from './filterTypes';
 
 const userStatuses = ['active', 'blocked', 'deleted', 'non_confirmed'] as const;
 export type UserStatuses = (typeof userStatuses)[number];

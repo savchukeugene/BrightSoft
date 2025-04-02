@@ -1,6 +1,6 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
 import { notification, Button } from 'antd';
-import { messages } from '../../../common/constants/messages.ts';
+import { messages } from '../../../common/constants/messages';
 
 class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
   constructor(props: { children: ReactNode }) {

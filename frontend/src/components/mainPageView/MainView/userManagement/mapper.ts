@@ -1,12 +1,8 @@
-import {
-  IAllUsersMapped,
-  IUserData,
-  UserStatuses,
-} from '../../../../types/commonTypes.ts';
-import { messages } from '../../../../common/constants/messages.ts';
-import { IUserRoles } from '../../../../store/userStore.tsx';
-import { formatDate } from '../../../../common/utils/helpers.tsx';
-import { IUserMapped } from '../../../../types/userTypes.ts';
+import { IAllUsersMapped, IUserData, UserStatuses } from '../../../../types/commonTypes';
+import { messages } from '../../../../common/constants/messages';
+import { IUserRoles } from '../../../../store/userStore';
+import { formatDate } from '../../../../common/utils/helpers';
+import { IUserMapped } from '../../../../types/userTypes';
 
 export const allUsersDataMapper = (data: IUserData[]): IAllUsersMapped[] => {
   return data.map((user: IUserData, index: number) => ({

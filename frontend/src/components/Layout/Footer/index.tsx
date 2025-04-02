@@ -1,5 +1,5 @@
 import s from './styles.module.scss';
-import { messages } from '../../../common/constants/messages.ts';
+import { messages } from '../../../common/constants/messages';
 
 const Footer = () => {
   return (

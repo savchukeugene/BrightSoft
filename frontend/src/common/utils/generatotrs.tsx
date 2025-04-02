@@ -1,12 +1,12 @@
 import { Form, Input, Select } from 'antd';
-import { IField } from '../../types/filterTypes.ts';
+import { IField } from '../../types/filterTypes';
 import {
   GamesLevelType,
   IAuthorizationFields,
   IQuickCountLevelFields,
   IRoutesGenerator,
   IUserInfoGenerator,
-} from '../../types/commonTypes.ts';
+} from '../../types/commonTypes';
 import { v4 as uuid } from 'uuid';
 import { Route } from 'react-router-dom';
 import s from '../../components/mainPageView/MainView/userManagement/userInfo/styles.module.scss';

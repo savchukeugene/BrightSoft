@@ -1,4 +1,4 @@
-import { messages } from './messages.ts';
+import { messages } from './messages';
 
 export const USER_ROLES_OPTIONS = [
   {

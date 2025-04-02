@@ -1,9 +1,9 @@
 import React from 'react';
 import { MenuProps } from 'antd';
-import { IUserRoles } from '../../store/userStore.tsx';
-import { ROOTS } from '../constants/roots.tsx';
+import { IUserRoles } from '../../store/userStore';
+import { Routes } from '../constants/routes';
 import { To } from 'react-router-dom';
-import { routeGenerator } from './generatotrs.tsx';
+import { routeGenerator } from './generatotrs';
 
 export type MenuItem = Required<MenuProps>['items'][number];
 
@@ -11,13 +11,15 @@ export function getItem(
   label: React.ReactNode,
   key: React.Key,
   icon?: React.ReactNode,
+  navigateTo?: string,
   children?: MenuItem[],
-): MenuItem {
+) {
   return {
     key,
     icon,
     children,
     label,
+    navigateTo,
   };
 }
 
@@ -26,11 +28,11 @@ export const defineDefaultNavigation = (role: IUserRoles): To => {
 
   switch (role) {
     case 'user':
-      return routeGenerator(ROOTS.mainPage, ROOTS.user, ROOTS.grade);
+      return routeGenerator(Routes.mainPage, Routes.user, Routes.grade);
     case 'support':
-      return routeGenerator(ROOTS.mainPage, ROOTS.support);
+      return routeGenerator(Routes.mainPage, Routes.support);
     case 'administrator':
-      return routeGenerator(ROOTS.mainPage, ROOTS.userManagement);
+      return routeGenerator(Routes.mainPage, Routes.userManagement);
   }
 };
 

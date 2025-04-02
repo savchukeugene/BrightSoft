@@ -1,9 +1,9 @@
 import { TableColumnsType } from 'antd';
-import { USER_ROLES_OPTIONS } from '../../../../common/constants/options.ts';
-import { IAllUsersMapped } from '../../../../types/commonTypes.ts';
+import { USER_ROLES_OPTIONS } from '../../../../common/constants/options';
+import { IAllUsersMapped } from '../../../../types/commonTypes';
 import { Dispatch, SetStateAction } from 'react';
-import { IField } from '../../../../types/filterTypes.ts';
-import { messages } from '../../../../common/constants/messages.ts';
+import { IField } from '../../../../types/filterTypes';
+import { messages } from '../../../../common/constants/messages';
 
 export const columns = (
   openModal: (email: string) => Promise<void>,

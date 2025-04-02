@@ -1,7 +1,7 @@
 import { Table } from 'antd';
-import { columns, dataSource, DataType } from './config.tsx';
+import { columns, dataSource, DataType } from './config';
 import s from './styles.module.scss';
-import { messages } from '../../../../../common/constants/messages.ts';
+import { messages } from '../../../../../common/constants/messages';
 
 const Grade = () => {
   return (

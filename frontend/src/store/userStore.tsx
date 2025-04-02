@@ -1,8 +1,8 @@
 import { create } from 'zustand';
-import AxiosService from '../axios/AxiosService.tsx';
-import { API_WHO_AM_I } from '../common/constants/api.ts';
-import { parseJwt } from '../common/utils/jwt.ts';
-import { IAccessToken, IUserInfo } from '../types/commonTypes.ts';
+import AxiosService from '../axios/AxiosService';
+import { API_WHO_AM_I } from '../common/constants/api';
+import { parseJwt } from '../common/utils/jwt';
+import { IAccessToken, IUserInfo } from '../types/commonTypes';
 
 const userRoles = ['administrator', 'user', 'support'] as const;
 export type IUserRoles = (typeof userRoles)[number];

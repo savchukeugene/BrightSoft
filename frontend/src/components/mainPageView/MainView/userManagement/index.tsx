@@ -1,15 +1,15 @@
 import { FC, useEffect, useState } from 'react';
-import { useUserStore } from '../../../../store/userStore.tsx';
+import { useUserStore } from '../../../../store/userStore';
 import PageNotFound from '../../../commonComponents/PageNotFound';
 import { Modal, Table } from 'antd';
 import s from '../User/Grade/styles.module.scss';
-import { columns, filters } from './config.tsx';
+import { columns, filters } from './config';
 import Filter from '../../../commonComponents/Filter';
-import { deleteUser, getAllUsers, getUser } from './actions.ts';
-import { IAllUsersMapped } from '../../../../types/commonTypes.ts';
-import UserInfo from './userInfo/index.tsx';
-import { IUserMapped } from '../../../../types/userTypes.ts';
-import { messages } from '../../../../common/constants/messages.ts';
+import { deleteUser, getAllUsers, getUser } from './actions';
+import { IAllUsersMapped } from '../../../../types/commonTypes';
+import UserInfo from './userInfo/index';
+import { IUserMapped } from '../../../../types/userTypes';
+import { messages } from '../../../../common/constants/messages';
 
 const UserManagement: FC = () => {
   const { role } = useUserStore();

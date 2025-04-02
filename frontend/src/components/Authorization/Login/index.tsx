@@ -5,12 +5,12 @@ import logo from '../../../images/book-bookmark-minimalistic-svgrepo-com.svg';
 import {
   authorizationFieldsGenerator,
   collectFieldsData,
-} from '../../../common/utils/generatotrs.tsx';
-import { loginFieldsConfig } from './config.ts';
+} from '../../../common/utils/generatotrs';
+import { loginFieldsConfig } from './config';
 import { login } from './actions';
 import { ILoginDTO } from '../../../types/commonTypes';
 import { messages } from '../../../common/constants/messages';
-import { useUserStore } from '../../../store/userStore.tsx';
+import { useUserStore } from '../../../store/userStore';
 
 const Login: FC = () => {
   const { setUser } = useUserStore();
@@ -41,10 +41,10 @@ const Login: FC = () => {
           <Button htmlType={'submit'}>{messages.button.login}</Button>
         </div>
       </form>
-      <foooter className="footer">
+      <footer className="footer">
         <a href="/createAccount">Нет аккаунта? Создать</a>
         <a href="#">Забыли пароль?</a>
-      </foooter>
+      </footer>
     </div>
   );
 };

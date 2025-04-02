@@ -3,9 +3,9 @@ import { Button, Form } from 'antd';
 
 import s from './styles.module.scss';
 import { FilterOutlined } from '@ant-design/icons';
-import { fieldsGenerator } from '../../../common/utils/generatotrs.tsx';
-import { IFilter } from '../../../types/filterTypes.ts';
-import { messages } from '../../../common/constants/messages.ts';
+import { fieldsGenerator } from '../../../common/utils/generatotrs';
+import { IFilter } from '../../../types/filterTypes';
+import { messages } from '../../../common/constants/messages';
 
 const Filter: FC<IFilter> = ({ fields }) => {
   const [hidden, setHidden] = useState<boolean>(true);

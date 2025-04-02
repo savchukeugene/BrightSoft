@@ -1,6 +1,6 @@
-import AxiosService from '../../../axios/AxiosService.tsx';
-import { IActionsFormat, IRegisterDTO, IUserInfo } from '../../../types/commonTypes.ts';
-import { API_REGISTER } from '../../../common/constants/api.ts';
+import AxiosService from '../../../axios/AxiosService';
+import { IActionsFormat, IRegisterDTO, IUserInfo } from '../../../types/commonTypes';
+import { API_REGISTER } from '../../../common/constants/api';
 import { AxiosResponse } from 'axios';
 
 export const register = async (

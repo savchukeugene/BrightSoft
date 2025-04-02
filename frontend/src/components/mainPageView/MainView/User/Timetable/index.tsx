@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { messages } from '../../../../../common/constants/messages.ts';
+import { messages } from '../../../../../common/constants/messages';
 
 const Timetable: FC = (): JSX.Element => {
   return (

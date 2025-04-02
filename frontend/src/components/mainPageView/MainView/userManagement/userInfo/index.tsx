@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { IUserMapped } from '../../../../../types/userTypes.ts';
-import { createConfig } from './config.ts';
-import { userInfoGenerator } from '../../../../../common/utils/generatotrs.tsx';
+import { IUserMapped } from '../../../../../types/userTypes';
+import { createConfig } from './config';
+import { userInfoGenerator } from '../../../../../common/utils/generatotrs';
 import { Form } from 'antd';
 
 interface IUserInfoComponent {

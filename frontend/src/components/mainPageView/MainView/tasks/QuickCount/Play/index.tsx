@@ -1,12 +1,12 @@
 import s from './styles.module.scss';
 import { useState } from 'react';
-import { messages } from '../../../../../../common/constants/messages.ts';
+import { messages } from '../../../../../../common/constants/messages';
 import { Tooltip } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { useSearchParams } from 'react-router-dom';
-import { gameConfig, tooltipConfig } from './config.tsx';
-import { GamesLevelType } from '../../../../../../types/commonTypes.ts';
-import GameContent from './GameContent.tsx';
+import { gameConfig, tooltipConfig } from './config';
+import { GamesLevelType } from '../../../../../../types/commonTypes';
+import GameContent from './GameContent';
 
 const concatTooltipInfo = (message: string, param: number, unit: boolean) =>
   `${message + ' ' + param + (unit && 'c.')}`;

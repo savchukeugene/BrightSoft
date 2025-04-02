@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { Button } from 'antd';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { ROOTS } from '../../../common/constants/roots.tsx';
+import { Routes } from '../../../common/constants/routes';
 import s from './styles.module.scss';
-import { messages } from '../../../common/constants/messages.ts';
+import { messages } from '../../../common/constants/messages';
 
 const PageNotFound: FC = (): React.JSX.Element => {
   const navigate: NavigateFunction = useNavigate();
@@ -17,7 +17,7 @@ const PageNotFound: FC = (): React.JSX.Element => {
           <div className={s.description}>
             <h1 style={{ fontSize: '20px' }}>{messages.view.pageNotFound.description}</h1>
             <Button
-              onClick={() => navigate(ROOTS.mainPage + ROOTS.user + ROOTS.grade)}
+              onClick={() => navigate(Routes.mainPage + Routes.user + Routes.grade)}
               style={{
                 width: '15%',
               }}

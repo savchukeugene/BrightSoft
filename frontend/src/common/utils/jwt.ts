@@ -1,4 +1,4 @@
-import { IAccessToken } from '../../types/commonTypes.ts';
+import { IAccessToken } from '../../types/commonTypes';
 
 export const parseJwt = (token: string): IAccessToken => {
   var base64Url: string = token.split('.')[1];

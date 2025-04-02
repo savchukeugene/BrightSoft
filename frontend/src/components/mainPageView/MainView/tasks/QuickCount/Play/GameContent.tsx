@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import PreparingForAGame from './GameStates/PreparingForAGame.tsx';
-import GameInProgress from './GameStates/GameInProgress.tsx';
-import Final from './GameStates/Final.tsx';
-import { GameStates } from './index.tsx';
+import PreparingForAGame from './GameStates/PreparingForAGame';
+import GameInProgress from './GameStates/GameInProgress';
+import Final from './GameStates/Final';
+import { GameStates } from './index';
 
 interface IGameContent {
   state: GameStates;

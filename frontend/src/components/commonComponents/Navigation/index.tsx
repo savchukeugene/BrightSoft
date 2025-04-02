@@ -1,7 +1,7 @@
 import s from '../../mainPageView/styles.module.scss';
 import { StarFilled } from '@ant-design/icons';
-import { logout } from '../../Authorization/Login/actions.ts';
-import { useUserStore } from '../../../store/userStore.tsx';
+import { logout } from '../../Authorization/Login/actions';
+import { useUserStore } from '../../../store/userStore';
 import { FC } from 'react';
 
 const Navigation: FC = (): JSX.Element => {

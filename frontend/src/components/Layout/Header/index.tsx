@@ -1,5 +1,5 @@
 import { Menu } from 'antd';
-import { HEADER_OPTIONS } from '../../../common/constants/headerConfig/config.tsx';
+import { HEADER_OPTIONS } from '../../../common/headerConfig/config';
 import Navigation from '../../commonComponents/Navigation';
 import { Header } from 'antd/lib/layout/layout';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const LayoutHeader = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const splitPathname: string[] = pathname.split('/');
+  // const splitPathname: string[] = pathname.split('/');
 
   return (
     <Header style={{ display: 'flex', alignItems: 'center' }}>
@@ -16,15 +16,13 @@ const LayoutHeader = () => {
         mode="horizontal"
         items={HEADER_OPTIONS[pathname.split('/')[2]]}
         style={{ flex: 1, minWidth: 0 }}
-        defaultSelectedKeys={['grade']}
-        onClick={(value) =>
+        defaultSelectedKeys={[pathname.split('/')[3]]}
+        onClick={(value) => {
+          // console.log(value);
           navigate({
-            pathname: pathname.replace(
-              splitPathname[splitPathname.length - 1],
-              value.key,
-            ),
-          })
-        }
+            pathname: pathname.concat(value.key),
+          });
+        }}
       />
       <Navigation />
     </Header>

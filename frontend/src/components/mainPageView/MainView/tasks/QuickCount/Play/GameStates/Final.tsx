@@ -1,8 +1,9 @@
 import s from '../styles.module.scss';
 import { Button, Form, Input } from 'antd';
 import { FC, useState } from 'react';
-import { messages } from '../../../../../../../common/constants/messages.ts';
-import DecideAnswer from '../AnswerComponents/DecideAnswer.tsx';
+import { messages } from '../../../../../../../common/constants/messages';
+import DecideAnswer from '../AnswerComponents/DecideAnswer';
+import { accruePoints, takePointsAway } from '../actions';
 
 interface IUserAnswer {
   userAnswer: string;
@@ -11,7 +12,9 @@ interface IUserAnswer {
 const Final: FC<{ result: number }> = ({ result }) => {
   const [isAnswerRight, setIsAnswerRight] = useState<boolean | null>(null);
   const onAnswer = (values: IUserAnswer) => {
-    setIsAnswerRight(result === parseInt(values.userAnswer));
+    const isResultCorrect = result === parseInt(values.userAnswer);
+    isResultCorrect ? accruePoints() : takePointsAway();
+    setIsAnswerRight(isResultCorrect);
   };
 
   return isAnswerRight !== null ? (
