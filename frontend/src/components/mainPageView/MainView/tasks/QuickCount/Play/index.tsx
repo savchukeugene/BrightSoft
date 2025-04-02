@@ -20,25 +20,32 @@ const Play = () => {
   const [searchParams] = useSearchParams();
   const [result, setResult] = useState<number>(0);
 
-  const levelValue = searchParams.get('level');
-  const levelInfo = gameConfig[levelValue as GamesLevelType];
+  const levelValue = searchParams.get('level') as GamesLevelType;
+  const levelInfo = gameConfig[levelValue];
+
+  if (!levelInfo) {
+    throw new Error(`Уровень сложности "${levelValue}" не найден.`);
+  }
 
   const createArrayOfRandomNumbers = (): number[] => {
-    let set = new Set<number>();
-    for (let i = 0; i < Math.floor(levelInfo.duration / levelInfo.changePeriod); i++) {
-      let valueToPush: number = Math.round(
-        Math.random() * (levelInfo.range[1] - levelInfo.range[0]) + levelInfo.range[0],
-      );
-      if (set.has(valueToPush) || valueToPush === 0) {
-        i--;
-        continue;
-      }
-      set.add(valueToPush);
+    let set: Set<number> = new Set<number>();
+    const totalNumbers: number = Math.floor(levelInfo.duration / levelInfo.changePeriod);
+    const [min, max] = levelInfo.range;
+
+    if (totalNumbers > max - min + 1) {
+      throw new Error('Недостаточно уникальных чисел в заданном диапазоне.');
     }
+
+    while (set.size < totalNumbers) {
+      let valueToPush: number = Math.floor(Math.random() * (max - min + 1) + min);
+      if (valueToPush !== 0) {
+        set.add(valueToPush);
+      }
+    }
+
     return Array.from(set);
   };
-  //@ts-ignore
-  const handleEndGame = (finalValue: number) => {
+  const handleEndGame = (finalValue: number): void => {
     setCurrentGameState('final');
     console.log(finalValue);
     setResult(finalValue);

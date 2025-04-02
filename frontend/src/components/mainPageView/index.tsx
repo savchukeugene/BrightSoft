@@ -6,6 +6,7 @@ import LayoutHeader from '../Layout/Header';
 import LayoutSider from '../Layout/Sider';
 
 import s from './styles.module.scss';
+import ErrorBoundary from '../commonComponents/ErrorBoundary';
 
 const MainPage = () => {
   return (
@@ -14,8 +15,10 @@ const MainPage = () => {
       <Layout className={s.layout}>
         <LayoutHeader />
         <PageWrapper>
-          <Outlet />
-          <Footer />
+          <ErrorBoundary>
+            <Outlet />
+            <Footer />
+          </ErrorBoundary>
         </PageWrapper>
       </Layout>
     </Layout>

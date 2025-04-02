@@ -98,6 +98,10 @@ export const messages = {
         },
       },
     },
+    errorBoundary: {
+      title: 'Произошла ошибка!',
+      description: 'Прочитайте сообщение об ошибке и нажмите на кнопку ниже.',
+    },
     login: {
       fields: {
         inputEmail: 'Введите e-mail',
@@ -142,6 +146,7 @@ export const messages = {
     create: 'Создать',
     login: 'Войти',
     check: 'Проверить',
+    back: 'Вернуться',
   },
   notification: {
     success: {
@@ -155,7 +160,6 @@ export const messages = {
         successLogout: 'Вы успешно вышли из аккаунта!',
       },
     },
-    warn: {},
     error: {
       invalidData: 'Произошла ошибка при обработке данных!',
       unknownError: 'Произошла неизвестная ошибка!',
