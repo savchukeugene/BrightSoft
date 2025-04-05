@@ -13,6 +13,13 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/**
+         * Женя, функция снизу - это генератор рутов.
+         *
+         * Если надо описать новый путь - заходи в конфиг authorizedUserRoutesConfig и добавляй новый объект в массив, в поле path укажи путь.
+         * Если надо дочерний рут описать - добавляй поле child и аналогично описывай вложенный элемент.
+         * При необходимости смотри в интерфейс IRoutesGenerator, которым типизирован один из конфигов. Там описаны поля
+         */}
         {routesGenerator(
           user.user !== null ? authorizedUserRoutesConfig(role) : logoutUserRoutesConfig,
         )}
