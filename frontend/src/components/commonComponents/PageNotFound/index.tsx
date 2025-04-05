@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { Button } from 'antd';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { Routes } from '../../../common/constants/routes';
 import s from './styles.module.scss';
 import { messages } from '../../../common/constants/messages';
+import { Routes } from '../../../common/constants/routes';
 
 const PageNotFound: FC = (): React.JSX.Element => {
   const navigate: NavigateFunction = useNavigate();

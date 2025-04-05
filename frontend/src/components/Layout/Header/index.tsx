@@ -3,11 +3,14 @@ import { HEADER_OPTIONS } from '../../../common/headerConfig/config';
 import Navigation from '../../commonComponents/Navigation';
 import { Header } from 'antd/lib/layout/layout';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { routeGenerator } from '../../../common/utils/generatotrs';
+
+import { Routes } from '../../../common/constants/routes';
 
 const LayoutHeader = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  // const splitPathname: string[] = pathname.split('/');
+  const splitPathname: string[] = pathname.split('/');
 
   return (
     <Header style={{ display: 'flex', alignItems: 'center' }}>
@@ -18,9 +21,12 @@ const LayoutHeader = () => {
         style={{ flex: 1, minWidth: 0 }}
         defaultSelectedKeys={[pathname.split('/')[3]]}
         onClick={(value) => {
-          // console.log(value);
           navigate({
-            pathname: pathname.concat(value.key),
+            pathname: routeGenerator(
+              Routes.mainPage,
+              `/${splitPathname[2]}`,
+              `/${value.key}`,
+            ),
           });
         }}
       />

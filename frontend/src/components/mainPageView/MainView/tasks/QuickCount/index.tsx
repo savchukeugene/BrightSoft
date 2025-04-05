@@ -5,10 +5,10 @@ import { levelsConfig } from './config';
 
 import s from './styles.module.scss';
 import { Outlet, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
-import { Routes } from '../../../../../common/constants/routes';
 import { GamesLevelType } from '../../../../../types/commonTypes';
 import { Button, Form, Input, Modal } from 'antd';
 import FormItem from 'antd/es/form/FormItem';
+import { Routes } from '../../../../../common/constants/routes';
 
 const QuickCount: FC = (): JSX.Element => {
   const navigate = useNavigate();

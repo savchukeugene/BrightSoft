@@ -1,9 +1,9 @@
 import React from 'react';
 import { MenuProps } from 'antd';
 import { IUserRoles } from '../../store/userStore';
-import { Routes } from '../constants/routes';
 import { To } from 'react-router-dom';
 import { routeGenerator } from './generatotrs';
+import { Routes } from '../constants/routes';
 
 export type MenuItem = Required<MenuProps>['items'][number];
 

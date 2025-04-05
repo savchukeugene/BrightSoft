@@ -1,4 +1,3 @@
-import { Routes } from '../constants/routes';
 import {
   BugOutlined,
   BuildOutlined,
@@ -11,7 +10,8 @@ import { getItem, MenuItem } from '../utils/helpers';
 import { ItemType } from 'antd/es/menu/interface';
 import { IUserRoles } from '../../store/userStore';
 import { messages } from '../constants/messages';
-import { routeGenerator } from '../utils/generatotrs';
+
+import { Routes } from '../constants/routes';
 
 interface IHeaderOptions {
   [key: string]: ItemType[];
@@ -23,26 +23,18 @@ type ILeftSideOptions = {
 
 const source = messages.view.main.layoutOptions;
 
+console.log(Routes);
+
 export const LEFT_SIDE_OPTIONS_LIST: ILeftSideOptions = {
   administrator: [
     getItem(source.users, 'userManagement', <TeamOutlined />),
-    getItem(
-      source.tasks,
-      'tasks',
-      <BuildOutlined />,
-      `${Routes.tasks}/${Routes.quickCount}`,
-    ),
+    getItem(source.tasks, 'tasks', <BuildOutlined />),
     getItem(source.support, 'support', <BugOutlined />),
     getItem(source.pages, 'editingPages', <EditOutlined />),
     getItem(source.about, 'about', <InfoCircleOutlined />),
   ],
   user: [
-    getItem(
-      source.user,
-      'user',
-      <UserOutlined />,
-      routeGenerator(Routes.user, Routes.timetable),
-    ),
+    getItem(source.user, 'user', <UserOutlined />),
     getItem(source.tasks, 'tasks', <BuildOutlined />),
     getItem(source.support, 'support', <BugOutlined />),
     getItem(source.about, 'about', <InfoCircleOutlined />),

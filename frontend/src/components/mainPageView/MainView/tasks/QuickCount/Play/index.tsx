@@ -1,5 +1,5 @@
 import s from './styles.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { messages } from '../../../../../../common/constants/messages';
 import { Tooltip } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
@@ -27,6 +27,13 @@ const Play = () => {
     throw new Error(`Уровень сложности "${levelValue}" не найден.`);
   }
 
+  useEffect(() => {
+    if (currentGameState === 'prepare') {
+      return;
+    }
+    return () => setCurrentGameState('prepare');
+  }, []);
+
   const createArrayOfRandomNumbers = (): number[] => {
     let set: Set<number> = new Set<number>();
     const totalNumbers: number = Math.floor(levelInfo.duration / levelInfo.changePeriod);
@@ -47,12 +54,12 @@ const Play = () => {
   };
   const handleEndGame = (finalValue: number): void => {
     setCurrentGameState('final');
-    console.log(finalValue);
     setResult(finalValue);
   };
 
   const interval = (valueToSet: number[], it: number = 0) => {
     setValue(valueToSet[it] > 0 ? `+${valueToSet[it]}` : `${valueToSet[it]}`);
+    console.log(currentGameState);
     return valueToSet[it] !== undefined
       ? setTimeout(() => interval(valueToSet, it + 1), levelInfo.changePeriod * 1000)
       : handleEndGame(valueToSet.reduce((a, b) => a + b));

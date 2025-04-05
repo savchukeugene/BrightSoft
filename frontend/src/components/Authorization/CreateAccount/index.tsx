@@ -9,6 +9,7 @@ import {
 } from '../../../common/utils/generatotrs';
 import { createAccountFieldsConfig } from './config';
 import { useNavigate } from 'react-router-dom';
+
 import { Routes } from '../../../common/constants/routes';
 
 const CreateAccount: FC = () => {

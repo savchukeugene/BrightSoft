@@ -1,18 +1,18 @@
 import { IRoutesGenerator } from '../../types/commonTypes';
 import Login from '../../components/Authorization/Login';
 import CreateAccount from '../../components/Authorization/CreateAccount';
-import PageNotFound from '../../components/commonComponents/PageNotFound';
+import { Navigate } from 'react-router-dom';
+import { IUserRoles } from '../../store/userStore';
 import MainPage from '../../components/mainPageView';
 import Timetable from '../../components/mainPageView/MainView/User/Timetable';
 import Grade from '../../components/mainPageView/MainView/User/Grade';
-import { Navigate } from 'react-router-dom';
 import QuickCount from '../../components/mainPageView/MainView/tasks/QuickCount';
 import Play from '../../components/mainPageView/MainView/tasks/QuickCount/Play';
 import SupportPage from '../../components/mainPageView/MainView/SupportPage';
-import LandingPages from '../../components/LandingPages';
-import { defineDefaultNavigation } from '../utils/helpers';
+import LandingPages from '../../components/mainPageView/MainView/LandingPages';
 import UserManagement from '../../components/mainPageView/MainView/userManagement';
-import { IUserRoles } from '../../store/userStore';
+import PageNotFound from '../../components/commonComponents/PageNotFound';
+import { defineDefaultNavigation } from '../utils/helpers';
 
 export const Routes = {
   mainPage: '/mainPage',
@@ -30,7 +30,6 @@ export const Routes = {
   userManagement: '/userManagement',
   play: '/play',
 };
-
 export const logoutUserRoutesConfig: IRoutesGenerator[] = [
   {
     path: Routes.login,
@@ -50,7 +49,6 @@ export const logoutUserRoutesConfig: IRoutesGenerator[] = [
     ),
   },
 ];
-
 export const authorizedUserRoutesConfig = (role: IUserRoles): IRoutesGenerator[] => [
   {
     path: Routes.mainPage,
