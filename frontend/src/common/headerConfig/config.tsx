@@ -11,8 +11,6 @@ import { ItemType } from 'antd/es/menu/interface';
 import { IUserRoles } from '../../store/userStore';
 import { messages } from '../constants/messages';
 
-import { Routes } from '../constants/routes';
-
 interface IHeaderOptions {
   [key: string]: ItemType[];
 }
@@ -22,8 +20,6 @@ type ILeftSideOptions = {
 };
 
 const source = messages.view.main.layoutOptions;
-
-console.log(Routes);
 
 export const LEFT_SIDE_OPTIONS_LIST: ILeftSideOptions = {
   administrator: [
