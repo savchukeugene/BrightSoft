@@ -164,6 +164,11 @@ export const messages = {
       invalidData: 'Произошла ошибка при обработке данных!',
       unknownError: 'Произошла неизвестная ошибка!',
     },
+    warn: {
+      payAttention: 'Обратите внимание!',
+      difference: 'Разница диапазона должна быть больше единицы!',
+      firstMustBeLess: 'Первое число диапазона должно быть строго меньше второго!',
+    },
   },
   userRoles: {
     administrator: 'Администратор',

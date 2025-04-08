@@ -4,6 +4,7 @@ import { IUserRoles } from '../../store/userStore';
 import { To } from 'react-router-dom';
 import { routeGenerator } from './generatotrs';
 import { Routes } from '../constants/routes';
+import { IGameParams } from '../../types/commonTypes';
 
 export type MenuItem = Required<MenuProps>['items'][number];
 
@@ -42,4 +43,26 @@ export const formatDate = (isoDate: string): string => {
   const month: string = String(date.getMonth() + 1).padStart(2, '0');
   const year: number = date.getFullYear();
   return `${day}.${month}.${year}`;
+};
+
+export const concatTooltipInfo = (message: string, param: number, unit: boolean) =>
+  `${message + ' ' + param + (unit && 'c.')}`;
+
+export const createArrayOfRandomNumbers = (levelInfo: IGameParams): number[] => {
+  let set: Set<number> = new Set<number>();
+  const totalNumbers: number = Math.floor(levelInfo.duration / levelInfo.changePeriod);
+  const [min, max] = levelInfo.range;
+
+  if (totalNumbers > max - min + 1) {
+    throw new Error('Недостаточно уникальных чисел в заданном диапазоне.');
+  }
+
+  while (set.size < totalNumbers) {
+    let valueToPush: number = Math.floor(Math.random() * (max - min + 1) + min);
+    if (valueToPush !== 0) {
+      set.add(valueToPush);
+    }
+  }
+
+  return Array.from(set);
 };

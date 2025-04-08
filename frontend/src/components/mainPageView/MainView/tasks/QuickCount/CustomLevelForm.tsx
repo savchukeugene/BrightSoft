@@ -1,15 +1,48 @@
 import s from './styles.module.scss';
 import { messages } from '../../../../../common/constants/messages';
 import FormItem from 'antd/es/form/FormItem';
-import { Button, Form, FormInstance, Input } from 'antd';
+import { Button, Form, FormInstance, Input, notification } from 'antd';
 import { FC } from 'react';
+import { IGameParams } from '../../../../../types/commonTypes';
 
-const CustomLevelForm: FC<{ form: FormInstance<any> }> = ({ form }) => {
+interface ICustomLevelValues {
+  duration: string;
+  end: string;
+  period: string;
+  start: string;
+}
+
+const CustomLevelForm: FC<{
+  form: FormInstance;
+  handler: (customParams: IGameParams) => void;
+}> = ({ form, handler }) => {
+  const onFormFinish = (values: ICustomLevelValues) => {
+    if (Number(values.start) - Number(values.end) === 0) {
+      return notification.warning({
+        message: messages.notification.warn.payAttention,
+        description: messages.notification.warn.difference,
+      });
+    }
+    if (Number(values.start) > Number(values.end)) {
+      return notification.warning({
+        message: messages.notification.warn.payAttention,
+        description: messages.notification.warn.firstMustBeLess,
+      });
+    }
+    const newValues: IGameParams = {
+      duration: Number(values.duration),
+      changePeriod: Number(values.period),
+      range: [Number(values.start), Number(values.end)],
+    };
+
+    handler(newValues);
+  };
+
   return (
     <Form
       className={s.quickCountForm}
       form={form}
-      onFinish={(values) => console.log(values)}
+      onFinish={onFormFinish}
     >
       <h1> {messages.view.main.tasks.quickCount.formTitle}</h1>
       <FormItem

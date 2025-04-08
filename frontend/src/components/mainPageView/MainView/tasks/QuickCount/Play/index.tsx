@@ -1,15 +1,17 @@
 import s from './styles.module.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { messages } from '../../../../../../common/constants/messages';
 import { Tooltip } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
-import { useSearchParams } from 'react-router-dom';
+import { useOutletContext, useSearchParams } from 'react-router-dom';
 import { gameConfig, tooltipConfig } from './config';
-import { GamesLevelType } from '../../../../../../types/commonTypes';
+import { GamesLevelType, IGameParams } from '../../../../../../types/commonTypes';
 import GameContent from './GameContent';
+import {
+  concatTooltipInfo,
+  createArrayOfRandomNumbers,
+} from '../../../../../../common/utils/helpers';
 
-const concatTooltipInfo = (message: string, param: number, unit: boolean) =>
-  `${message + ' ' + param + (unit && 'c.')}`;
 const ref = messages.view.main.tasks.quickCount.play;
 const gameStates = ['prepare', 'progress', 'final'] as const;
 export type GameStates = (typeof gameStates)[number];
@@ -19,39 +21,21 @@ const Play = () => {
   const [value, setValue] = useState<string | null>(null);
   const [searchParams] = useSearchParams();
   const [result, setResult] = useState<number>(0);
-
+  const { levelInfoContext } = useOutletContext<{
+    levelInfoContext: IGameParams | null;
+  }>();
   const levelValue = searchParams.get('level') as GamesLevelType;
-  const levelInfo = gameConfig[levelValue];
+
+  const levelInfo = levelValue === 'custom' ? levelInfoContext : gameConfig[levelValue];
 
   if (!levelInfo) {
+    if (levelValue === 'custom') {
+      window.history.back();
+      return null;
+    }
     throw new Error(`Уровень сложности "${levelValue}" не найден.`);
   }
 
-  useEffect(() => {
-    if (currentGameState === 'prepare') {
-      return;
-    }
-    return () => setCurrentGameState('prepare');
-  }, []);
-
-  const createArrayOfRandomNumbers = (): number[] => {
-    let set: Set<number> = new Set<number>();
-    const totalNumbers: number = Math.floor(levelInfo.duration / levelInfo.changePeriod);
-    const [min, max] = levelInfo.range;
-
-    if (totalNumbers > max - min + 1) {
-      throw new Error('Недостаточно уникальных чисел в заданном диапазоне.');
-    }
-
-    while (set.size < totalNumbers) {
-      let valueToPush: number = Math.floor(Math.random() * (max - min + 1) + min);
-      if (valueToPush !== 0) {
-        set.add(valueToPush);
-      }
-    }
-
-    return Array.from(set);
-  };
   const handleEndGame = (finalValue: number): void => {
     setCurrentGameState('final');
     setResult(finalValue);
@@ -59,14 +43,13 @@ const Play = () => {
 
   const interval = (valueToSet: number[], it: number = 0) => {
     setValue(valueToSet[it] > 0 ? `+${valueToSet[it]}` : `${valueToSet[it]}`);
-    console.log(currentGameState);
     return valueToSet[it] !== undefined
       ? setTimeout(() => interval(valueToSet, it + 1), levelInfo.changePeriod * 1000)
       : handleEndGame(valueToSet.reduce((a, b) => a + b));
   };
 
   const process = async (): Promise<void> => {
-    interval(createArrayOfRandomNumbers());
+    interval(createArrayOfRandomNumbers(levelInfo));
   };
 
   const handleStart = () => {

@@ -31,6 +31,7 @@ export const Routes = {
   userManagement: '/userManagement',
   play: '/play',
 };
+
 export const logoutUserRoutesConfig: IRoutesGenerator[] = [
   {
     path: Routes.login,
