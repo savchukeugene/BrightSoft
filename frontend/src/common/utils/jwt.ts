@@ -12,6 +12,5 @@ export const parseJwt = (token: string): IAccessToken => {
       })
       .join(''),
   );
-
   return JSON.parse(jsonPayload);
 };

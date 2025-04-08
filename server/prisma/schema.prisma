@@ -18,6 +18,7 @@ model User {
   status UserStatus @default(non_confirmed)
   courseName CourseNames @default(free) @map("course_name")
   method AuthMethods
+  stars Int @default(0)
 
   accounts Account[]
 

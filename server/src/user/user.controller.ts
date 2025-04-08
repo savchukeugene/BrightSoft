@@ -13,6 +13,7 @@ import { WhoAmIDto } from './dto/whoAmI.dto';
 import { UserDeleteDto, UserInfoDto } from './dto/userInfo.dto';
 import { Request } from 'express';
 import { RolesGuard } from '../libs/common/decorators/role-validator';
+import { StarsDto } from './dto/stars.dto';
 
 @Controller('users')
 export class UserController {
@@ -43,5 +44,11 @@ export class UserController {
   @UseGuards(new RolesGuard(['administrator']))
   public async deleteUser(@Body() dto: UserDeleteDto) {
     return await this.userService.deleteUser(dto.id);
+  }
+
+  @Post('scoring')
+  @HttpCode(HttpStatus.OK)
+  public async accrue(@Body() dto: StarsDto) {
+    return await this.userService.scoring(dto);
   }
 }

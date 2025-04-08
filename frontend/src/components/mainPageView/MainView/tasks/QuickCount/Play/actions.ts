@@ -1,31 +1,21 @@
-import { IActionsFormat } from '../../../../../../types/commonTypes';
-import { AxiosResponse } from 'axios';
+import { IActionsFormat, IUserData } from '../../../../../../types/commonTypes';
 import AxiosService from '../../../../../../axios/AxiosService';
-import { API_ACCRUE_POINTS, API_TAKE_AWAY } from '../../../../../../common/constants/api';
+import { API_SCORING } from '@common/constants/api';
 
-export const accruePoints = async (): Promise<
-  IActionsFormat<AxiosResponse<string, any> | null>
-> => {
+export const scoring = async (
+  isUserWin: boolean,
+  id: string,
+): Promise<IActionsFormat<number | null>> => {
+  const operation = isUserWin ? 'accrue' : 'takeAway';
   try {
-    const { data } = await AxiosService.POST<string>(API_ACCRUE_POINTS, {
-      data: {},
+    const { data } = await AxiosService.POST<IUserData>(API_SCORING, {
+      data: {
+        amount: 40,
+        operation,
+        id,
+      },
     });
-
-    return { data, ok: true };
-  } catch (e) {
-    return { data: null, ok: false };
-  }
-};
-
-export const takePointsAway = async (): Promise<
-  IActionsFormat<AxiosResponse<string, any> | null>
-> => {
-  try {
-    const { data } = await AxiosService.POST<string>(API_TAKE_AWAY, {
-      data: {},
-    });
-
-    return { data, ok: true };
+    return { data: data?.data?.stars ?? 0, ok: true };
   } catch (e) {
     return { data: null, ok: false };
   }

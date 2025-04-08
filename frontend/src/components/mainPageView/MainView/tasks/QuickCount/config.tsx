@@ -1,5 +1,6 @@
 import { ILevelsFields } from '../../../../../types/commonTypes';
 import { messages } from '@common/constants/messages';
+import { IRules } from '../index';
 
 export const levelsConfig: ILevelsFields[] = [
   {
@@ -33,3 +34,8 @@ export const levelsConfig: ILevelsFields[] = [
     boxShadow: messages.view.main.tasks.quickCount.boxShadow.hard,
   },
 ];
+
+export const levelRules: IRules = {
+  title: messages.view.main.tasks.quickCount.title,
+  descriptions: ['Правило 1', 'Правило 2', 'Правило 3'],
+};

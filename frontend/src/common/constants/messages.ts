@@ -3,7 +3,7 @@ const userPages: string[] = ['Расписание', 'Оценки'];
 import React from 'react';
 
 export const messages = {
-  defaultUserId: '00000000-0000-0000-0000',
+  defaultUserId: '00000000-0000-0000-0000-000000000000',
   requests: {
     success: 'Запрос успешен!',
   },

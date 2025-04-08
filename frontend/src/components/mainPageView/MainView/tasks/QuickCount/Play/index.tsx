@@ -1,16 +1,13 @@
 import s from './styles.module.scss';
 import { useState } from 'react';
-import { messages } from '../../../../../../common/constants/messages';
+import { messages } from '@common/constants/messages';
 import { Tooltip } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { useOutletContext, useSearchParams } from 'react-router-dom';
 import { gameConfig, tooltipConfig } from './config';
 import { GamesLevelType, IGameParams } from '../../../../../../types/commonTypes';
 import GameContent from './GameContent';
-import {
-  concatTooltipInfo,
-  createArrayOfRandomNumbers,
-} from '../../../../../../common/utils/helpers';
+import { concatTooltipInfo, createArrayOfRandomNumbers } from '@common/utils/helpers';
 
 const ref = messages.view.main.tasks.quickCount.play;
 const gameStates = ['prepare', 'progress', 'final'] as const;

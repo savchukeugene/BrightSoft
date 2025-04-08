@@ -63,6 +63,7 @@ export interface IUserData {
   updatedAt: string;
   userName: string;
   status: UserStatuses;
+  stars: number;
 }
 
 export interface IAllUsersMapped {
@@ -92,8 +93,9 @@ export interface IAccessToken {
   email: string;
   iat: number;
   role: IUserRoles;
-  sub: string;
+  id: string;
   user: IUserData;
+  stars: number;
 }
 
 export interface IRoutesGenerator {

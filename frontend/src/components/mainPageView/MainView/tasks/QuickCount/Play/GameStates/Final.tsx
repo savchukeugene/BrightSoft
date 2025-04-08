@@ -3,17 +3,20 @@ import { Button, Form, Input } from 'antd';
 import { FC, useState } from 'react';
 import { messages } from '@common/constants/messages';
 import DecideAnswer from '../AnswerComponents/DecideAnswer';
-import { accruePoints, takePointsAway } from '../actions';
+import { scoring } from '../actions';
+import { useUserStore } from '../../../../../../../store/userStore';
 
 interface IUserAnswer {
   userAnswer: string;
 }
 
 const Final: FC<{ result: number }> = ({ result }) => {
+  const { user, setStars } = useUserStore();
   const [isAnswerRight, setIsAnswerRight] = useState<boolean | null>(null);
-  const onAnswer = (values: IUserAnswer) => {
+  const onAnswer = async (values: IUserAnswer) => {
     const isResultCorrect = result === parseInt(values.userAnswer);
-    isResultCorrect ? accruePoints() : takePointsAway();
+    const { data } = await scoring(isResultCorrect, user ?? '');
+    setStars(data);
     setIsAnswerRight(isResultCorrect);
   };
 

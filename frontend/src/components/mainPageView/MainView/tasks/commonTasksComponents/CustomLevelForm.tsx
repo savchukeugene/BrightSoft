@@ -1,9 +1,9 @@
-import s from './QuickCount/styles.module.scss';
+import s from '../styles.module.scss';
 import { messages } from '@common/constants/messages';
 import FormItem from 'antd/es/form/FormItem';
 import { Button, Form, FormInstance, Input, notification } from 'antd';
 import { FC } from 'react';
-import { IGameParams } from '../../../../types/commonTypes';
+import { IGameParams } from '../../../../../types/commonTypes';
 
 interface ICustomLevelValues {
   duration: string;

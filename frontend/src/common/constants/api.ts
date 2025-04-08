@@ -28,5 +28,4 @@ export const API_WHO_AM_I: string = `${user_ref}/whoAmI`;
 export const API_GET_ALL_USERS = `${user_ref}/allUsers`;
 export const API_GET_USER_INFO = `${user_ref}/userInfo`;
 export const API_DELETE_USER = `${user_ref}/deleteUser`;
-export const API_ACCRUE_POINTS = `${user_ref}/accrue`;
-export const API_TAKE_AWAY = `${user_ref}/takeAway`;
+export const API_SCORING = `${user_ref}/scoring`;

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { levelsConfig } from './config';
+import { levelRules, levelsConfig } from './config';
 import LevelWrapper from '../index';
 import { messages } from '@common/constants/messages';
 
@@ -8,6 +8,7 @@ const QuickCount: FC = (): JSX.Element => {
     <LevelWrapper
       levelConfig={levelsConfig}
       title={messages.view.main.tasks.quickCount.title}
+      levelRules={levelRules}
     />
   );
 };

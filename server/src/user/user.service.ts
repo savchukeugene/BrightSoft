@@ -7,6 +7,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { $Enums, AuthMethods } from '../../prisma/__generated__';
 import UserRole = $Enums.UserRole;
 import { Request } from 'express';
+import { StarsDto } from './dto/stars.dto';
 
 @Injectable()
 export class UserService {
@@ -15,9 +16,6 @@ export class UserService {
   public async findById(id: string) {
     const user = await this.prismaService.user.findUnique({
       where: { id },
-      include: {
-        accounts: true,
-      },
     });
 
     if (!user)
@@ -63,7 +61,24 @@ export class UserService {
     return data;
   }
 
-  public async accruePoints(request: Request, dto) {}
+  public async scoring(dto: StarsDto) {
+    const user = await this.findById(dto.id);
+    if (!user) {
+      throw new NotFoundException('Пользователь не найден');
+    }
+
+    let updatedStars = user.stars;
+
+    updatedStars =
+      dto.operation === 'accrue'
+        ? user.stars + dto.amount
+        : Math.max(0, user.stars - dto.amount);
+
+    return this.prismaService.user.update({
+      where: { id: dto.id },
+      data: { stars: updatedStars },
+    });
+  }
 
   public async create(
     email: string,

@@ -5,24 +5,32 @@ import {
   ILevelsFields,
 } from '../../../../types/commonTypes';
 import { Outlet, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
-import { Form, Modal } from 'antd';
+import { Form, Modal, Tooltip } from 'antd';
 import { Routes } from '@common/constants/routes';
-import s from './QuickCount/styles.module.scss';
+import s from './styles.module.scss';
 import { levelsGenerator } from '@common/utils/generatotrs';
-import CustomLevelForm from './CustomLevelForm';
+import CustomLevelForm from './commonTasksComponents/CustomLevelForm';
+import { InfoCircleOutlined } from '@ant-design/icons';
+import LevelRules from './commonTasksComponents/LevelRules';
 
+export interface IRules {
+  title: string;
+  descriptions: string[];
+}
 interface ILevelWrapper {
   levelConfig: ILevelsFields[];
   title: string;
+  levelRules: IRules;
 }
 
-const LevelWrapper: FC<ILevelWrapper> = ({ levelConfig, title }) => {
+const LevelWrapper: FC<ILevelWrapper> = ({ levelConfig, title, levelRules }) => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { pathname } = useLocation();
   const [isCustomVisible, setIsCustomVisible] = useState<boolean>(false);
   const [form] = Form.useForm();
   const [levelInfoContext, setLevelInfoContext] = useState<IGameParams | null>(null);
+  const [isLevelInfoVisible, setIsLevelInfoVisible] = useState<boolean>(false);
 
   const handleLevelChoose = (param: GamesLevelType): void => {
     if (param === 'custom') {
@@ -45,9 +53,21 @@ const LevelWrapper: FC<ILevelWrapper> = ({ levelConfig, title }) => {
       search: newSearchParams.toString(),
     });
   };
+
   return (
     <main>
-      <h1 className={'pageTitle'}>{title}</h1>
+      <h1 className={'pageTitle'}>
+        {title}
+        <Tooltip
+          placement="right"
+          title={`Нажмите, что-бы узнать информацию об этом задании`}
+        >
+          <InfoCircleOutlined
+            onClick={() => setIsLevelInfoVisible(true)}
+            className={s.infoAboutLevel}
+          />
+        </Tooltip>
+      </h1>
       {pathname.includes(Routes.play) ? (
         <Outlet context={{ levelInfoContext }} />
       ) : (
@@ -69,6 +89,13 @@ const LevelWrapper: FC<ILevelWrapper> = ({ levelConfig, title }) => {
           </Modal>
         </section>
       )}
+      <Modal
+        open={isLevelInfoVisible}
+        onCancel={() => setIsLevelInfoVisible(false)}
+        footer={false}
+      >
+        <LevelRules levelRules={levelRules} />
+      </Modal>
     </main>
   );
 };
