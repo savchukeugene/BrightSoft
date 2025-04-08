@@ -101,6 +101,9 @@ export const messages = {
           no: 'Не подтверждён',
         },
       },
+      about: {
+        title: 'О компании',
+      },
     },
     errorBoundary: {
       title: 'Произошла ошибка!',

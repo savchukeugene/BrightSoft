@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes } from 'react-router-dom';
 import { IUserStore, useUserStore } from './store/userStore';
-import { routesGenerator } from './common/utils/generatotrs';
+import { routesGenerator } from '@common/utils/generatotrs';
 import {
   authorizedUserRoutesConfig,
   logoutUserRoutesConfig,
-} from './common/constants/routes';
+} from '@common/constants/routes';
 
 function App() {
   const user: IUserStore = useUserStore();

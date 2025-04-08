@@ -19,5 +19,9 @@
     "noEmit": true,
     "skipLibCheck": true,
     "strict": false,
+    "baseUrl": "./src",
+    "paths": {
+      "@common/*": ["common/*"]
+    }
   },
 }

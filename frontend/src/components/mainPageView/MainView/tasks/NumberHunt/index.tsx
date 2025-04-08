@@ -1,4 +1,4 @@
-import { messages } from '../../../../../common/constants/messages';
+import { messages } from '@common/constants/messages';
 
 const NumberHunt = () => {
   return (
