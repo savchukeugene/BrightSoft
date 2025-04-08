@@ -50,5 +50,6 @@ export const HEADER_OPTIONS: IHeaderOptions = {
     getItem(source.maze, 'maze'),
     getItem(source.quickCount, 'quickCount'),
     getItem('Абакусы', 'tasksAbakus'),
+    getItem(source.numberHunt, 'numberHunt'),
   ],
 };

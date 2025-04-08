@@ -14,6 +14,7 @@ import UserManagement from '../../components/mainPageView/MainView/userManagemen
 import PageNotFound from '../../components/commonComponents/PageNotFound';
 import { defineDefaultNavigation } from '../utils/helpers';
 import About from '../../components/mainPageView/MainView/About';
+import NumberHunt from '../../components/mainPageView/MainView/tasks/NumberHunt';
 
 export const Routes = {
   mainPage: '/mainPage',
@@ -30,6 +31,7 @@ export const Routes = {
   createAccount: '/createAccount',
   userManagement: '/userManagement',
   play: '/play',
+  numberHunt: '/numberHunt',
 };
 
 export const logoutUserRoutesConfig: IRoutesGenerator[] = [
@@ -81,6 +83,11 @@ export const authorizedUserRoutesConfig = (role: IUserRoles): IRoutesGenerator[]
                 element: <Play />,
               },
             ],
+          },
+          {
+            path: Routes.numberHunt,
+            element: <NumberHunt />,
+            child: [],
           },
         ],
       },

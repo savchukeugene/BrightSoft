@@ -27,6 +27,7 @@ export const messages = {
         timetable: 'Расписание',
         maze: 'Лабиринты',
         quickCount: 'Быстрый счёт',
+        numberHunt: 'Охота за числами',
       },
       supportPage: {
         title: 'Нам жаль, что Вы столкнулись с неприятностью...',
@@ -76,6 +77,9 @@ export const messages = {
           },
           validateMessage: (label: string): string =>
             `Пожалуйста, укажите поле ${label}!`,
+        },
+        numberHunt: {
+          title: 'Охота за числами',
         },
       },
       userManagement: {

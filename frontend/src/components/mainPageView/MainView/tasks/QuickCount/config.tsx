@@ -1,9 +1,9 @@
 import { IQuickCountLevelFields } from '../../../../../types/commonTypes';
 import { messages } from '../../../../../common/constants/messages';
-import hard from './svg/gdharder.png';
-import normal from './svg/gdhard.png';
-import easy from './svg/gdnormal.png';
-import superEasy from './svg/gdeasy.png';
+import hard from '../../../../../images/svg/gdharder.png';
+import normal from '../../../../../images/svg/gdhard.png';
+import easy from '../../../../../images/svg/gdnormal.png';
+import superEasy from '../../../../../images/svg/gdeasy.png';
 import { SettingOutlined } from '@ant-design/icons';
 
 export const levelsConfig: IQuickCountLevelFields[] = [

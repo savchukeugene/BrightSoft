@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import s from '../styles.module.scss';
 
-import clockEnd from '../../svg/clock-end.svg';
-import clockStart from '../../svg/clock-start.svg';
+import clockEnd from '../../../../../../../images/svg/clock-end.svg';
+import clockStart from '../../../../../../../images/svg/clock-start.svg';
 
 interface IGameFields {
   value: string | null;
