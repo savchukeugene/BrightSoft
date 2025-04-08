@@ -1,9 +1,7 @@
 import { Form, Input, Select } from 'antd';
 import { IField } from '../../types/filterTypes';
 import {
-  GamesLevelType,
   IAuthorizationFields,
-  ILevelsFields,
   IRoutesGenerator,
   IUserInfoGenerator,
 } from '../../types/commonTypes';
@@ -12,6 +10,7 @@ import { Route } from 'react-router-dom';
 import s from '../../components/mainPageView/MainView/userManagement/userInfo/styles.module.scss';
 import currentStyles from './styles.module.scss';
 import { StarFilled } from '@ant-design/icons';
+import { GamesLevelType, ILevelsFields } from '../../types/games';
 
 export const routesGenerator = (
   routesConfig: IRoutesGenerator[],

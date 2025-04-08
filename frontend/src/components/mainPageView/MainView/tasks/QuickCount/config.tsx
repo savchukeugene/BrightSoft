@@ -1,6 +1,6 @@
-import { ILevelsFields } from '../../../../../types/commonTypes';
 import { messages } from '@common/constants/messages';
 import { IRules } from '../index';
+import { ILevelsFields } from '../../../../../types/games';
 
 export const levelsConfig: ILevelsFields[] = [
   {

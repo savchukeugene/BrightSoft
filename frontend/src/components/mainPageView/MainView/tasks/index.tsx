@@ -1,9 +1,4 @@
-import { FC, useState } from 'react';
-import {
-  GamesLevelType,
-  IGameParams,
-  ILevelsFields,
-} from '../../../../types/commonTypes';
+import { FC, useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { Form, Modal, Tooltip } from 'antd';
 import { Routes } from '@common/constants/routes';
@@ -12,6 +7,14 @@ import { levelsGenerator } from '@common/utils/generatotrs';
 import CustomLevelForm from './commonTasksComponents/CustomLevelForm';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import LevelRules from './commonTasksComponents/LevelRules';
+import { messages } from '@common/constants/messages';
+import {
+  GamesLevelType,
+  GamesType,
+  IGameParams,
+  ILevelsFields,
+} from '../../../../types/games';
+import { useGameStore } from '../../../../store/gameStore';
 
 export interface IRules {
   title: string;
@@ -19,7 +22,7 @@ export interface IRules {
 }
 interface ILevelWrapper {
   levelConfig: ILevelsFields[];
-  title: string;
+  title: GamesType;
   levelRules: IRules;
 }
 
@@ -31,11 +34,20 @@ const LevelWrapper: FC<ILevelWrapper> = ({ levelConfig, title, levelRules }) => 
   const [form] = Form.useForm();
   const [levelInfoContext, setLevelInfoContext] = useState<IGameParams | null>(null);
   const [isLevelInfoVisible, setIsLevelInfoVisible] = useState<boolean>(false);
+  const { setGame } = useGameStore();
+
+  useEffect(() => {
+    return () => setGame(null, null);
+  }, []);
 
   const handleLevelChoose = (param: GamesLevelType): void => {
     if (param === 'custom') {
       return setIsCustomVisible(true);
     }
+    setGame(
+      title,
+      levelConfig.find((elem: ILevelsFields) => elem.name === param),
+    );
     const newSearchParams: URLSearchParams = new URLSearchParams(searchParams);
     newSearchParams.set('level', param);
     navigate({
@@ -57,10 +69,10 @@ const LevelWrapper: FC<ILevelWrapper> = ({ levelConfig, title, levelRules }) => 
   return (
     <main>
       <h1 className={'pageTitle'}>
-        {title}
+        {messages.view.main.tasks[title].title}
         <Tooltip
           placement="right"
-          title={`Нажмите, что-бы узнать информацию об этом задании`}
+          title={messages.tooltip.gameInfo}
         >
           <InfoCircleOutlined
             onClick={() => setIsLevelInfoVisible(true)}

@@ -5,9 +5,9 @@ import { Tooltip } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { useOutletContext, useSearchParams } from 'react-router-dom';
 import { gameConfig, tooltipConfig } from './config';
-import { GamesLevelType, IGameParams } from '../../../../../../types/commonTypes';
 import GameContent from './GameContent';
 import { concatTooltipInfo, createArrayOfRandomNumbers } from '@common/utils/helpers';
+import { GamesLevelType, IGameParams } from '../../../../../../types/games';
 
 const ref = messages.view.main.tasks.quickCount.play;
 const gameStates = ['prepare', 'progress', 'final'] as const;
@@ -22,7 +22,6 @@ const Play = () => {
     levelInfoContext: IGameParams | null;
   }>();
   const levelValue = searchParams.get('level') as GamesLevelType;
-
   const levelInfo = levelValue === 'custom' ? levelInfoContext : gameConfig[levelValue];
 
   if (!levelInfo) {

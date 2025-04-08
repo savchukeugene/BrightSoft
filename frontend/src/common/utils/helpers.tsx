@@ -4,7 +4,8 @@ import { IUserRoles } from '../../store/userStore';
 import { To } from 'react-router-dom';
 import { routeGenerator } from './generatotrs';
 import { Routes } from '../constants/routes';
-import { IGameParams } from '../../types/commonTypes';
+
+import { IGameParams } from '../../types/games';
 
 export type MenuItem = Required<MenuProps>['items'][number];
 

@@ -4,17 +4,6 @@ import { IField } from './filterTypes';
 const userStatuses = ['active', 'blocked', 'deleted', 'non_confirmed'] as const;
 export type UserStatuses = (typeof userStatuses)[number];
 
-const gamesLevel = ['superEasy', 'easy', 'normal', 'hard', 'custom'] as const;
-export type GamesLevelType = (typeof gamesLevel)[number];
-export interface IGameParams {
-  duration: number;
-  range: [number, number];
-  changePeriod: number;
-}
-export type GamesConfigType = {
-  [key in GamesLevelType]: IGameParams;
-};
-
 export interface IOptions {
   label: string;
   value: string;
@@ -30,13 +19,6 @@ export interface IRegisterDTO {
 export interface IAuthorizationFields {
   label: string;
   name: string;
-}
-
-export interface ILevelsFields {
-  label: string;
-  name: GamesLevelType;
-  starsAmount: number | string;
-  boxShadow: string;
 }
 
 export interface ILoginDTO {

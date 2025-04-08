@@ -3,7 +3,8 @@ import { messages } from '@common/constants/messages';
 import FormItem from 'antd/es/form/FormItem';
 import { Button, Form, FormInstance, Input, notification } from 'antd';
 import { FC } from 'react';
-import { IGameParams } from '../../../../../types/commonTypes';
+
+import { IGameParams } from '../../../../../types/games';
 
 interface ICustomLevelValues {
   duration: string;

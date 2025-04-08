@@ -1,4 +1,4 @@
-import { GamesConfigType, IGameParams } from '../../../../../../types/commonTypes';
+import { GamesConfigType, IGameParams } from '../../../../../../types/games';
 
 export const gameConfig: Partial<GamesConfigType> = {
   superEasy: {
