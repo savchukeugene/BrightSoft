@@ -13,6 +13,7 @@ import LandingPages from '../../components/mainPageView/MainView/LandingPages';
 import UserManagement from '../../components/mainPageView/MainView/userManagement';
 import PageNotFound from '../../components/commonComponents/PageNotFound';
 import { defineDefaultNavigation } from '../utils/helpers';
+import About from '../../components/mainPageView/MainView/About';
 
 export const Routes = {
   mainPage: '/mainPage',
@@ -88,7 +89,7 @@ export const authorizedUserRoutesConfig = (role: IUserRoles): IRoutesGenerator[]
       },
       {
         path: Routes.about,
-        element: <SupportPage />,
+        element: <About />,
       },
       {
         path: Routes.editingPages,

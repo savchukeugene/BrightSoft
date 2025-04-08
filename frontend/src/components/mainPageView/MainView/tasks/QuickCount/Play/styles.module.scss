@@ -46,9 +46,19 @@
 }
 
 .sideIcons {
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
 }
+
+.startButton {
+  width: 230px;
+  height: 40px;
+  border-radius: 10px;
+  background: #7fff9f;
+  font-size: 20px;
+}
+
+.startButton:hover {}
 
 @keyframes beforeGame {
   0% {

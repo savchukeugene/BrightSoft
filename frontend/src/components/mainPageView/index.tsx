@@ -17,8 +17,8 @@ const MainPage = () => {
         <PageWrapper>
           <ErrorBoundary>
             <Outlet />
-            <Footer />
           </ErrorBoundary>
+          <Footer />
         </PageWrapper>
       </Layout>
     </Layout>

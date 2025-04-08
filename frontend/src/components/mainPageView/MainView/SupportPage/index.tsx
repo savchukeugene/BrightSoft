@@ -8,7 +8,7 @@ import FormItem from 'antd/es/form/FormItem';
 const SupportPage: FC = (): React.JSX.Element => {
   return (
     <div className={s.supportPage}>
-      <h1 className={s.supportTitle}>{messages.view.main.supportPage.title}</h1>
+      <h1 className={'pageTitle'}>{messages.view.main.supportPage.title}</h1>
       <h4>{messages.view.main.supportPage.subTitle}</h4>
       <Form onFinish={(): void => {}}>
         <FormItem
