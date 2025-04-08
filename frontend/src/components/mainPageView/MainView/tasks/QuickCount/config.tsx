@@ -1,60 +1,35 @@
 import { IQuickCountLevelFields } from '../../../../../types/commonTypes';
-import { messages } from '../../../../../common/constants/messages';
-import hard from '../../../../../images/svg/gdharder.png';
-import normal from '../../../../../images/svg/gdhard.png';
-import easy from '../../../../../images/svg/gdnormal.png';
-import superEasy from '../../../../../images/svg/gdeasy.png';
-import { SettingOutlined } from '@ant-design/icons';
+import { messages } from '@common/constants/messages';
 
 export const levelsConfig: IQuickCountLevelFields[] = [
   {
     label: messages.view.main.tasks.quickCount.labels.superEasy,
     name: 'superEasy',
-    icon: (
-      <img
-        src={superEasy}
-        alt={messages.view.main.tasks.quickCount.labels.superEasy}
-      />
-    ),
+    starsAmount: 10,
     boxShadow: messages.view.main.tasks.quickCount.boxShadow.superEasy,
   },
   {
     label: messages.view.main.tasks.quickCount.labels.easy,
     name: 'easy',
-    icon: (
-      <img
-        src={easy}
-        alt={messages.view.main.tasks.quickCount.labels.easy}
-      />
-    ),
+    starsAmount: 20,
     boxShadow: messages.view.main.tasks.quickCount.boxShadow.easy,
   },
   {
     label: messages.view.main.tasks.quickCount.labels.normal,
     name: 'normal',
-    icon: (
-      <img
-        src={normal}
-        alt={messages.view.main.tasks.quickCount.labels.normal}
-      />
-    ),
+    starsAmount: 30,
     boxShadow: messages.view.main.tasks.quickCount.boxShadow.normal,
   },
   {
     label: messages.view.main.tasks.quickCount.labels.hard,
     name: 'hard',
-    icon: (
-      <img
-        src={hard}
-        alt={messages.view.main.tasks.quickCount.labels.hard}
-      />
-    ),
+    starsAmount: 40,
     boxShadow: messages.view.main.tasks.quickCount.boxShadow.hard,
   },
   {
     label: messages.view.main.tasks.quickCount.labels.custom,
     name: 'custom',
-    icon: <SettingOutlined style={{ fontSize: '70px !important' }} />,
+    starsAmount: '?',
     boxShadow: messages.view.main.tasks.quickCount.boxShadow.hard,
   },
 ];

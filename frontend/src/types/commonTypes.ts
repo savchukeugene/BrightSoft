@@ -1,5 +1,4 @@
 import { IUserRoles } from '../store/userStore';
-import { ReactNode } from 'react';
 import { IField } from './filterTypes';
 
 const userStatuses = ['active', 'blocked', 'deleted', 'non_confirmed'] as const;
@@ -36,7 +35,7 @@ export interface IAuthorizationFields {
 export interface IQuickCountLevelFields {
   label: string;
   name: GamesLevelType;
-  icon: ReactNode;
+  starsAmount: number | string;
   boxShadow: string;
 }
 

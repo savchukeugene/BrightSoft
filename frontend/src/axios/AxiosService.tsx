@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { ArgsProps } from 'antd/es/notification';
 import { notification } from 'antd';
-import { messages } from '../common/constants/messages';
+import { messages } from '@common/constants/messages';
 import { IActionsFormat, INestErrorMessage } from '../types/commonTypes';
 
 interface ErrorDetails {

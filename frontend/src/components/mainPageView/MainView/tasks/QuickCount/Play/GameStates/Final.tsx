@@ -1,7 +1,7 @@
 import s from '../styles.module.scss';
 import { Button, Form, Input } from 'antd';
 import { FC, useState } from 'react';
-import { messages } from '../../../../../../../common/constants/messages';
+import { messages } from '@common/constants/messages';
 import DecideAnswer from '../AnswerComponents/DecideAnswer';
 import { accruePoints, takePointsAway } from '../actions';
 

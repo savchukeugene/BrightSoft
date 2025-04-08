@@ -10,6 +10,8 @@ import {
 import { v4 as uuid } from 'uuid';
 import { Route } from 'react-router-dom';
 import s from '../../components/mainPageView/MainView/userManagement/userInfo/styles.module.scss';
+import currentStyles from './styles.module.scss';
+import { StarFilled } from '@ant-design/icons';
 
 export const routesGenerator = (
   routesConfig: IRoutesGenerator[],
@@ -54,7 +56,10 @@ export const quickCountLevelsGenerator = (
       onClick={() => handler(level.name)}
       key={uuid()}
     >
-      {level.icon}
+      <div className={currentStyles.levelStarsAmount}>
+        {level.starsAmount}
+        <StarFilled style={{ fontSize: '38px' }} />
+      </div>
       {level.label}
     </section>
   ));
