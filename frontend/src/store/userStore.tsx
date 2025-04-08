@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import AxiosService from '../axios/AxiosService';
-import { API_WHO_AM_I } from '../common/constants/api';
-import { parseJwt } from '../common/utils/jwt';
+import { API_WHO_AM_I } from '@common/constants/api';
+import { parseJwt } from '@common/utils/jwt';
 import { IAccessToken, IUserInfo } from '../types/commonTypes';
 
 const userRoles = ['administrator', 'user', 'support'] as const;
@@ -10,6 +10,7 @@ export type IUserRoles = (typeof userRoles)[number];
 interface IUser {
   user: IUserInfo | null;
   role: IUserRoles;
+  stars: number | null;
 }
 
 export interface IUserStore extends IUser {
@@ -29,12 +30,14 @@ export const useUserStore = create<IUserStore>((set) => {
     set(() => ({
       user: data?.data?.user,
       role: parsedJwt.role,
+      stars: data?.data?.stars,
     }));
   };
 
   return {
     user: savedToken ? parseJwt(savedToken) : null,
     role: savedToken ? parseJwt(savedToken).role : 'user',
+    stars: savedToken ? 0 : 0,
     setUser: getUserInfo,
     logoutUser: (): void => {
       localStorage.removeItem('access_token');

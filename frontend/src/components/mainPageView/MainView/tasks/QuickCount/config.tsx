@@ -1,7 +1,7 @@
-import { IQuickCountLevelFields } from '../../../../../types/commonTypes';
+import { ILevelsFields } from '../../../../../types/commonTypes';
 import { messages } from '@common/constants/messages';
 
-export const levelsConfig: IQuickCountLevelFields[] = [
+export const levelsConfig: ILevelsFields[] = [
   {
     label: messages.view.main.tasks.quickCount.labels.superEasy,
     name: 'superEasy',

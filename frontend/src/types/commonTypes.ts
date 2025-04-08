@@ -32,7 +32,7 @@ export interface IAuthorizationFields {
   name: string;
 }
 
-export interface IQuickCountLevelFields {
+export interface ILevelsFields {
   label: string;
   name: GamesLevelType;
   starsAmount: number | string;

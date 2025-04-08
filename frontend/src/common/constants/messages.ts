@@ -80,6 +80,20 @@ export const messages = {
         },
         numberHunt: {
           title: 'Охота за числами',
+          labels: {
+            superEasy: 'Проще простого',
+            easy: 'Легкий',
+            normal: 'Средний',
+            hard: 'Тяжёлый',
+            custom: 'Пользовательский',
+          },
+          boxShadow: {
+            superEasy: '#64ff9d',
+            easy: '#008c32',
+            normal: '#eeb800',
+            hard: '#e70202',
+            custom: '#959595',
+          },
         },
       },
       userManagement: {

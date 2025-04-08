@@ -3,7 +3,7 @@ import { IField } from '../../types/filterTypes';
 import {
   GamesLevelType,
   IAuthorizationFields,
-  IQuickCountLevelFields,
+  ILevelsFields,
   IRoutesGenerator,
   IUserInfoGenerator,
 } from '../../types/commonTypes';
@@ -46,11 +46,11 @@ export const routeGenerator = (...routes: string[]) => {
   return routes.join('');
 };
 
-export const quickCountLevelsGenerator = (
-  config: IQuickCountLevelFields[],
+export const levelsGenerator = (
+  config: ILevelsFields[],
   handler: (param: GamesLevelType) => void,
 ) =>
-  config.map((level: IQuickCountLevelFields) => (
+  config.map((level: ILevelsFields) => (
     <section
       className={s.select}
       onClick={() => handler(level.name)}

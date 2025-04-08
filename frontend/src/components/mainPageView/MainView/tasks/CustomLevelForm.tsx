@@ -1,9 +1,9 @@
-import s from './styles.module.scss';
-import { messages } from '../../../../../common/constants/messages';
+import s from './QuickCount/styles.module.scss';
+import { messages } from '@common/constants/messages';
 import FormItem from 'antd/es/form/FormItem';
 import { Button, Form, FormInstance, Input, notification } from 'antd';
 import { FC } from 'react';
-import { IGameParams } from '../../../../../types/commonTypes';
+import { IGameParams } from '../../../../types/commonTypes';
 
 interface ICustomLevelValues {
   duration: string;
@@ -44,7 +44,7 @@ const CustomLevelForm: FC<{
       form={form}
       onFinish={onFormFinish}
     >
-      <h1> {messages.view.main.tasks.quickCount.formTitle}</h1>
+      <h1>{messages.view.main.tasks.quickCount.formTitle}</h1>
       <FormItem
         name={'duration'}
         label={messages.view.main.tasks.quickCount.duration}
