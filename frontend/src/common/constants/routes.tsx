@@ -6,15 +6,22 @@ import { IUserRoles } from '../../store/userStore';
 import MainPage from '../../components/mainPageView';
 import Timetable from '../../components/mainPageView/MainView/User/Timetable';
 import Grade from '../../components/mainPageView/MainView/User/Grade';
-import QuickCount from '../../components/mainPageView/MainView/tasks/QuickCount';
-import Play from '../../components/mainPageView/MainView/tasks/QuickCount/Play';
+import PlayQuickCount from '../../components/mainPageView/MainView/tasks/QuickCount';
 import SupportPage from '../../components/mainPageView/MainView/SupportPage';
 import LandingPages from '../../components/mainPageView/MainView/LandingPages';
 import UserManagement from '../../components/mainPageView/MainView/userManagement';
 import PageNotFound from '../../components/commonComponents/PageNotFound';
 import { defineDefaultNavigation } from '../utils/helpers';
 import About from '../../components/mainPageView/MainView/About';
-import NumberHunt from '../../components/mainPageView/MainView/tasks/NumberHunt';
+import LevelWrapper from '../../components/mainPageView/MainView/tasks';
+import {
+  quickCountLevelRules,
+  quickCountLevelsConfig,
+} from '@common/gameConfigs/quickCount.config';
+import {
+  numberHuntingLevelRules,
+  numberHuntingLevelsConfig,
+} from '@common/gameConfigs/numberHunting.config';
 
 export const Routes = {
   mainPage: '/mainPage',
@@ -76,17 +83,29 @@ export const authorizedUserRoutesConfig = (role: IUserRoles): IRoutesGenerator[]
         child: [
           {
             path: Routes.quickCount,
-            element: <QuickCount />,
+            element: (
+              <LevelWrapper
+                levelConfig={quickCountLevelsConfig}
+                title={'quickCount'}
+                levelRules={quickCountLevelRules}
+              />
+            ),
             child: [
               {
                 path: Routes.play,
-                element: <Play />,
+                element: <PlayQuickCount />,
               },
             ],
           },
           {
             path: Routes.numberHunt,
-            element: <NumberHunt />,
+            element: (
+              <LevelWrapper
+                levelConfig={numberHuntingLevelsConfig}
+                title={'numberHunt'}
+                levelRules={numberHuntingLevelRules}
+              />
+            ),
             child: [],
           },
         ],

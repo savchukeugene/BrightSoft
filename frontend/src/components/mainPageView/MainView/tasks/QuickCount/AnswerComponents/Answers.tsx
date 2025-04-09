@@ -1,6 +1,6 @@
 import s from './styles.module.scss';
 import { messages } from '@common/constants/messages';
-import { useGameStore } from '../../../../../../../store/gameStore';
+import { useGameStore } from '../../../../../../store/gameStore';
 import { isNil } from 'lodash';
 import { useNavigate } from 'react-router-dom';
 import { Routes } from '@common/constants/routes';

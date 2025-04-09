@@ -4,7 +4,7 @@ import { FC, useState } from 'react';
 import { messages } from '@common/constants/messages';
 import DecideAnswer from '../AnswerComponents/DecideAnswer';
 import { scoring } from '../actions';
-import { useUserStore } from '../../../../../../../store/userStore';
+import { useUserStore } from '../../../../../../store/userStore';
 
 interface IUserAnswer {
   userAnswer: string;

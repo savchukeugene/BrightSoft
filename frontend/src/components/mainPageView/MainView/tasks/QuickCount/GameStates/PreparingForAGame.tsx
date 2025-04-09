@@ -1,5 +1,5 @@
 import s from '../styles.module.scss';
-import { messages } from '../../../../../../../common/constants/messages';
+import { messages } from '@common/constants/messages';
 import { Button } from 'antd';
 import { FC } from 'react';
 

@@ -1,41 +1,39 @@
-import { messages } from '@common/constants/messages';
-import { IRules } from '../index';
-import { ILevelsFields } from '../../../../../types/games';
+import { GamesConfigType, IGameParams } from '../../../../../types/games';
 
-export const levelsConfig: ILevelsFields[] = [
-  {
-    label: messages.view.main.tasks.quickCount.labels.superEasy,
-    name: 'superEasy',
-    starsAmount: 10,
-    boxShadow: messages.view.main.tasks.quickCount.boxShadow.superEasy,
+export const gameConfig: Partial<GamesConfigType> = {
+  superEasy: {
+    duration: 10,
+    changePeriod: 2,
+    range: [-10, 10],
   },
-  {
-    label: messages.view.main.tasks.quickCount.labels.easy,
-    name: 'easy',
-    starsAmount: 20,
-    boxShadow: messages.view.main.tasks.quickCount.boxShadow.easy,
+  easy: {
+    duration: 15,
+    changePeriod: 1.5,
+    range: [-15, 15],
   },
-  {
-    label: messages.view.main.tasks.quickCount.labels.normal,
-    name: 'normal',
-    starsAmount: 30,
-    boxShadow: messages.view.main.tasks.quickCount.boxShadow.normal,
+  normal: {
+    duration: 20,
+    changePeriod: 0.7,
+    range: [-30, 30],
   },
-  {
-    label: messages.view.main.tasks.quickCount.labels.hard,
-    name: 'hard',
-    starsAmount: 40,
-    boxShadow: messages.view.main.tasks.quickCount.boxShadow.hard,
+  hard: {
+    duration: 25,
+    changePeriod: 0.5,
+    range: [-50, 50],
   },
-  {
-    label: messages.view.main.tasks.quickCount.labels.custom,
-    name: 'custom',
-    starsAmount: '?',
-    boxShadow: messages.view.main.tasks.quickCount.boxShadow.hard,
-  },
-];
-
-export const levelRules: IRules = {
-  title: messages.view.main.tasks.quickCount.title,
-  descriptions: ['Правило 1', 'Правило 2', 'Правило 3'],
 };
+
+export const tooltipConfig = (
+  concatTooltipInfo: (message: string, param: number, unit: boolean) => string,
+  //@ts-ignore
+  ref,
+  levelInfo: IGameParams,
+) => (
+  <>
+    <h4>{concatTooltipInfo(ref.duration, levelInfo.duration, true)}</h4>
+    <h4>
+      От {levelInfo.range[0]} до {levelInfo.range[1]}
+    </h4>
+    <h4>{concatTooltipInfo(ref.period, levelInfo.changePeriod, true)}</h4>
+  </>
+);

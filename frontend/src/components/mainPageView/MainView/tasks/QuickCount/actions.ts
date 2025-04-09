@@ -1,5 +1,5 @@
-import { IActionsFormat, IUserData } from '../../../../../../types/commonTypes';
-import AxiosService from '../../../../../../axios/AxiosService';
+import { IActionsFormat, IUserData } from '../../../../../types/commonTypes';
+import AxiosService from '../../../../../axios/AxiosService';
 import { API_SCORING } from '@common/constants/api';
 
 export const scoring = async (
