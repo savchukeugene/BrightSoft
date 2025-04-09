@@ -80,6 +80,14 @@ export class UserService {
     });
   }
 
+  public async getStars(id: string) {
+    const user = await this.findById(id);
+    if (!user) {
+      throw new NotFoundException('Пользователь с таким id не был найден!');
+    }
+    return user.stars;
+  }
+
   public async create(
     email: string,
     password: string,

@@ -11,7 +11,7 @@ import { messages } from '@common/constants/messages';
 import {
   GamesLevelType,
   GamesType,
-  IGameParams,
+  IQuickCountParams,
   ILevelsFields,
 } from '../../../../types/games';
 import { useGameStore } from '../../../../store/gameStore';
@@ -32,7 +32,9 @@ const LevelWrapper: FC<ILevelWrapper> = ({ levelConfig, title, levelRules }) => 
   const { pathname } = useLocation();
   const [isCustomVisible, setIsCustomVisible] = useState<boolean>(false);
   const [form] = Form.useForm();
-  const [levelInfoContext, setLevelInfoContext] = useState<IGameParams | null>(null);
+  const [levelInfoContext, setLevelInfoContext] = useState<IQuickCountParams | null>(
+    null,
+  );
   const [isLevelInfoVisible, setIsLevelInfoVisible] = useState<boolean>(false);
   const { setGame } = useGameStore();
 
@@ -56,7 +58,7 @@ const LevelWrapper: FC<ILevelWrapper> = ({ levelConfig, title, levelRules }) => 
     });
   };
 
-  const handleCustomLevel = (customParams: IGameParams): void => {
+  const handleCustomLevel = (customParams: IQuickCountParams): void => {
     setLevelInfoContext(customParams);
     const newSearchParams: URLSearchParams = new URLSearchParams(searchParams);
     newSearchParams.set('level', 'custom');

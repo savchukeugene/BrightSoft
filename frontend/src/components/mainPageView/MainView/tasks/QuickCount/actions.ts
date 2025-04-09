@@ -1,6 +1,7 @@
 import { IActionsFormat, IUserData } from '../../../../../types/commonTypes';
 import AxiosService from '../../../../../axios/AxiosService';
 import { API_SCORING } from '@common/constants/api';
+import { isNil } from 'lodash';
 
 export const scoring = async (
   isUserWin: boolean,
@@ -15,7 +16,10 @@ export const scoring = async (
         id,
       },
     });
-    return { data: data?.data?.stars ?? 0, ok: true };
+    if (isNil(data?.data?.id)) {
+      throw new Error();
+    }
+    return { data: data?.data?.stars, ok: true };
   } catch (e) {
     return { data: null, ok: false };
   }

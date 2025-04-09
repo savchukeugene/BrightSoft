@@ -9,9 +9,10 @@ export const RightAnswer = () => {
   const { gameConfig } = useGameStore();
   const navigate = useNavigate();
   if (isNil(gameConfig)) {
-    return navigate({
+    navigate({
       pathname: Routes.mainPage,
     });
+    return null;
   }
   return (
     <div className={s.answer_field}>

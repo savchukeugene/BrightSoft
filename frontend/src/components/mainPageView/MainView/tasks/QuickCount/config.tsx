@@ -1,4 +1,4 @@
-import { GamesConfigType, IGameParams } from '../../../../../types/games';
+import { GamesConfigType, IQuickCountParams } from '../../../../../types/games';
 
 export const gameConfig: Partial<GamesConfigType> = {
   superEasy: {
@@ -27,7 +27,7 @@ export const tooltipConfig = (
   concatTooltipInfo: (message: string, param: number, unit: boolean) => string,
   //@ts-ignore
   ref,
-  levelInfo: IGameParams,
+  levelInfo: IQuickCountParams,
 ) => (
   <>
     <h4>{concatTooltipInfo(ref.duration, levelInfo.duration, true)}</h4>

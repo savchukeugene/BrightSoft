@@ -7,7 +7,8 @@ import { useOutletContext, useSearchParams } from 'react-router-dom';
 import { gameConfig, tooltipConfig } from './config';
 import GameContent from './GameContent';
 import { concatTooltipInfo, createArrayOfRandomNumbers } from '@common/utils/helpers';
-import { GamesLevelType, IGameParams } from '../../../../../types/games';
+import { GamesLevelType, IQuickCountParams } from '../../../../../types/games';
+import { isNil } from 'lodash';
 
 const ref = messages.view.main.tasks.quickCount.play;
 const gameStates = ['prepare', 'progress', 'final'] as const;
@@ -19,12 +20,12 @@ const PlayQuickCount = () => {
   const [searchParams] = useSearchParams();
   const [result, setResult] = useState<number>(0);
   const { levelInfoContext } = useOutletContext<{
-    levelInfoContext: IGameParams | null;
+    levelInfoContext: IQuickCountParams | null;
   }>();
   const levelValue = searchParams.get('level') as GamesLevelType;
   const levelInfo = levelValue === 'custom' ? levelInfoContext : gameConfig[levelValue];
 
-  if (!levelInfo) {
+  if (isNil(levelInfo)) {
     if (levelValue === 'custom') {
       window.history.back();
       return null;
@@ -44,13 +45,9 @@ const PlayQuickCount = () => {
       : handleEndGame(valueToSet.reduce((a, b) => a + b));
   };
 
-  const process = async (): Promise<void> => {
-    interval(createArrayOfRandomNumbers(levelInfo));
-  };
-
   const handleStart = () => {
     setCurrentGameState('progress');
-    process();
+    interval(createArrayOfRandomNumbers(levelInfo));
   };
 
   return (

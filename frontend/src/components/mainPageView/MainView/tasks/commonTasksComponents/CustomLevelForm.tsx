@@ -4,7 +4,7 @@ import FormItem from 'antd/es/form/FormItem';
 import { Button, Form, FormInstance, Input, notification } from 'antd';
 import { FC } from 'react';
 
-import { IGameParams } from '../../../../../types/games';
+import { IQuickCountParams } from '../../../../../types/games';
 
 interface ICustomLevelValues {
   duration: string;
@@ -15,7 +15,7 @@ interface ICustomLevelValues {
 
 const CustomLevelForm: FC<{
   form: FormInstance;
-  handler: (customParams: IGameParams) => void;
+  handler: (customParams: IQuickCountParams) => void;
 }> = ({ form, handler }) => {
   const onFormFinish = (values: ICustomLevelValues) => {
     if (Number(values.start) - Number(values.end) === 0) {
@@ -30,7 +30,7 @@ const CustomLevelForm: FC<{
         description: messages.notification.warn.firstMustBeLess,
       });
     }
-    const newValues: IGameParams = {
+    const newValues: IQuickCountParams = {
       duration: Number(values.duration),
       changePeriod: Number(values.period),
       range: [Number(values.start), Number(values.end)],

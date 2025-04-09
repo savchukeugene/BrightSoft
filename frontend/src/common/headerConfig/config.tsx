@@ -25,19 +25,19 @@ export const LEFT_SIDE_OPTIONS_LIST: ILeftSideOptions = {
   administrator: [
     getItem(source.users, 'userManagement', <TeamOutlined />),
     getItem(source.tasks, 'tasks', <BuildOutlined />),
-    getItem(source.support, 'support', <BugOutlined />),
     getItem(source.pages, 'editingPages', <EditOutlined />),
     getItem(source.about, 'about', <InfoCircleOutlined />),
+    getItem(source.support, 'support', <BugOutlined />),
   ],
   user: [
     getItem(source.user, 'user', <UserOutlined />),
     getItem(source.tasks, 'tasks', <BuildOutlined />),
-    getItem(source.support, 'support', <BugOutlined />),
     getItem(source.about, 'about', <InfoCircleOutlined />),
+    getItem(source.support, 'support', <BugOutlined />),
   ],
   support: [
-    getItem(source.support, 'support', <BugOutlined />),
     getItem(source.about, 'about', <InfoCircleOutlined />),
+    getItem(source.support, 'support', <BugOutlined />),
   ],
 };
 

@@ -8,3 +8,7 @@ export class StarsDto {
   operation: 'takeAway' | 'accrue';
   id: string;
 }
+
+export class GetStarsDto {
+  id: string;
+}

@@ -5,7 +5,7 @@ import { To } from 'react-router-dom';
 import { routeGenerator } from './generatotrs';
 import { Routes } from '../constants/routes';
 
-import { IGameParams } from '../../types/games';
+import { IQuickCountParams } from '../../types/games';
 
 export type MenuItem = Required<MenuProps>['items'][number];
 
@@ -49,7 +49,7 @@ export const formatDate = (isoDate: string): string => {
 export const concatTooltipInfo = (message: string, param: number, unit: boolean) =>
   `${message + ' ' + param + (unit && 'c.')}`;
 
-export const createArrayOfRandomNumbers = (levelInfo: IGameParams): number[] => {
+export const createArrayOfRandomNumbers = (levelInfo: IQuickCountParams): number[] => {
   let set: Set<number> = new Set<number>();
   const totalNumbers: number = Math.floor(levelInfo.duration / levelInfo.changePeriod);
   const [min, max] = levelInfo.range;

@@ -13,7 +13,7 @@ import { WhoAmIDto } from './dto/whoAmI.dto';
 import { UserDeleteDto, UserInfoDto } from './dto/userInfo.dto';
 import { Request } from 'express';
 import { RolesGuard } from '../libs/common/decorators/role-validator';
-import { StarsDto } from './dto/stars.dto';
+import { GetStarsDto, StarsDto } from './dto/stars.dto';
 
 @Controller('users')
 export class UserController {
@@ -48,7 +48,13 @@ export class UserController {
 
   @Post('scoring')
   @HttpCode(HttpStatus.OK)
-  public async accrue(@Body() dto: StarsDto) {
+  public async scoring(@Body() dto: StarsDto) {
     return await this.userService.scoring(dto);
+  }
+
+  @Post('getStars')
+  @HttpCode(HttpStatus.OK)
+  public async getStars(@Body() dto: GetStarsDto) {
+    return await this.userService.getStars(dto.id);
   }
 }

@@ -16,7 +16,7 @@ const Final: FC<{ result: number }> = ({ result }) => {
   const onAnswer = async (values: IUserAnswer) => {
     const isResultCorrect = result === parseInt(values.userAnswer);
     const { data } = await scoring(isResultCorrect, user ?? '');
-    setStars(data);
+    isResultCorrect && setStars(data);
     setIsAnswerRight(isResultCorrect);
   };
 

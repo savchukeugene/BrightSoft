@@ -7,8 +7,15 @@ import LayoutSider from '../Layout/Sider';
 
 import s from './styles.module.scss';
 import ErrorBoundary from '../commonComponents/ErrorBoundary';
+import { useEffect, useState } from 'react';
 
 const MainPage = () => {
+  const [loading, setLoading] = useState<boolean>(true);
+  useEffect(() => {
+    if (loading) {
+      setLoading(false);
+    }
+  }, []);
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <LayoutSider />

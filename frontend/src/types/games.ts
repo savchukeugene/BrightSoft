@@ -5,7 +5,11 @@ const gameLevels = ['superEasy', 'easy', 'normal', 'hard', 'custom'] as const;
 export type GamesLevelType = (typeof gameLevels)[number];
 
 export type GamesConfigType = {
-  [key in GamesLevelType]: IGameParams;
+  [key in GamesLevelType]: IQuickCountParams;
+};
+
+export type NumberHuntingConfigType = {
+  [key in GamesLevelType]: INumberHuntingParams;
 };
 
 export interface ILevelsFields {
@@ -24,8 +28,13 @@ export interface IGameStore {
   ) => void;
 }
 
-export interface IGameParams {
+export interface IQuickCountParams {
   duration: number;
   range: [number, number];
   changePeriod: number;
+}
+
+export interface INumberHuntingParams {
+  duration: number;
+  dimension: number;
 }

@@ -1,41 +1,35 @@
-import { messages } from '@common/constants/messages';
-import { IRules } from '../index';
-import { ILevelsFields } from '../../../../../types/games';
+import { IQuickCountParams, NumberHuntingConfigType } from '../../../../../types/games';
 
-export const levelsConfig: ILevelsFields[] = [
-  {
-    label: messages.view.main.tasks.numberHunt.labels.superEasy,
-    name: 'superEasy',
-    starsAmount: 10,
-    boxShadow: messages.view.main.tasks.numberHunt.boxShadow.superEasy,
+export const numberHuntingConfig: Partial<NumberHuntingConfigType> = {
+  superEasy: {
+    duration: 15,
+    dimension: 3,
   },
-  {
-    label: messages.view.main.tasks.numberHunt.labels.easy,
-    name: 'easy',
-    starsAmount: 20,
-    boxShadow: messages.view.main.tasks.numberHunt.boxShadow.easy,
+  easy: {
+    duration: 12,
+    dimension: 4,
   },
-  {
-    label: messages.view.main.tasks.numberHunt.labels.normal,
-    name: 'normal',
-    starsAmount: 30,
-    boxShadow: messages.view.main.tasks.numberHunt.boxShadow.normal,
+  normal: {
+    duration: 10,
+    dimension: 5,
   },
-  {
-    label: messages.view.main.tasks.numberHunt.labels.hard,
-    name: 'hard',
-    starsAmount: 40,
-    boxShadow: messages.view.main.tasks.numberHunt.boxShadow.hard,
+  hard: {
+    duration: 10,
+    dimension: 6,
   },
-  {
-    label: messages.view.main.tasks.numberHunt.labels.custom,
-    name: 'custom',
-    starsAmount: '?',
-    boxShadow: messages.view.main.tasks.numberHunt.boxShadow.hard,
-  },
-];
-
-export const levelRules: IRules = {
-  title: messages.view.main.tasks.quickCount.title,
-  descriptions: ['Правило 1', 'Правило 2', 'Правило 3'],
 };
+
+export const tooltipConfig = (
+  concatTooltipInfo: (message: string, param: number, unit: boolean) => string,
+  //@ts-ignore
+  ref,
+  levelInfo: IQuickCountParams,
+) => (
+  <>
+    <h4>{concatTooltipInfo(ref.duration, levelInfo.duration, true)}</h4>
+    <h4>
+      От {levelInfo.range[0]} до {levelInfo.range[1]}
+    </h4>
+    <h4>{concatTooltipInfo(ref.period, levelInfo.changePeriod, true)}</h4>
+  </>
+);
