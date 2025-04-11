@@ -2,6 +2,7 @@ import { Form, Input, Select } from 'antd';
 import { IField } from '../../types/filterTypes';
 import {
   IAuthorizationFields,
+  IFormGeneratorConfig,
   IRoutesGenerator,
   IUserInfoGenerator,
 } from '../../types/commonTypes';
@@ -11,6 +12,7 @@ import s from '../../components/mainPageView/MainView/userManagement/userInfo/st
 import currentStyles from './styles.module.scss';
 import { StarFilled } from '@ant-design/icons';
 import { GamesLevelType, ILevelsFields } from '../../types/games';
+import FormItem from 'antd/es/form/FormItem';
 
 export const routesGenerator = (
   routesConfig: IRoutesGenerator[],
@@ -130,3 +132,12 @@ export const userInfoGenerator = (config: IUserInfoGenerator[]): JSX.Element[] =
         : field.value}
     </div>
   ));
+
+export const formGenerator = (config: IFormGeneratorConfig[]) => {
+  return config.map((field: IFormGeneratorConfig) => (
+    <FormItem
+      name={field.layout}
+      layout={field.layout}
+    ></FormItem>
+  ));
+};

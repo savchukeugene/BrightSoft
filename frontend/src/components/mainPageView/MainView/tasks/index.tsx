@@ -48,7 +48,7 @@ const LevelWrapper: FC<ILevelWrapper> = ({ levelConfig, title, levelRules }) => 
     }
     setGame(
       title,
-      levelConfig.find((elem: ILevelsFields) => elem.name === param),
+      levelConfig.find((elem: ILevelsFields): boolean => elem.name === param),
     );
     const newSearchParams: URLSearchParams = new URLSearchParams(searchParams);
     newSearchParams.set('level', param);

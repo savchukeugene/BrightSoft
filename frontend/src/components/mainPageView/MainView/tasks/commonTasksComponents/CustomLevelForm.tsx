@@ -30,6 +30,7 @@ const CustomLevelForm: FC<{
         description: messages.notification.warn.firstMustBeLess,
       });
     }
+
     const newValues: IQuickCountParams = {
       duration: Number(values.duration),
       changePeriod: Number(values.period),

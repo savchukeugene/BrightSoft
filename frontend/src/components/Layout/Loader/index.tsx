@@ -3,18 +3,19 @@ import { LoadingOutlined } from '@ant-design/icons';
 
 import s from './styles.module.scss';
 
-const Loader: FC<{ children: ReactNode; isLoading: boolean }> = ({
+const Loader: FC<{ children?: ReactNode; isLoading: boolean }> = ({
   children,
   isLoading,
 }) => {
   return (
     <>
-      {isLoading && (
+      {isLoading ? (
         <div className={s.loader}>
           <LoadingOutlined />
         </div>
+      ) : (
+        children
       )}
-      {children}
     </>
   );
 };

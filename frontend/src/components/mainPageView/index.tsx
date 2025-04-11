@@ -8,6 +8,7 @@ import LayoutSider from '../Layout/Sider';
 import s from './styles.module.scss';
 import ErrorBoundary from '../commonComponents/ErrorBoundary';
 import { useEffect, useState } from 'react';
+import Loader from '../Layout/Loader';
 
 const MainPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -19,15 +20,17 @@ const MainPage = () => {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <LayoutSider />
-      <Layout className={s.layout}>
-        <LayoutHeader />
-        <PageWrapper>
-          <ErrorBoundary>
-            <Outlet />
-            <Footer />
-          </ErrorBoundary>
-        </PageWrapper>
-      </Layout>
+      <Loader isLoading={loading}>
+        <Layout className={s.layout}>
+          <LayoutHeader />
+          <PageWrapper>
+            <ErrorBoundary>
+              <Outlet />
+              <Footer />
+            </ErrorBoundary>
+          </PageWrapper>
+        </Layout>
+      </Loader>
     </Layout>
   );
 };
