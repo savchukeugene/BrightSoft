@@ -28,6 +28,8 @@ export const messages = {
         maze: 'Лабиринты',
         quickCount: 'Быстрый счёт',
         numberHunt: 'Охота за числами',
+        history: 'История',
+        profile: 'Профиль',
       },
       supportPage: {
         title: 'Нам жаль, что Вы столкнулись с неприятностью...',
@@ -93,6 +95,17 @@ export const messages = {
             normal: '#eeb800',
             hard: '#e70202',
             custom: '#959595',
+          },
+          play: {
+            start: 'Старт',
+            duration: 'Общее время:',
+            dimension: 'Размерность:',
+            info: 'Информация',
+            timeOut: 'Время истекло. Пожалуйста, введите ваш ответ в поле ниже:',
+            answerPlaceholder: 'Ваш ответ',
+            rightAnswerDescription: 'Всё верно! Вы успешно прошли этот уровень!',
+            wrongAnswerDescription:
+              'Неверно! Вы дали неправильный ответ! Попробуйте снова, либо потренеруйтесь ещё.',
           },
         },
       },

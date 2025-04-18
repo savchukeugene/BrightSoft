@@ -1,5 +1,5 @@
 import { Menu } from 'antd';
-import { HEADER_OPTIONS } from '../../../common/headerConfig/config';
+import { HEADER_OPTIONS } from '@common/MenuConfigs/config';
 import Navigation from '../../commonComponents/Navigation';
 import { Header } from 'antd/lib/layout/layout';
 import { useLocation, useNavigate } from 'react-router-dom';

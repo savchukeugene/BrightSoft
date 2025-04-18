@@ -1,6 +1,5 @@
 import { IUserRoles } from '../store/userStore';
 import { IField } from './filterTypes';
-import { FormItemLayout } from 'antd/es/form/Form';
 
 const userStatuses = ['active', 'blocked', 'deleted', 'non_confirmed'] as const;
 export type UserStatuses = (typeof userStatuses)[number];
@@ -91,12 +90,4 @@ export interface IUserInfoGenerator {
   label: string;
   value?: string;
   activeElement?: Partial<IField>;
-}
-
-export interface IFormGeneratorConfig {
-  label: string;
-  required: boolean;
-  name: string;
-  layout?: FormItemLayout | undefined;
-  children: IFormGeneratorConfig[];
 }

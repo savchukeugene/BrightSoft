@@ -46,6 +46,7 @@ const LevelWrapper: FC<ILevelWrapper> = ({ levelConfig, title, levelRules }) => 
     if (param === 'custom') {
       return setIsCustomVisible(true);
     }
+
     setGame(
       title,
       levelConfig.find((elem: ILevelsFields): boolean => elem.name === param),

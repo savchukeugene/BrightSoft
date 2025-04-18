@@ -1,4 +1,7 @@
-import { IQuickCountParams, NumberHuntingConfigType } from '../../../../../types/games';
+import {
+  INumberHuntingParams,
+  NumberHuntingConfigType,
+} from '../../../../../types/games';
 
 export const numberHuntingConfig: Partial<NumberHuntingConfigType> = {
   superEasy: {
@@ -23,13 +26,10 @@ export const tooltipConfig = (
   concatTooltipInfo: (message: string, param: number, unit: boolean) => string,
   //@ts-ignore
   ref,
-  levelInfo: IQuickCountParams,
+  levelInfo: INumberHuntingParams,
 ) => (
   <>
     <h4>{concatTooltipInfo(ref.duration, levelInfo.duration, true)}</h4>
-    <h4>
-      От {levelInfo.range[0]} до {levelInfo.range[1]}
-    </h4>
-    <h4>{concatTooltipInfo(ref.period, levelInfo.changePeriod, true)}</h4>
+    <h4>{concatTooltipInfo(ref.dimension, levelInfo.dimension, false)}</h4>
   </>
 );

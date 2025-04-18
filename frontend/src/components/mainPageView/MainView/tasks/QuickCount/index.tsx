@@ -9,6 +9,7 @@ import GameContent from './GameContent';
 import { concatTooltipInfo, createArrayOfRandomNumbers } from '@common/utils/helpers';
 import { GamesLevelType, IQuickCountParams } from '../../../../../types/games';
 import { isNil } from 'lodash';
+import '../../../../../styles/commonGlobalStyles.scss';
 
 const ref = messages.view.main.tasks.quickCount.play;
 const gameStates = ['prepare', 'progress', 'final'] as const;
@@ -52,7 +53,7 @@ const PlayQuickCount = () => {
 
   return (
     <section className={s.play}>
-      <h1 className={s.info}>
+      <h1 className={'gameInfo'}>
         {messages.view.main.layoutOptions.level(
           levelValue,
           //@ts-ignore

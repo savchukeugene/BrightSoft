@@ -1,6 +1,6 @@
 import s from '../../mainPageView/styles.module.scss';
 import { Menu } from 'antd';
-import { LEFT_SIDE_OPTIONS_LIST } from '../../../common/headerConfig/config';
+import { LEFT_SIDE_OPTIONS_LIST } from '@common/MenuConfigs/config';
 import Sider from 'antd/es/layout/Sider';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';

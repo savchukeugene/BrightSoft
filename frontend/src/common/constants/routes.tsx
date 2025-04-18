@@ -22,6 +22,7 @@ import {
   numberHuntingLevelRules,
   numberHuntingLevelsConfig,
 } from '@common/gameConfigs/numberHunting.config';
+import PlayNumberHunting from '../../components/mainPageView/MainView/tasks/NumberHunt';
 
 export const Routes = {
   mainPage: '/mainPage',
@@ -106,7 +107,13 @@ export const authorizedUserRoutesConfig = (role: IUserRoles): IRoutesGenerator[]
                 levelRules={numberHuntingLevelRules}
               />
             ),
-            child: [],
+            child: [
+              {
+                path: Routes.play,
+                element: <PlayNumberHunting />,
+                child: [],
+              },
+            ],
           },
         ],
       },

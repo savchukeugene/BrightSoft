@@ -9,7 +9,7 @@ import { deleteUser, getAllUsers, getUser } from './actions';
 import { IAllUsersMapped } from '../../../../types/commonTypes';
 import UserInfo from './userInfo/index';
 import { IUserMapped } from '../../../../types/userTypes';
-import { messages } from '../../../../common/constants/messages';
+import { messages } from '@common/constants/messages';
 
 const UserManagement: FC = () => {
   const { role } = useUserStore();

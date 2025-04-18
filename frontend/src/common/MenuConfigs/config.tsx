@@ -45,6 +45,8 @@ export const HEADER_OPTIONS: IHeaderOptions = {
   user: [
     getItem(source.grade, 'grade', <></>),
     getItem(source.timetable, 'timetable', <></>),
+    getItem(source.history, 'history', <></>),
+    getItem(source.profile, 'profile', <></>),
   ],
   tasks: [
     getItem(source.maze, 'maze'),
