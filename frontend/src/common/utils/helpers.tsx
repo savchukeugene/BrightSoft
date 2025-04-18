@@ -46,8 +46,8 @@ export const formatDate = (isoDate: string): string => {
   return `${day}.${month}.${year}`;
 };
 
-export const concatTooltipInfo = (message: string, param: number, unit: boolean) =>
-  `${message + ' ' + param + (unit && 'c.')}`;
+export const concatTooltipInfo = (message: string, param: number, unit?: boolean) =>
+  `${message + ' ' + param + (unit ? 'c.' : '')}`;
 
 export const createArrayOfRandomNumbers = (levelInfo: IQuickCountParams): number[] => {
   let set: Set<number> = new Set<number>();

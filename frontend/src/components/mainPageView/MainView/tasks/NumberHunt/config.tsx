@@ -23,13 +23,13 @@ export const numberHuntingConfig: Partial<NumberHuntingConfigType> = {
 };
 
 export const tooltipConfig = (
-  concatTooltipInfo: (message: string, param: number, unit: boolean) => string,
+  concatTooltipInfo: (message: string, param: number, unit?: boolean) => string,
   //@ts-ignore
   ref,
   levelInfo: INumberHuntingParams,
 ) => (
   <>
     <h4>{concatTooltipInfo(ref.duration, levelInfo.duration, true)}</h4>
-    <h4>{concatTooltipInfo(ref.dimension, levelInfo.dimension, false)}</h4>
+    <h4>{concatTooltipInfo(ref.dimension, levelInfo.dimension)}</h4>
   </>
 );
