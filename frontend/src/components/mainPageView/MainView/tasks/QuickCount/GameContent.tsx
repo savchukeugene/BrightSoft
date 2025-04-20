@@ -2,15 +2,7 @@ import { FC } from 'react';
 import PreparingForAGame from './GameStates/PreparingForAGame';
 import GameInProgress from './GameStates/GameInProgress';
 import Final from './GameStates/Final';
-import { GameStates } from './index';
-
-interface IGameContent {
-  state: GameStates;
-  handleStart: () => void;
-  value: string | null;
-  duration: number;
-  result: number;
-}
+import { IGameContent } from '../../../../../types/games';
 
 const GameContent: FC<IGameContent> = ({
   state,

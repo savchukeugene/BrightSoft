@@ -12,6 +12,17 @@ export type NumberHuntingConfigType = {
   [key in GamesLevelType]: INumberHuntingParams;
 };
 
+export interface IGameContent {
+  state: GameStates;
+  handleStart: () => void;
+  value: string | null;
+  duration: number;
+  result: number;
+}
+
+const gameStates = ['prepare', 'progress', 'final'] as const;
+export type GameStates = (typeof gameStates)[number];
+
 export interface ILevelsFields {
   label: string;
   name: GamesLevelType;

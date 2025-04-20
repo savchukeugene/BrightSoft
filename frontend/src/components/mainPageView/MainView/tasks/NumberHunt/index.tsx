@@ -1,26 +1,27 @@
 import { useSearchParams } from 'react-router-dom';
 import { numberHuntingConfig, tooltipConfig } from './config';
-import { NumberHuntingConfigType } from '../../../../../types/games';
+import { GameStates, NumberHuntingConfigType } from '../../../../../types/games';
 import s from './styles.module.scss';
 import { messages } from '@common/constants/messages';
 import { Tooltip } from 'antd';
 import { concatTooltipInfo } from '@common/utils/helpers';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import '../../../../../styles/commonGlobalStyles.scss';
+import { NumberHuntGameContent } from './NumberHuntGameContent';
+import { useState } from 'react';
 
 const ref = messages.view.main.tasks.numberHunt.play;
 
 const PlayNumberHunting = () => {
   const [searchParams] = useSearchParams();
+  const [gameState, setGameState] = useState<GameStates>('prepare');
   const level = searchParams.get('level') as keyof NumberHuntingConfigType;
   const levelInfo = numberHuntingConfig[level];
   if (!level || !levelInfo) {
-    throw new Error(`Уровня с таким значением не существует!`);
+    throw new Error(ref.noLevelError);
   }
 
-  const generateCells = () => {
-    return <div className={'cell'}></div>;
-  };
+  const handleStart = (): void => setGameState('progress');
 
   return (
     <section className={s.game}>
@@ -34,7 +35,10 @@ const PlayNumberHunting = () => {
           <InfoCircleOutlined />
         </Tooltip>
       </h1>
-      <div className={s.cellZone}>{generateCells()}</div>
+      <NumberHuntGameContent
+        state={gameState}
+        handleStart={handleStart}
+      />
     </section>
   );
 };

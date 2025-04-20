@@ -7,13 +7,15 @@ import { useOutletContext, useSearchParams } from 'react-router-dom';
 import { gameConfig, tooltipConfig } from './config';
 import GameContent from './GameContent';
 import { concatTooltipInfo, createArrayOfRandomNumbers } from '@common/utils/helpers';
-import { GamesLevelType, IQuickCountParams } from '../../../../../types/games';
+import {
+  GamesLevelType,
+  GameStates,
+  IQuickCountParams,
+} from '../../../../../types/games';
 import { isNil } from 'lodash';
 import '../../../../../styles/commonGlobalStyles.scss';
 
 const ref = messages.view.main.tasks.quickCount.play;
-const gameStates = ['prepare', 'progress', 'final'] as const;
-export type GameStates = (typeof gameStates)[number];
 
 const PlayQuickCount = () => {
   const [currentGameState, setCurrentGameState] = useState<GameStates>('prepare');

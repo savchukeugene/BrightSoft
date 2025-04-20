@@ -10,7 +10,7 @@ import { Route } from 'react-router-dom';
 import s from '../../components/mainPageView/MainView/userManagement/userInfo/styles.module.scss';
 import currentStyles from './styles.module.scss';
 import { StarFilled } from '@ant-design/icons';
-import { GamesLevelType, ILevelsFields } from '../../types/games';
+import { GamesLevelType, ILevelsFields, INumberHuntingParams } from '../../types/games';
 
 export const routesGenerator = (
   routesConfig: IRoutesGenerator[],
@@ -133,4 +133,25 @@ export const userInfoGenerator = (config: IUserInfoGenerator[]): JSX.Element[] =
 
 export const formGenerator = (config: IField[]) => {
   return config.map((field: IField) => fieldsGenerator([field]));
+};
+
+export const generateCells = (levelInfo: INumberHuntingParams) => {
+  const dimension = levelInfo.dimension;
+  const totalCells = dimension * dimension;
+
+  const numbers = Array.from({ length: totalCells }, (_, i) => i + 1);
+
+  for (let i = numbers.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
+  }
+
+  return numbers.map((number) => (
+    <div
+      key={number}
+      className={s.cell}
+    >
+      {number}
+    </div>
+  ));
 };
