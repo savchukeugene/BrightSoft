@@ -23,6 +23,7 @@ import {
   numberHuntingLevelsConfig,
 } from '@common/gameConfigs/numberHunting.config';
 import PlayNumberHunting from '../../components/mainPageView/MainView/tasks/NumberHunt';
+import LandingPageEditor from "../../components/mainPageView/MainView/LandingPages/Editor";
 
 export const Routes = {
   mainPage: '/mainPage',
@@ -35,6 +36,7 @@ export const Routes = {
   support: '/support',
   about: '/about',
   editingPages: '/editingPages',
+  pagesEditor: '/editor',
   login: '/login',
   createAccount: '/createAccount',
   userManagement: '/userManagement',
@@ -128,6 +130,14 @@ export const authorizedUserRoutesConfig = (role: IUserRoles): IRoutesGenerator[]
       {
         path: Routes.editingPages,
         element: <LandingPages />,
+      },
+      {
+        path: Routes.editingPages,
+        element: <LandingPages />,
+      },
+      {
+        path: ':id',
+        element: <LandingPageEditor />,
       },
       {
         path: Routes.userManagement,

@@ -21,7 +21,7 @@ export const messages = {
         user: 'Пользователь',
         tasks: 'Задания',
         support: 'Служба поддержки',
-        pages: 'Страницы',
+        pages: 'Рекламные страницы',
         about: 'О компании',
         grade: 'Оценки',
         timetable: 'Расписание',
