@@ -1,16 +1,16 @@
 import { FC } from 'react';
 import { Button, notification } from 'antd';
-import { messages } from '../../../common/constants/messages';
+import { messages } from '@common/constants/messages';
 import { register } from './actions';
 import { IRegisterDTO } from '../../../types/commonTypes';
 import {
   authorizationFieldsGenerator,
   collectFieldsData,
-} from '../../../common/utils/generatotrs';
+} from '@common/utils/generatotrs';
 import { createAccountFieldsConfig } from './config';
 import { useNavigate } from 'react-router-dom';
 
-import { Routes } from '../../../common/constants/routes';
+import { Routes } from '@common/constants/routes';
 
 const CreateAccount: FC = () => {
   const navigate = useNavigate();
@@ -47,7 +47,7 @@ const CreateAccount: FC = () => {
         </div>
       </form>
       <footer className="footer">
-        <a href="/login">Уже есть аккаунт? Войти</a>
+        <a href="/login">{messages.links.enter}</a>
       </footer>
     </div>
   );

@@ -1,7 +1,7 @@
 import AxiosService from '../../../axios/AxiosService';
 import { IActionsFormat, ILoginDTO, ISuccessLoginDTO } from '../../../types/commonTypes';
 import { AxiosResponse } from 'axios';
-import { API_LOGIN, API_LOGOUT } from '../../../common/constants/api';
+import { API_LOGIN, API_LOGOUT } from '@common/constants/api';
 
 export const login = async (
   dto: ILoginDTO,

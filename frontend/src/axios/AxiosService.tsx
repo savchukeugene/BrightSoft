@@ -38,7 +38,7 @@ export default class AxiosService {
     return this.fetchData<T>(url, 'PATCH', config);
   }
 
-  public static fetchData<T>(
+  private static fetchData<T>(
     url: AxiosRequestConfig['url'],
     method: AxiosRequestConfig['method'],
     config?: RequestConfig<T>,

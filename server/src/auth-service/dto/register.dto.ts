@@ -33,4 +33,8 @@ export class RegisterDto {
     message: 'Пароли не совпадают.',
   })
   passwordRepeat: string;
+
+  firstName: string;
+  secondName: string;
+  fatherName: string;
 }

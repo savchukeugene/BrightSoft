@@ -46,6 +46,9 @@ export interface IUserData {
   userName: string;
   status: UserStatuses;
   stars: number;
+  fatherName: string;
+  firstName: string;
+  secondName: string;
 }
 
 export interface IAllUsersMapped {
@@ -90,4 +93,9 @@ export interface IUserInfoGenerator {
   label: string;
   value?: string;
   activeElement?: Partial<IField>;
+}
+
+export interface IAppStore {
+  theme: 'dark' | 'light';
+  setTheme: (theme: 'dark' | 'light') => void;
 }

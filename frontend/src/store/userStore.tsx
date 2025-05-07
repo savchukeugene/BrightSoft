@@ -3,7 +3,7 @@ import { parseJwt } from '@common/utils/jwt';
 import { getStars, getUserInfo } from '@common/utils/globalActions';
 import { isNil } from 'lodash';
 
-const userRoles = ['administrator', 'user', 'support'] as const;
+const userRoles = ['administrator', 'user', 'support', 'unauthorized'] as const;
 export type IUserRoles = (typeof userRoles)[number];
 
 interface IUser {
@@ -38,7 +38,7 @@ export const useUserStore = create<IUserStore>((set) => {
   starSetter(null);
   return {
     user: savedToken ? parseJwt(savedToken).id : null,
-    role: savedToken ? parseJwt(savedToken).role : 'user',
+    role: savedToken ? parseJwt(savedToken).role : 'unauthorized',
     stars: 'Не известно',
     setUser: (access_token: string) => getUserInfo(access_token, set),
     setStars: starSetter,

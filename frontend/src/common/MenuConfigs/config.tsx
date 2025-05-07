@@ -1,4 +1,5 @@
 import {
+  AppstoreOutlined,
   BugOutlined,
   BuildOutlined,
   EditOutlined,
@@ -28,6 +29,7 @@ export const LEFT_SIDE_OPTIONS_LIST: ILeftSideOptions = {
     getItem(source.pages, 'editingPages', <EditOutlined />),
     getItem(source.about, 'about', <InfoCircleOutlined />),
     getItem(source.support, 'support', <BugOutlined />),
+    getItem(source.courses, 'courses', <AppstoreOutlined />),
   ],
   user: [
     getItem(source.user, 'user', <UserOutlined />),
@@ -36,6 +38,10 @@ export const LEFT_SIDE_OPTIONS_LIST: ILeftSideOptions = {
     getItem(source.support, 'support', <BugOutlined />),
   ],
   support: [
+    getItem(source.about, 'about', <InfoCircleOutlined />),
+    getItem(source.support, 'support', <BugOutlined />),
+  ],
+  unauthorized: [
     getItem(source.about, 'about', <InfoCircleOutlined />),
     getItem(source.support, 'support', <BugOutlined />),
   ],

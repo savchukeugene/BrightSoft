@@ -30,6 +30,7 @@ export const messages = {
         numberHunt: 'Охота за числами',
         history: 'История',
         profile: 'Профиль',
+        courses: 'Курсы',
       },
       supportPage: {
         title: 'Нам жаль, что Вы столкнулись с неприятностью...',
@@ -212,12 +213,18 @@ export const messages = {
     administrator: 'Администратор',
     user: 'Пользователь',
     support: 'Специалист техподдержки',
+    unauthorized: 'Не авторизован',
   },
   userStatuses: {
     active: 'Активный',
     non_confirmed: 'Не подтверждён',
     blocked: 'Заблокирован',
     deleted: 'Удалён',
+  },
+  links: {
+    noAccount: 'Нет аккаунта? Создать',
+    forgotPassword: 'Забыли пароль?',
+    enter: 'Уже есть аккаунт? Войти',
   },
   defaultText:
     'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been\n' +

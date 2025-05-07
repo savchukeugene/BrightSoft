@@ -1,5 +1,5 @@
 import { IAuthorizationFields } from '../../../types/commonTypes';
-import { messages } from '../../../common/constants/messages';
+import { messages } from '@common/constants/messages';
 
 export const createAccountFieldsConfig: IAuthorizationFields[] = [
   {

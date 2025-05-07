@@ -5,12 +5,13 @@ import logo from '../../../images/book-bookmark-minimalistic-svgrepo-com.svg';
 import {
   authorizationFieldsGenerator,
   collectFieldsData,
-} from '../../../common/utils/generatotrs';
+} from '@common/utils/generatotrs';
 import { loginFieldsConfig } from './config';
 import { login } from './actions';
 import { ILoginDTO } from '../../../types/commonTypes';
-import { messages } from '../../../common/constants/messages';
+import { messages } from '@common/constants/messages';
 import { useUserStore } from '../../../store/userStore';
+import { Routes } from '@common/constants/routes';
 
 const Login: FC = () => {
   const { setUser } = useUserStore();
@@ -42,8 +43,8 @@ const Login: FC = () => {
         </div>
       </form>
       <footer className="footer">
-        <a href="/createAccount">Нет аккаунта? Создать</a>
-        <a href="#">Забыли пароль?</a>
+        <a href={Routes.createAccount}>{messages.links.noAccount}</a>
+        <a href={Routes.defaultRoute}>{messages.links.forgotPassword}</a>
       </footer>
     </div>
   );

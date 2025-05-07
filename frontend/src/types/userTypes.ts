@@ -7,3 +7,13 @@ export interface IUserMapped {
   role: IUserRoles;
   status: UserStatuses;
 }
+
+export interface IRegisterUserDTOOut {
+  name: string;
+  email: string;
+  password: string;
+  passwordRepeat: string;
+  firstName?: string;
+  secondName?: string;
+  fatherName?: string;
+}

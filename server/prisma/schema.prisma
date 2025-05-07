@@ -19,6 +19,9 @@ model User {
   courseName CourseNames @default(free) @map("course_name")
   method AuthMethods
   stars Int @default(0)
+  firstName String  @map("first_name")
+  secondName String @map("second_name")
+  fatherName String @map("father_name")
 
   accounts Account[]
 
@@ -65,9 +68,38 @@ model Courses {
 
   courseName CourseNames @map("course_name")
   permissions String[]
+  expires Int
+  games Games
+  type CourseType
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+}
+
+model History {
+  userId String @id @map("user_id")
+  success Boolean
+  starsIncrease Int @map("start_increase")
+
+  createdAt DateTime @default(now()) @map("created_at")
+}
+
+model Progress {
+  userId String @id @map("user_id")
+  game Games
+  percent Int
+}
+
+enum CourseType {
+  online
+  offline
+}
+
+enum Games {
+  quickCount
+  numberHunting
+  mathChain
+  comparisonOfExpressions
 }
 
 enum AuthMethods {

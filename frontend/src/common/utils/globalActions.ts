@@ -24,7 +24,7 @@ export const getStars = async (id: string): Promise<IActionsFormat<number | null
 
 export const getUserInfo = async (
   access_token: string,
-  set: (
+  set?: (
     partial:
       | IUserStore
       | Partial<IUserStore>

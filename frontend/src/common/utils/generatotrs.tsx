@@ -135,7 +135,10 @@ export const formGenerator = (config: IField[]) => {
   return config.map((field: IField) => fieldsGenerator([field]));
 };
 
-export const generateCells = (levelInfo: INumberHuntingParams) => {
+export const generateCells = (
+  levelInfo: INumberHuntingParams,
+  onClickHandler: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void,
+) => {
   const dimension = levelInfo.dimension;
   const totalCells = dimension * dimension;
 
@@ -150,6 +153,7 @@ export const generateCells = (levelInfo: INumberHuntingParams) => {
     <div
       key={number}
       className={s.cell}
+      onClick={(event) => onClickHandler(event)}
     >
       {number}
     </div>

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes } from 'react-router-dom';
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 import { IUserStore, useUserStore } from './store/userStore';
 import { routesGenerator } from '@common/utils/generatotrs';
 import {

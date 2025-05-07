@@ -96,9 +96,23 @@ export class UserService {
     method: AuthMethods,
     isVerified: boolean,
     role: UserRole,
+    firstName: string,
+    secondName: string,
+    fatherName: string,
   ) {
     const user = this.prismaService.user.create({
-      data: { email, password, userName, picture, method, isVerified, role },
+      data: {
+        email,
+        password,
+        userName,
+        picture,
+        method,
+        isVerified,
+        role,
+        firstName,
+        secondName,
+        fatherName,
+      },
       include: {
         accounts: true,
       },
