@@ -24,6 +24,7 @@ import {
 } from '@common/gameConfigs/numberHunting.config';
 import PlayNumberHunting from '../../components/mainPageView/MainView/tasks/NumberHunt';
 import Profile from '../../components/mainPageView/MainView/User/Profile';
+import { Courses } from '../../components/mainPageView/MainView/Courses';
 
 export const Routes = {
   mainPage: '/mainPage',
@@ -42,6 +43,7 @@ export const Routes = {
   play: '/play',
   numberHunt: '/numberHunt',
   profile: '/profile',
+  courses: '/courses',
   defaultRoute: '/',
 };
 
@@ -105,8 +107,8 @@ export const authorizedUserRoutesConfig = (role: IUserRoles): IRoutesGenerator[]
         ],
       },
       {
-        path: '/robot',
-        element: <></>,
+        path: Routes.courses,
+        element: <Courses />,
       },
       {
         path: Routes.tasks,
