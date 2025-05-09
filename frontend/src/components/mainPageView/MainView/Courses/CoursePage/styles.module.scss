@@ -1,0 +1,25 @@
+.list {
+  background: white;
+  padding: 0 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.flex {
+  width: 100%;
+}
+
+.buttons {
+  font-size: 25px;
+  span {
+    cursor: pointer;
+  }
+}
+
+.viewButton {
+  color: #3c97ff
+}
+
+.deleteButton {
+  color: red
+}

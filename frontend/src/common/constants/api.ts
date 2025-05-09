@@ -37,6 +37,8 @@ export const API_UPDATE_USER: string = `${user_ref}/update`;
 const courses_ref: string = `${ref}/courses`;
 const lesson_ref: string = `${courses_ref}/lesson`;
 export const API_COURSES_GET_ALL: string = `${courses_ref}/all`;
+export const API_COURSES_GET_BY_ID: getIdReturnStrFunction = (id: string) =>
+  `${courses_ref}/${id}`;
 export const API_COURSE_DELETE: getIdReturnStrFunction = (id: string): string =>
   `${courses_ref}/delete?courseId=${id}`;
 export const API_COURSE_HIDE: string = `${courses_ref}/hide`;
