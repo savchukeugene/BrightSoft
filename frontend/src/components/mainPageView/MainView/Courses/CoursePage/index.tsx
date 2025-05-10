@@ -15,9 +15,13 @@ import s from './styles.module.scss';
 import FormItem from 'antd/es/form/FormItem';
 import TextArea from 'antd/es/input/TextArea';
 import Dragger from 'antd/es/upload/Dragger';
+import { useForm } from 'antd/es/form/Form';
+import { ILessonCreateFormInfo } from '../../../../../types/lessonTypes';
+import { createLesson } from './actions';
 
 export const CoursePage = () => {
   const { id } = useParams();
+  const [createLessonForm] = useForm();
   const [courseData, setCourseData] = useState<ICourseData | null>(null);
   const [isCourseDataLoading, setIsCourseDataLoading] = useState<boolean>(true);
   const [isCreateLessonModalOpen, setIsCreateLessonModalOpen] = useState<boolean>(false);
@@ -80,10 +84,17 @@ export const CoursePage = () => {
       </Button>
       <Modal
         open={isCreateLessonModalOpen}
-        onCancel={() => setIsCreateLessonModalOpen(false)}
+        onCancel={() => {
+          createLessonForm.resetFields();
+          setIsCreateLessonModalOpen(false);
+        }}
         footer={false}
       >
-        <Form layout={'vertical'}>
+        <Form
+          layout={'vertical'}
+          onFinish={(values: ILessonCreateFormInfo) => createLesson(values, id!)}
+          form={createLessonForm}
+        >
           <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Добавить урок</h2>
           <FormItem
             label={'Название урока'}
@@ -109,7 +120,7 @@ export const CoursePage = () => {
               <p className="ant-upload-drag-icon">
                 <InboxOutlined />
               </p>
-              <p className="ant-upload-text">Нажмите или перетащите изображения</p>
+              <p className="ant-upload-text">Нажмите или перетащите изображение</p>
             </Dragger>
           </FormItem>
 
@@ -122,11 +133,20 @@ export const CoursePage = () => {
             </Dragger>
           </FormItem>
 
-          <FormItem>
-            <TextArea placeholder={'Домашнее задание'} />
+          <FormItem
+            label={'Домашнее задание'}
+            rules={[{ required: true }]}
+            name={'homework'}
+          >
+            <TextArea />
           </FormItem>
 
-          <Button type={'primary'}>Сохранить</Button>
+          <Button
+            htmlType={'submit'}
+            type={'primary'}
+          >
+            Сохранить
+          </Button>
         </Form>
       </Modal>
       <Modal />

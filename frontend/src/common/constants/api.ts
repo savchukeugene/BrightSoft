@@ -36,7 +36,6 @@ export const API_GET_USER_COURSES: string = `${user_ref}/courses`;
 
 // Courses
 const courses_ref: string = `${ref}/courses`;
-const lesson_ref: string = `${courses_ref}/lesson`;
 export const API_COURSES_GET_ALL: string = `${courses_ref}/all`;
 export const API_COURSES_GET_BY_ID: getIdReturnStrFunction = (id: string) =>
   `${courses_ref}/${id}`;
@@ -46,11 +45,16 @@ export const API_COURSE_HIDE: string = `${courses_ref}/hide`;
 export const API_COURSES_CREATE: string = `${courses_ref}/create`;
 export const API_COURSES_EDIT: string = `${courses_ref}/edit`;
 export const API_COURSES_UPLOAD: string = `${courses_ref}/upload`;
-export const API_COURSES_LESSON_CREATE: string = `${lesson_ref}/create`;
+
+// Lessons
+
+const lesson_ref: string = `${ref}/lesson`;
+export const API_LESSON_CREATE: string = `${lesson_ref}/create`;
 export const API_COURSES_LESSON_DELETE: getIdReturnStrFunction = (id: string): string =>
   `${lesson_ref}/delete?lessonId=${id}`;
-export const API_COURSES_LESSON_HIDE: string = `${lesson_ref}/hide`;
-export const API_COURSES_LESSON_EDIT: string = `${lesson_ref}/edit`;
-export const API_COURSES_LESSON_UPLOAD: (type: 'image' | 'video') => string = (
+export const API_LESSON_HIDE: string = `${lesson_ref}/hide`;
+export const API_LESSON_EDIT: string = `${lesson_ref}/edit`;
+export const API_LESSON_UPLOAD: (type: 'image' | 'video') => string = (
   type: 'image' | 'video',
 ): string => `${lesson_ref}/upload/${type}`;
+export const API_GET_LESSON_BY_COURSE: string = `${lesson_ref}/getByCourseId`;
