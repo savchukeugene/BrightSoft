@@ -1,19 +1,18 @@
 import s from './styles.module.scss';
-import { Button, Form, Input, Modal } from 'antd';
-import { getUserInfo } from '@common/utils/globalActions';
-import { useState } from 'react';
-import { IUserData } from '../../../../../types/commonTypes';
-import { UserOutlined } from '@ant-design/icons';
+import {Button, Form, Input, Modal} from 'antd';
+import {useState} from 'react';
+import {IUserData} from '../../../../../types/commonTypes';
+import {UserOutlined} from '@ant-design/icons';
 import FormItem from 'antd/es/form/FormItem';
-import { messages } from '@common/constants/messages';
-import { IUserRoles, useUserStore } from '../../../../../store/userStore';
-import { Outlet, useNavigate } from 'react-router-dom';
-import { Routes } from '@common/constants/routes';
-import { routeGenerator } from '@common/utils/generatotrs';
-import { AxiosService } from '../../../../../axios/AxiosService';
-import { useForm } from 'antd/es/form/Form';
-import { logout } from '../../../../Authorization/Login/actions';
-import { API_UPDATE_USER } from '@common/constants/api';
+import {messages} from '@common/constants/messages';
+import {IUserRoles, useUserStore} from '../../../../../store/userStore';
+import {Outlet, useNavigate} from 'react-router-dom';
+import {Routes} from '@common/constants/routes';
+import {routeGenerator} from '@common/utils/generatotrs';
+import {AxiosService} from '../../../../../axios/AxiosService';
+import {useForm} from 'antd/es/form/Form';
+import {logout} from '../../../../Authorization/Login/actions';
+import {API_UPDATE_USER} from '@common/constants/api';
 
 const Profile = () => {
   const [form] = useForm();
