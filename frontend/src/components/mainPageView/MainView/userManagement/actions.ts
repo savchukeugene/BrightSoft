@@ -1,10 +1,10 @@
 import { IUserRoles } from '../../../../store/userStore';
-import AxiosService from '../../../../axios/AxiosService';
+import { AxiosService } from '../../../../axios/AxiosService';
 import {
   API_DELETE_USER,
   API_GET_ALL_USERS,
   API_GET_USER_INFO,
-} from '../../../../common/constants/api';
+} from '@common/constants/api';
 import {
   IActionsFormat,
   IAllUsersMapped,
@@ -13,22 +13,28 @@ import {
 import { allUsersDataMapper, userDataMapper } from './mapper';
 import { IUserMapped } from '../../../../types/userTypes';
 import { notification } from 'antd';
-import { messages } from '../../../../common/constants/messages';
+import { messages } from '@common/constants/messages';
 
 export const getAllUsers = async (
   role: IUserRoles,
-): Promise<IActionsFormat<IAllUsersMapped[] | null>> => {
+): Promise<IAllUsersMapped[] | null> => {
   try {
-    const { data } = await AxiosService.POST<IUserData[]>(API_GET_ALL_USERS, {
-      data: {
-        role,
+    const data = await AxiosService.POST<{ role: IUserRoles }, IUserData[]>(
+      API_GET_ALL_USERS,
+      {
+        data: {
+          role,
+        },
       },
-    });
+    );
 
-    const mappedData: IAllUsersMapped[] = allUsersDataMapper(data?.data ?? []);
-    return { data: mappedData, ok: true };
+    if (!data) {
+      return null;
+    }
+
+    return allUsersDataMapper(data?.data ?? []);
   } catch (e) {
-    return { data: null, ok: false };
+    return null;
   }
 };
 
@@ -37,12 +43,15 @@ export const getUser = async (
   email: string,
 ): Promise<IActionsFormat<IUserMapped | null>> => {
   try {
-    const { data } = await AxiosService.POST<IUserData>(API_GET_USER_INFO, {
-      data: {
-        role,
-        email,
+    const data = await AxiosService.POST<{ role: IUserRoles; email: string }, IUserData>(
+      API_GET_USER_INFO,
+      {
+        data: {
+          role,
+          email,
+        },
       },
-    });
+    );
 
     const mappedData: IUserMapped = userDataMapper(data?.data as IUserData);
     return { data: mappedData, ok: true };
@@ -53,7 +62,7 @@ export const getUser = async (
 
 export const deleteUser = async (id: string): Promise<void> => {
   try {
-    await AxiosService.DELETE<{ id: string }>(API_DELETE_USER, {
+    await AxiosService.DELETE<{ id: string }, undefined>(API_DELETE_USER, {
       data: { id },
     });
   } catch (e) {

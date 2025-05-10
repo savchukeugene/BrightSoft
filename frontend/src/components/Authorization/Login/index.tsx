@@ -19,10 +19,10 @@ const Login: FC = () => {
     event.preventDefault();
     const formData: FormData = new FormData(event.target as HTMLFormElement);
     const userData: ILoginDTO = collectFieldsData(formData, ['email', 'password']);
-    const { data } = await login(userData);
+    const data = await login(userData);
 
-    if (data?.data?.access_token) {
-      setUser(data.data.access_token);
+    if (data) {
+      setUser(data.access_token);
     }
   };
 

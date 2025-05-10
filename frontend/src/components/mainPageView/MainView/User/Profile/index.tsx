@@ -10,7 +10,7 @@ import { IUserRoles, useUserStore } from '../../../../../store/userStore';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Routes } from '@common/constants/routes';
 import { routeGenerator } from '@common/utils/generatotrs';
-import AxiosService from '../../../../../axios/AxiosService';
+import { AxiosService } from '../../../../../axios/AxiosService';
 import { useForm } from 'antd/es/form/Form';
 import { logout } from '../../../../Authorization/Login/actions';
 import { API_UPDATE_USER } from '@common/constants/api';
@@ -21,11 +21,7 @@ const Profile = () => {
   const { user, logoutUser } = useUserStore();
   const [userInfo, setUserInfo] = useState<IUserData>();
   const [disabled, setDisabled] = useState<boolean>(true);
-  const getData = async () => {
-    const data = await getUserInfo(localStorage.getItem('access_token')!);
-    setUserInfo(data);
-  };
-  !userInfo && getData();
+
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const roleMapper = (role: IUserRoles) => messages.userRoles[role];
 
@@ -38,7 +34,7 @@ const Profile = () => {
 
   const updateUser = async (val) => {
     try {
-      const { data } = await AxiosService.POST<IUserData>(API_UPDATE_USER, {
+      const data = await AxiosService.POST<any, IUserData>(API_UPDATE_USER, {
         data: { id: user, ...val },
       });
       setUserInfo(data?.data);

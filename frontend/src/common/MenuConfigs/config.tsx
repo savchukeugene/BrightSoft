@@ -25,6 +25,7 @@ const source = messages.view.main.layoutOptions;
 export const LEFT_SIDE_OPTIONS_LIST: ILeftSideOptions = {
   administrator: [
     getItem(source.users, 'userManagement', <TeamOutlined />),
+    getItem(source.user, 'user', <TeamOutlined />),
     getItem(source.tasks, 'tasks', <BuildOutlined />),
     getItem(source.pages, 'editingPages', <EditOutlined />),
     getItem(source.about, 'about', <InfoCircleOutlined />),
