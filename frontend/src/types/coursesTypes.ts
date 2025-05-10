@@ -21,7 +21,8 @@ export interface ILesson {
 export interface ICreateCourseOutDTO {
   name: string;
   description: string;
-  lessons: ILesson[];
+  users: string;
+  type: 'online' | 'offline';
 }
 
 export interface ICoursesInDTO {

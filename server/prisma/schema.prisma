@@ -16,7 +16,7 @@ model User {
   userName String
   picture String?
   status UserStatus @default(non_confirmed)
-  courseName CourseNames @default(free) @map("course_name")
+  courseName String @map("course_name")
   method AuthMethods
   stars Int @default(0)
   firstName String  @map("first_name")
@@ -65,15 +65,28 @@ model Token {
 
 model Courses {
   id String @id @default(uuid())
+  name String @map("name")
+  description String
+  previewPath String
+  lessons String
+  status CourseStatuses @default(active)
+  users String
 
-  courseName CourseNames @map("course_name")
-  permissions String[]
-  expires Int
-  games Games
   type CourseType
-
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+}
+
+model Lesson {
+  id String @id @default(uuid())
+  course String
+  name String
+  description String
+  picture String
+  video String
+  homework String
+
+  position Int
 }
 
 model History {
@@ -88,6 +101,13 @@ model Progress {
   userId String @id @map("user_id")
   game Games
   percent Int
+}
+
+enum CourseStatuses {
+  active
+  hidden
+  deleted
+  frozen
 }
 
 enum CourseType {
@@ -125,12 +145,4 @@ enum TokenType {
   verification
   two_factor
   password_reset
-}
-
-enum CourseNames {
-  free
-  newbie
-  beginner
-  amateur
-  pro
 }

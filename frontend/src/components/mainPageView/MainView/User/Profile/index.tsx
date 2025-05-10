@@ -21,11 +21,7 @@ const Profile = () => {
   const { user, logoutUser } = useUserStore();
   const [userInfo, setUserInfo] = useState<IUserData>();
   const [disabled, setDisabled] = useState<boolean>(true);
-  const getData = async () => {
-    const data = await getUserInfo(localStorage.getItem('access_token')!);
-    setUserInfo(data);
-  };
-  !userInfo && getData();
+
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const roleMapper = (role: IUserRoles) => messages.userRoles[role];
 

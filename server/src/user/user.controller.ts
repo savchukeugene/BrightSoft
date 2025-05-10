@@ -2,9 +2,12 @@ import {
   Body,
   Controller,
   Delete,
+  Get,
   HttpCode,
   HttpStatus,
+  Param,
   Post,
+  Query,
   Req,
   UseGuards,
 } from '@nestjs/common';
@@ -56,5 +59,12 @@ export class UserController {
   @HttpCode(HttpStatus.OK)
   public async getStars(@Body() dto: GetStarsDto) {
     return await this.userService.getStars(dto.id);
+  }
+
+  @Get('courses')
+  @HttpCode(HttpStatus.OK)
+  public async getUsesCourses(@Query() query) {
+    console.log(query);
+    return {};
   }
 }

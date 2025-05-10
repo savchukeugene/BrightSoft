@@ -32,6 +32,7 @@ export const API_DELETE_USER: string = `${user_ref}/deleteUser`;
 export const API_SCORING: string = `${user_ref}/scoring`;
 export const API_GET_STARS: string = `${user_ref}/getStars`;
 export const API_UPDATE_USER: string = `${user_ref}/update`;
+export const API_GET_USER_COURSES: string = `${user_ref}/courses`;
 
 // Courses
 const courses_ref: string = `${ref}/courses`;

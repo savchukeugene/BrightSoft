@@ -7,7 +7,7 @@ import { AxiosService } from '../../axios/AxiosService';
 
 export const getStars = async (id: string): Promise<IActionsFormat<number | null>> => {
   try {
-    const { data } = await AxiosService.POST<number>(API_GET_STARS, {
+    const data = await AxiosService.POST<{ id: string }, number>(API_GET_STARS, {
       data: {
         id,
       },
@@ -41,6 +41,10 @@ export const getUserInfo = async (
   >(API_WHO_AM_I, {
     data: { userId: parsedJwt.id ?? access_token },
   });
+
+  if (!set) {
+    return;
+  }
 
   if (!data) {
     return set(() => ({

@@ -112,6 +112,7 @@ export class UserService {
         firstName,
         secondName,
         fatherName,
+        courseName: '',
       },
       include: {
         accounts: true,

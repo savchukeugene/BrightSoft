@@ -1,33 +1,30 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Post,
+} from '@nestjs/common';
+import { CoursesService } from './courses.service';
+import { CreateCourseDto } from './dto/createCourse.dto';
 
 @Controller('courses')
 export class CoursesController {
+  constructor(private readonly coursesService: CoursesService) {}
   @Get('/all')
   public async getAllCourses() {
-    return [
-      {
-        id: 1,
-        name: 'Курс 1',
-        previewPath: null,
-        description: 'Описание курса 1',
-        status: 'active',
-      },
-      {
-        id: 2,
-        name: 'Курс 2',
-        previewPath: null,
-        description: 'Описание курса 2',
-        status: 'active',
-      },
-      {
-        id: 3,
-        name: 'Курс 3',
-        previewPath: null,
-        description: 'Описание курса 3',
-        status: 'active',
-      },
-    ];
+    const data = await this.coursesService.getAllCourses();
+    return data;
   }
+
+  @Post('create')
+  @HttpCode(HttpStatus.OK)
+  public async createCourse(@Body() dto: CreateCourseDto) {
+    const data = await this.coursesService.create(dto);
+    return data;
+  }
+
   @Post(':id')
   public async getCourseById(@Body() dto: { id: string }) {
     return {

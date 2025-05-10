@@ -8,7 +8,7 @@ export const login = async (dto: ILoginDTO): Promise<ISuccessLoginDTO | void> =>
     const data = await AxiosService.POST<ILoginDTO, ISuccessLoginDTO>(API_LOGIN, {
       data: dto,
     });
-
+    console.log(data);
     if (!data) {
       throw new Error();
     }
