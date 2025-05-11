@@ -39,6 +39,7 @@ export const Courses = () => {
       });
     }
     setIsCoursesDataLoading(true);
+    setIsCreateCourseModalOpen(false);
   };
   return (
     <main>

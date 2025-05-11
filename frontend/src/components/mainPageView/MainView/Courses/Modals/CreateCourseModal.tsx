@@ -60,7 +60,6 @@ export const CreateCourseModal: FC<ICreateCourseModal> = ({
         </FormItem>
         <FormItem
           name={'users'}
-          rules={[{ required: true }]}
           label={'Пользователи'}
         >
           <Input />
