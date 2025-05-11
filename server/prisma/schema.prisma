@@ -16,7 +16,7 @@ model User {
   userName String
   picture String?
   status UserStatus @default(non_confirmed)
-  courseName String @map("course_name")
+  courseName String[] @map("course_name")
   method AuthMethods
   stars Int @default(0)
   firstName String  @map("first_name")
@@ -68,9 +68,9 @@ model Courses {
   name String @map("name")
   description String
   previewPath String
-  lessons String
+  lessons String[]
   status CourseStatuses @default(active)
-  users String
+  users String[]
 
   type CourseType
   createdAt DateTime @default(now()) @map("created_at")

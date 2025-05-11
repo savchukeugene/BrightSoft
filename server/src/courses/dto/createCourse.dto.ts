@@ -1,6 +1,6 @@
 export class CreateCourseDto {
   name: string;
   description: string;
-  users: string;
+  users: string[];
   type: 'online' | 'offline';
 }

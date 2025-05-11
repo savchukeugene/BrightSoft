@@ -112,7 +112,7 @@ export class UserService {
         firstName,
         secondName,
         fatherName,
-        courseName: '',
+        courseName: [''],
       },
       include: {
         accounts: true,

@@ -71,7 +71,7 @@ export const createCourse = async (dto: ICreateCourseOutDTO) => {
     const data = await AxiosService.POST<ICreateCourseOutDTO, ICoursesInDTO[]>(
       API_COURSES_CREATE,
       {
-        data: dto,
+        data: { ...dto, users: [] },
       },
     );
     if (isNil(data)) {

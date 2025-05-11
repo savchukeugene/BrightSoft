@@ -21,7 +21,7 @@ export interface ILesson {
 export interface ICreateCourseOutDTO {
   name: string;
   description: string;
-  users: string;
+  users: string[];
   type: 'online' | 'offline';
 }
 
