@@ -238,7 +238,7 @@ const Profile = () => {
         >
           <Outlet />
         </Modal>
-      </section>
+      </div>
     </main>
   );
 };
