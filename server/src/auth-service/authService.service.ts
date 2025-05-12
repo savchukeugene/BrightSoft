@@ -38,6 +38,9 @@ export class AuthService {
       AuthMethods.credantials,
       false,
       'user',
+      (dto.firstName = ''),
+      (dto.secondName = ''),
+      (dto.fatherName = ''),
     );
 
     return this.saveSession(req, newUser);

@@ -1,4 +1,5 @@
 import {
+  AppstoreOutlined,
   BugOutlined,
   BuildOutlined,
   EditOutlined,
@@ -24,10 +25,12 @@ const source = messages.view.main.layoutOptions;
 export const LEFT_SIDE_OPTIONS_LIST: ILeftSideOptions = {
   administrator: [
     getItem(source.users, 'userManagement', <TeamOutlined />),
+    getItem(source.user, 'user', <TeamOutlined />),
     getItem(source.tasks, 'tasks', <BuildOutlined />),
     getItem(source.pages, 'editingPages', <EditOutlined />),
     getItem(source.about, 'about', <InfoCircleOutlined />),
     getItem(source.support, 'support', <BugOutlined />),
+    getItem(source.courses, 'courses', <AppstoreOutlined />),
   ],
   user: [
     getItem(source.user, 'user', <UserOutlined />),
@@ -37,6 +40,10 @@ export const LEFT_SIDE_OPTIONS_LIST: ILeftSideOptions = {
     getItem(source.pages, 'editingPages', <EditOutlined />),
   ],
   support: [
+    getItem(source.about, 'about', <InfoCircleOutlined />),
+    getItem(source.support, 'support', <BugOutlined />),
+  ],
+  unauthorized: [
     getItem(source.about, 'about', <InfoCircleOutlined />),
     getItem(source.support, 'support', <BugOutlined />),
   ],

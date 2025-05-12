@@ -1,5 +1,7 @@
 import { IUserRoles } from '../store/userStore';
 import { IField } from './filterTypes';
+import { AxiosRequestConfig } from 'axios';
+import { ArgsProps } from 'antd/es/notification';
 
 const userStatuses = ['active', 'blocked', 'deleted', 'non_confirmed'] as const;
 export type UserStatuses = (typeof userStatuses)[number];
@@ -46,6 +48,15 @@ export interface IUserData {
   userName: string;
   status: UserStatuses;
   stars: number;
+  fatherName: string;
+  firstName: string;
+  secondName: string;
+}
+
+export interface IUserScoringOutDTO {
+  amount: number;
+  operation: 'accrue' | 'takeAway';
+  id: string;
 }
 
 export interface IAllUsersMapped {
@@ -64,11 +75,6 @@ export interface IUserInfo {
 
 export interface ISuccessLoginDTO {
   access_token: string;
-}
-
-export interface INestErrorMessage {
-  message?: string[];
-  statusCode: number;
 }
 
 export interface IAccessToken {
@@ -90,4 +96,22 @@ export interface IUserInfoGenerator {
   label: string;
   value?: string;
   activeElement?: Partial<IField>;
+}
+
+export interface IAppStore {
+  theme: 'dark' | 'light';
+  setTheme: (theme: 'dark' | 'light') => void;
+}
+
+interface ErrorDetails {
+  message: ArgsProps['message'];
+  description: ArgsProps['description'];
+  btn?: ArgsProps['btn'];
+}
+interface ErrorObject {
+  [key: number]: ErrorDetails;
+}
+export interface IAxiosConfig<T> extends Omit<AxiosRequestConfig, 'method' | 'url'> {
+  data: T;
+  errorBoundary?: ErrorObject;
 }

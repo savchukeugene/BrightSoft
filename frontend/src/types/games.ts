@@ -1,4 +1,9 @@
-const games = ['quickCount', 'numberHunt'] as const;
+const games = [
+  'quickCount',
+  'numberHunt',
+  'mathChain',
+  'comparisonOfExpressions',
+] as const;
 export type GamesType = (typeof games)[number];
 
 const gameLevels = ['superEasy', 'easy', 'normal', 'hard', 'custom'] as const;

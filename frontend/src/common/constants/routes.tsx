@@ -24,6 +24,9 @@ import {
 } from '@common/gameConfigs/numberHunting.config';
 import PlayNumberHunting from '../../components/mainPageView/MainView/tasks/NumberHunt';
 import LandingPageEditor from "../../components/mainPageView/MainView/LandingPages/Editor";
+import Profile from '../../components/mainPageView/MainView/User/Profile';
+import { Courses } from '../../components/mainPageView/MainView/Courses';
+import { CoursePage } from '../../components/mainPageView/MainView/Courses/CoursePage';
 
 export const Routes = {
   mainPage: '/mainPage',
@@ -42,9 +45,30 @@ export const Routes = {
   userManagement: '/userManagement',
   play: '/play',
   numberHunt: '/numberHunt',
+  profile: '/profile',
+  courses: '/courses',
+  defaultRoute: '/',
 };
 
 export const logoutUserRoutesConfig: IRoutesGenerator[] = [
+  // {
+  //   path: '',
+  //   element: <MainPage />,
+  //   child: [
+  //     {
+  //       path: Routes.support,
+  //       element: <SupportPage />,
+  //     },
+  //     {
+  //       path: Routes.about,
+  //       element: <About />,
+  //     },
+  //     {
+  //       path: Routes.profile,
+  //       element: <Profile />,
+  //     },
+  //   ],
+  // },
   {
     path: Routes.login,
     element: <Login />,
@@ -78,6 +102,20 @@ export const authorizedUserRoutesConfig = (role: IUserRoles): IRoutesGenerator[]
           {
             path: Routes.grade,
             element: <Grade />,
+          },
+          {
+            path: Routes.profile,
+            element: <Profile />,
+          },
+        ],
+      },
+      {
+        path: Routes.courses,
+        element: <Courses />,
+        child: [
+          {
+            path: ':id',
+            element: <CoursePage />,
           },
         ],
       },

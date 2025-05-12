@@ -9,16 +9,19 @@ datasource db {
 }
 
 model User {
-  id         String      @id @default(uuid())
-  email      String      @unique
-  password   String
-  role       UserRole    @default(user)
-  userName   String
-  picture    String?
-  status     UserStatus  @default(non_confirmed)
-  courseName CourseNames @default(free) @map("course_name")
-  method     AuthMethods
-  stars      Int         @default(0)
+  id String @id @default(uuid())
+  email String @unique
+  password String
+  role UserRole @default(user)
+  userName String
+  picture String?
+  status UserStatus @default(non_confirmed)
+  courseName String[] @map("course_name")
+  method AuthMethods
+  stars Int @default(0)
+  firstName String  @map("first_name")
+  secondName String @map("second_name")
+  fatherName String @map("father_name")
 
   accounts Account[]
 
@@ -62,10 +65,14 @@ model Token {
 
 model Courses {
   id String @id @default(uuid())
+  name String @map("name")
+  description String
+  previewPath String
+  lessons String[]
+  status CourseStatuses @default(active)
+  users String[]
 
-  courseName  CourseNames @map("course_name")
-  permissions String[]
-
+  type CourseType
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 }
@@ -77,6 +84,51 @@ model LandingPage {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   url       String
+}
+
+model Lesson {
+  id String @id @default(uuid())
+  course String
+  name String
+  description String
+  picture String
+  video String
+  homework String
+
+  position Int
+}
+
+model History {
+  userId String @id @map("user_id")
+  success Boolean
+  starsIncrease Int @map("start_increase")
+
+  createdAt DateTime @default(now()) @map("created_at")
+}
+
+model Progress {
+  userId String @id @map("user_id")
+  game Games
+  percent Int
+}
+
+enum CourseStatuses {
+  active
+  hidden
+  deleted
+  frozen
+}
+
+enum CourseType {
+  online
+  offline
+}
+
+enum Games {
+  quickCount
+  numberHunting
+  mathChain
+  comparisonOfExpressions
 }
 
 enum AuthMethods {

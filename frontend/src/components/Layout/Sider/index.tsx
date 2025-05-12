@@ -5,7 +5,7 @@ import Sider from 'antd/es/layout/Sider';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useUserStore } from '../../../store/userStore';
-import { Routes } from '../../../common/constants/routes';
+import { Routes } from '@common/constants/routes';
 
 const siderGroupes = ['tasks', 'user'] as const;
 type ISiderGroupes = (typeof siderGroupes)[number];
@@ -33,6 +33,7 @@ const LayoutSider = () => {
       collapsible
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
+      theme={'dark'}
     >
       <Menu
         theme={'dark'}

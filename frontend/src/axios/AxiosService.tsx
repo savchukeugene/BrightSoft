@@ -1,83 +1,52 @@
-import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { ArgsProps } from 'antd/es/notification';
 import { notification } from 'antd';
-import { messages } from '@common/constants/messages';
-import { IActionsFormat, INestErrorMessage } from '../types/commonTypes';
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { IAxiosConfig } from '../types/commonTypes';
 
-interface ErrorDetails {
-  message: ArgsProps['message'];
-  description: ArgsProps['description'];
-  btn?: ArgsProps['btn'];
-}
-interface ErrorObject {
-  [key: number]: ErrorDetails;
-}
-interface RequestConfig<T> extends Omit<AxiosRequestConfig, 'method' | 'url'> {
-  mapper?: (data: T) => any;
-  exceptionHandler?: ErrorObject;
-}
-
-export default class AxiosService {
-  public static GET<T>(url: AxiosRequestConfig['url']) {
-    return this.fetchData<T>(url, 'GET');
+export class AxiosService {
+  public static POST<T, D>(url: AxiosRequestConfig['url'], config: IAxiosConfig<T>) {
+    return this.fetchData<T, D>(url, 'POST', config);
   }
 
-  public static DELETE<T>(url: AxiosRequestConfig['url'], config: RequestConfig<T> = {}) {
-    return this.fetchData<T>(url, 'DELETE', config);
+  public static DELETE<T, D>(url: AxiosRequestConfig['url'], config?: IAxiosConfig<T>) {
+    return this.fetchData<T, D>(url, 'DELETE', config);
   }
 
-  public static POST<T>(url: AxiosRequestConfig['url'], config: RequestConfig<T> = {}) {
-    return this.fetchData<T>(url, 'POST', config);
+  public static GET<T>(url: AxiosRequestConfig['url'], config?: AxiosRequestConfig) {
+    return this.fetchData<AxiosRequestConfig, T>(url, 'GET', config);
   }
 
-  public static PUT<T>(url: AxiosRequestConfig['url'], config: RequestConfig<T> = {}) {
-    return this.fetchData<T>(url, 'PUT', config);
+  public static PULL<T, D>(url: AxiosRequestConfig['url'], config: IAxiosConfig<T>) {
+    return this.fetchData<T, D>(url, 'PUT', config);
   }
 
-  public static PATCH<T>(url: AxiosRequestConfig['url'], config: RequestConfig<T> = {}) {
-    return this.fetchData<T>(url, 'PATCH', config);
-  }
-
-  public static fetchData<T>(
+  public static fetchData<T, D>(
     url: AxiosRequestConfig['url'],
     method: AxiosRequestConfig['method'],
-    config?: RequestConfig<T>,
-  ): Promise<IActionsFormat<AxiosResponse<T, any> | null>> {
-    return axios
-      .request({ url, method, ...config, withCredentials: true })
-      .then((data): IActionsFormat<AxiosResponse<T, any>> => {
-        if (
-          data?.data?.status === undefined ||
-          data?.data?.status === 200 ||
-          data?.status === 200
-        ) {
-          return { data, ok: true };
-        } else {
-          throw new Error(
-            'Произошла ошибка при обработке данных. Пожалуйста, повторите ваш запрос позже.',
-          );
-        }
-      })
-      .catch((e: AxiosError): IActionsFormat<null> => {
-        if (e.response && e.response.data) {
-          String.prototype.join = function (): string {
-            return this.toString();
-          };
-          const responseData: INestErrorMessage = e.response.data as INestErrorMessage;
-          notification.error({
-            message: messages.notification.error.invalidData,
-            description:
-              responseData?.message?.join('\n') ??
-              messages.notification.error.unknownError,
-          });
-        } else {
-          notification.error({
-            message: messages.notification.error.invalidData,
-            description: messages.notification.error.unknownError,
-          });
-        }
+    config?: IAxiosConfig<T> | AxiosRequestConfig,
+  ): Promise<AxiosResponse<D, any> | null> {
+    const token = localStorage.getItem('token');
 
-        return { data: null, ok: false };
+    return axios
+      .request({
+        url,
+        method,
+        ...config,
+        withCredentials: true,
+        headers: {
+          ...(config?.headers || {}),
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+      })
+      .then((data: AxiosResponse['data']): AxiosResponse<D, any> => {
+        return data;
+      })
+      .catch((e: AxiosError): null => {
+        notification.error({
+          message: 'Произошла ошибка при выполнении запроса!',
+          description: e.message,
+        });
+
+        return null;
       });
   }
 }
