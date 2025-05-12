@@ -88,12 +88,14 @@ const Profile = () => {
               <Input placeholder={userInfo?.secondName} />
             )}
           </FormItem>
+
           <FormItem
             label={'Имя'}
             name={'firstName'}
           >
             {disabled ? userInfo?.firstName : <Input placeholder={userInfo?.firstName} />}
           </FormItem>
+
           <FormItem
             label={'Отчество'}
             name={'fatherName'}
@@ -104,30 +106,35 @@ const Profile = () => {
               <Input placeholder={userInfo?.fatherName} />
             )}
           </FormItem>
+
           <FormItem
             label={'Имя пользователя'}
             name={'userName'}
           >
             {disabled ? userInfo?.userName : <Input placeholder={userInfo?.userName} />}
           </FormItem>
+
           <FormItem
             label={'Роль'}
             name={'role'}
           >
             {roleMapper(userInfo?.role!)}
           </FormItem>
+
           <FormItem
             label={'Email'}
             name={'email'}
           >
             {userInfo?.email}
           </FormItem>
+
           <FormItem
             label={'Пароль'}
             name={'password'}
           >
             {disabled ? userInfo?.password : <Input value={userInfo?.password} />}
           </FormItem>
+
           <FormItem
             label={'Устройства'}
             name={'devices'}
@@ -140,6 +147,7 @@ const Profile = () => {
               Посмотреть устройства
             </Button>
           </FormItem>
+
           {!disabled && (
             <div style={{ display: 'flex', gap: '10px' }}>
               <Button
