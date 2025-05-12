@@ -231,15 +231,14 @@ const Profile = () => {
             </Button>
           </section>
         )}
-      </div>
-
-      <Modal
-        open={isModalOpen}
-        onCancel={() => setIsModalOpen(false)}
-        footer={false}
-      >
-        <Outlet />
-      </Modal>
+        <Modal
+          open={isModalOpen}
+          onCancel={() => setIsModalOpen(false)}
+          footer={false}
+        >
+          <Outlet />
+        </Modal>
+      </section>
     </main>
   );
 };
