@@ -9,6 +9,10 @@ export const messages = {
   },
   view: {
     main: {
+      courses: {
+        courseName: (name: string | undefined): string =>
+          `Курс "${name ?? 'Неизвестный курс'}"`,
+      },
       layoutOptions: {
         level: (param: string | null, color: string) =>
           React.createElement(
@@ -186,6 +190,7 @@ export const messages = {
     login: 'Войти',
     check: 'Проверить',
     back: 'Вернуться',
+    addLesson: 'Добавить урок',
   },
   notification: {
     success: {

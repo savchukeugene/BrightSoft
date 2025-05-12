@@ -1,13 +1,11 @@
-import { Button, Menu } from 'antd';
+import { Menu } from 'antd';
 import { HEADER_OPTIONS } from '@common/MenuConfigs/config';
-import Navigation from '../../commonComponents/Navigation';
 import { Header } from 'antd/lib/layout/layout';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { routeGenerator } from '@common/utils/generatotrs';
 
 import { Routes } from '@common/constants/routes';
 import { useUserStore } from '../../../store/userStore';
-import { messages } from '@common/constants/messages';
 import { useState } from 'react';
 import { LoginModal } from './authModals/LoginModal';
 import { RegisterModal } from './authModals/RegisterModal';
@@ -38,7 +36,7 @@ const LayoutHeader = () => {
             theme={'dark'}
             mode="horizontal"
             items={options}
-            style={{ flex: 1, minWidth: 0 }}
+            // style={{ flex: 1, minWidth: 0 }}
             defaultSelectedKeys={[pathname.split('/')[3]]}
             onClick={(value) => {
               navigate({
