@@ -1,7 +1,6 @@
 import { Layout } from 'antd';
 import { Outlet } from 'react-router-dom';
 import PageWrapper from '../commonComponents/PageWrapper';
-import Footer from '../Layout/Footer';
 import LayoutHeader from '../Layout/Header';
 import LayoutSider from '../Layout/Sider';
 
@@ -26,7 +25,7 @@ const MainPage = () => {
           <PageWrapper>
             <ErrorBoundary>
               <Outlet />
-              <Footer />
+              {/*<Footer />*/}
             </ErrorBoundary>
           </PageWrapper>
         </Layout>
