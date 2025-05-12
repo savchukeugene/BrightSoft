@@ -97,6 +97,44 @@ model History {
   createdAt DateTime @default(now()) @map("created_at")
 }
 
+model Group {
+  id String @id @default(uuid())
+  name String @default("null")
+  groupNumber Int @map("group_number") // номер группы
+  users String[] @default([])
+  duration Int // кол-во часов занятия
+  startHour String
+  maxStudents Int @map("max_students")
+  days days[] @default([monday])
+}
+
+model Application {
+  id String @id @default(uuid())
+  courseId String @map("course_id")
+  userId String @map("user_id")
+  type CourseType
+  groupId String @map("group_id")
+  status ApplicationStatus @default(active)
+  contactData String @map("contact_data")
+}
+
+enum days {
+  monday
+  thusday
+  wednesday
+  thursday
+  friday
+  saturday
+  sunday
+}
+
+enum ApplicationStatus {
+  active
+  closed
+  blocked
+  frozen
+}
+
 model Progress {
   userId String @id @map("user_id")
   game Games

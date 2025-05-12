@@ -47,7 +47,6 @@ export const API_COURSES_EDIT: string = `${courses_ref}/edit`;
 export const API_COURSES_UPLOAD: string = `${courses_ref}/upload`;
 
 // Lessons
-
 const lesson_ref: string = `${ref}/lesson`;
 export const API_LESSON_CREATE: string = `${lesson_ref}/create`;
 export const API_COURSES_LESSON_DELETE: getIdReturnStrFunction = (id: string): string =>
@@ -58,3 +57,9 @@ export const API_LESSON_UPLOAD: (type: 'image' | 'video') => string = (
   type: 'image' | 'video',
 ): string => `${lesson_ref}/upload/${type}`;
 export const API_GET_LESSON_BY_COURSE: string = `${lesson_ref}/getByCourseId`;
+
+// Application
+const application_ref: string = `${ref}/application`;
+export const API_CREATE_APPLICATION = `${application_ref}/createApplication`;
+export const API_GET_APPLICATIONS: string = `${application_ref}/getApplications`;
+export const API_GET_APPLICATION_BY_ID: string = `${application_ref}/getById`;
