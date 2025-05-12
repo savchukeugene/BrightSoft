@@ -15,7 +15,7 @@ export class GroupController {
 
   @Post('createGroup')
   @HttpCode(HttpStatus.OK)
-  public async createGroup(dto: GroupCreateDto) {
+  public async createGroup(@Body() dto: GroupCreateDto) {
     const data = await this.groupService.create(dto);
     return data;
   }
