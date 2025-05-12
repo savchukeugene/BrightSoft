@@ -2,22 +2,19 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getCourseInfo } from '../actions';
 import { ICourseData, ILessonDataInCourseDTO } from '../../../../../types/coursesTypes';
-import { Button, Flex, Form, Input, List, Modal, Tooltip } from 'antd';
+import { Button, Flex, List, Modal, Tooltip } from 'antd';
 import {
   DeleteOutlined,
   EyeInvisibleOutlined,
   EyeOutlined,
-  InboxOutlined,
   LineChartOutlined,
 } from '@ant-design/icons';
 
 import s from './styles.module.scss';
-import FormItem from 'antd/es/form/FormItem';
-import TextArea from 'antd/es/input/TextArea';
-import Dragger from 'antd/es/upload/Dragger';
 import { useForm } from 'antd/es/form/Form';
 import { ILessonCreateFormInfo } from '../../../../../types/lessonTypes';
 import { createLesson } from './actions';
+import { CreateLessonModal } from '../Modals/CreateLessonModal';
 
 export const CoursePage = () => {
   const { id } = useParams();
@@ -33,10 +30,22 @@ export const CoursePage = () => {
     }
   }, [isCourseDataLoading]);
 
+  const handleCreateLesson = async (dto: ILessonCreateFormInfo) => {
+    await createLesson(dto, id!);
+    createLessonForm.resetFields;
+    setIsCreateLessonModalOpen(false);
+    setIsCourseDataLoading(true);
+  };
+
+  const handleClose = () => {
+    createLessonForm.resetFields();
+    setIsCreateLessonModalOpen(false);
+  };
+
   return (
     <>
-      <h1>Курс {courseData?.name ?? 'Неизвестный курс'}</h1>
-      <h3>{Array.from({ length: 10 }).map(() => ` ${courseData?.description}`)}</h3>
+      <h1>Курс "{courseData?.name ?? 'Неизвестный курс'}"</h1>
+      <h3>{courseData?.description}</h3>
       <List
         className={s.list}
         header={'Уроки'}
@@ -82,73 +91,12 @@ export const CoursePage = () => {
       >
         Добавить урок
       </Button>
-      <Modal
-        open={isCreateLessonModalOpen}
-        onCancel={() => {
-          createLessonForm.resetFields();
-          setIsCreateLessonModalOpen(false);
-        }}
-        footer={false}
-      >
-        <Form
-          layout={'vertical'}
-          onFinish={(values: ILessonCreateFormInfo) => createLesson(values, id!)}
-          form={createLessonForm}
-        >
-          <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Добавить урок</h2>
-          <FormItem
-            label={'Название урока'}
-            rules={[{ required: true }]}
-            name={'name'}
-          >
-            <Input
-              size={'large'}
-              placeholder={'Название урока'}
-            />
-          </FormItem>
-
-          <FormItem
-            label={'Описание урока'}
-            rules={[{ required: true }]}
-            name={'description'}
-          >
-            <TextArea placeholder={'Описание урока'} />
-          </FormItem>
-
-          <FormItem label={'Добавьте изображение'}>
-            <Dragger>
-              <p className="ant-upload-drag-icon">
-                <InboxOutlined />
-              </p>
-              <p className="ant-upload-text">Нажмите или перетащите изображение</p>
-            </Dragger>
-          </FormItem>
-
-          <FormItem label={'Добавьте видео'}>
-            <Dragger>
-              <p className="ant-upload-drag-icon">
-                <InboxOutlined />
-              </p>
-              <p className="ant-upload-text">Нажмите или перетащите видео</p>
-            </Dragger>
-          </FormItem>
-
-          <FormItem
-            label={'Домашнее задание'}
-            rules={[{ required: true }]}
-            name={'homework'}
-          >
-            <TextArea />
-          </FormItem>
-
-          <Button
-            htmlType={'submit'}
-            type={'primary'}
-          >
-            Сохранить
-          </Button>
-        </Form>
-      </Modal>
+      <CreateLessonModal
+        isCreateLessonModalOpen={isCreateLessonModalOpen}
+        handleCreateLesson={handleCreateLesson}
+        handleClose={handleClose}
+        createLessonForm={createLessonForm}
+      />
       <Modal />
     </>
   );

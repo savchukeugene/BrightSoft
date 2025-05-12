@@ -14,7 +14,7 @@ import { CreateLessonDto } from './dto/create-lesson.dto';
 export class LessonController {
   constructor(private readonly lessonService: LessonService) {}
 
-  @Post('/create')
+  @Post('create')
   @HttpCode(HttpStatus.OK)
   public async createLesson(@Body() dto: CreateLessonDto) {
     const data = await this.lessonService.create(dto);

@@ -27,40 +27,7 @@ export class CoursesController {
 
   @Post(':id')
   public async getCourseById(@Body() dto: { id: string }) {
-    return {
-      id: 123,
-      name: 'Курс 1',
-      previewPath: null,
-      description: 'Тотали дристня',
-      status: 'active',
-      lessons: [
-        {
-          id: '2',
-          name: 'Урок 1',
-          status: 'hidden',
-          description: 'Описание',
-        },
-        {
-          id: '2',
-          name: 'Урок 1',
-        },
-        {
-          id: '2',
-          name: 'Урок 1',
-        },
-        {
-          id: '2',
-          name: 'Урок 1',
-        },
-        {
-          id: '2',
-          name: 'Урок 1',
-        },
-        {
-          id: '2',
-          name: 'Урок 1',
-        },
-      ],
-    };
+    const data = await this.coursesService.getCourseById(dto.id);
+    return data;
   }
 }

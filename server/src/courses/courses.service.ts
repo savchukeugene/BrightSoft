@@ -11,7 +11,7 @@ export class CoursesService {
         ...dto,
         previewPath: '',
         status: 'active',
-        lessons: '',
+        lessons: [],
       },
     });
     return data;
@@ -28,5 +28,27 @@ export class CoursesService {
       })),
     );
     return data;
+  }
+
+  public async getCourseById(id: string) {
+    const course = await this.prismaService.courses.findUnique({
+      where: { id },
+    });
+
+    if (!course) return null;
+
+    const lessons = await Promise.all(
+      course.lessons.map(async (lessonId) => {
+        const data = await this.prismaService.lesson.findUnique({
+          where: { id: lessonId },
+        });
+        return data;
+      }),
+    );
+
+    return {
+      ...course,
+      lessons,
+    };
   }
 }

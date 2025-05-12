@@ -23,7 +23,7 @@ const CreateAccount: FC = () => {
       'password',
       'passwordRepeat',
     ]);
-    const { data } = await register(dataTest);
+    const data = await register(dataTest);
     if (data) {
       notification.success({
         message: messages.notification.success.messages.success,
