@@ -3,7 +3,13 @@ import { parseJwt } from '@common/utils/jwt';
 import { getStars, getUserInfo } from '@common/utils/globalActions';
 import { isNil } from 'lodash';
 
-const userRoles = ['administrator', 'user', 'support', 'unauthorized'] as const;
+const userRoles = [
+  'administrator',
+  'user',
+  'support',
+  'teacher',
+  'unauthorized',
+] as const;
 export type IUserRoles = (typeof userRoles)[number];
 
 interface IUser {

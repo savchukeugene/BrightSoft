@@ -25,7 +25,7 @@ export function getItem(
   };
 }
 
-export const defineDefaultNavigation = (role: IUserRoles): To => {
+export const defineDefaultNavigation = (role: IUserRoles): string => {
   if (!role) return '';
 
   switch (role) {
@@ -35,7 +35,10 @@ export const defineDefaultNavigation = (role: IUserRoles): To => {
       return routeGenerator(Routes.mainPage, Routes.support);
     case 'administrator':
       return routeGenerator(Routes.mainPage, Routes.userManagement);
+    case 'teacher':
+      return routeGenerator(Routes.mainPage, Routes.user, Routes.profile);
   }
+  return '';
 };
 
 export const formatDate = (isoDate: string): string => {

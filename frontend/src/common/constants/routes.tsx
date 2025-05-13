@@ -46,6 +46,7 @@ export const Routes = {
   profile: '/profile',
   courses: '/courses',
   defaultRoute: '/',
+  applications: '/applications',
 };
 
 export const logoutUserRoutesConfig: IRoutesGenerator[] = [

@@ -7,6 +7,11 @@ import { GroupCreateDto } from './dto/group-create.dto';
 export class GroupService {
   public constructor(private readonly prismaService: PrismaService) {}
 
+  public async getAllGroups() {
+    const data = await this.prismaService.group.findMany();
+    return data;
+  }
+
   public async findById(id: string) {
     const data = await this.prismaService.group.findUnique({
       where: { id },

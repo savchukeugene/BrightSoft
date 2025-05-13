@@ -33,3 +33,34 @@ export const USER_STATUSES_OPTIONS = [
     value: 'deleted',
   },
 ];
+
+export const DAYS_OF_WEEK_OPTIONS = [
+  {
+    label: 'Понедельник',
+    value: 'monday',
+  },
+  {
+    label: 'Вторник',
+    value: 'tuesday',
+  },
+  {
+    label: 'Среда',
+    value: 'wednesday',
+  },
+  {
+    label: 'Четверг',
+    value: 'thursday',
+  },
+  {
+    label: 'Пятница',
+    value: 'friday',
+  },
+  {
+    label: 'Суббота',
+    value: 'saturday',
+  },
+  {
+    label: 'Воскресенье',
+    value: 'sunday',
+  },
+];
