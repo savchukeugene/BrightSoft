@@ -9,9 +9,6 @@ export class CoursesService {
     const data = await this.prismaService.courses.create({
       data: {
         ...dto,
-        previewPath: '',
-        status: 'active',
-        lessons: [],
       },
     });
     return data;

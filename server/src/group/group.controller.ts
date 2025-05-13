@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Get,
   HttpCode,
   HttpStatus,
   Post,
@@ -13,6 +14,13 @@ import { GroupCreateDto } from './dto/group-create.dto';
 export class GroupController {
   public constructor(private readonly groupService: GroupService) {}
 
+  @Get('getAllGroups')
+  @HttpCode(HttpStatus.OK)
+  public async getAllGroups() {
+    const data = await this.groupService.getAllGroups();
+    return data;
+  }
+
   @Post('createGroup')
   @HttpCode(HttpStatus.OK)
   public async createGroup(@Body() dto: GroupCreateDto) {
@@ -20,7 +28,7 @@ export class GroupController {
     return data;
   }
 
-  @Post('getGroupById')
+  @Get('getGroupById')
   @HttpCode(HttpStatus.OK)
   public async getGroupById(@Query() query: { groupId: string }) {
     const data = await this.groupService.findById(query.groupId);

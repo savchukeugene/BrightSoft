@@ -12,7 +12,7 @@ import { CreateCourseDto } from './dto/createCourse.dto';
 @Controller('courses')
 export class CoursesController {
   constructor(private readonly coursesService: CoursesService) {}
-  @Get('/all')
+  @Get('all')
   public async getAllCourses() {
     const data = await this.coursesService.getAllCourses();
     return data;

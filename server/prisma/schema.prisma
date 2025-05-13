@@ -67,10 +67,10 @@ model Courses {
   id String @id @default(uuid())
   name String @map("name")
   description String
-  previewPath String
-  lessons String[]
+  previewPath String @default("")
+  lessons String[] @default([])
   status CourseStatuses @default(active)
-  users String[]
+  users String[] @default([])
 
   type CourseType
   createdAt DateTime @default(now()) @map("created_at")
@@ -100,10 +100,11 @@ model History {
 model Group {
   id String @id @default(uuid())
   name String @default("null")
-  groupNumber Int @map("group_number") // номер группы
+  groupNumber Int @map("group_number")
   users String[] @default([])
-  duration Int // кол-во часов занятия
+  duration Int
   startHour String
+  course String
   maxStudents Int @map("max_students")
   days days[] @default([monday])
 }
@@ -120,7 +121,7 @@ model Application {
 
 enum days {
   monday
-  thusday
+  tuesday
   wednesday
   thursday
   friday
@@ -151,6 +152,7 @@ enum CourseStatuses {
 enum CourseType {
   online
   offline
+  both
 }
 
 enum Games {
@@ -170,6 +172,7 @@ enum UserRole {
   administrator
   user
   support
+  teacher
 }
 
 enum UserStatus {

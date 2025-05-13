@@ -1,10 +1,26 @@
 .profileContainer {
   display: flex;
-  gap: 30px;
+  flex-direction: column;
+  gap: 20px;
   padding: 40px;
-  height: calc(100vh - 80px);
+  width: 100%;
+  justify-content: space-between;
   background: transparent;
   position: relative;
+}
+
+.left {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 72%;
 }
 
 .mainBlock {
@@ -17,8 +33,6 @@
   align-items: center;
   gap: 20px;
   justify-content: space-between;
-  min-height: 450px;
-  max-width: 320px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
@@ -140,8 +154,6 @@
 .formButtons {
   display: flex;
   gap: 10px;
-  justify-content: flex-start; // Изменяем выравнивание на правый край
-  margin-top: 20px;
 }
 
 .saveButton {
@@ -206,7 +218,7 @@
 }
 
 .adminButton {
-  background: linear-gradient(90deg, #ff4d4f, #ff6b6b); // Красный градиент, как у cancelButton
+  background: linear-gradient(90deg, #ff4d4f, #ff6b6b);
   border: none;
   color: #fff;
   padding: 12px 24px;
@@ -277,4 +289,32 @@
     box-shadow: 0 6px 15px rgba(44, 201, 146, 0.5);
     background: linear-gradient(90deg, #4cd4a5, #2cc992);
   }
+}
+
+.teacherSection {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  border-radius: 25px;
+  padding: 20px 30px;
+
+  h1 {
+    font-size: 24px;
+    color: #2a4066;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-size: 20px;
+    color: #2a4066;
+    text-transform: uppercase;
+    padding-left: 20px;
+  }
+}
+
+.flexItem {
+  width: 100%;
+  margin: 0 auto;
 }

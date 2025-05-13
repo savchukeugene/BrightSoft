@@ -63,3 +63,9 @@ const application_ref: string = `${ref}/application`;
 export const API_CREATE_APPLICATION = `${application_ref}/createApplication`;
 export const API_GET_APPLICATIONS: string = `${application_ref}/getApplications`;
 export const API_GET_APPLICATION_BY_ID: string = `${application_ref}/getById`;
+
+// Group
+const group_ref: string = `${ref}/group`;
+export const API_GET_ALL_GROUPS: string = `${group_ref}/getAllGroups`;
+export const API_CREATE_GROUP: string = `${group_ref}/createGroup`;
+export const API_GET_GROUP_BY_ID: string = `${group_ref}/getGroupById`;
