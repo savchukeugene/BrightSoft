@@ -5,6 +5,17 @@ import {
 } from '../../../../../../../types/applicationTypes';
 import type { PresetStatusColorType } from 'antd/es/_util/colors';
 
+type IRussianStatuses = {
+  [key in ApplicationStatusesType]: string;
+};
+
+const getRussianStatus: IRussianStatuses = {
+  active: 'В процессе',
+  blocked: 'Отклонён',
+  closed: 'Одобрен',
+  frozen: 'Заморожен',
+};
+
 const findStatus = (status: ApplicationStatusesType): Partial<PresetStatusColorType> => {
   switch (status) {
     case 'active':
@@ -49,7 +60,7 @@ export const applicationManagementTableConfig: TableProps<IApplicationShowData>[
         return (
           <Badge
             status={status}
-            text={record.status}
+            text={getRussianStatus[record.status]}
           />
         );
       },
@@ -62,16 +73,17 @@ export const applicationManagementTableConfig: TableProps<IApplicationShowData>[
     {
       title: 'Действия',
       key: 'action',
-      render: () => (
-        <Flex gap={8}>
-          <Button type={'primary'}>Одобрить</Button>
-          <Button
-            style={{ color: 'red' }}
-            type={'link'}
-          >
-            Отклонить
-          </Button>
-        </Flex>
-      ),
+      render: (_, record: IApplicationShowData) =>
+        record.status === 'active' && (
+          <Flex gap={8}>
+            <Button type={'primary'}>Одобрить</Button>
+            <Button
+              style={{ color: 'red' }}
+              type={'link'}
+            >
+              Отклонить
+            </Button>
+          </Flex>
+        ),
     },
   ];

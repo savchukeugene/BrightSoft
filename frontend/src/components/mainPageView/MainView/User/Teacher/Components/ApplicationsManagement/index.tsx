@@ -21,6 +21,9 @@ export const ApplicationManagement = () => {
       <Table<IApplicationShowData>
         loading={isApplicationDataLoading}
         className={s.table}
+        rowClassName={(record: IApplicationShowData) =>
+          record.status === 'closed' ? s.altRow : ''
+        }
         columns={applicationManagementTableConfig}
         dataSource={applicationData}
         pagination={false}
