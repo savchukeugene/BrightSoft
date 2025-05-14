@@ -15,6 +15,7 @@ import { useForm } from 'antd/es/form/Form';
 import { ILessonCreateFormInfo } from '../../../../../types/lessonTypes';
 import { createLesson } from './actions';
 import { CreateLessonModal } from '../Modals/CreateLessonModal';
+import { IUserRoles, useUserStore } from '../../../../../store/userStore';
 
 export const CoursePage = () => {
   const { id } = useParams();
@@ -22,6 +23,8 @@ export const CoursePage = () => {
   const [courseData, setCourseData] = useState<ICourseData | null>(null);
   const [isCourseDataLoading, setIsCourseDataLoading] = useState<boolean>(true);
   const [isCreateLessonModalOpen, setIsCreateLessonModalOpen] = useState<boolean>(false);
+  const { role } = useUserStore();
+  const allowedRolesToAddLesson = new Set<IUserRoles>(['administrator', 'teacher']);
   useEffect(() => {
     if (isCourseDataLoading) {
       getCourseInfo(id!)
@@ -84,13 +87,15 @@ export const CoursePage = () => {
           </List.Item>
         )}
       />
-      <Button
-        type={'primary'}
-        style={{ margin: '20px 0' }}
-        onClick={() => setIsCreateLessonModalOpen(true)}
-      >
-        Добавить урок
-      </Button>
+      {allowedRolesToAddLesson.has(role) && (
+        <Button
+          type={'primary'}
+          style={{ margin: '20px 0' }}
+          onClick={() => setIsCreateLessonModalOpen(true)}
+        >
+          Добавить урок
+        </Button>
+      )}
       <CreateLessonModal
         isCreateLessonModalOpen={isCreateLessonModalOpen}
         handleCreateLesson={handleCreateLesson}

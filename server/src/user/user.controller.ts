@@ -23,9 +23,9 @@ import { UserRole } from '../../prisma/__generated__';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post('whoAmI')
+  @Get('whoAmI')
   @HttpCode(HttpStatus.OK)
-  public async whoAmI(@Body() dto: WhoAmIDto) {
+  public async whoAmI(@Query() dto: WhoAmIDto) {
     return await this.userService.findById(dto.userId);
   }
 

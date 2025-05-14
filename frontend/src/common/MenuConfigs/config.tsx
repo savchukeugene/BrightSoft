@@ -38,6 +38,7 @@ export const LEFT_SIDE_OPTIONS_LIST: ILeftSideOptions = {
     getItem(source.tasks, 'tasks', <BuildOutlined />),
     getItem(source.about, 'about', <InfoCircleOutlined />),
     getItem(source.support, 'support', <BugOutlined />),
+    getItem(source.courses, 'courses', <AppstoreOutlined />),
   ],
   support: [
     getItem(source.about, 'about', <InfoCircleOutlined />),
@@ -57,36 +58,8 @@ export const LEFT_SIDE_OPTIONS_LIST: ILeftSideOptions = {
   ],
 };
 
-const ProfileMenuLabel: React.FC = () => {
-  const { showProfileBadge, setShowProfileBadge } = useUserStore();
-
-  return showProfileBadge ? (
-    <Badge
-      count={1}
-      title="Clickable"
-      onClick={() => setShowProfileBadge(false)}
-      style={{
-        top: '-5px',
-        right: '-10px',
-      }}
-    >
-      <span style={{ color: 'white' }}>{source.profile}</span>
-    </Badge>
-  ) : (
-    <span style={{ color: 'white' }}>{source.profile}</span>
-  );
-};
-
 export const HEADER_OPTIONS: IHeaderOptions = {
-  user: [
-    getItem(source.grade, 'grade', <></>),
-    getItem(source.timetable, 'timetable', <></>),
-    getItem(source.history, 'history', <></>),
-    {
-      key: 'profile',
-      label: <ProfileMenuLabel />,
-    },
-  ],
+  user: [getItem(source.profile, 'profile', <></>)],
   tasks: [
     getItem(source.maze, 'maze'),
     getItem(source.quickCount, 'quickCount'),

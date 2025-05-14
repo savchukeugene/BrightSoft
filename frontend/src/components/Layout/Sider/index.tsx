@@ -21,7 +21,7 @@ const LayoutSider = () => {
       case 'tasks':
         return Routes.quickCount;
       case 'user':
-        return Routes.timetable;
+        return Routes.profile;
       default:
         return '';
     }

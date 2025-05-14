@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ICoursesInDTO, ICreateCourseOutDTO } from '../../../../types/coursesTypes';
 import { createCourse, getAllCourses } from './actions';
-import { Button, Card, Modal, notification } from 'antd';
+import { Button, Card, Modal } from 'antd';
 import Meta from 'antd/es/card/Meta';
 import logo from '../../../../images/coursesBG/1.jpg';
 import s from './styles.module.scss';
@@ -9,6 +9,7 @@ import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { useForm } from 'antd/es/form/Form';
 import { v4 as uuid } from 'uuid';
 import { CreateCourseModal } from './Modals/CreateCourseModal';
+import { IUserRoles, useUserStore } from '../../../../store/userStore';
 
 export const Courses = () => {
   const { id } = useParams();
@@ -17,6 +18,11 @@ export const Courses = () => {
   const [isCoursesDataLoading, setIsCoursesDataLoading] = useState<boolean>(true);
   const [isCreateCourseModalOpen, setIsCreateCourseModalOpen] = useState<boolean>(false);
   const { pathname } = useLocation();
+  const { role } = useUserStore();
+  const allowedRolesToCreateCourse: Set<IUserRoles> = new Set([
+    'administrator',
+    'teacher',
+  ]);
 
   useEffect(() => {
     if (isCoursesDataLoading) {
@@ -32,15 +38,11 @@ export const Courses = () => {
   };
 
   const handleCreateCourse = async (values: ICreateCourseOutDTO) => {
-    const data = await createCourse(values);
-    if (!data) {
-      return notification.error({
-        message: 'Произлшла ошибка при создании курса',
-      });
-    }
+    await createCourse(values);
     setIsCoursesDataLoading(true);
     setIsCreateCourseModalOpen(false);
   };
+
   return (
     <main>
       {id ? (
@@ -49,15 +51,17 @@ export const Courses = () => {
         <>
           <div className={s.header}>
             <h1>Курсы</h1>
-            <Button
-              type={'primary'}
-              style={{
-                marginTop: '20px',
-              }}
-              onClick={() => setIsCreateCourseModalOpen(true)}
-            >
-              Создать курс
-            </Button>
+            {allowedRolesToCreateCourse.has(role) && (
+              <Button
+                type={'primary'}
+                style={{
+                  marginTop: '20px',
+                }}
+                onClick={() => setIsCreateCourseModalOpen(true)}
+              >
+                Создать курс
+              </Button>
+            )}
           </div>
           <section className={s.section}>
             {coursesData.map((courseInfo: ICoursesInDTO) => (

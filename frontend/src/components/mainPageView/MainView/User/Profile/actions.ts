@@ -1,42 +1,32 @@
 import { AxiosService } from '../../../../../axios/AxiosService';
-import { IOptions, IUserData, IUserInfo } from '../../../../../types/commonTypes';
+import { IOptions, IUserData } from '../../../../../types/commonTypes';
 import {
   API_COURSES_GET_ALL,
   API_CREATE_GROUP,
   API_GET_ALL_GROUPS,
   API_GET_ALL_USERS,
   API_GET_GROUP_BY_ID,
+  API_WHO_AM_I,
 } from '@common/constants/api';
 import { IGroupCreateDtoOut, IGroupsAllDtoIn } from '../../../../../types/groupTypes';
 import { mapUsersForGroups } from './mapper';
 import { ICoursesInDTO } from '../../../../../types/coursesTypes';
+import { IUpdateUserInfoDtoOut } from '../../../../../types/userTypes';
 
-export const getUserInfoPublic = async (id: string): Promise<IUserInfo | undefined> => {
-  try {
-    const data = await AxiosService.GET<IUserInfo>(`API_GET_USER_INFO_PUBLIC`, {
-      params: { id },
-    });
-    if (!data) {
-      throw new Error();
-    }
-    return data.data;
-  } catch (e) {
-    console.error('Error in getUserInfoPublic:', e);
-    return undefined;
-  }
-};
-
-export const updateUserProfile = async (dto: {
-  id: string;
-  firstName?: string;
-  secondName?: string;
-  fatherName?: string;
-  userName?: string;
-  email?: string;
-  password?: string;
-}): Promise<IUserData> => {
+export const updateUserProfile = async (
+  dto: IUpdateUserInfoDtoOut,
+): Promise<IUserData> => {
   const data = await AxiosService.POST<any, IUserData>(`API_UPDATE_PROFILE`, {
     data: dto,
+  });
+  return data.data;
+};
+
+export const getUserData = async (userId: string): Promise<IUserData> => {
+  const data = await AxiosService.GET<IUserData>(API_WHO_AM_I, {
+    params: {
+      userId,
+    },
   });
   return data.data;
 };

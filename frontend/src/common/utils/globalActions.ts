@@ -33,13 +33,8 @@ export const getUserInfo = async (
   ) => void,
 ) => {
   const parsedJwt: IAccessToken = parseJwt(access_token);
-  const data = await AxiosService.POST<
-    {
-      userId: string;
-    },
-    IUserData
-  >(API_WHO_AM_I, {
-    data: { userId: parsedJwt.id ?? access_token },
+  const data = await AxiosService.GET<IUserData>(API_WHO_AM_I, {
+    params: { userId: parsedJwt.id ?? access_token },
   });
 
   if (!set) {

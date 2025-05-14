@@ -53,6 +53,7 @@ export const TeacherPanel: FC = () => {
     <section className={s.teacherSection}>
       <h1>Панель Преподавателя</h1>
       <List<IGroupsAllDtoIn>
+        loading={isGroupDataLoading}
         header={
           <Flex
             align={'center'}
