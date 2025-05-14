@@ -1,57 +1,32 @@
 import s from './styles.module.scss';
 import { Button, Flex, Form, Input, message } from 'antd';
-import { useEffect, useState } from 'react';
-import { IUserData, IUserInfo } from '../../../../../types/commonTypes';
+import { useState } from 'react';
+import { IUserData } from '../../../../../types/commonTypes';
 import FormItem from 'antd/es/form/FormItem';
 import { useUserStore } from '../../../../../store/userStore';
-import { useNavigate } from 'react-router-dom';
-import { Routes } from '@common/constants/routes';
-import { routeGenerator } from '@common/utils/generatotrs';
 import { useForm } from 'antd/es/form/Form';
 import { logout } from '../../../../Authorization/Login/actions';
-import { getUserInfoPublic, updateUserProfile } from './actions';
+import { getUserData, updateUserProfile } from './actions';
 import { UserProfileSection } from './Components/UserProfileSection';
 import { AdminPanel } from './Components/AdminPanel';
-import { TeacherPanel } from './Components/TeacherPanel';
+import { IUpdateUserInfoDtoOut } from '../../../../../types/userTypes';
 
 const Profile = () => {
   const [form] = useForm();
-  const navigate = useNavigate();
   const { user, logoutUser, role } = useUserStore();
-  const [userInfo, setUserInfo] = useState<IUserData | undefined>();
+  const [userInfo, setUserInfo] = useState<IUserData>();
+  const [isUserDataLoading, setIsUserDataLoading] = useState<boolean>(true);
   const [disabled, setDisabled] = useState<boolean>(true);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [profileImage, setProfileImage] = useState<string | null>(null);
-  const [userInfoPublic, setUserInfoPublic] = useState<IUserInfo | undefined>();
-  useEffect(() => {
-    if (!user) return;
-    if (!userInfoPublic) {
-      getUserInfoPublic(user).then((data) => {
-        if (!data) return;
-        setUserInfoPublic(data);
-      });
-    }
-  }, [user, form]);
 
-  const handleRequestsClick = () => {
-    navigate(routeGenerator(Routes.mainPage, Routes.applications));
-  };
+  isUserDataLoading && getUserData(user!).then(() => setIsUserDataLoading(false));
 
-  const updateUser = async (val: Partial<IUserData> & { password?: string }) => {
+  const updateUser = async (values: IUpdateUserInfoDtoOut) => {
     if (!user) return;
     try {
-      const data = await updateUserProfile({
-        id: user,
-        firstName: val.firstName,
-        secondName: val.secondName,
-        fatherName: val.fatherName,
-        userName: val.userName,
-        email: val.email,
-        password: val.password,
-      });
+      const data: IUserData = await updateUserProfile(values);
       setUserInfo(data);
-      setUserInfoPublic((prev) => (prev ? { ...prev, ...val } : prev));
-      form.setFieldsValue(val);
       setDisabled(true);
       message.success('Профиль успешно обновлен');
     } catch (e) {
@@ -79,7 +54,6 @@ const Profile = () => {
           handleLogout={handleLogout}
           userInfo={userInfo}
         />
-
         <div className={s.right}>
           <section
             className={`${s.infoBlock} ${role !== 'administrator' ? s.infoBlockFull : ''}`}
@@ -142,16 +116,6 @@ const Profile = () => {
                   <Input placeholder={userInfo?.email || 'Введите email'} />
                 )}
               </FormItem>
-              <FormItem
-                label="Пароль"
-                name="password"
-              >
-                {disabled ? (
-                  <span>******</span>
-                ) : (
-                  <Input.Password placeholder="Введите новый пароль" />
-                )}
-              </FormItem>
               {!disabled && (
                 <div className={s.formButtons}>
                   <Button
@@ -179,26 +143,17 @@ const Profile = () => {
                 >
                   Редактировать
                 </Button>
-                <Button
-                  type="primary"
-                  onClick={handleRequestsClick}
-                  className={s.logoutButton}
-                >
-                  Мои заявки
-                </Button>
               </div>
             )}
           </section>
-
-          {role === 'administrator' && (
-            <AdminPanel
-              isModalOpen={isModalOpen}
-              setIsModalOpen={setIsModalOpen}
-            />
-          )}
         </div>
       </Flex>
-      {role === 'teacher' && <TeacherPanel />}
+      {role === 'administrator' && (
+        <AdminPanel
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+        />
+      )}
     </main>
   );
 };

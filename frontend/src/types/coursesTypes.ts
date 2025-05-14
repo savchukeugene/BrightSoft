@@ -1,6 +1,9 @@
 const courseStatuses = ['active', 'hidden', 'deleted'] as const;
 export type CourseStatusesType = (typeof courseStatuses)[number];
 
+const courseTypes = ['online', 'offline', 'both'] as const;
+export type CourseTypesType = (typeof courseTypes)[number];
+
 const lessonStatuses = ['active', 'hidden', 'deleted', 'development'] as const;
 export type LessonStatusesType = (typeof lessonStatuses)[number];
 

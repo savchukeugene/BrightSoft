@@ -17,3 +17,11 @@ export interface IRegisterUserDTOOut {
   secondName?: string;
   fatherName?: string;
 }
+
+export interface IUpdateUserInfoDtoOut {
+  secondName: string;
+  firstName: string;
+  fatherName: string;
+  userName: string;
+  email: string;
+}

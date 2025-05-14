@@ -66,24 +66,10 @@ export const hideCourseById = async (id: string) => {
   }
 };
 
-export const createCourse = async (dto: ICreateCourseOutDTO) => {
-  try {
-    const data = await AxiosService.POST<ICreateCourseOutDTO, ICoursesInDTO[]>(
-      API_COURSES_CREATE,
-      {
-        data: { ...dto, users: [] },
-      },
-    );
-    if (isNil(data)) {
-      throw new Error();
-    }
-    return data.data;
-  } catch (e) {
-    notification.error({
-      message: 'Произошла ошибка',
-      description: 'Произошла неизвестная ошибка! Пожалуйста, обратитесь в техподдержку',
-    });
-  }
+export const createCourse = async (dto: ICreateCourseOutDTO): Promise<void> => {
+  await AxiosService.POST<ICreateCourseOutDTO, ICoursesInDTO[]>(API_COURSES_CREATE, {
+    data: { ...dto, users: [] },
+  });
 };
 
 export const editCourse = async (dto: Partial<ICoursesInDTO>) => {

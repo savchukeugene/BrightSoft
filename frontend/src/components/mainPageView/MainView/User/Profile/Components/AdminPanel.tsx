@@ -1,5 +1,5 @@
 import s from '../styles.module.scss';
-import { Button, Modal } from 'antd';
+import { Modal } from 'antd';
 import { Outlet } from 'react-router-dom';
 import React, { FC } from 'react';
 
@@ -13,19 +13,6 @@ export const AdminPanel: FC<IAdminPanel> = ({ isModalOpen, setIsModalOpen }) => 
     <div className={s.rightContainer}>
       <section className={s.adminBlock}>
         <h2>Администрирование</h2>
-        <Button
-          type="primary"
-          danger
-          className={s.adminButton}
-        >
-          Все заявки
-        </Button>
-        <Button
-          type="primary"
-          className={s.adminButtonUnlock}
-        >
-          Закрытые заявки
-        </Button>
       </section>
       <Modal
         open={isModalOpen}

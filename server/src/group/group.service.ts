@@ -1,11 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { CreateApplicationDto } from '../application/dto/create-application.dto';
 import { GroupCreateDto } from './dto/group-create.dto';
 
 @Injectable()
 export class GroupService {
   public constructor(private readonly prismaService: PrismaService) {}
+
+  public async getGroupsByCourseId(courseId: string) {
+    const data = await this.prismaService.group.findMany({
+      where: { course: courseId },
+    });
+    return data;
+  }
 
   public async getAllGroups() {
     const data = await this.prismaService.group.findMany();

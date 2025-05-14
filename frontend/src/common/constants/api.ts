@@ -69,3 +69,4 @@ const group_ref: string = `${ref}/group`;
 export const API_GET_ALL_GROUPS: string = `${group_ref}/getAllGroups`;
 export const API_CREATE_GROUP: string = `${group_ref}/createGroup`;
 export const API_GET_GROUP_BY_ID: string = `${group_ref}/getGroupById`;
+export const API_GET_GROUP_BY_COURSE_ID: string = `${group_ref}/getGroupsByCourseId`;

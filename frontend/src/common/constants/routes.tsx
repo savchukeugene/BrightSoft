@@ -26,6 +26,10 @@ import PlayNumberHunting from '../../components/mainPageView/MainView/tasks/Numb
 import Profile from '../../components/mainPageView/MainView/User/Profile';
 import { Courses } from '../../components/mainPageView/MainView/Courses';
 import { CoursePage } from '../../components/mainPageView/MainView/Courses/CoursePage';
+import { Teacher } from '../../components/mainPageView/MainView/User/Teacher';
+import { ApplicationManagement } from '../../components/mainPageView/MainView/User/Teacher/Components/ApplicationsManagement';
+import { CoursesManagement } from '../../components/mainPageView/MainView/User/Teacher/Components/CoursesManagement';
+import { GroupsManagement } from '../../components/mainPageView/MainView/User/Teacher/Components/GroupsManagement';
 
 export const Routes = {
   mainPage: '/mainPage',
@@ -44,9 +48,12 @@ export const Routes = {
   play: '/play',
   numberHunt: '/numberHunt',
   profile: '/profile',
+  groups: '/groups',
   courses: '/courses',
-  defaultRoute: '/',
   applications: '/applications',
+  teacher: '/teacher',
+  admin: '/admin',
+  defaultRoute: '/',
 };
 
 export const logoutUserRoutesConfig: IRoutesGenerator[] = [
@@ -105,6 +112,24 @@ export const authorizedUserRoutesConfig = (role: IUserRoles): IRoutesGenerator[]
           {
             path: Routes.profile,
             element: <Profile />,
+          },
+          {
+            path: Routes.teacher,
+            element: <Teacher />,
+            child: [
+              {
+                path: Routes.applications,
+                element: <ApplicationManagement />,
+              },
+              {
+                path: Routes.courses,
+                element: <CoursesManagement />,
+              },
+              {
+                path: Routes.groups,
+                element: <GroupsManagement />,
+              },
+            ],
           },
         ],
       },

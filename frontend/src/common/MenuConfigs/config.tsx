@@ -9,10 +9,8 @@ import {
 } from '@ant-design/icons';
 import { getItem, MenuItem } from '../utils/helpers';
 import { ItemType } from 'antd/es/menu/interface';
-import { IUserRoles, useUserStore } from '../../store/userStore';
+import { IUserRoles } from '../../store/userStore';
 import { messages } from '../constants/messages';
-import { Badge } from 'antd';
-import React from 'react';
 
 interface IHeaderOptions {
   [key: string]: ItemType[];
@@ -38,6 +36,7 @@ export const LEFT_SIDE_OPTIONS_LIST: ILeftSideOptions = {
     getItem(source.tasks, 'tasks', <BuildOutlined />),
     getItem(source.about, 'about', <InfoCircleOutlined />),
     getItem(source.support, 'support', <BugOutlined />),
+    getItem(source.courses, 'courses', <AppstoreOutlined />),
   ],
   support: [
     getItem(source.about, 'about', <InfoCircleOutlined />),
@@ -57,35 +56,11 @@ export const LEFT_SIDE_OPTIONS_LIST: ILeftSideOptions = {
   ],
 };
 
-const ProfileMenuLabel: React.FC = () => {
-  const { showProfileBadge, setShowProfileBadge } = useUserStore();
-
-  return showProfileBadge ? (
-    <Badge
-      count={1}
-      title="Clickable"
-      onClick={() => setShowProfileBadge(false)}
-      style={{
-        top: '-5px',
-        right: '-10px',
-      }}
-    >
-      <span style={{ color: 'white' }}>{source.profile}</span>
-    </Badge>
-  ) : (
-    <span style={{ color: 'white' }}>{source.profile}</span>
-  );
-};
-
-export const HEADER_OPTIONS: IHeaderOptions = {
+export const HEADER_OPTIONS = (role: IUserRoles): IHeaderOptions => ({
   user: [
-    getItem(source.grade, 'grade', <></>),
-    getItem(source.timetable, 'timetable', <></>),
-    getItem(source.history, 'history', <></>),
-    {
-      key: 'profile',
-      label: <ProfileMenuLabel />,
-    },
+    getItem(source.profile, 'profile', <></>),
+    role === 'teacher' ? getItem(source.teacher, 'teacher', <></>) : null,
+    role === 'administrator' ? getItem(source.admin, 'admin', <></>) : null,
   ],
   tasks: [
     getItem(source.maze, 'maze'),
@@ -93,4 +68,4 @@ export const HEADER_OPTIONS: IHeaderOptions = {
     getItem('Абакусы', 'tasksAbakus'),
     getItem(source.numberHunt, 'numberHunt'),
   ],
-};
+});
