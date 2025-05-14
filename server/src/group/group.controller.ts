@@ -21,6 +21,13 @@ export class GroupController {
     return data;
   }
 
+  @Get('getGroupsByCourseId')
+  @HttpCode(HttpStatus.OK)
+  public async getGroupsByCourseId(@Query() query: { courseId: string }) {
+    const data = await this.groupService.getGroupsByCourseId(query.courseId);
+    return data;
+  }
+
   @Post('createGroup')
   @HttpCode(HttpStatus.OK)
   public async createGroup(@Body() dto: GroupCreateDto) {

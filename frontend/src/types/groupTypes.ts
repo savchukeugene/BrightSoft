@@ -19,3 +19,11 @@ export interface IGroupCreateDtoOut {
   users?: string[];
   days?: string[];
 }
+
+export interface ICreateApplicationGroupsData {
+  id: string;
+  days: string[];
+  duration: number;
+  groupNumber: string;
+  startHour: string;
+}

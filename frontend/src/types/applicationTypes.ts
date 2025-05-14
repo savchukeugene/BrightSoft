@@ -11,3 +11,14 @@ export interface IApplicationShowData {
   status: ApplicationStatusesType;
   contactData: string;
 }
+
+export interface ICreateApplicationForm {
+  groupId: string;
+  contactData: string;
+}
+
+export interface ICreateApplicationDtoOut extends ICreateApplicationForm {
+  courseId: string;
+  userId: string;
+  type: CourseTypesType;
+}
