@@ -3,6 +3,8 @@ import { applicationManagementTableConfig } from './config';
 import s from './styles.module.scss';
 import { useEffect, useState } from 'react';
 import { getApplications } from '../../actions';
+import { IApplicationShowData } from '../../../../../../../types/applicationTypes';
+
 export const ApplicationManagement = () => {
   const [isApplicationDataLoading, setIsApplicationDataLoading] = useState<boolean>(true);
   const [applicationData, setApplicationData] = useState();
@@ -16,7 +18,7 @@ export const ApplicationManagement = () => {
 
   return (
     <section>
-      <Table
+      <Table<IApplicationShowData>
         loading={isApplicationDataLoading}
         className={s.table}
         columns={applicationManagementTableConfig}

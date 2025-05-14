@@ -22,7 +22,33 @@ export class ApplicationService {
 
   public async getApplications() {
     const data = await this.prismaService.application.findMany();
-    return data;
+
+    const newData = await Promise.all(
+      data.map(async (application) => {
+        const user = await this.prismaService.user.findUnique({
+          where: { id: application.userId },
+        });
+        const group = await this.prismaService.group.findUnique({
+          where: {
+            id: application.id,
+          },
+        });
+        const course = await this.prismaService.courses.findUnique({
+          where: {
+            id: application.courseId,
+          },
+        });
+
+        return {
+          ...application,
+          userName: user?.userName ?? 'Не найдено',
+          groupNumber: group?.groupNumber ?? 'Не найдено',
+          courseName: course?.name ?? 'Не найдено',
+        };
+      }),
+    );
+
+    return newData;
   }
 
   public async closeApplication(id: string) {
