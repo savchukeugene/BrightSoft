@@ -31,6 +31,8 @@ export const messages = {
         history: 'История',
         profile: 'Профиль',
         courses: 'Курсы',
+        admin: 'Администрирование',
+        teacher: 'Панель преподавателя',
       },
       supportPage: {
         title: 'Нам жаль, что Вы столкнулись с неприятностью...',

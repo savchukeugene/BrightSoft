@@ -9,7 +9,6 @@ import { logout } from '../../../../Authorization/Login/actions';
 import { getUserData, updateUserProfile } from './actions';
 import { UserProfileSection } from './Components/UserProfileSection';
 import { AdminPanel } from './Components/AdminPanel';
-import { TeacherPanel } from './Components/TeacherPanel';
 import { IUpdateUserInfoDtoOut } from '../../../../../types/userTypes';
 
 const Profile = () => {
@@ -155,7 +154,6 @@ const Profile = () => {
           setIsModalOpen={setIsModalOpen}
         />
       )}
-      {role === 'teacher' && <TeacherPanel />}
     </main>
   );
 };

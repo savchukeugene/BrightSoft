@@ -9,10 +9,8 @@ import {
 } from '@ant-design/icons';
 import { getItem, MenuItem } from '../utils/helpers';
 import { ItemType } from 'antd/es/menu/interface';
-import { IUserRoles, useUserStore } from '../../store/userStore';
+import { IUserRoles } from '../../store/userStore';
 import { messages } from '../constants/messages';
-import { Badge } from 'antd';
-import React from 'react';
 
 interface IHeaderOptions {
   [key: string]: ItemType[];
@@ -58,12 +56,16 @@ export const LEFT_SIDE_OPTIONS_LIST: ILeftSideOptions = {
   ],
 };
 
-export const HEADER_OPTIONS: IHeaderOptions = {
-  user: [getItem(source.profile, 'profile', <></>)],
+export const HEADER_OPTIONS = (role: IUserRoles): IHeaderOptions => ({
+  user: [
+    getItem(source.profile, 'profile', <></>),
+    role === 'teacher' ? getItem(source.teacher, 'teacher', <></>) : null,
+    role === 'administrator' ? getItem(source.admin, 'admin', <></>) : null,
+  ],
   tasks: [
     getItem(source.maze, 'maze'),
     getItem(source.quickCount, 'quickCount'),
     getItem('Абакусы', 'tasksAbakus'),
     getItem(source.numberHunt, 'numberHunt'),
   ],
-};
+});

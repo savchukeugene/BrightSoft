@@ -9,13 +9,15 @@ import { useState } from 'react';
 import { LoginModal } from './authModals/LoginModal';
 import { RegisterModal } from './authModals/RegisterModal';
 import { useForm } from 'antd/es/form/Form';
+import { useUserStore } from '../../../store/userStore';
 
 const LayoutHeader = () => {
   const [registerUserForm] = useForm();
+  const { role } = useUserStore();
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const splitPathname: string[] = pathname.split('/');
-  const options = HEADER_OPTIONS[pathname.split('/')[2]];
+  const options = HEADER_OPTIONS(role)[pathname.split('/')[2]];
   const [authState, setAuthState] = useState<'' | 'login' | 'register'>('');
 
   return (

@@ -1,20 +1,24 @@
-import s from '../styles.module.scss';
-import { Button, Flex, Form, Input, List, Modal, Select } from 'antd';
-import FormItem from 'antd/es/form/FormItem';
-import { FC, useState } from 'react';
-import { IGroupCreateDtoOut, IGroupsAllDtoIn } from '../../../../../../types/groupTypes';
 import { useForm } from 'antd/es/form/Form';
+import { useState } from 'react';
+import {
+  IGroupCreateDtoOut,
+  IGroupsAllDtoIn,
+} from '../../../../../../../types/groupTypes';
+import { IOptions } from '../../../../../../../types/commonTypes';
 import {
   createGroup,
   getAllCoursesForGroups,
   getAllGroups,
   getGroupById,
   getStudents,
-} from '../actions';
+} from '../../../Profile/actions';
+import { Button, Flex, Form, Input, List, Modal, Select } from 'antd';
+import FormItem from 'antd/es/form/FormItem';
 import { DAYS_OF_WEEK_OPTIONS } from '@common/constants/options';
-import { IOptions } from '../../../../../../types/commonTypes';
 
-export const TeacherPanel: FC = () => {
+import s from './styles.module.scss';
+
+export const GroupsManagement = () => {
   const [form] = useForm();
   const [isCreateGroupModalOpen, setIsCreateGroupModalOpen] = useState<boolean>(false);
   const [allGroupData, setAllGroupData] = useState<IGroupsAllDtoIn[]>([]);
@@ -51,9 +55,9 @@ export const TeacherPanel: FC = () => {
 
   return (
     <section className={s.teacherSection}>
-      <h1>Панель Преподавателя</h1>
       <List<IGroupsAllDtoIn>
         loading={isGroupDataLoading}
+        className={s.list}
         header={
           <Flex
             align={'center'}
@@ -83,34 +87,6 @@ export const TeacherPanel: FC = () => {
               >
                 Просмотр
               </Button>
-            </Flex>
-          </List.Item>
-        )}
-      />
-      <List
-        header={
-          <Flex
-            align={'center'}
-            gap={30}
-          >
-            <h3>Заявки</h3>
-            <Button
-              onClick={handleOpenModal}
-              type={'dashed'}
-            >
-              Создать
-            </Button>
-          </Flex>
-        }
-        bordered
-        dataSource={Array.from({ length: 10 }).map((_, index) => `Заявка ${index}`)}
-        renderItem={(item: string) => (
-          <List.Item>
-            <Flex
-              className={s.flexItem}
-              justify={'space-between'}
-            >
-              {item}
             </Flex>
           </List.Item>
         )}
