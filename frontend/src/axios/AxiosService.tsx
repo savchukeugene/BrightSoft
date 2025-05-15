@@ -23,7 +23,7 @@ export class AxiosService {
     url: AxiosRequestConfig['url'],
     method: AxiosRequestConfig['method'],
     config?: IAxiosConfig<T> | AxiosRequestConfig,
-  ): Promise<AxiosResponse<D, any> | null> {
+  ): Promise<AxiosResponse<D, any>> {
     const token = localStorage.getItem('token');
 
     return axios
@@ -40,13 +40,13 @@ export class AxiosService {
       .then((data: AxiosResponse['data']): AxiosResponse<D, any> => {
         return data;
       })
-      .catch((e: AxiosError): null => {
+      .catch((e: AxiosError) => {
         notification.error({
           message: 'Произошла ошибка при выполнении запроса!',
           description: e.message,
         });
 
-        return null;
+        throw e;
       });
   }
 }

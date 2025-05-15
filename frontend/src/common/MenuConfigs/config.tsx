@@ -24,7 +24,6 @@ const source = messages.view.main.layoutOptions;
 
 export const LEFT_SIDE_OPTIONS_LIST: ILeftSideOptions = {
   administrator: [
-    getItem(source.users, 'userManagement', <TeamOutlined />),
     getItem(source.user, 'user', <TeamOutlined />),
     getItem(source.tasks, 'tasks', <BuildOutlined />),
     getItem(source.pages, 'editingPages', <EditOutlined />),
@@ -37,11 +36,20 @@ export const LEFT_SIDE_OPTIONS_LIST: ILeftSideOptions = {
     getItem(source.tasks, 'tasks', <BuildOutlined />),
     getItem(source.about, 'about', <InfoCircleOutlined />),
     getItem(source.support, 'support', <BugOutlined />),
+    getItem(source.courses, 'courses', <AppstoreOutlined />),
     getItem(source.pages, 'editingPages', <EditOutlined />),
   ],
   support: [
     getItem(source.about, 'about', <InfoCircleOutlined />),
     getItem(source.support, 'support', <BugOutlined />),
+  ],
+  teacher: [
+    getItem(source.user, 'user', <TeamOutlined />),
+    getItem(source.tasks, 'tasks', <BuildOutlined />),
+    getItem(source.pages, 'editingPages', <EditOutlined />),
+    getItem(source.about, 'about', <InfoCircleOutlined />),
+    getItem(source.support, 'support', <BugOutlined />),
+    getItem(source.courses, 'courses', <AppstoreOutlined />),
   ],
   unauthorized: [
     getItem(source.about, 'about', <InfoCircleOutlined />),
@@ -49,12 +57,11 @@ export const LEFT_SIDE_OPTIONS_LIST: ILeftSideOptions = {
   ],
 };
 
-export const HEADER_OPTIONS: IHeaderOptions = {
+export const HEADER_OPTIONS = (role: IUserRoles): IHeaderOptions => ({
   user: [
-    getItem(source.grade, 'grade', <></>),
-    getItem(source.timetable, 'timetable', <></>),
-    getItem(source.history, 'history', <></>),
     getItem(source.profile, 'profile', <></>),
+    role === 'teacher' ? getItem(source.teacher, 'teacher', <></>) : null,
+    role === 'administrator' ? getItem(source.admin, 'admin', <></>) : null,
   ],
   tasks: [
     getItem(source.maze, 'maze'),
@@ -62,4 +69,4 @@ export const HEADER_OPTIONS: IHeaderOptions = {
     getItem('Абакусы', 'tasksAbakus'),
     getItem(source.numberHunt, 'numberHunt'),
   ],
-};
+});

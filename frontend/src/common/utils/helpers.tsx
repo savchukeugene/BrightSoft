@@ -1,7 +1,6 @@
 import React from 'react';
 import { MenuProps } from 'antd';
 import { IUserRoles } from '../../store/userStore';
-import { To } from 'react-router-dom';
 import { routeGenerator } from './generatotrs';
 import { Routes } from '../constants/routes';
 
@@ -25,17 +24,20 @@ export function getItem(
   };
 }
 
-export const defineDefaultNavigation = (role: IUserRoles): To => {
+export const defineDefaultNavigation = (role: IUserRoles): string => {
   if (!role) return '';
 
   switch (role) {
     case 'user':
-      return routeGenerator(Routes.mainPage, Routes.user, Routes.grade);
+      return routeGenerator(Routes.mainPage, Routes.user, Routes.profile);
     case 'support':
       return routeGenerator(Routes.mainPage, Routes.support);
     case 'administrator':
-      return routeGenerator(Routes.mainPage, Routes.userManagement);
+      return routeGenerator(Routes.mainPage, Routes.user, Routes.profile);
+    case 'teacher':
+      return routeGenerator(Routes.mainPage, Routes.user, Routes.profile);
   }
+  return '';
 };
 
 export const formatDate = (isoDate: string): string => {

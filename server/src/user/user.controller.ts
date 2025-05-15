@@ -17,22 +17,23 @@ import { UserDeleteDto, UserInfoDto } from './dto/userInfo.dto';
 import { Request } from 'express';
 import { RolesGuard } from '../libs/common/decorators/role-validator';
 import { GetStarsDto, StarsDto } from './dto/stars.dto';
+import { UserRole } from '../../prisma/__generated__';
 
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post('whoAmI')
+  @Get('whoAmI')
   @HttpCode(HttpStatus.OK)
-  public async whoAmI(@Body() dto: WhoAmIDto) {
+  public async whoAmI(@Query() dto: WhoAmIDto) {
     return await this.userService.findById(dto.userId);
   }
 
   @Post('allUsers')
   @HttpCode(HttpStatus.OK)
-  @UseGuards(new RolesGuard(['administrator', 'support']))
-  public async getAllUsers() {
-    return await this.userService.getAllUsers();
+  @UseGuards(new RolesGuard(['administrator', 'support', 'teacher']))
+  public async getAllUsers(@Query() query?: { roles: UserRole }) {
+    return await this.userService.getAllUsers(query?.roles);
   }
 
   @Post('userInfo')
@@ -61,9 +62,13 @@ export class UserController {
     return await this.userService.getStars(dto.id);
   }
 
+  @Post('updateUser')
+  @HttpCode(HttpStatus.OK)
+  public async updateUser(@Body() dto) {}
+
   @Get('courses')
   @HttpCode(HttpStatus.OK)
-  public async getUsesCourses(@Query() query) {
+  public async getUserCourses(@Query() query) {
     console.log(query);
     return {};
   }
