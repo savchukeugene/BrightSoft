@@ -33,6 +33,7 @@ export const messages = {
         courses: 'Курсы',
         admin: 'Администрирование',
         teacher: 'Панель преподавателя',
+        myCourses: 'Мои курсы',
       },
       supportPage: {
         title: 'Нам жаль, что Вы столкнулись с неприятностью...',

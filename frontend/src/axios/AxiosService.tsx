@@ -15,8 +15,8 @@ export class AxiosService {
     return this.fetchData<AxiosRequestConfig, T>(url, 'GET', config);
   }
 
-  public static PULL<T, D>(url: AxiosRequestConfig['url'], config: IAxiosConfig<T>) {
-    return this.fetchData<T, D>(url, 'PUT', config);
+  public static PATCH<T>(url: AxiosRequestConfig['url'], config?: AxiosRequestConfig) {
+    return this.fetchData<AxiosRequestConfig, T>(url, 'PATCH', config);
   }
 
   public static fetchData<T, D>(

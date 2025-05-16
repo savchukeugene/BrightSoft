@@ -61,6 +61,7 @@ export const HEADER_OPTIONS = (role: IUserRoles): IHeaderOptions => ({
     getItem(source.profile, 'profile', <></>),
     role === 'teacher' ? getItem(source.teacher, 'teacher', <></>) : null,
     role === 'administrator' ? getItem(source.admin, 'admin', <></>) : null,
+    role === 'user' ? getItem(source.myCourses, 'myCourses', <></>) : null,
   ],
   tasks: [
     getItem(source.maze, 'maze'),

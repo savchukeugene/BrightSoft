@@ -4,6 +4,7 @@ import {
   IApplicationShowData,
 } from '../../../../../../../types/applicationTypes';
 import type { PresetStatusColorType } from 'antd/es/_util/colors';
+import React from 'react';
 
 type IRussianStatuses = {
   [key in ApplicationStatusesType]: string;
@@ -29,61 +30,69 @@ const findStatus = (status: ApplicationStatusesType): Partial<PresetStatusColorT
   }
 };
 
-export const applicationManagementTableConfig: TableProps<IApplicationShowData>['columns'] =
-  [
-    {
-      title: 'Имя курса',
-      dataIndex: 'courseName',
-      key: 'courseName',
+export const applicationManagementTableConfig = (
+  setIsDeniApplicationModalOpen: React.Dispatch<React.SetStateAction<string>>,
+  setIsAcceptModalOpen: React.Dispatch<React.SetStateAction<string>>,
+): TableProps<IApplicationShowData>['columns'] => [
+  {
+    title: 'Имя курса',
+    dataIndex: 'courseName',
+    key: 'courseName',
+  },
+  {
+    title: 'Пользователь',
+    dataIndex: 'userName',
+    key: 'userName',
+  },
+  {
+    title: 'Тип курса',
+    dataIndex: 'type',
+    key: 'type',
+  },
+  {
+    title: 'Номер группы',
+    dataIndex: 'groupNumber',
+    key: 'groupNumber',
+  },
+  {
+    title: 'Статус заявки',
+    dataIndex: 'status',
+    key: 'status',
+    render: (_, record: IApplicationShowData) => {
+      const status: Partial<PresetStatusColorType> = findStatus(record.status);
+      return (
+        <Badge
+          status={status}
+          text={getRussianStatus[record.status]}
+        />
+      );
     },
-    {
-      title: 'Пользователь',
-      dataIndex: 'userName',
-      key: 'userName',
-    },
-    {
-      title: 'Тип курса',
-      dataIndex: 'type',
-      key: 'type',
-    },
-    {
-      title: 'Номер группы',
-      dataIndex: 'groupNumber',
-      key: 'groupNumber',
-    },
-    {
-      title: 'Статус заявки',
-      dataIndex: 'status',
-      key: 'status',
-      render: (_, record: IApplicationShowData) => {
-        const status: Partial<PresetStatusColorType> = findStatus(record.status);
-        return (
-          <Badge
-            status={status}
-            text={getRussianStatus[record.status]}
-          />
-        );
-      },
-    },
-    {
-      title: 'Контактная информация',
-      dataIndex: 'contactData',
-      key: 'contactData',
-    },
-    {
-      title: 'Действия',
-      key: 'action',
-      render: (_, record: IApplicationShowData) =>
-        record.status === 'active' && (
-          <Flex gap={8}>
-            <Button type={'primary'}>Одобрить</Button>
-            <Button
-              style={{ color: 'red' }}
-              type={'link'}
-            >
-              Отклонить
-            </Button>
-          </Flex>
-        ),
-    },
-  ];
+  },
+  {
+    title: 'Контактная информация',
+    dataIndex: 'contactData',
+    key: 'contactData',
+  },
+  {
+    title: 'Действия',
+    key: 'action',
+    render: (_, record: IApplicationShowData) =>
+      record.status === 'active' && (
+        <Flex gap={8}>
+          <Button
+            onClick={() => setIsAcceptModalOpen(record.id)}
+            type={'primary'}
+          >
+            Одобрить
+          </Button>
+          <Button
+            style={{ color: 'red' }}
+            type={'link'}
+            onClick={() => setIsDeniApplicationModalOpen(record.id)}
+          >
+            Отклонить
+          </Button>
+        </Flex>
+      ),
+  },
+];

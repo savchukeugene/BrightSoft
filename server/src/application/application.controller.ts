@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { CreateApplicationDto } from './dto/create-application.dto';
 import { ApplicationService } from './application.service';
+import { ApplicationStatus } from '../../prisma/__generated__';
 
 @Controller('application')
 export class ApplicationController {
@@ -37,9 +38,12 @@ export class ApplicationController {
 
   @Patch('closeApplication')
   @HttpCode(HttpStatus.OK)
-  public async closeApplication(@Query() query: { applicationId: string }) {
+  public async closeApplication(
+    @Query() query: { applicationId: string; decision: ApplicationStatus },
+  ) {
     const data = await this.applicationService.closeApplication(
       query.applicationId,
+      query.decision,
     );
     return data;
   }

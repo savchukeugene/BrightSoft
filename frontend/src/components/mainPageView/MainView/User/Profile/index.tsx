@@ -101,19 +101,9 @@ const Profile = () => {
                 name="userName"
               >
                 {disabled ? (
-                  <span>{form.getFieldValue('userName') || 'Не указано'}</span>
+                  <span>{userInfo?.userName}</span>
                 ) : (
                   <Input placeholder={userInfo?.userName || 'Введите имя пользователя'} />
-                )}
-              </FormItem>
-              <FormItem
-                label="Email"
-                name="email"
-              >
-                {disabled ? (
-                  <span>{form.getFieldValue('email') || 'Не указано'}</span>
-                ) : (
-                  <Input placeholder={userInfo?.email || 'Введите email'} />
                 )}
               </FormItem>
               {!disabled && (

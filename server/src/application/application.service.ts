@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateApplicationDto } from './dto/create-application.dto';
+import { ApplicationStatus } from '../../prisma/__generated__';
 
 @Injectable()
 export class ApplicationService {
@@ -51,11 +52,11 @@ export class ApplicationService {
     return newData;
   }
 
-  public async closeApplication(id: string) {
+  public async closeApplication(id: string, decision: ApplicationStatus) {
     const data = await this.prismaService.application.update({
       where: { id },
       data: {
-        status: 'closed',
+        status: decision,
       },
     });
     return data;

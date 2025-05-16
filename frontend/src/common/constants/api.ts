@@ -62,6 +62,7 @@ export const API_GET_LESSON_BY_COURSE: string = `${lesson_ref}/getByCourseId`;
 const application_ref: string = `${ref}/application`;
 export const API_CREATE_APPLICATION = `${application_ref}/createApplication`;
 export const API_GET_APPLICATIONS: string = `${application_ref}/getApplications`;
+export const API_CLOSE_APPLICATIONS: string = `${application_ref}/closeApplication`;
 export const API_GET_APPLICATION_BY_ID: string = `${application_ref}/getById`;
 
 // Group

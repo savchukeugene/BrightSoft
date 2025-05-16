@@ -44,7 +44,7 @@ export const CreateApplicationModal: FC<ICreateApplicationModal> = ({
     label: group.groupNumber + '',
     value: group.id,
   }));
-  console.log(checkedList);
+
   const onChange = (e: RadioChangeEvent) => {
     setCheckedList(e.target.value);
   };

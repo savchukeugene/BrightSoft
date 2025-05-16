@@ -10,6 +10,7 @@ export interface IApplicationShowData {
   groupNumber: string;
   status: ApplicationStatusesType;
   contactData: string;
+  id: string;
 }
 
 export interface ICreateApplicationForm {
