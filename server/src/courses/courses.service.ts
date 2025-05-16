@@ -22,6 +22,8 @@ export class CoursesService {
         description: course.description,
         previewPath: course.previewPath,
         status: course.status,
+        createdAt: course.createdAt,
+        updatedAt: course.updatedAt,
       })),
     );
     return data;

@@ -37,6 +37,7 @@ export const LEFT_SIDE_OPTIONS_LIST: ILeftSideOptions = {
     getItem(source.about, 'about', <InfoCircleOutlined />),
     getItem(source.support, 'support', <BugOutlined />),
     getItem(source.courses, 'courses', <AppstoreOutlined />),
+    getItem(source.pages, 'editingPages', <EditOutlined />),
   ],
   support: [
     getItem(source.about, 'about', <InfoCircleOutlined />),

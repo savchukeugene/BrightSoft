@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output = "./__generated__"
+  output   = "./__generated__"
 }
 
 datasource db {
@@ -9,23 +9,23 @@ datasource db {
 }
 
 model User {
-  id String @id @default(uuid())
-  email String @unique
-  password String
-  role UserRole @default(user)
-  userName String
-  picture String?
-  status UserStatus @default(non_confirmed)
-  courseName String[] @map("course_name")
-  method AuthMethods
-  stars Int @default(0)
-  firstName String  @map("first_name")
-  secondName String @map("second_name")
-  fatherName String @map("father_name")
+  id         String      @id @default(uuid())
+  email      String      @unique
+  password   String
+  role       UserRole    @default(user)
+  userName   String
+  picture    String?
+  status     UserStatus  @default(non_confirmed)
+  courseName String[]    @map("course_name")
+  method     AuthMethods
+  stars      Int         @default(0)
+  firstName  String      @map("first_name")
+  secondName String      @map("second_name")
+  fatherName String      @map("father_name")
 
   accounts Account[]
 
-  isVerified Boolean @default(false) @map("is_verified")
+  isVerified         Boolean @default(false) @map("is_verified")
   isTwoFactorEnabled Boolean @default(false) @map("is_two_factor_enabled")
 
   createdAt DateTime @default(now()) @map("created_at")
@@ -37,17 +37,17 @@ model User {
 model Account {
   id String @id @default(uuid())
 
-  type String
+  type     String
   provider String
 
   refreshToken String? @map("refresh-token")
-  accessToken String? @map("access-token")
-  expiresAt Int @map("expires-at")
+  accessToken  String? @map("access-token")
+  expiresAt    Int     @map("expires-at")
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
-  user User? @relation(fields: [userId], references: [id])
-  userId String? @map("user_id")
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    String?  @map("user_id")
 
   @@map("accounts")
 }
@@ -55,68 +55,82 @@ model Account {
 model Token {
   id String @id @default(uuid())
 
-  email String
-  token String @unique
-  type TokenType
-  expiresIn DateTime @map("expires-in")
+  email     String
+  token     String    @unique
+  type      TokenType
+  expiresIn DateTime  @map("expires-in")
 
   @@map("tokens")
 }
 
 model Courses {
-  id String @id @default(uuid())
-  name String @map("name")
+  id          String         @id @default(uuid())
+  name        String         @map("name")
   description String
-  previewPath String @default("")
-  lessons String[] @default([])
-  status CourseStatuses @default(active)
-  users String[] @default([])
+  previewPath String         @default("")
+  lessons     String[]       @default([])
+  status      CourseStatuses @default(active)
+  users       String[]       @default([])
 
-  type CourseType
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  type      CourseType
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime   @updatedAt @map("updated_at")
+}
+
+model LandingPage2 {
+  id          String         @id @default(uuid())
+  name        String         @map("name")
+  description String
+  previewPath String         @default("")
+  lessons     String[]       @default([])
+  status      CourseStatuses @default(active)
+  users       String[]       @default([])
+
+  type      CourseType
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime   @updatedAt @map("updated_at")
 }
 
 model Lesson {
-  id String @id @default(uuid())
-  course String
-  name String
+  id          String @id @default(uuid())
+  course      String
+  name        String
   description String
-  picture String
-  video String
-  homework String
+  picture     String
+  video       String
+  homework    String
 
   position Int
 }
 
 model History {
-  userId String @id @map("user_id")
-  success Boolean
-  starsIncrease Int @map("start_increase")
+  userId        String  @id @map("user_id")
+  success       Boolean
+  starsIncrease Int     @map("start_increase")
 
   createdAt DateTime @default(now()) @map("created_at")
 }
 
 model Group {
-  id String @id @default(uuid())
-  name String @default("null")
-  groupNumber Int @map("group_number")
-  users String[] @default([])
-  duration Int
-  startHour String
-  course String
-  maxStudents Int @map("max_students")
-  days days[] @default([monday])
+  id          String   @id @default(uuid())
+  name        String   @default("null")
+  groupNumber Int      @map("group_number")
+  users       String[] @default([])
+  duration    Int
+  startHour   String
+  course      String
+  maxStudents Int      @map("max_students")
+  days        days[]   @default([monday])
 }
 
 model Application {
-  id String @id @default(uuid())
-  courseId String @map("course_id")
-  userId String @map("user_id")
-  type CourseType
-  groupId String @map("group_id")
-  status ApplicationStatus @default(active)
-  contactData String @map("contact_data")
+  id          String            @id @default(uuid())
+  courseId    String            @map("course_id")
+  userId      String            @map("user_id")
+  type        CourseType
+  groupId     String            @map("group_id")
+  status      ApplicationStatus @default(active)
+  contactData String            @map("contact_data")
 }
 
 enum days {
@@ -137,8 +151,8 @@ enum ApplicationStatus {
 }
 
 model Progress {
-  userId String @id @map("user_id")
-  game Games
+  userId  String @id @map("user_id")
+  game    Games
   percent Int
 }
 
@@ -186,4 +200,12 @@ enum TokenType {
   verification
   two_factor
   password_reset
+}
+
+enum CourseNames {
+  free
+  newbie
+  beginner
+  amateur
+  pro
 }
