@@ -1,4 +1,4 @@
-export class CreateCourseDto {
+export class CreateLandingPageDto {
   name: string;
   description: any;
   type: 'online' | 'offline' | 'both';

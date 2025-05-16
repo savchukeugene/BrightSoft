@@ -8,7 +8,6 @@ import Timetable from '../../components/mainPageView/MainView/User/Timetable';
 import Grade from '../../components/mainPageView/MainView/User/Grade';
 import PlayQuickCount from '../../components/mainPageView/MainView/tasks/QuickCount';
 import SupportPage from '../../components/mainPageView/MainView/SupportPage';
-import LandingPages from '../../components/mainPageView/MainView/LandingPages';
 import UserManagement from '../../components/mainPageView/MainView/userManagement';
 import PageNotFound from '../../components/commonComponents/PageNotFound';
 import { defineDefaultNavigation } from '../utils/helpers';
@@ -23,7 +22,8 @@ import {
   numberHuntingLevelsConfig,
 } from '@common/gameConfigs/numberHunting.config';
 import PlayNumberHunting from '../../components/mainPageView/MainView/tasks/NumberHunt';
-import LandingPageEditor from "../../components/mainPageView/MainView/LandingPages/Editor";
+// import LandingPageEditor from "../../components/mainPageView/MainView/LandingPages/Editor";
+// import LandingPages from '../../components/mainPageView/MainView/LandingPages';
 import Profile from '../../components/mainPageView/MainView/User/Profile';
 import { Courses } from '../../components/mainPageView/MainView/Courses';
 import { CoursePage } from '../../components/mainPageView/MainView/Courses/CoursePage';
@@ -31,6 +31,8 @@ import { Teacher } from '../../components/mainPageView/MainView/User/Teacher';
 import { ApplicationManagement } from '../../components/mainPageView/MainView/User/Teacher/Components/ApplicationsManagement';
 import { CoursesManagement } from '../../components/mainPageView/MainView/User/Teacher/Components/CoursesManagement';
 import { GroupsManagement } from '../../components/mainPageView/MainView/User/Teacher/Components/GroupsManagement';
+import {LandingPages2} from "../../components/mainPageView/MainView/LandingPages2";
+import {Editor} from "../../components/mainPageView/MainView/LandingPages2/Editor";
 
 export const Routes = {
   mainPage: '/mainPage',
@@ -193,16 +195,22 @@ export const authorizedUserRoutesConfig = (role: IUserRoles): IRoutesGenerator[]
       },
       {
         path: Routes.editingPages,
-        element: <LandingPages />,
+        element: <LandingPages2 />,
+        child: [
+          {
+            path: ':id',
+            element: <Editor />,
+          },
+        ],
       },
-      {
-        path: Routes.editingPages,
-        element: <LandingPages />,
-      },
-      {
-        path: ':id',
-        element: <LandingPageEditor />,
-      },
+      // {
+      //   path: Routes.editingPages,
+      //   element: <LandingPages />,
+      // },
+      // {
+      //   path: ':id',
+      //   element: <LandingPageEditor />,
+      // },
       {
         path: Routes.userManagement,
         element: <UserManagement />,

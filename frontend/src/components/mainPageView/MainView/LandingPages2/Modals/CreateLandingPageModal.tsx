@@ -1,0 +1,76 @@
+import { Button, Form, FormInstance, Input, Modal, Select } from 'antd';
+import FormItem from 'antd/es/form/FormItem';
+import TextArea from 'antd/es/input/TextArea';
+import { chooseType } from '../config';
+import { FC } from 'react';
+import { ICreateLandingPagesOutDTO } from '../../../../../types/landingPageTypes';
+
+interface ICreateLandingPageModal {
+  isCreateLandingPageModalOpen: boolean;
+  handleModalClose: () => void;
+  createLandingPageForm: FormInstance;
+  handleCreateLandingPage: (values: ICreateLandingPagesOutDTO) => void;
+}
+
+export const CreateLandingPageModal: FC<ICreateLandingPageModal> = ({
+  isCreateLandingPageModalOpen,
+  handleCreateLandingPage,
+  createLandingPageForm,
+  handleModalClose,
+}) => {
+  return (
+    <Modal
+      open={isCreateLandingPageModalOpen}
+      onCancel={handleModalClose}
+      footer={false}
+    >
+      <h1
+        style={{
+          margin: '10px 0',
+          textAlign: 'center',
+        }}
+      >
+        Создать курс
+      </h1>
+      <Form
+        layout={'vertical'}
+        form={createLandingPageForm}
+        onFinish={handleCreateLandingPage}
+      >
+        <FormItem
+          name={'name'}
+          rules={[{ required: true }]}
+          label={'Название курса'}
+        >
+          <Input />
+        </FormItem>
+        <FormItem
+          name={'description'}
+          rules={[{ required: true }]}
+          label={'Описание курса'}
+        >
+          <TextArea />
+        </FormItem>
+        <FormItem
+          name={'type'}
+          rules={[{ required: true }]}
+          label={'Тип курса'}
+        >
+          <Select options={chooseType} />
+        </FormItem>
+        <FormItem
+          name={'users'}
+          label={'Пользователи'}
+        >
+          <Input />
+        </FormItem>
+        <Button
+          htmlType={'submit'}
+          type={'primary'}
+        >
+          Создать
+        </Button>
+      </Form>
+    </Modal>
+  );
+};

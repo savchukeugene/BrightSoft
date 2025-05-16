@@ -58,6 +58,29 @@ export const API_LESSON_UPLOAD: (type: 'image' | 'video') => string = (
 ): string => `${lesson_ref}/upload/${type}`;
 export const API_GET_LESSON_BY_COURSE: string = `${lesson_ref}/getByCourseId`;
 
+// Landing Pages
+const landing_ref: string = `${ref}/courses`;
+export const API_LANDING_GET_ALL: string = `${landing_ref}/all`;
+export const API_LANDING_GET_BY_ID: getIdReturnStrFunction = (id: string) =>
+    `${landing_ref}/${id}`;
+export const API_LANDING_DELETE: getIdReturnStrFunction = (id: string): string =>
+    `${landing_ref}/delete?courseId=${id}`;
+export const API_LANDING_HIDE: string = `${landing_ref}/hide`;
+export const API_LANDING_CREATE: string = `${landing_ref}/create`;
+export const API_LANDING_EDIT: string = `${landing_ref}/edit`;
+export const API_LANDING_UPLOAD: string = `${landing_ref}/upload`;
+
+
+/////////
+
+
+// Landing Pages
+const landing_pages_ref: string = `${ref}/landing-pages`;
+export const API_LANDING_PAGES_GET_ALL: string = `${landing_pages_ref}/all`;
+export const API_LANDING_PAGES_CREATE: string = `${landing_pages_ref}/create`;
+export const API_LANDING_PAGES_DELETE: getIdReturnStrFunction = (id: string): string =>
+    `${landing_pages_ref}/delete/${id}`;
+
 // Application
 const application_ref: string = `${ref}/application`;
 export const API_CREATE_APPLICATION = `${application_ref}/createApplication`;
