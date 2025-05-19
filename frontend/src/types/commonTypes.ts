@@ -84,6 +84,7 @@ export interface IAccessToken {
   id: string;
   user: IUserData;
   stars: number;
+  courses: string[];
 }
 
 export interface IRoutesGenerator {

@@ -68,8 +68,8 @@ export class UserController {
 
   @Get('courses')
   @HttpCode(HttpStatus.OK)
-  public async getUserCourses(@Query() query) {
-    console.log(query);
-    return {};
+  public async getUserCourses(@Query() query: { id: string }) {
+    const data = await this.userService.getCourses(query.id);
+    return data;
   }
 }

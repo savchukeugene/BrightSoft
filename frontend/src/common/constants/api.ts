@@ -37,6 +37,7 @@ export const API_GET_USER_COURSES: string = `${user_ref}/courses`;
 // Courses
 const courses_ref: string = `${ref}/courses`;
 export const API_COURSES_GET_ALL: string = `${courses_ref}/all`;
+export const API_COURSES_GET_BY_ID_ARRAY: string = `${courses_ref}/getCoursesByIdArray`;
 export const API_COURSES_GET_BY_ID: getIdReturnStrFunction = (id: string) =>
   `${courses_ref}/${id}`;
 export const API_COURSE_DELETE: getIdReturnStrFunction = (id: string): string =>
@@ -53,6 +54,8 @@ export const API_COURSES_LESSON_DELETE: getIdReturnStrFunction = (id: string): s
   `${lesson_ref}/delete?lessonId=${id}`;
 export const API_LESSON_HIDE: string = `${lesson_ref}/hide`;
 export const API_LESSON_EDIT: string = `${lesson_ref}/edit`;
+export const API_LESSON_UPLOAD_IMAGE: string = `${lesson_ref}/uploadImage`;
+export const API_LESSON_UPLOAD_VIDEO: string = `${lesson_ref}/uploadVideo`;
 export const API_LESSON_UPLOAD: (type: 'image' | 'video') => string = (
   type: 'image' | 'video',
 ): string => `${lesson_ref}/upload/${type}`;

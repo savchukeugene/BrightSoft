@@ -1,4 +1,4 @@
-import { API_GET_STARS, API_WHO_AM_I } from '@common/constants/api';
+import { API_GET_STARS, API_GET_USER_COURSES, API_WHO_AM_I } from '@common/constants/api';
 import { IAccessToken, IActionsFormat, IUserData } from '../../types/commonTypes';
 import { isNil } from 'lodash';
 import { parseJwt } from '@common/utils/jwt';
@@ -59,4 +59,11 @@ export const getUserInfo = async (
     role: parsedJwt.role,
     stars: data.data.stars,
   }));
+};
+
+export const getUserCourses = async (id: string): Promise<string[]> => {
+  const data = await AxiosService.GET<string[]>(API_GET_USER_COURSES, {
+    params: { id },
+  });
+  return data.data;
 };

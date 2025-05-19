@@ -48,4 +48,16 @@ export class CoursesService {
       lessons,
     };
   }
+
+  public async getCoursesByIdArray(idArray: string[]) {
+    const courses = await Promise.all(
+      idArray.map(async (id) => {
+        const courseData = await this.prismaService.courses.findUnique({
+          where: { id },
+        });
+        return courseData;
+      }),
+    );
+    return courses;
+  }
 }

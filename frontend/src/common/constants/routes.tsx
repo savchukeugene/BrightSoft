@@ -30,6 +30,7 @@ import { Teacher } from '../../components/mainPageView/MainView/User/Teacher';
 import { ApplicationManagement } from '../../components/mainPageView/MainView/User/Teacher/Components/ApplicationsManagement';
 import { CoursesManagement } from '../../components/mainPageView/MainView/User/Teacher/Components/CoursesManagement';
 import { GroupsManagement } from '../../components/mainPageView/MainView/User/Teacher/Components/GroupsManagement';
+import { MyCourses } from '../../components/mainPageView/MainView/MyCourses';
 
 export const Routes = {
   mainPage: '/mainPage',
@@ -53,6 +54,7 @@ export const Routes = {
   applications: '/applications',
   teacher: '/teacher',
   admin: '/admin',
+  myCourses: '/myCourses',
   defaultRoute: '/',
 };
 
@@ -112,6 +114,16 @@ export const authorizedUserRoutesConfig = (role: IUserRoles): IRoutesGenerator[]
           {
             path: Routes.profile,
             element: <Profile />,
+          },
+          {
+            path: Routes.myCourses,
+            element: <MyCourses />,
+            child: [
+              {
+                path: ':id',
+                element: <CoursePage />,
+              },
+            ],
           },
           {
             path: Routes.teacher,

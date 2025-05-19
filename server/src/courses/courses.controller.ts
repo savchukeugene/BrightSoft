@@ -5,6 +5,7 @@ import {
   HttpCode,
   HttpStatus,
   Post,
+  Query,
 } from '@nestjs/common';
 import { CoursesService } from './courses.service';
 import { CreateCourseDto } from './dto/createCourse.dto';
@@ -22,6 +23,15 @@ export class CoursesController {
   @HttpCode(HttpStatus.OK)
   public async createCourse(@Body() dto: CreateCourseDto) {
     const data = await this.coursesService.create(dto);
+    return data;
+  }
+
+  @Get('getCoursesByIdArray')
+  @HttpCode(HttpStatus.OK)
+  public async getCoursesByIdArray(@Query() query: { idArray: string[] }) {
+    const data = await this.coursesService.getCoursesByIdArray(
+      query['idArray[]'],
+    );
     return data;
   }
 

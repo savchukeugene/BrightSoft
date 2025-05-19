@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { parseJwt } from '@common/utils/jwt';
-import { getStars, getUserInfo } from '@common/utils/globalActions';
+import { getStars, getUserCourses, getUserInfo } from '@common/utils/globalActions';
 import { isNil } from 'lodash';
 
 const userRoles = [
@@ -16,6 +16,7 @@ interface IUser {
   user: string | null;
   role: IUserRoles;
   stars: number | string;
+  courses: string[];
 }
 
 export interface IUserStore extends IUser {
@@ -41,11 +42,24 @@ export const useUserStore = create<IUserStore>((set) => {
       stars: data ?? 'Упс',
     }));
   };
+
+  const getCourses = async () => {
+    if (isNil(savedToken)) {
+      return;
+    }
+    const data = await getUserCourses(parseJwt(savedToken).id);
+    set(() => ({
+      courses: data.filter((id) => id.length > 0),
+    }));
+  };
+
+  getCourses();
   starSetter(null);
   return {
     user: savedToken ? parseJwt(savedToken).id : null,
     role: savedToken ? parseJwt(savedToken).role : 'unauthorized',
     stars: 'Не известно',
+    courses: [],
     setUser: (access_token: string) => getUserInfo(access_token, set),
     setStars: starSetter,
     logoutUser: (): void => {

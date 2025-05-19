@@ -1,11 +1,15 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateApplicationDto } from './dto/create-application.dto';
 import { ApplicationStatus } from '../../prisma/__generated__';
+import { UserService } from '../user/user.service';
 
 @Injectable()
 export class ApplicationService {
-  public constructor(private readonly prismaService: PrismaService) {}
+  public constructor(
+    private readonly prismaService: PrismaService,
+    private readonly userService: UserService,
+  ) {}
 
   public async findById(id: string) {
     const data = await this.prismaService.application.findUnique({
@@ -53,6 +57,24 @@ export class ApplicationService {
   }
 
   public async closeApplication(id: string, decision: ApplicationStatus) {
+    const applicationInfo = await this.findById(id);
+    if (!applicationInfo) {
+      throw new NotFoundException('Такая заявка не найдена!');
+    }
+    const { courseName } = await this.userService.findById(
+      applicationInfo.userId,
+    );
+    await this.prismaService.user.update({
+      where: {
+        id: applicationInfo.userId,
+      },
+      data: {
+        courseName:
+          courseName.length > 0
+            ? [...courseName, applicationInfo.courseId]
+            : [applicationInfo.courseId],
+      },
+    });
     const data = await this.prismaService.application.update({
       where: { id },
       data: {

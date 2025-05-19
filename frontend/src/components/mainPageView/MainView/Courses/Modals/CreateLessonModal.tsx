@@ -5,6 +5,7 @@ import Dragger from 'antd/es/upload/Dragger';
 import { InboxOutlined } from '@ant-design/icons';
 import { ILessonCreateFormInfo } from '../../../../../types/lessonTypes';
 import { FC } from 'react';
+import { imageDragger, videoDragger } from '../config';
 
 interface ICreateLessonModal {
   isCreateLessonModalOpen: boolean;
@@ -51,7 +52,7 @@ export const CreateLessonModal: FC<ICreateLessonModal> = ({
         </FormItem>
 
         <FormItem label={'Добавьте изображение'}>
-          <Dragger>
+          <Dragger {...imageDragger}>
             <p className="ant-upload-drag-icon">
               <InboxOutlined />
             </p>
@@ -60,7 +61,7 @@ export const CreateLessonModal: FC<ICreateLessonModal> = ({
         </FormItem>
 
         <FormItem label={'Добавьте видео'}>
-          <Dragger>
+          <Dragger {...videoDragger}>
             <p className="ant-upload-drag-icon">
               <InboxOutlined />
             </p>

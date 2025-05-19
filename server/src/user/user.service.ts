@@ -92,6 +92,14 @@ export class UserService {
     return user.stars;
   }
 
+  public async getCourses(id: string) {
+    const user = await this.findById(id);
+    if (!user) {
+      throw new NotFoundException('Пользователь с таким id не был найден!');
+    }
+    return user.courseName;
+  }
+
   public async create(
     email: string,
     password: string,

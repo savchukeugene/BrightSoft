@@ -11,6 +11,7 @@ import Loader from '../Layout/Loader';
 
 const MainPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
+
   useEffect(() => {
     if (loading) {
       setLoading(false);
